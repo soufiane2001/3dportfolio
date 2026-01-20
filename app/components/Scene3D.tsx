@@ -50,17 +50,15 @@ function FloatingParticles({ count = 500 }: { count?: number }) {
     <points ref={mesh}>
       <bufferGeometry>
         <bufferAttribute
-          attach="attributes-position"
-          count={particles.positions.length / 3}
-          array={particles.positions}
-          itemSize={3}
-        />
-        <bufferAttribute
-          attach="attributes-color"
-          count={particles.colors.length / 3}
-          array={particles.colors}
-          itemSize={3}
-        />
+  attach="attributes-position"
+  args={[particles.positions, 3]}
+/>
+
+      <bufferAttribute
+  attach="attributes-position"
+  args={[particles.positions, 3]}
+/>
+
       </bufferGeometry>
       <pointsMaterial
         size={0.03}
