@@ -29,9 +29,9 @@ const About = () => {
                 <img
                   src="https://www.soufianeboutatssdev.com/static/media/IMG_7895.929cac9e28d097d53640.jpeg"
                   alt="Soufiane Boutatss"
-                  fill
+                 
                   className="object-cover"
-                  priority
+                 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               </div>
