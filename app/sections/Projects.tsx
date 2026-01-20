@@ -23,7 +23,7 @@ const projects: Project[] = [
     title: "Ecommerce Website",
     description: "Full-featured ecommerce platform with cash on delivery",
     image: "https://www.soufianeboutatssdev.com/static/media/1.457e1f4f60a3020387ce.PNG",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+
     demoUrl: "https://bdmstore.store/ecom/index.php",
     repoUrl: "https://github.com/yourusername/portfolio",
     tech: ["PHP", "CSS", "MySQL"],
@@ -50,7 +50,7 @@ const projects: Project[] = [
     title: "Cash Management App",
     description: "Mobile app for expense tracking",
     image: "https://www.soufianeboutatssdev.com/static/media/pr7.7bd31365952b72ee7971.JPG",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/embed/F3Pjh49qdzE?si=0fTnYNxOnF-oEWd8",
     repoUrl: "https://github.com/soufiane2001/cashappv4",
     tech: ["React Native", "Firebase"],
   },
@@ -59,7 +59,7 @@ const projects: Project[] = [
     title: "Patient Management",
     description: "Healthcare management system",
     image: "https://www.soufianeboutatssdev.com/static/media/120248.3e5d1fd628a8084aa9c7.png",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/embed/FiacG53K6fs?si=3VGAVs-gx6k6hi1_",
     tech: ["Java"],
   },
   {
