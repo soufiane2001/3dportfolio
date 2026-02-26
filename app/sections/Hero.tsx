@@ -154,7 +154,7 @@ const Hero = () => {
               <div className="absolute inset-4 rounded-full border border-[#ff6b00]/20 animate-[spin_15s_linear_infinite_reverse]" />
               <div className="absolute inset-8 rounded-full overflow-hidden border-2 border-[#ff6b00]/40">
                 <Image
-                  src="https://portfoliosoufdev.vercel.app/static/media/so.c04a87ed30752959fd17.png"
+                  src="https://www.soufianeboutatssdev.com/static/media/IMG_7895.929cac9e28d097d53640.jpeg"
                   alt="Soufiane Boutatss"
                   fill
                   priority
