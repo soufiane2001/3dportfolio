@@ -153,7 +153,7 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-full border border-white/10 animate-[spin_20s_linear_infinite]" />
               <div className="absolute inset-4 rounded-full border border-[#ff6b00]/20 animate-[spin_15s_linear_infinite_reverse]" />
               <div className="absolute inset-8 rounded-full overflow-hidden border-2 border-[#ff6b00]/40">
-                <Image
+                <img
                   src="https://www.soufianeboutatssdev.com/static/media/IMG_7895.929cac9e28d097d53640.jpeg"
                   alt="Soufiane Boutatss"
                   fill
