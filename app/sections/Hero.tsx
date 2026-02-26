@@ -55,7 +55,7 @@ const Hero = () => {
             <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-[#ff6b00] animate-pulse" />
               <span className="text-white/80 text-sm md:text-base font-medium">
-                Web & Mobile Developer
+                Web & Mobile Developer.
               </span>
             </div>
           </motion.div>
