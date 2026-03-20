@@ -69,6 +69,13 @@ const projects: Project[] = [
     image: "https://www.soufianeboutatssdev.com/static/media/horea.3cf389a7f0b8c722a282.PNG",
     demoUrl: "https://www.horea-formation.com/",
     tech: ["Wordpress"],
+  },  {
+    id: 7,
+    title: "Dar Mooris",
+    description: "textile website",
+    image: "Capture d’écran 2026-03-20 213032.png",
+    demoUrl: "https://darmooris.ma/",
+    tech: ["php"],
   },
 ];
 
