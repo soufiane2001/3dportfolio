@@ -78,9 +78,9 @@ const About = () => {
 
             <div className="flex flex-wrap gap-6 justify-center lg:justify-start mb-10">
               {[
-                { label: "Projects", value: "37+" },
-                { label: "Clients", value: "27+" },
-                { label: "Years", value: "4+" },
+                { label: "Projects", value: "30+" },
+                { label: "Clients", value: "24+" },
+                { label: "Years", value: "5+" },
               ].map((stat, i) => (
                 <motion.div
                   key={i}
