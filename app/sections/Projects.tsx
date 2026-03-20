@@ -73,7 +73,7 @@ const projects: Project[] = [
     id: 7,
     title: "Dar Mooris",
     description: "textile website",
-    image: "Capture d’écran 2026-03-20 213032.png",
+    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774035266/Capture_d_%C3%A9cran_2026-03-20_213032_ksgiwn.png",
     demoUrl: "https://darmooris.ma/",
     tech: ["php"],
   },
