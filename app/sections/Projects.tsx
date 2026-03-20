@@ -43,7 +43,7 @@ const projects: Project[] = [
     description: "Professional psychology services website",
     image: "https://www.soufianeboutatssdev.com/static/media/1762903031465.0eaf4043ab58828ccb73.jpg",
     demoUrl: "https://www.highupcounselling.ca/",
-    tech: ["WordPress"],
+    tech: ["Wix"],
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ const projects: Project[] = [
     image: "https://www.soufianeboutatssdev.com/static/media/pr7.7bd31365952b72ee7971.JPG",
     videoUrl: "https://www.youtube.com/embed/F3Pjh49qdzE?si=0fTnYNxOnF-oEWd8",
     repoUrl: "https://github.com/soufiane2001/cashappv4",
-    tech: ["React Native", "Firebase"],
+    tech: ["React Native expo ", "Firebase"],
   },
   {
     id: 5,
@@ -60,7 +60,7 @@ const projects: Project[] = [
     description: "Healthcare management system",
     image: "https://www.soufianeboutatssdev.com/static/media/120248.3e5d1fd628a8084aa9c7.png",
     videoUrl: "https://www.youtube.com/embed/FiacG53K6fs?si=3VGAVs-gx6k6hi1_",
-    tech: ["Java"],
+    tech: ["Electron js"],
   },
   {
     id: 6,
@@ -68,7 +68,7 @@ const projects: Project[] = [
     description: "Training center website",
     image: "https://www.soufianeboutatssdev.com/static/media/horea.3cf389a7f0b8c722a282.PNG",
     demoUrl: "https://www.horea-formation.com/",
-    tech: ["Next.js"],
+    tech: ["Wordpress"],
   },
 ];
 
