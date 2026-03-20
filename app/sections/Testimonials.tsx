@@ -125,6 +125,9 @@ const Testimonials = () => {
                 <p className="text-[#ff6b00] text-sm font-medium">
                   {testimonialsData[currentIndex].role}
                 </p>
+                  <p className="text-[#ff6b00] text-sm font-medium">
+                  {testimonialsData[currentIndex].email}
+                </p>
               </div>
             </motion.div>
           </AnimatePresence>
