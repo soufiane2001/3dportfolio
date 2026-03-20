@@ -89,9 +89,9 @@ const Hero = () => {
             className="flex flex-wrap gap-8 justify-center lg:justify-start mb-10"
           >
             {[
-              { value: "37+", label: "Projects" },
-              { value: "27+", label: "Clients" },
-              { value: "4+", label: "Years" },
+              { value: "30+", label: "Projects" },
+              { value: "24+", label: "Clients" },
+              { value: "5+", label: "Years" },
             ].map((stat, i) => (
               <div key={i} className="text-center lg:text-left">
                 <div className="text-3xl md:text-4xl font-black text-white">
