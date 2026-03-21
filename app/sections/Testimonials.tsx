@@ -41,11 +41,11 @@ const testimonialsData: Testimonial[] = [
     avatar: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774100279/Capture_d_%C3%A9cran_2026-03-21_153739_i6zdr8.png",
   }, {
     id: 4,
-    text: "orking with Soufiane to build our website High Up Counselling was an exceptional experience from start to finish.He quickly understood our vision and translated it into a clean, professional, and user-friendly website that truly reflects our values and the services we offer to families navigating separation and divorce. His attention to detail, responsiveness, and ability to simplify complex ideas into an intuitive design made the entire process smooth and stress-free.",
+    text: "working with Soufiane to build our website High Up Counselling was an exceptional experience from start to finish.He quickly understood our vision and translated it into a clean, professional, and user-friendly website that truly reflects our values and the services we offer to families navigating separation and divorce. His attention to detail, responsiveness, and ability to simplify complex ideas into an intuitive design made the entire process smooth and stress-free.",
     name: "Karime Rahmani",
     role: " the founder of HighUp Counselling & Psychology Services",
     email: "degreff@hotmail.com",
-    avatar: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774100279/Capture_d_%C3%A9cran_2026-03-21_153739_i6zdr8.png",
+    avatar: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774102249/7554263D-7EF4-4902-9373-49CDC1218EC8_1__edited_eajjbn.avif",
   },
 ];
 
