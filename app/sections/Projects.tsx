@@ -69,13 +69,22 @@ const projects: Project[] = [
     image: "https://www.soufianeboutatssdev.com/static/media/horea.3cf389a7f0b8c722a282.PNG",
     demoUrl: "https://www.horea-formation.com/",
     tech: ["Wordpress"],
-  },  {
+  }, 
+  {
     id: 7,
     title: "Dar Mooris",
     description: "textile website",
     image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774035266/Capture_d_%C3%A9cran_2026-03-20_213032_ksgiwn.png",
     demoUrl: "https://darmooris.ma/",
     tech: ["php"],
+  },
+   {
+    id: 8,
+    title: gamlastan",
+    description: "shoping website",
+    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1775161310/Capture_d_%C3%A9cran_2026-04-02_231851_senzhp.png",
+    demoUrl: "https://gamlastanshop.space/",
+    tech: ["nextjs"],
   },
 ];
 
