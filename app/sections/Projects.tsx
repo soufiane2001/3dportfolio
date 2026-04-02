@@ -80,7 +80,7 @@ const projects: Project[] = [
   },
    {
     id: 8,
-    title: gamlastan",
+    title: "gamlastan",
     description: "shoping website",
     image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1775161310/Capture_d_%C3%A9cran_2026-04-02_231851_senzhp.png",
     demoUrl: "https://gamlastanshop.space/",
