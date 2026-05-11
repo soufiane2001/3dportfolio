@@ -1,19 +1,25 @@
-// next.config.js (or next.config.mjs)
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'portfoliosoufdev.vercel.app',
-        pathname: '/**',
-      },   {
-        protocol: 'https',
-        hostname: 'https://slelguoygbfzlpylpxfs.supabase.co/',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "portfoliosoufdev.vercel.app",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "slelguoygbfzlpylpxfs.supabase.co",
+        pathname: "/**",
       },
     ],
   },
-}
+};
 
-module.exports = nextConfig
+export default nextConfig;
