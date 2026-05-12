@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
 
-const BASE_URL = "https://portfoliosoufdev.vercel.app";
+const BASE_URL = "https://soufianeboutatssdev.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -88,10 +88,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "https://portfoliosoufdev.vercel.app/static/media/so.c04a87ed30752959fd17.png" },
+      { url: "https://soufianeboutatssdev.com/static/media/so.c04a87ed30752959fd17.png" },
     ],
     apple: [
-      { url: "https://portfoliosoufdev.vercel.app/static/media/so.c04a87ed30752959fd17.png" },
+      { url: "https://soufianeboutatssdev.com/static/media/so.c04a87ed30752959fd17.png" },
     ],
   },
   verification: {
@@ -221,7 +221,7 @@ export default function RootLayout({
         <meta name="ICBM" content="31.7917, -7.0926" />
         <meta name="rating" content="general" />
         <meta name="revisit-after" content="7 days" />
-        <link rel="apple-touch-icon" href="https://portfoliosoufdev.vercel.app/static/media/so.c04a87ed30752959fd17.png" />
+        <link rel="apple-touch-icon" href="https://soufianeboutatssdev.com/static/media/so.c04a87ed30752959fd17.png" />
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
