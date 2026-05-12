@@ -43,7 +43,7 @@ const About = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="absolute -bottom-8 -right-8 glass-card p-6"
             >
-              <div className="text-4xl font-black text-white">4+</div>
+              <div className="text-4xl font-black text-white">6+</div>
               <div className="text-sm text-white/50 uppercase tracking-wider">
                 Years Experience
               </div>
