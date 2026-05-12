@@ -4,54 +4,38 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../i18n/LanguageContext";
-import {
-  Atom,
-  Smartphone,
-  Layers,
-  Database,
-  Code2,
-  Terminal,
-  Box,
-  Globe,
-  Flame,
-  Wind,
-  Cpu,
-  Layout,
-  LayoutGrid,
-  LucideIcon,
-} from "lucide-react";
 
 interface Skill {
   name: string;
-  icon: LucideIcon;
+  iconUrl: string;
   percentage: number;
   color: string;
+  invert?: boolean;
 }
 
+const DEVICON = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons";
+
 const skillsData: Skill[] = [
-  { name: "React", icon: Atom, percentage: 80, color: "#61DAFB" },
-  { name: "React Native", icon: Smartphone, percentage: 70, color: "#61DAFB" },
-  { name: "Expo CLI", icon: Layers, percentage: 70, color: "#ffffff" },
-  { name: "Laravel", icon: Flame, percentage: 70, color: "#FF2D20" },
-  { name: "MySQL", icon: Database, percentage: 70, color: "#4479A1" },
-  { name: "TypeScript", icon: Terminal, percentage: 70, color: "#3178C6" },
-  { name: "Android Studio", icon: Cpu, percentage: 50, color: "#3DDC84" },
-  { name: "PHP", icon: Code2, percentage: 70, color: "#777BB4" },
-  { name: "Angular", icon: Layout, percentage: 40, color: "#DD0031" },
-  { name: "WordPress", icon: Globe, percentage: 50, color: "#21759B" },
-  { name: "Next.js", icon: Box, percentage: 70, color: "#ffffff" },
-  { name: "Firebase", icon: Flame, percentage: 60, color: "#FFCA28" },
-  { name: "Java", icon: Terminal, percentage: 40, color: "#007396" },
-  { name: "Bootstrap", icon: LayoutGrid, percentage: 90, color: "#7952B3" },
-  { name: "Tailwind", icon: Wind, percentage: 70, color: "#06B6D4" },
-  { name: "Services", icon: Globe, percentage: 50, color: "#ff6b00" },
+  { name: "React",          iconUrl: `${DEVICON}/react/react-original.svg`,                 percentage: 80, color: "#61DAFB" },
+  { name: "React Native",   iconUrl: `${DEVICON}/react/react-original.svg`,                 percentage: 70, color: "#61DAFB" },
+  { name: "Expo",           iconUrl: `${DEVICON}/expo/expo-original.svg`,                   percentage: 70, color: "#e2e8f0", invert: true },
+  { name: "Laravel",        iconUrl: `${DEVICON}/laravel/laravel-original.svg`,             percentage: 70, color: "#FF2D20" },
+  { name: "MySQL",          iconUrl: `${DEVICON}/mysql/mysql-original.svg`,                 percentage: 70, color: "#4479A1" },
+  { name: "TypeScript",     iconUrl: `${DEVICON}/typescript/typescript-original.svg`,       percentage: 70, color: "#3178C6" },
+  { name: "Android Studio", iconUrl: `${DEVICON}/androidstudio/androidstudio-original.svg`, percentage: 50, color: "#3DDC84" },
+  { name: "PHP",            iconUrl: `${DEVICON}/php/php-original.svg`,                     percentage: 70, color: "#777BB4" },
+  { name: "Angular",        iconUrl: `${DEVICON}/angularjs/angularjs-original.svg`,         percentage: 40, color: "#DD0031" },
+  { name: "WordPress",      iconUrl: `${DEVICON}/wordpress/wordpress-plain.svg`,            percentage: 50, color: "#21759B" },
+  { name: "Next.js",        iconUrl: `${DEVICON}/nextjs/nextjs-original.svg`,               percentage: 70, color: "#e2e8f0", invert: true },
+  { name: "Firebase",       iconUrl: `${DEVICON}/firebase/firebase-plain.svg`,              percentage: 60, color: "#FFCA28" },
+  { name: "Java",           iconUrl: `${DEVICON}/java/java-original.svg`,                   percentage: 40, color: "#007396" },
+  { name: "Bootstrap",      iconUrl: `${DEVICON}/bootstrap/bootstrap-original.svg`,         percentage: 90, color: "#7952B3" },
+  { name: "Tailwind CSS",   iconUrl: `${DEVICON}/tailwindcss/tailwindcss-plain.svg`,        percentage: 70, color: "#06B6D4" },
+  { name: "Git",            iconUrl: `${DEVICON}/git/git-original.svg`,                     percentage: 75, color: "#F05032" },
 ];
 
 const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
     <motion.div
@@ -64,9 +48,18 @@ const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
       <div className="flex items-center gap-4 mb-6">
         <div
           className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-          style={{ backgroundColor: `${skill.color}15` }}
+          style={{ backgroundColor: `${skill.color}20` }}
         >
-          <skill.icon size={24} style={{ color: skill.color }} />
+          <img
+            src={skill.iconUrl}
+            alt={skill.name}
+            width={28}
+            height={28}
+            className={`object-contain${skill.invert ? " invert" : ""}`}
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).style.display = "none";
+            }}
+          />
         </div>
         <div>
           <h3 className="text-white font-bold text-lg">{skill.name}</h3>
@@ -80,6 +73,7 @@ const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
           animate={inView ? { width: `${skill.percentage}%` } : { width: 0 }}
           transition={{ duration: 1, delay: index * 0.05 + 0.3 }}
           className="skill-bar-fill"
+          style={{ background: `linear-gradient(90deg, ${skill.color}99, ${skill.color})` }}
         />
       </div>
     </motion.div>
@@ -88,10 +82,7 @@ const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
 
 const Skills = () => {
   const { t } = useLanguage();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
     <section id="skills" className="relative py-32 bg-black overflow-hidden" aria-label="Compétences et technologies de Soufiane Boutatss">
