@@ -12,7 +12,7 @@ const destinations = [
     flag: "🇫🇷",
     city: "Paris",
     color: "#002395",
-    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.24_AM_1_hew2qz.jpg",
+    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.24_AM_i8bxy9.jpg",
   },
   {
     country: "Poland",
