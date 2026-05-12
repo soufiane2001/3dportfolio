@@ -31,7 +31,7 @@ const destinations = [
 ];
 
 const goalkeepingVideos = [
-  { id: 1, videoUrl: "https://www.youtube.com/embed/5MYvPkrW-Do" },
+  { id: 1, videoUrl: "https://res.cloudinary.com/dzkx1z6lo/video/upload/v1778620266/AQMbb_51XyDTmvvxaS2aYge2GBA9TPEbZINjIo_xk9pzaa9U-j7SgnMHzVhjVXiN3CdRHHXBeiVLRUgEpswX8cugb7vbE5md_usyi8g.mp4" },
 ];
 
 const Hobbies = () => {
@@ -135,12 +135,12 @@ const Hobbies = () => {
                 style={{ aspectRatio: "9/16" }}
               >
                 {vid.videoUrl ? (
-                  <iframe
+                  <video
                     src={vid.videoUrl}
-                    title={`Goalkeeping video ${vid.id}`}
-                    className="w-full h-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
+                    className="w-full h-full object-cover"
+                    controls
+                    playsInline
+                    loop
                   />
                 ) : (
                   <>
