@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +15,26 @@ const Header = () => {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = ["portfolio", "about", "skills", "experiences", "testimonials"];
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { threshold: 0.3 }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   useEffect(() => {
@@ -28,11 +49,11 @@ const Header = () => {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { name: "Work", href: "#portfolio" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Experience", href: "#experiences" },
-    { name: "Testimonials", href: "#testimonials" },
+    { name: "Work", href: "#portfolio", id: "portfolio" },
+    { name: "About", href: "#about", id: "about" },
+    { name: "Skills", href: "#skills", id: "skills" },
+    { name: "Experience", href: "#experiences", id: "experiences" },
+    { name: "Testimonials", href: "#testimonials", id: "testimonials" },
   ];
 
   return (
@@ -62,19 +83,28 @@ const Header = () => {
             </motion.a>
 
             <nav className="hidden md:flex items-center gap-1">
-              {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1, duration: 0.4 }}
-                  className="relative px-4 py-2 text-sm text-white/70 hover:text-white font-medium transition-colors duration-300 group"
-                >
-                  {link.name}
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-[#ff6b00] group-hover:w-full transition-all duration-300" />
-                </motion.a>
-              ))}
+              {navLinks.map((link, i) => {
+                const isActive = isScrolled && activeSection === link.id;
+                return (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1, duration: 0.4 }}
+                    className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 group ${
+                      isActive ? "text-white" : "text-white/70 hover:text-white"
+                    }`}
+                  >
+                    {link.name}
+                    <span
+                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-[#ff6b00] transition-all duration-300 ${
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                    />
+                  </motion.a>
+                );
+              })}
             </nav>
 
             <div className="hidden md:flex items-center gap-4">
