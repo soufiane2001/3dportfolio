@@ -12,21 +12,28 @@ const destinations = [
     flag: "🇫🇷",
     city: "Paris",
     color: "#002395",
-    image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80",
+    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.24_AM_1_hew2qz.jpg",
   },
   {
     country: "Poland",
     flag: "🇵🇱",
     city: "Kraków",
     color: "#DC143C",
-    image: "https://images.unsplash.com/photo-1524821978239-5a23a0afd0b4?w=600&q=80",
+    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.24_AM_1_hew2qz.jpg",
+  },
+  {
+    country: "Sweden",
+    flag: "🇸🇪",
+    city: "Stockholm",
+    color: "#006AA7",
+    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.25_AM_1_jt0aze.jpg",
   },
   {
     country: "Turkey",
     flag: "🇹🇷",
     city: "Istanbul",
     color: "#E30A17",
-    image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600&q=80",
+    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.25_AM_gizzai.jpg",
   },
 ];
 
@@ -73,7 +80,7 @@ const Hobbies = () => {
             <h3 className="text-2xl font-bold text-white">{t.hobbies.travelTitle}</h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {destinations.map((dest, i) => (
               <motion.div
                 key={dest.country}
