@@ -12,6 +12,8 @@ export const translations = {
     },
     hero: {
       tag: "Développeur Créatif",
+      name: "SOUFIANE",
+      nameSub: "BOUTATSS",
       subtitle: "Développeur Web & Mobile.",
       cta: "Parlons-en",
       cv: "Télécharger CV",
@@ -132,6 +134,8 @@ export const translations = {
     },
     hero: {
       tag: "Creative Developer",
+      name: "SOUFIANE",
+      nameSub: "BOUTATSS",
       subtitle: "Web & Mobile Developer.",
       cta: "Let's Talk",
       cv: "Download CV",
@@ -252,6 +256,8 @@ export const translations = {
     },
     hero: {
       tag: "مطور مبدع",
+      name: "سفيان",
+      nameSub: "بوطاطس",
       subtitle: "مطور ويب وتطبيقات جوال.",
       cta: "تحدث معي",
       cv: "تحميل السيرة الذاتية",

@@ -40,10 +40,10 @@ const Hero = () => {
             transition={{ delay: 0.3, duration: 0.7 }}
             className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tight mb-6"
           >
-            SOUFIANE
+            {t.hero.name}
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b00] via-[#ff8533] to-[#a855f7]">
-              BOUTATSS
+              {t.hero.nameSub}
             </span>
           </motion.h1>
 
