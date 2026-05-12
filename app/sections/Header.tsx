@@ -27,7 +27,7 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    const sectionIds = ["portfolio", "about", "skills", "experiences", "testimonials"];
+    const sectionIds = ["portfolio", "about", "skills", "experiences", "testimonials", "hobbies"];
     const observers: IntersectionObserver[] = [];
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
@@ -53,6 +53,7 @@ const Header = () => {
     { name: t.nav.work,         href: "#portfolio",    id: "portfolio" },
     { name: t.nav.experience,   href: "#experiences",  id: "experiences" },
     { name: t.nav.testimonials, href: "#testimonials", id: "testimonials" },
+    { name: t.nav.hobbies,      href: "#hobbies",      id: "hobbies" },
   ];
 
   const currentLang = LANGS.find((l) => l.code === locale)!;

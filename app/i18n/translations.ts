@@ -8,6 +8,7 @@ export const translations = {
       work: "Projets",
       experience: "Expérience",
       testimonials: "Témoignages",
+      hobbies: "Loisirs",
       contact: "Contact",
     },
     hero: {
@@ -105,6 +106,14 @@ export const translations = {
         },
       ],
     },
+    hobbies: {
+      tag: "Au-delà du Code",
+      title: "Mes",
+      titleGradient: "Loisirs",
+      travelTitle: "Voyages",
+      goalkeepingTitle: "Gardien de But",
+      videoComingSoon: "Vidéo à venir",
+    },
     contact: {
       tag: "Me Contacter",
       title: "Travaillons",
@@ -130,6 +139,7 @@ export const translations = {
       work: "Work",
       experience: "Experience",
       testimonials: "Testimonials",
+      hobbies: "Hobbies",
       contact: "Contact",
     },
     hero: {
@@ -227,6 +237,14 @@ export const translations = {
         },
       ],
     },
+    hobbies: {
+      tag: "Beyond Code",
+      title: "My",
+      titleGradient: "Hobbies",
+      travelTitle: "Travelling",
+      goalkeepingTitle: "Goalkeeping",
+      videoComingSoon: "Video coming soon",
+    },
     contact: {
       tag: "Get in Touch",
       title: "Let's Work",
@@ -252,6 +270,7 @@ export const translations = {
       work: "المشاريع",
       experience: "الخبرة",
       testimonials: "التوصيات",
+      hobbies: "الهوايات",
       contact: "تواصل",
     },
     hero: {
@@ -348,6 +367,14 @@ export const translations = {
           role: "مؤسسة HighUp Counselling",
         },
       ],
+    },
+    hobbies: {
+      tag: "خارج الكود",
+      title: "هواياتي",
+      titleGradient: "وشغفي",
+      travelTitle: "السفر",
+      goalkeepingTitle: "حراسة المرمى",
+      videoComingSoon: "الفيديو قريباً",
     },
     contact: {
       tag: "تواصل معي",
