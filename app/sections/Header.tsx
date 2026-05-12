@@ -8,6 +8,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [hovered, setHovered] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,7 +83,10 @@ const Header = () => {
               </span>
             </motion.a>
 
-            <nav className="hidden md:flex items-center gap-1">
+            <nav
+              className="hidden md:flex items-center gap-1"
+              onMouseLeave={() => setHovered(null)}
+            >
               {navLinks.map((link, i) => {
                 const isActive = isScrolled && activeSection === link.id;
                 return (
@@ -92,14 +96,27 @@ const Header = () => {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.1, duration: 0.4 }}
-                    className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 group ${
+                    onMouseEnter={() => setHovered(link.id)}
+                    className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 ${
                       isActive ? "text-white" : "text-white/70 hover:text-white"
                     }`}
                   >
-                    {link.name}
+                    {/* Hover background pill */}
+                    {hovered === link.id && (
+                      <motion.span
+                        layoutId="nav-hover-bg"
+                        className="absolute inset-0 rounded-full bg-white/8"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{link.name}</span>
+                    {/* Active / hover underline */}
                     <span
                       className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-[#ff6b00] transition-all duration-300 ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                        isActive || hovered === link.id ? "w-4/5" : "w-0"
                       }`}
                     />
                   </motion.a>
