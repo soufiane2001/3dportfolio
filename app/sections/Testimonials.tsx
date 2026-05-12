@@ -1,72 +1,45 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
 
-interface Testimonial {
-  id: number;
-  text: string;
-  name: string;
-  role: string;
-  email: string;
-  avatar: string;
-}
+const avatars = [
+  "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774100204/Capture_d_%C3%A9cran_2026-03-21_153506_jwe7b6.png",
+  "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/25fe0452-9320-4752-80dd-44fdc2737b22-soufianeboutatssdev-com/assets/icons/hinda-removebg-preview_5f69e9cd6477863d8007-3.png",
+  "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774100279/Capture_d_%C3%A9cran_2026-03-21_153739_i6zdr8.png",
+  "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774102249/7554263D-7EF4-4902-9373-49CDC1218EC8_1__edited_eajjbn.avif",
+];
 
-const testimonialsData: Testimonial[] = [
-  {
-    id: 1,
-    text: "I had the pleasure of working with Soufiane on my website project, and I couldn't be more satisfied with the results. His professionalism, creativity, and technical expertise are outstanding!",
-    name: "Karim Washington",
-    role: "Animator of Programmes",
-    email: "karim1980wash@gmail.com",
-    avatar: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774100204/Capture_d_%C3%A9cran_2026-03-21_153506_jwe7b6.png",
-  },
-  {
-    id: 2,
-    text: "Soufiane did an amazing job building our software. He understood our needs perfectly, delivered on time, and the final product works flawlessly. Highly recommended!",
-    name: "Hind El hassouni",
-    role: "CEO Agence",
-    email: "elhassounihind39@gmail.com",
-    avatar: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/25fe0452-9320-4752-80dd-44fdc2737b22-soufianeboutatssdev-com/assets/icons/hinda-removebg-preview_5f69e9cd6477863d8007-3.png",
-  },
-  {
-    id: 3,
-    text: "Working with Soufiane on the Reby Art website has been a fantastic experience! He took our artistic vision and brought it to life with stunning design and functionality.",
-    name: "Michel Reby",
-    role: "Painter",
-    email: "michelreby@gmail.com",
-    avatar: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774100279/Capture_d_%C3%A9cran_2026-03-21_153739_i6zdr8.png",
-  }, {
-    id: 4,
-    text: "working with Soufiane to build our website High Up Counselling was an exceptional experience from start to finish.He quickly understood our vision and translated it into a clean, professional, and user-friendly website that truly reflects our values and the services we offer to families navigating separation and divorce. His attention to detail, responsiveness, and ability to simplify complex ideas into an intuitive design made the entire process smooth and stress-free.",
-    name: "Karime Rahmani",
-    role: " the founder of HighUp Counselling & Psychology Services",
-    email: "degreff@hotmail.com",
-    avatar: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774102249/7554263D-7EF4-4902-9373-49CDC1218EC8_1__edited_eajjbn.avif",
-  },
+const emails = [
+  "karim1980wash@gmail.com",
+  "elhassounihind39@gmail.com",
+  "michelreby@gmail.com",
+  "degreff@hotmail.com",
 ];
 
 const Testimonials = () => {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const items = t.testimonials.items;
 
   const next = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % testimonialsData.length);
-  }, []);
+    setCurrentIndex((prev) => (prev + 1) % items.length);
+  }, [items.length]);
 
   const prev = () => {
-    setCurrentIndex(
-      (prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length
-    );
+    setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
   };
 
   useEffect(() => {
     const interval = setInterval(next, 6000);
     return () => clearInterval(interval);
   }, [next]);
+
+  const current = items[currentIndex];
 
   return (
     <section id="testimonials" className="relative py-32 bg-black overflow-hidden">
@@ -81,9 +54,9 @@ const Testimonials = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="section-subtitle">Testimonials</p>
+          <p className="section-subtitle">{t.testimonials.tag}</p>
           <h2 className="section-title text-white">
-            What Clients <span className="text-gradient">Say</span>
+            {t.testimonials.title} <span className="text-gradient">{t.testimonials.titleGradient}</span>
           </h2>
         </motion.div>
 
@@ -114,33 +87,32 @@ const Testimonials = () => {
               <Quote className="w-12 h-12 text-[#ff6b00]/30 mx-auto mb-6" />
 
               <p className="text-xl md:text-2xl text-white/80 leading-relaxed mb-8 max-w-2xl mx-auto">
-                &ldquo;{testimonialsData[currentIndex].text}&rdquo;
+                &ldquo;{current.text}&rdquo;
               </p>
 
               <div className="flex flex-col items-center">
                 <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-[#ff6b00]/30 mb-4">
                   <img
-                    src={testimonialsData[currentIndex].avatar}
-                    alt={testimonialsData[currentIndex].name}
-                   
-                    className="object-cover"
+                    src={avatars[currentIndex]}
+                    alt={current.name}
+                    className="object-cover w-full h-full"
                   />
                 </div>
                 <h4 className="text-lg font-bold text-white">
-                  {testimonialsData[currentIndex].name}
+                  {current.name}
                 </h4>
                 <p className="text-[#ff6b00] text-sm font-medium">
-                  {testimonialsData[currentIndex].role}
+                  {current.role}
                 </p>
-                  <p className="text-[#ff6b00] text-sm font-medium">
-                  {testimonialsData[currentIndex].email}
+                <p className="text-white/40 text-sm">
+                  {emails[currentIndex]}
                 </p>
               </div>
             </motion.div>
           </AnimatePresence>
 
           <div className="flex justify-center gap-2 mt-8">
-            {testimonialsData.map((_, i) => (
+            {items.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentIndex(i)}

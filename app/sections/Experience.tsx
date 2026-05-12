@@ -5,40 +5,10 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../i18n/LanguageContext";
 
-const experiences = [
-  {
-    title: "Junior Frontend Developer",
-    company: "NevTach",
-    period: "2021",
-    description: [
-      "Built responsive websites from scratch, focusing on clean, maintainable code using HTML, CSS, and JavaScript.",
-      "Worked closely with the backend team to integrate APIs and handle data fetching.",
-    ],
-  },
-  {
-    title: "Frontend Developer",
-    company: "CASAKOOL",
-    period: "2022 – 2023",
-    description: [
-      "Developed dynamic, responsive websites using HTML5, CSS3, JavaScript (ES6+), and React.js, Electron js to build ERP software.",
-      "Collaborated with UI/UX designers to bring mockups to life with animations and transitions.",
-      "Implemented API integrations using RESTful services.",
-    ],
-  },
-  {
-    title: "Fullstack Developer",
-    company: "KZ LEVAGE",
-    period: "2024",
-    description: [
-      "Developed and maintained dynamic websites using PHP 8, ensuring optimal user experience.",
-      "Implemented API integrations using RESTful services for smooth data flow.",
-    ],
-  },
-];
-
 const Experience = () => {
   const { t } = useLanguage();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const experiences = t.experience.items;
 
   return (
     <section id="experiences" className="relative py-32 bg-black overflow-hidden" aria-label="Expérience professionnelle de Soufiane Boutatss">

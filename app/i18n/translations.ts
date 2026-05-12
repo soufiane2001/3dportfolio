@@ -37,16 +37,71 @@ export const translations = {
       tag: "Portfolio",
       title: "Projets",
       titleGradient: "Récents",
+      video: "Vidéo",
+      demo: "Démo",
+      code: "Code",
     },
     experience: {
       tag: "Parcours",
       title: "Expérience",
       titleGradient: "Professionnelle",
+      items: [
+        {
+          title: "Développeur Frontend Junior",
+          company: "NevTach",
+          period: "2021",
+          description: [
+            "Création de sites web responsive de zéro, axé sur un code propre et maintenable avec HTML, CSS et JavaScript.",
+            "Collaboration étroite avec l'équipe backend pour intégrer les APIs et gérer la récupération de données.",
+          ],
+        },
+        {
+          title: "Développeur Frontend",
+          company: "CASAKOOL",
+          period: "2022 – 2023",
+          description: [
+            "Développement de sites web dynamiques et responsives avec HTML5, CSS3, JavaScript (ES6+), React.js et Electron.js pour créer un logiciel ERP.",
+            "Collaboration avec les designers UI/UX pour donner vie aux maquettes avec des animations et transitions.",
+            "Implémentation d'intégrations API via des services RESTful.",
+          ],
+        },
+        {
+          title: "Développeur Fullstack",
+          company: "KZ LEVAGE",
+          period: "2024",
+          description: [
+            "Développement et maintenance de sites web dynamiques avec PHP 8, assurant une expérience utilisateur optimale.",
+            "Implémentation d'intégrations API via des services RESTful pour un flux de données fluide.",
+          ],
+        },
+      ],
     },
     testimonials: {
       tag: "Avis",
       title: "Ce que disent",
       titleGradient: "mes clients",
+      items: [
+        {
+          text: "J'ai eu le plaisir de travailler avec Soufiane sur mon projet de site web, et je ne pourrais pas être plus satisfait des résultats. Son professionnalisme, sa créativité et son expertise technique sont remarquables !",
+          name: "Karim Washington",
+          role: "Animateur de Programmes",
+        },
+        {
+          text: "Soufiane a fait un travail remarquable en construisant notre logiciel. Il a parfaitement compris nos besoins, livré dans les délais, et le produit final fonctionne parfaitement. Hautement recommandé !",
+          name: "Hind El hassouni",
+          role: "PDG Agence",
+        },
+        {
+          text: "Travailler avec Soufiane sur le site Reby Art a été une expérience fantastique ! Il a pris notre vision artistique et lui a donné vie avec un design et des fonctionnalités époustouflants.",
+          name: "Michel Reby",
+          role: "Peintre",
+        },
+        {
+          text: "Travailler avec Soufiane pour construire notre site High Up Counselling a été une expérience exceptionnelle du début à la fin. Il a rapidement compris notre vision et l'a traduite en un site web propre, professionnel et convivial.",
+          name: "Karime Rahmani",
+          role: "Fondatrice de HighUp Counselling",
+        },
+      ],
     },
     contact: {
       tag: "Me Contacter",
@@ -102,16 +157,71 @@ export const translations = {
       tag: "Portfolio",
       title: "Featured",
       titleGradient: "Projects",
+      video: "Video",
+      demo: "Demo",
+      code: "Code",
     },
     experience: {
       tag: "Journey",
       title: "Work",
       titleGradient: "Experience",
+      items: [
+        {
+          title: "Junior Frontend Developer",
+          company: "NevTach",
+          period: "2021",
+          description: [
+            "Built responsive websites from scratch, focusing on clean, maintainable code using HTML, CSS, and JavaScript.",
+            "Worked closely with the backend team to integrate APIs and handle data fetching.",
+          ],
+        },
+        {
+          title: "Frontend Developer",
+          company: "CASAKOOL",
+          period: "2022 – 2023",
+          description: [
+            "Developed dynamic, responsive websites using HTML5, CSS3, JavaScript (ES6+), and React.js, Electron js to build ERP software.",
+            "Collaborated with UI/UX designers to bring mockups to life with animations and transitions.",
+            "Implemented API integrations using RESTful services.",
+          ],
+        },
+        {
+          title: "Fullstack Developer",
+          company: "KZ LEVAGE",
+          period: "2024",
+          description: [
+            "Developed and maintained dynamic websites using PHP 8, ensuring optimal user experience.",
+            "Implemented API integrations using RESTful services for smooth data flow.",
+          ],
+        },
+      ],
     },
     testimonials: {
       tag: "Reviews",
       title: "What my",
       titleGradient: "clients say",
+      items: [
+        {
+          text: "I had the pleasure of working with Soufiane on my website project, and I couldn't be more satisfied with the results. His professionalism, creativity, and technical expertise are outstanding!",
+          name: "Karim Washington",
+          role: "Animator of Programmes",
+        },
+        {
+          text: "Soufiane did an amazing job building our software. He understood our needs perfectly, delivered on time, and the final product works flawlessly. Highly recommended!",
+          name: "Hind El hassouni",
+          role: "CEO Agence",
+        },
+        {
+          text: "Working with Soufiane on the Reby Art website has been a fantastic experience! He took our artistic vision and brought it to life with stunning design and functionality.",
+          name: "Michel Reby",
+          role: "Painter",
+        },
+        {
+          text: "Working with Soufiane to build our website High Up Counselling was an exceptional experience from start to finish. He quickly understood our vision and translated it into a clean, professional, and user-friendly website.",
+          name: "Karime Rahmani",
+          role: "Founder of HighUp Counselling",
+        },
+      ],
     },
     contact: {
       tag: "Get in Touch",
@@ -152,8 +262,8 @@ export const translations = {
       tag: "من أنا",
       title: "تحويل الأفكار إلى",
       titleGradient: "واقع رقمي",
-      p1: "أنا سفيان بوتاتص، مطور ويب وتطبيقات جوال متحمس متخصص في تقنيات حديثة مثل React.js وReact Native. أحرص على تقديم واجهات مستخدم سهلة وسريعة الاستجابة توفر تجربة استثنائية على جميع الأجهزة.",
-      p2: "تمتد خبرتي إلى تطوير الواجهة الخلفية باستخدام Laravel، حيث أصمم وأنفذ منطقاً آمناً وقابلاً للتوسع من جانب الخادم.",
+      p1: "أنا سفيان بوتاتص، مطور ويب وتطبيقات جوال متحمس، متخصص في تقنيات حديثة مثل React.js وReact Native. أحرص على تقديم واجهات مستخدم سهلة وسريعة الاستجابة توفر تجربة استثنائية على جميع الأجهزة.",
+      p2: "تمتد خبرتي إلى تطوير الواجهة الخلفية باستخدام Laravel، حيث أصمم وأنفذ منطقاً آمناً وقابلاً للتوسع وفعّالاً من جانب الخادم.",
       cv: "تحميل السيرة الذاتية",
       stats: { projects: "مشروع", clients: "عميل", years: "سنوات" },
     },
@@ -167,16 +277,71 @@ export const translations = {
       tag: "أعمالي",
       title: "أبرز",
       titleGradient: "المشاريع",
+      video: "فيديو",
+      demo: "عرض",
+      code: "الكود",
     },
     experience: {
       tag: "المسيرة",
       title: "الخبرة",
       titleGradient: "المهنية",
+      items: [
+        {
+          title: "مطور واجهة أمامية مبتدئ",
+          company: "NevTach",
+          period: "2021",
+          description: [
+            "بناء مواقع ويب متجاوبة من الصفر، مع التركيز على كود نظيف وقابل للصيانة باستخدام HTML وCSS وJavaScript.",
+            "تعاون وثيق مع فريق الواجهة الخلفية لتكامل واجهات برمجة التطبيقات ومعالجة جلب البيانات.",
+          ],
+        },
+        {
+          title: "مطور واجهة أمامية",
+          company: "CASAKOOL",
+          period: "2022 – 2023",
+          description: [
+            "تطوير مواقع ويب ديناميكية ومتجاوبة باستخدام HTML5 وCSS3 وJavaScript وReact.js وElectron.js لبناء برنامج ERP.",
+            "التعاون مع مصممي UI/UX لإحياء النماذج بالرسوم المتحركة والانتقالات.",
+            "تنفيذ تكاملات API باستخدام خدمات RESTful.",
+          ],
+        },
+        {
+          title: "مطور متكامل",
+          company: "KZ LEVAGE",
+          period: "2024",
+          description: [
+            "تطوير وصيانة مواقع ويب ديناميكية باستخدام PHP 8 لضمان تجربة مستخدم مثلى.",
+            "تنفيذ تكاملات API باستخدام خدمات RESTful لتدفق بيانات سلس.",
+          ],
+        },
+      ],
     },
     testimonials: {
       tag: "آراء العملاء",
       title: "ما يقوله",
       titleGradient: "عملائي",
+      items: [
+        {
+          text: "كان من دواعي سروري العمل مع سفيان على مشروع موقعي الإلكتروني، ولا يسعني إلا أن أكون راضياً تماماً عن النتائج. احترافيته وإبداعه وخبرته التقنية استثنائية!",
+          name: "كريم واشنطن",
+          role: "منسق برامج",
+        },
+        {
+          text: "أنجز سفيان عملاً رائعاً في بناء برنامجنا. فهم احتياجاتنا تماماً، وسلّم في الوقت المحدد، والمنتج النهائي يعمل بشكل مثالي. أنصح به بشدة!",
+          name: "هند الحسوني",
+          role: "مديرة تنفيذية",
+        },
+        {
+          text: "كان العمل مع سفيان على موقع Reby Art تجربة رائعة! أخذ رؤيتنا الفنية وأحياها بتصميم وإمكانيات مذهلة.",
+          name: "ميشيل ريبي",
+          role: "رسام فنان",
+        },
+        {
+          text: "كان العمل مع سفيان لبناء موقعنا High Up Counselling تجربة استثنائية من البداية إلى النهاية. فهم رؤيتنا بسرعة وترجمها إلى موقع نظيف واحترافي وسهل الاستخدام يعكس قيمنا وخدماتنا.",
+          name: "كريمة رحماني",
+          role: "مؤسسة HighUp Counselling",
+        },
+      ],
     },
     contact: {
       tag: "تواصل معي",
