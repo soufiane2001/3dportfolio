@@ -13,7 +13,7 @@ interface Skill {
   invert?: boolean;
 }
 
-const DEVICON = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons";
+const DEVICON = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
 
 const skillsData: Skill[] = [
   { name: "React",          iconUrl: `${DEVICON}/react/react-original.svg`,                 percentage: 80, color: "#61DAFB" },
@@ -30,7 +30,7 @@ const skillsData: Skill[] = [
   { name: "Firebase",       iconUrl: `${DEVICON}/firebase/firebase-plain.svg`,              percentage: 60, color: "#FFCA28" },
   { name: "Java",           iconUrl: `${DEVICON}/java/java-original.svg`,                   percentage: 40, color: "#007396" },
   { name: "Bootstrap",      iconUrl: `${DEVICON}/bootstrap/bootstrap-original.svg`,         percentage: 90, color: "#7952B3" },
-  { name: "Tailwind CSS",   iconUrl: `${DEVICON}/tailwindcss/tailwindcss-plain.svg`,        percentage: 70, color: "#06B6D4" },
+  { name: "Tailwind CSS",   iconUrl: `${DEVICON}/tailwindcss/tailwindcss-original.svg`,     percentage: 70, color: "#06B6D4" },
   { name: "Git",            iconUrl: `${DEVICON}/git/git-original.svg`,                     percentage: 75, color: "#F05032" },
 ];
 
