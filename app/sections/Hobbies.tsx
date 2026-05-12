@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { MapPin, Play, X } from "lucide-react";
+import { MapPin, Play } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 
 const destinations = [
@@ -39,7 +39,6 @@ const goalkeepingVideos = [
 const Hobbies = () => {
   const { t } = useLanguage();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [videoModal, setVideoModal] = useState<string | null>(null);
 
   return (
     <section id="hobbies" className="relative py-32 bg-black overflow-hidden">
@@ -134,72 +133,36 @@ const Hobbies = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
-                className="group relative rounded-2xl overflow-hidden h-56 glass-card flex items-center justify-center cursor-pointer"
-                onClick={() => vid.videoUrl && setVideoModal(vid.videoUrl)}
+                className="relative rounded-2xl overflow-hidden glass-card"
+                style={{ aspectRatio: "16/9" }}
               >
-                {/* Gradient background placeholder */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#a855f7]/10 via-black to-[#ff6b00]/10" />
-
                 {vid.videoUrl ? (
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className="relative z-10 w-16 h-16 rounded-full bg-[#ff6b00] flex items-center justify-center shadow-[0_0_30px_rgba(255,107,0,0.5)]"
-                  >
-                    <Play size={24} fill="white" className="text-white ml-1" />
-                  </motion.div>
+                  <iframe
+                    src={vid.videoUrl}
+                    title={`Goalkeeping video ${vid.id}`}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
                 ) : (
-                  <div className="relative z-10 flex flex-col items-center gap-3 text-white/30">
-                    <div className="w-16 h-16 rounded-full border-2 border-white/10 flex items-center justify-center">
-                      <Play size={24} className="ml-1" />
+                  <>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#a855f7]/10 via-black to-[#ff6b00]/10" />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white/30">
+                      <div className="w-14 h-14 rounded-full border-2 border-white/10 flex items-center justify-center">
+                        <Play size={22} className="ml-1" />
+                      </div>
+                      <span className="text-xs uppercase tracking-widest">{t.hobbies.videoComingSoon}</span>
                     </div>
-                    <span className="text-xs uppercase tracking-widest">{t.hobbies.videoComingSoon}</span>
-                  </div>
+                    <div className="absolute top-3 left-3 px-2 py-1 rounded-full bg-white/5 border border-white/10 text-white/30 text-xs font-bold">
+                      #{vid.id}
+                    </div>
+                  </>
                 )}
-
-                {/* Video number badge */}
-                <div className="absolute top-4 left-4 px-2 py-1 rounded-full bg-white/5 border border-white/10 text-white/40 text-xs font-bold">
-                  #{vid.id}
-                </div>
               </motion.div>
             ))}
           </div>
         </motion.div>
       </div>
-
-      {/* Video modal */}
-      <AnimatePresence>
-        {videoModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[300] flex items-center justify-center bg-black/95 backdrop-blur-sm"
-            onClick={() => setVideoModal(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-4xl aspect-video mx-4"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setVideoModal(null)}
-                className="absolute -top-12 right-0 p-2 text-white hover:text-[#ff6b00] transition-colors"
-              >
-                <X className="w-8 h-8" />
-              </button>
-              <iframe
-                src={videoModal}
-                title="Goalkeeping video"
-                className="w-full h-full rounded-2xl"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
     </section>
