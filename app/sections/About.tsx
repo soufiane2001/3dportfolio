@@ -75,7 +75,7 @@ const About = () => {
               {[
                 { label: t.about.stats.projects, value: "30+" },
                 { label: t.about.stats.clients,  value: "34+" },
-                { label: t.about.stats.years,    value: "5+" },
+                { label: t.about.stats.years,    value: "6+" },
               ].map((stat, i) => (
                 <motion.div
                   key={i}
