@@ -17,7 +17,7 @@ const destinations = [
   {
     country: "Poland",
     flag: "🇵🇱",
-    city: "Kraków",
+    city: "Warsaw",
     color: "#DC143C",
     image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.24_AM_1_hew2qz.jpg",
   },
