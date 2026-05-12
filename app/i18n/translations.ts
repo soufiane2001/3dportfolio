@@ -113,6 +113,12 @@ export const translations = {
       travelTitle: "Voyages",
       goalkeepingTitle: "Gardien de But",
       videoComingSoon: "Vidéo à venir",
+      destinations: [
+        { country: "France",  city: "Paris" },
+        { country: "Pologne", city: "Varsovie" },
+        { country: "Suède",   city: "Stockholm" },
+        { country: "Turquie", city: "Istanbul" },
+      ],
     },
     contact: {
       tag: "Me Contacter",
@@ -244,6 +250,12 @@ export const translations = {
       travelTitle: "Travelling",
       goalkeepingTitle: "Goalkeeping",
       videoComingSoon: "Video coming soon",
+      destinations: [
+        { country: "France",  city: "Paris" },
+        { country: "Poland",  city: "Warsaw" },
+        { country: "Sweden",  city: "Stockholm" },
+        { country: "Turkey",  city: "Istanbul" },
+      ],
     },
     contact: {
       tag: "Get in Touch",
@@ -375,6 +387,12 @@ export const translations = {
       travelTitle: "السفر",
       goalkeepingTitle: "حراسة المرمى",
       videoComingSoon: "الفيديو قريباً",
+      destinations: [
+        { country: "فرنسا",   city: "باريس" },
+        { country: "بولندا",  city: "وارسو" },
+        { country: "السويد",  city: "ستوكهولم" },
+        { country: "تركيا",  city: "إسطنبول" },
+      ],
     },
     contact: {
       tag: "تواصل معي",

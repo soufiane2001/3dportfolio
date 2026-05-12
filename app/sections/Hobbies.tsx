@@ -6,35 +6,11 @@ import { useInView } from "react-intersection-observer";
 import { MapPin, Play } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 
-const destinations = [
-  {
-    country: "France",
-    flag: "🇫🇷",
-    city: "Paris",
-    color: "#002395",
-    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.24_AM_i8bxy9.jpg",
-  },
-  {
-    country: "Poland",
-    flag: "🇵🇱",
-    city: "Warsaw",
-    color: "#DC143C",
-    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.24_AM_1_hew2qz.jpg",
-  },
-  {
-    country: "Sweden",
-    flag: "🇸🇪",
-    city: "Stockholm",
-    color: "#006AA7",
-    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.25_AM_1_jt0aze.jpg",
-  },
-  {
-    country: "Turkey",
-    flag: "🇹🇷",
-    city: "Istanbul",
-    color: "#E30A17",
-    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.25_AM_gizzai.jpg",
-  },
+const destinationsMeta = [
+  { flag: "🇫🇷", color: "#002395", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.24_AM_i8bxy9.jpg" },
+  { flag: "🇵🇱", color: "#DC143C", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.24_AM_1_hew2qz.jpg" },
+  { flag: "🇸🇪", color: "#006AA7", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.25_AM_1_jt0aze.jpg" },
+  { flag: "🇹🇷", color: "#E30A17", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778620626/WhatsApp_Image_2026-05-13_at_12.16.25_AM_gizzai.jpg" },
 ];
 
 const goalkeepingVideos = [
@@ -81,25 +57,26 @@ const Hobbies = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {destinations.map((dest, i) => (
+            {t.hobbies.destinations.map((dest, i) => {
+              const meta = destinationsMeta[i];
+              return (
               <motion.div
-                key={dest.country}
+                key={i}
                 initial={{ opacity: 0, y: 40 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
                 className="group relative rounded-2xl overflow-hidden h-64 cursor-default"
               >
                 <img
-                  src={dest.image}
+                  src={meta.image}
                   alt={dest.country}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
 
-                {/* Country overlay */}
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-3xl">{dest.flag}</span>
+                    <span className="text-3xl">{meta.flag}</span>
                     <h4 className="text-xl font-black text-white">{dest.country}</h4>
                   </div>
                   <div className="flex items-center gap-1 text-white/60 text-sm">
@@ -108,13 +85,13 @@ const Hobbies = () => {
                   </div>
                 </div>
 
-                {/* Color accent on hover */}
                 <div
                   className="absolute top-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ backgroundColor: dest.color }}
+                  style={{ backgroundColor: meta.color }}
                 />
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </motion.div>
 
