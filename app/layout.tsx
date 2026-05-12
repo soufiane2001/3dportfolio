@@ -14,21 +14,34 @@ export const metadata: Metadata = {
     "Soufiane Boutatss, développeur web et mobile freelance au Maroc. Spécialiste React.js, React Native, Laravel, Next.js. Plus de 5 ans d'expérience, 30+ projets livrés. Disponible pour vos projets web et mobile.",
   keywords: [
     "Soufiane Boutatss",
+    // Maroc
     "développeur web Maroc",
+    "développeur freelance Maroc",
+    "développeur React Maroc",
+    "développeur mobile Maroc",
     "web developer Morocco",
     "freelance developer Morocco",
+    // France
+    "développeur web France",
+    "développeur freelance France",
+    "développeur React France",
+    "développeur Next.js France",
+    "développeur mobile France",
+    // USA
+    "web developer USA",
+    "freelance React developer USA",
+    "mobile app developer United States",
+    "React Native developer US",
+    // Global
     "React developer",
     "React Native developer",
     "Laravel developer",
     "Next.js developer",
-    "développeur React Maroc",
-    "développeur mobile Maroc",
     "full stack developer",
     "JavaScript developer",
     "TypeScript developer",
     "PHP developer",
     "application mobile React Native",
-    "développeur freelance",
     "portfolio développeur",
     "soufiane boutatss dev",
     "sboutatss",
@@ -53,7 +66,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_MA",
-    alternateLocale: ["en_US", "ar_MA"],
+    alternateLocale: ["en_US", "fr_FR", "ar_MA"],
     url: BASE_URL,
     siteName: "Soufiane Boutatss — Portfolio",
     title: "Soufiane Boutatss | Développeur Web & Mobile",
@@ -83,7 +96,9 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
     languages: {
       "fr-MA": BASE_URL,
+      "fr-FR": BASE_URL,
       "en-US": BASE_URL,
+      "ar-MA": BASE_URL,
     },
   },
   icons: {
@@ -171,7 +186,7 @@ const jsonLd = {
       description:
         "Services de développement web et mobile freelance: sites web, applications mobiles, e-commerce, dashboards.",
       provider: { "@id": `${BASE_URL}/#person` },
-      areaServed: ["MA", "FR", "CA", "BE"],
+      areaServed: ["MA", "FR", "US", "CA", "BE"],
       serviceType: [
         "Développement Web",
         "Développement Mobile",
@@ -215,10 +230,15 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#ff6b00" />
         <meta name="msapplication-TileColor" content="#ff6b00" />
+        {/* Morocco */}
         <meta name="geo.region" content="MA" />
-        <meta name="geo.placename" content="Maroc" />
+        <meta name="geo.placename" content="Maroc, France, United States" />
         <meta name="geo.position" content="31.7917;-7.0926" />
         <meta name="ICBM" content="31.7917, -7.0926" />
+        {/* France */}
+        <meta name="geo.region" content="FR" />
+        {/* USA */}
+        <meta name="geo.region" content="US" />
         <meta name="rating" content="general" />
         <meta name="revisit-after" content="7 days" />
         <link rel="apple-touch-icon" href="https://soufianeboutatssdev.com/static/media/so.c04a87ed30752959fd17.png" />
