@@ -92,7 +92,7 @@ const Skills = () => {
   });
 
   return (
-    <section id="skills" className="relative py-32 bg-black overflow-hidden">
+    <section id="skills" className="relative py-32 bg-black overflow-hidden" aria-label="Compétences et technologies de Soufiane Boutatss">
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#ff6b00]/5 rounded-full blur-[150px]" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#a855f7]/5 rounded-full blur-[150px]" />

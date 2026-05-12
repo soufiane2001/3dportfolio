@@ -97,7 +97,7 @@ const Projects = () => {
   const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
 
   return (
-    <section id="portfolio" className="relative py-32 bg-black overflow-hidden">
+    <section id="portfolio" className="relative py-32 bg-black overflow-hidden" aria-label="Projets et réalisations de Soufiane Boutatss">
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ff6b00]/5 rounded-full blur-[200px]" />
       </div>

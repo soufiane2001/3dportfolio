@@ -26,7 +26,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="relative py-32 bg-black overflow-hidden">
+    <section id="contact" className="relative py-32 bg-black overflow-hidden" aria-label="Contact Soufiane Boutatss">
       <div className="absolute inset-0">
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#ff6b00]/5 rounded-full blur-[200px]" />
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#a855f7]/5 rounded-full blur-[200px]" />
@@ -73,7 +73,9 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-white/40 text-sm">Email</p>
-                  <p className="text-white font-medium">sboutatss@gmail.com</p>
+                  <address className="not-italic">
+                    <a href="mailto:sboutatss@gmail.com" className="text-white font-medium hover:text-[#ff6b00] transition-colors">sboutatss@gmail.com</a>
+                  </address>
                 </div>
               </div>
             </div>

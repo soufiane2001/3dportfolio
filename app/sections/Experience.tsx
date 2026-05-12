@@ -39,7 +39,7 @@ const Experience = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="experiences" className="relative py-32 bg-black overflow-hidden">
+    <section id="experiences" className="relative py-32 bg-black overflow-hidden" aria-label="Expérience professionnelle de Soufiane Boutatss">
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-transparent via-[#ff6b00]/30 to-transparent" />
       </div>

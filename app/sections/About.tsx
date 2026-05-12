@@ -12,7 +12,7 @@ const About = () => {
   });
 
   return (
-    <section id="about" className="relative py-32 bg-black overflow-hidden">
+    <section id="about" className="relative py-32 bg-black overflow-hidden" aria-label="À propos de Soufiane Boutatss">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-transparent" />
       
       <div className="container relative z-10" ref={ref}>

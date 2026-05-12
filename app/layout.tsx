@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
 import Script from "next/script";
 
 const BASE_URL = "https://portfoliosoufdev.vercel.app";
@@ -8,59 +7,73 @@ const BASE_URL = "https://portfoliosoufdev.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Soufiane Boutatss | Web & Mobile Developer",
+    default: "Soufiane Boutatss | Développeur Web & Mobile React Laravel Next.js",
     template: "%s | Soufiane Boutatss",
   },
   description:
-    "Soufiane Boutatss is a passionate web and mobile developer with 5+ years of experience specializing in React.js, React Native, Laravel, and Next.js. 30+ projects delivered across web and mobile platforms.",
+    "Soufiane Boutatss, développeur web et mobile freelance au Maroc. Spécialiste React.js, React Native, Laravel, Next.js. Plus de 5 ans d'expérience, 30+ projets livrés. Disponible pour vos projets web et mobile.",
   keywords: [
     "Soufiane Boutatss",
-    "web developer",
-    "mobile developer",
+    "développeur web Maroc",
+    "web developer Morocco",
+    "freelance developer Morocco",
     "React developer",
     "React Native developer",
     "Laravel developer",
     "Next.js developer",
-    "freelance developer",
+    "développeur React Maroc",
+    "développeur mobile Maroc",
     "full stack developer",
     "JavaScript developer",
     "TypeScript developer",
-    "Morocco developer",
+    "PHP developer",
+    "application mobile React Native",
+    "développeur freelance",
+    "portfolio développeur",
+    "soufiane boutatss dev",
+    "sboutatss",
   ],
+  applicationName: "Soufiane Boutatss Portfolio",
   authors: [{ name: "Soufiane Boutatss", url: BASE_URL }],
   creator: "Soufiane Boutatss",
+  publisher: "Soufiane Boutatss",
+  category: "technology",
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
       "max-image-preview": "large",
       "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "fr_MA",
+    alternateLocale: ["en_US", "ar_MA"],
     url: BASE_URL,
-    siteName: "Soufiane Boutatss Portfolio",
-    title: "Soufiane Boutatss | Web & Mobile Developer",
+    siteName: "Soufiane Boutatss — Portfolio",
+    title: "Soufiane Boutatss | Développeur Web & Mobile",
     description:
-      "Passionate web and mobile developer specializing in React.js, React Native, Laravel, and Next.js. 5+ years of experience, 30+ projects delivered.",
+      "Développeur web et mobile freelance au Maroc — React.js, React Native, Laravel, Next.js. 5+ ans d'expérience, 34+ clients satisfaits.",
     images: [
       {
         url: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778438634/Gemini_Generated_Image_yfw0szyfw0szyfw0-removebg-preview_lft2su.png",
         width: 1200,
         height: 630,
-        alt: "Soufiane Boutatss - Web & Mobile Developer",
+        alt: "Soufiane Boutatss - Développeur Web & Mobile",
+        type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Soufiane Boutatss | Web & Mobile Developer",
+    title: "Soufiane Boutatss | Développeur Web & Mobile",
     description:
-      "Passionate web and mobile developer specializing in React.js, React Native, Laravel, and Next.js.",
+      "Développeur web et mobile freelance au Maroc — React.js, React Native, Laravel, Next.js.",
     images: [
       "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778438634/Gemini_Generated_Image_yfw0szyfw0szyfw0-removebg-preview_lft2su.png",
     ],
@@ -68,6 +81,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: BASE_URL,
+    languages: {
+      "fr-MA": BASE_URL,
+      "en-US": BASE_URL,
+    },
   },
   icons: {
     icon: [
@@ -77,34 +94,115 @@ export const metadata: Metadata = {
       { url: "https://portfoliosoufdev.vercel.app/static/media/so.c04a87ed30752959fd17.png" },
     ],
   },
+  verification: {
+    google: "",
+  },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Soufiane Boutatss",
-  url: BASE_URL,
-  image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778438634/Gemini_Generated_Image_yfw0szyfw0szyfw0-removebg-preview_lft2su.png",
-  jobTitle: "Web & Mobile Developer",
-  description:
-    "Passionate web and mobile developer specializing in React.js, React Native, Laravel, and Next.js with 5+ years of experience.",
-  knowsAbout: [
-    "React.js",
-    "React Native",
-    "Laravel",
-    "Next.js",
-    "TypeScript",
-    "PHP",
-    "MySQL",
-    "Firebase",
-    "Tailwind CSS",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${BASE_URL}/#person`,
+      name: "Soufiane Boutatss",
+      givenName: "Soufiane",
+      familyName: "Boutatss",
+      url: BASE_URL,
+      image: {
+        "@type": "ImageObject",
+        url: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778438634/Gemini_Generated_Image_yfw0szyfw0szyfw0-removebg-preview_lft2su.png",
+        width: 400,
+        height: 400,
+      },
+      jobTitle: "Développeur Web & Mobile Freelance",
+      description:
+        "Développeur web et mobile freelance spécialisé en React.js, React Native, Laravel et Next.js avec plus de 5 ans d'expérience et 34+ clients satisfaits.",
+      nationality: "Moroccan",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "MA",
+        addressLocality: "Maroc",
+      },
+      knowsAbout: [
+        "React.js",
+        "React Native",
+        "Laravel",
+        "Next.js",
+        "TypeScript",
+        "PHP",
+        "MySQL",
+        "Firebase",
+        "Tailwind CSS",
+        "JavaScript",
+        "Node.js",
+      ],
+      hasOccupation: {
+        "@type": "Occupation",
+        name: "Développeur Web & Mobile",
+        occupationLocation: {
+          "@type": "Country",
+          name: "Morocco",
+        },
+        skills: "React.js, React Native, Laravel, Next.js, TypeScript, PHP, MySQL",
+      },
+      sameAs: [
+        "https://github.com/soufiane2001",
+        "https://www.linkedin.com/in/soufiane-boutatss-96400a1ba/",
+        "https://web.facebook.com/soufianski2001",
+      ],
+      email: "sboutatss@gmail.com",
+      telephone: "+212689213015",
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${BASE_URL}/#website`,
+      url: BASE_URL,
+      name: "Soufiane Boutatss Portfolio",
+      description: "Portfolio de Soufiane Boutatss, développeur web et mobile freelance au Maroc",
+      publisher: { "@id": `${BASE_URL}/#person` },
+      inLanguage: ["fr-MA", "en-US"],
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${BASE_URL}/#service`,
+      name: "Soufiane Boutatss — Développement Web & Mobile",
+      url: BASE_URL,
+      description:
+        "Services de développement web et mobile freelance: sites web, applications mobiles, e-commerce, dashboards.",
+      provider: { "@id": `${BASE_URL}/#person` },
+      areaServed: ["MA", "FR", "CA", "BE"],
+      serviceType: [
+        "Développement Web",
+        "Développement Mobile",
+        "Application React Native",
+        "Site Web Laravel",
+        "E-commerce",
+        "Dashboard",
+      ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Services de développement",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Développement Web React / Next.js" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Application Mobile React Native" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Backend Laravel / PHP" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Site E-commerce" } },
+        ],
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Accueil", item: BASE_URL },
+        { "@type": "ListItem", position: 2, name: "À propos", item: `${BASE_URL}/#about` },
+        { "@type": "ListItem", position: 3, name: "Compétences", item: `${BASE_URL}/#skills` },
+        { "@type": "ListItem", position: 4, name: "Projets", item: `${BASE_URL}/#portfolio` },
+        { "@type": "ListItem", position: 5, name: "Expérience", item: `${BASE_URL}/#experiences` },
+        { "@type": "ListItem", position: 6, name: "Contact", item: `${BASE_URL}/#contact` },
+      ],
+    },
   ],
-  sameAs: [
-    "https://github.com/soufiane2001",
-    "https://www.linkedin.com/in/soufiane-boutatss-96400a1ba/",
-    "https://web.facebook.com/soufianski2001",
-  ],
-  email: "sboutatss@gmail.com",
 };
 
 export default function RootLayout({
@@ -113,11 +211,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
+        <meta name="theme-color" content="#ff6b00" />
+        <meta name="msapplication-TileColor" content="#ff6b00" />
+        <meta name="geo.region" content="MA" />
+        <meta name="geo.placename" content="Maroc" />
+        <meta name="geo.position" content="31.7917;-7.0926" />
+        <meta name="ICBM" content="31.7917, -7.0926" />
+        <meta name="rating" content="general" />
+        <meta name="revisit-after" content="7 days" />
         <link rel="apple-touch-icon" href="https://portfoliosoufdev.vercel.app/static/media/so.c04a87ed30752959fd17.png" />
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
