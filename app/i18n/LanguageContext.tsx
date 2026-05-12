@@ -13,7 +13,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType>({
   locale: "fr",
   setLocale: () => {},
-  t: translations.fr,
+  t: translations.fr as unknown as typeof translations.en,
   dir: "ltr",
 });
 
@@ -42,7 +42,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       value={{
         locale,
         setLocale,
-        t: translations[locale],
+        t: translations[locale] as unknown as typeof translations.en,
         dir: locale === "ar" ? "rtl" : "ltr",
       }}
     >
