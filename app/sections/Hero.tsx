@@ -1,13 +1,14 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Facebook } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const Scene3D = dynamic(() => import("../components/Scene3D"), { ssr: false });
 
 const Hero = () => {
+  const { t } = useLanguage();
   return (
     <section
       id="home"
@@ -30,7 +31,7 @@ const Hero = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-[#ff6b00] text-sm md:text-base font-medium tracking-[0.3em] uppercase mb-4"
           >
-            Creative Developer
+            {t.hero.tag}
           </motion.p>
 
           <motion.h1
@@ -55,7 +56,7 @@ const Hero = () => {
             <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-[#ff6b00] animate-pulse" />
               <span className="text-white/80 text-sm md:text-base font-medium">
-                Web & Mobile Developer.
+                {t.hero.subtitle}
               </span>
             </div>
           </motion.div>
@@ -72,7 +73,7 @@ const Hero = () => {
               rel="noopener noreferrer"
               className="group relative px-8 py-4 bg-[#ff6b00] text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,107,0,0.5)]"
             >
-              <span className="relative z-10">Let&apos;s Talk</span>
+              <span className="relative z-10">{t.hero.cta}</span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#ff8533] to-[#ff6b00] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </a>
             <a
@@ -80,7 +81,7 @@ const Hero = () => {
               download
               className="px-8 py-4 border border-white/20 text-white font-bold rounded-full hover:bg-white/5 hover:border-white/40 transition-all duration-300"
             >
-              Download CV
+              {t.hero.cv}
             </a>
           </motion.div>
 
@@ -91,9 +92,9 @@ const Hero = () => {
             className="flex flex-wrap gap-8 justify-center lg:justify-start mb-10"
           >
             {[
-              { value: "30+", label: "Projects" },
-              { value: "34+", label: "Clients" },
-              { value: "5+", label: "Years" },
+              { value: "30+", label: t.hero.stats.projects },
+              { value: "34+", label: t.hero.stats.clients },
+              { value: "5+", label: t.hero.stats.years },
             ].map((stat, i) => (
               <div key={i} className="text-center lg:text-left">
                 <div className="text-3xl md:text-4xl font-black text-white">
@@ -177,7 +178,7 @@ const Hero = () => {
           href="#about"
           className="flex flex-col items-center gap-2 text-white/40 hover:text-[#ff6b00] transition-colors duration-300"
         >
-          <span className="text-xs uppercase tracking-[0.2em]">Scroll</span>
+          <span className="text-xs uppercase tracking-[0.2em]">{t.hero.scroll}</span>
           <ArrowDown className="w-5 h-5 animate-bounce" />
         </a>
       </motion.div>

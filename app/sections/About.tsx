@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const About = () => {
+  const { t } = useLanguage();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2,
@@ -55,31 +56,26 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex-1 text-center lg:text-left"
           >
-            <p className="section-subtitle">About Me</p>
+            <p className="section-subtitle">{t.about.tag}</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-8">
-              Turning Ideas Into
+              {t.about.title}
               <br />
-              <span className="text-gradient">Digital Reality</span>
+              <span className="text-gradient">{t.about.titleGradient}</span>
             </h2>
 
             <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-              I&apos;m Soufiane, a passionate web and mobile developer specializing in
-              modern technologies like React.js and React Native. With a strong focus
-              on crafting intuitive and responsive user interfaces, I ensure every
-              application offers an exceptional user experience across all devices.
+              {t.about.p1}
             </p>
 
             <p className="text-white/60 text-lg leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
-              My expertise extends to backend development with Laravel, where I design
-              and implement secure, scalable, and efficient server-side logic to
-              complement the front-end.
+              {t.about.p2}
             </p>
 
             <div className="flex flex-wrap gap-6 justify-center lg:justify-start mb-10">
               {[
-                { label: "Projects", value: "30+" },
-                { label: "Clients", value: "34+" },
-                { label: "Years", value: "5+" },
+                { label: t.about.stats.projects, value: "30+" },
+                { label: t.about.stats.clients,  value: "34+" },
+                { label: t.about.stats.years,    value: "5+" },
               ].map((stat, i) => (
                 <motion.div
                   key={i}
@@ -104,7 +100,7 @@ const About = () => {
               transition={{ delay: 0.7 }}
               className="btn-primary inline-flex"
             >
-              Download CV
+              {t.about.cv}
             </motion.a>
           </motion.div>
         </div>

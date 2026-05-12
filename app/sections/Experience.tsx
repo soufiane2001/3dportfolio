@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const experiences = [
   {
@@ -36,6 +37,7 @@ const experiences = [
 ];
 
 const Experience = () => {
+  const { t } = useLanguage();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
@@ -51,9 +53,9 @@ const Experience = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <p className="section-subtitle">Journey</p>
+          <p className="section-subtitle">{t.experience.tag}</p>
           <h2 className="section-title text-white">
-            Work <span className="text-gradient">Experience</span>
+            {t.experience.title} <span className="text-gradient">{t.experience.titleGradient}</span>
           </h2>
         </motion.div>
 

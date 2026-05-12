@@ -4,10 +4,12 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { User, Mail, MessageSquare, Send, Github, Linkedin, Facebook } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const WHATSAPP_NUMBER = "212689213015";
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -39,12 +41,12 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="section-subtitle">Get in Touch</p>
+          <p className="section-subtitle">{t.contact.tag}</p>
           <h2 className="section-title text-white">
-            Let&apos;s Work <span className="text-gradient">Together</span>
+            {t.contact.title} <span className="text-gradient">{t.contact.titleGradient}</span>
           </h2>
           <p className="text-white/50 max-w-xl mx-auto mt-4">
-            Have a project in mind? Let&apos;s create something amazing together.
+            {t.contact.subtitle}
           </p>
         </motion.div>
 
@@ -57,12 +59,10 @@ const Contact = () => {
           >
             <div>
               <h3 className="text-2xl font-bold text-white mb-4">
-                Ready to start your project?
+                {t.contact.ready}
               </h3>
               <p className="text-white/60 leading-relaxed">
-                Feel free to send me a message for your projects, questions, or
-                collaborations. I&apos;m always excited to work on new and challenging
-                projects!
+                {t.contact.description}
               </p>
             </div>
 
@@ -81,7 +81,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <p className="text-white/40 text-sm mb-4">Follow me</p>
+              <p className="text-white/40 text-sm mb-4">{t.contact.follow}</p>
               <div className="flex gap-3">
                 {socialLinks.map((social, i) => (
                   <motion.a
@@ -111,11 +111,11 @@ const Contact = () => {
               <div className="space-y-2">
                 <label className="flex items-center gap-2 text-white/60 text-sm font-medium">
                   <User size={16} />
-                  Name
+                  {t.contact.name}
                 </label>
                 <input
                   type="text"
-                  placeholder="Your name"
+                  placeholder={t.contact.namePlaceholder}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-[#ff6b00]/50 transition-colors"
@@ -125,11 +125,11 @@ const Contact = () => {
               <div className="space-y-2">
                 <label className="flex items-center gap-2 text-white/60 text-sm font-medium">
                   <Mail size={16} />
-                  Email
+                  {t.contact.email}
                 </label>
                 <input
                   type="email"
-                  placeholder="Your email"
+                  placeholder={t.contact.emailPlaceholder}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-[#ff6b00]/50 transition-colors"
@@ -139,11 +139,11 @@ const Contact = () => {
               <div className="space-y-2">
                 <label className="flex items-center gap-2 text-white/60 text-sm font-medium">
                   <MessageSquare size={16} />
-                  Message
+                  {t.contact.message}
                 </label>
                 <textarea
                   rows={5}
-                  placeholder="Your message"
+                  placeholder={t.contact.messagePlaceholder}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-[#ff6b00]/50 transition-colors resize-none"
@@ -156,7 +156,7 @@ const Contact = () => {
                 className="w-full py-4 bg-gradient-to-r from-[#ff6b00] to-[#ff8533] text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:shadow-[0_0_30px_rgba(255,107,0,0.4)] transition-all duration-300"
               >
                 <Send size={18} />
-                Send Message
+                {t.contact.send}
               </button>
             </div>
           </motion.div>

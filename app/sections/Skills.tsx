@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useLanguage } from "../i18n/LanguageContext";
 import {
   Atom,
   Smartphone,
@@ -86,6 +87,7 @@ const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
 };
 
 const Skills = () => {
+  const { t } = useLanguage();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -105,13 +107,12 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="section-subtitle">Expertise</p>
+          <p className="section-subtitle">{t.skills.tag}</p>
           <h2 className="section-title text-white">
-            Skills & <span className="text-gradient">Technologies</span>
+            {t.skills.title} <span className="text-gradient">{t.skills.titleGradient}</span>
           </h2>
           <p className="text-white/50 max-w-2xl mx-auto mt-4">
-            A comprehensive toolkit of modern technologies I use to build
-            exceptional digital experiences
+            {t.skills.subtitle}
           </p>
         </motion.div>
 

@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ChevronLeft, ChevronRight, Play, ExternalLink, Github, X } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 interface Project {
   id: number;
@@ -89,6 +89,7 @@ const projects: Project[] = [
 ];
 
 const Projects = () => {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [videoModal, setVideoModal] = useState<string | null>(null);
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -109,9 +110,9 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="section-subtitle">Portfolio</p>
+          <p className="section-subtitle">{t.projects.tag}</p>
           <h2 className="section-title text-white">
-            Featured <span className="text-gradient">Projects</span>
+            {t.projects.title} <span className="text-gradient">{t.projects.titleGradient}</span>
           </h2>
         </motion.div>
 

@@ -7,10 +7,11 @@ import Experience from "./sections/Experience";
 import Testimonials from "./sections/Testimonials";
 import Contact from "./sections/Contact";
 import Loader from "./components/Loader";
+import { LanguageProvider } from "./i18n/LanguageContext";
 
 export default function Home() {
   return (
-    <>
+    <LanguageProvider>
       <Loader />
       <div className="flex min-h-screen flex-col bg-black">
         <Header />
@@ -22,6 +23,6 @@ export default function Home() {
         <Testimonials />
         <Contact />
       </div>
-    </>
+    </LanguageProvider>
   );
 }
