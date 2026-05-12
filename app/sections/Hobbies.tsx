@@ -31,9 +31,7 @@ const destinations = [
 ];
 
 const goalkeepingVideos = [
-  { id: 1, videoUrl: "" },
-  { id: 2, videoUrl: "" },
-  { id: 3, videoUrl: "" },
+  { id: 1, videoUrl: "https://www.youtube.com/embed/5MYvPkrW-Do" },
 ];
 
 const Hobbies = () => {
@@ -126,14 +124,14 @@ const Hobbies = () => {
             <h3 className="text-2xl font-bold text-white">{t.hobbies.goalkeepingTitle}</h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="flex justify-center">
             {goalkeepingVideos.map((vid, i) => (
               <motion.div
                 key={vid.id}
                 initial={{ opacity: 0, y: 40 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
-                className="relative rounded-2xl overflow-hidden glass-card"
+                className="relative rounded-2xl overflow-hidden glass-card w-full max-w-xs"
                 style={{ aspectRatio: "9/16" }}
               >
                 {vid.videoUrl ? (
