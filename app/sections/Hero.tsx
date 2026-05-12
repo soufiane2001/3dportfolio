@@ -94,7 +94,7 @@ const Hero = () => {
             {[
               { value: "30+", label: t.hero.stats.projects },
               { value: "34+", label: t.hero.stats.clients },
-              { value: "5+", label: t.hero.stats.years },
+              { value: "6+", label: t.hero.stats.years },
             ].map((stat, i) => (
               <div key={i} className="text-center lg:text-left">
                 <div className="text-3xl md:text-4xl font-black text-white">
