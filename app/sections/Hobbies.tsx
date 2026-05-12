@@ -134,7 +134,7 @@ const Hobbies = () => {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
                 className="relative rounded-2xl overflow-hidden glass-card"
-                style={{ aspectRatio: "16/9" }}
+                style={{ aspectRatio: "9/16" }}
               >
                 {vid.videoUrl ? (
                   <iframe
