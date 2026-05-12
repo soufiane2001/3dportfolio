@@ -50,9 +50,9 @@ const Header = () => {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { name: "Work", href: "#portfolio", id: "portfolio" },
     { name: "About", href: "#about", id: "about" },
     { name: "Skills", href: "#skills", id: "skills" },
+    { name: "Work", href: "#portfolio", id: "portfolio" },
     { name: "Experience", href: "#experiences", id: "experiences" },
     { name: "Testimonials", href: "#testimonials", id: "testimonials" },
   ];
