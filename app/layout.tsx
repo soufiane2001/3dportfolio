@@ -131,7 +131,7 @@ const jsonLd = {
       },
       jobTitle: "Développeur Web & Mobile Freelance",
       description:
-        "Développeur web et mobile freelance spécialisé en React.js, React Native, Laravel et Next.js avec plus de 5 ans d'expérience et 34+ clients satisfaits.",
+        "Développeur web et mobile freelance spécialisé en React.js, React Native, Laravel et Next.js avec plus de 6 ans d'expérience et 34+ clients satisfaits.",
       nationality: "Moroccan",
       address: {
         "@type": "PostalAddress",
@@ -167,6 +167,13 @@ const jsonLd = {
       ],
       email: "sboutatss@gmail.com",
       telephone: "+212689213015",
+      workExample: [
+        { "@type": "WebSite", name: "Reby Art Portfolio", url: "https://rebyart.vercel.app/" },
+        { "@type": "WebSite", name: "HighUp Counselling", url: "https://www.highupcounselling.ca/" },
+        { "@type": "WebSite", name: "Horea Formation", url: "https://www.horea-formation.com/" },
+        { "@type": "WebSite", name: "Dar Mooris", url: "https://darmooris.ma/" },
+        { "@type": "WebSite", name: "Gamlastan Shop", url: "https://gamlastanshop.space/" },
+      ],
     },
     {
       "@type": "WebSite",
@@ -175,7 +182,8 @@ const jsonLd = {
       name: "Soufiane Boutatss Portfolio",
       description: "Portfolio de Soufiane Boutatss, développeur web et mobile freelance au Maroc",
       publisher: { "@id": `${BASE_URL}/#person` },
-      inLanguage: ["fr-MA", "en-US"],
+      inLanguage: ["fr-MA", "en-US", "ar"],
+      dateModified: "2026-05-13",
     },
     {
       "@type": "ProfessionalService",
@@ -193,6 +201,40 @@ const jsonLd = {
         "Site Web Laravel",
         "E-commerce",
         "Dashboard",
+      ],
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5",
+        bestRating: "5",
+        worstRating: "1",
+        ratingCount: "4",
+        reviewCount: "4",
+      },
+      review: [
+        {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Karim Washington" },
+          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+          reviewBody: "I had the pleasure of working with Soufiane on my website project, and I couldn't be more satisfied with the results. His professionalism, creativity, and technical expertise are outstanding!",
+        },
+        {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Hind El hassouni" },
+          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+          reviewBody: "Soufiane did an amazing job building our software. He understood our needs perfectly, delivered on time, and the final product works flawlessly. Highly recommended!",
+        },
+        {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Michel Reby" },
+          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+          reviewBody: "Working with Soufiane on the Reby Art website has been a fantastic experience! He took our artistic vision and brought it to life with stunning design and functionality.",
+        },
+        {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Karime Rahmani" },
+          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+          reviewBody: "Working with Soufiane to build our website High Up Counselling was an exceptional experience from start to finish. He quickly understood our vision and translated it into a clean, professional, and user-friendly website.",
+        },
       ],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
