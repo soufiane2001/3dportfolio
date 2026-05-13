@@ -151,6 +151,15 @@ const Header = () => {
               </div>
 
               <motion.a
+                href="/blog"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.45, duration: 0.4 }}
+                className="px-5 py-2.5 border border-white/10 text-white/70 hover:text-white hover:border-white/30 text-sm font-bold rounded-full transition-all duration-300"
+              >
+                Blog
+              </motion.a>
+              <motion.a
                 href="#contact"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
