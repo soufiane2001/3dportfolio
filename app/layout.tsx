@@ -103,11 +103,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "https://soufianeboutatssdev.com/static/media/so.c04a87ed30752959fd17.png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
     ],
-    apple: [
-      { url: "https://soufianeboutatssdev.com/static/media/so.c04a87ed30752959fd17.png" },
-    ],
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
   verification: {
     google: "",
