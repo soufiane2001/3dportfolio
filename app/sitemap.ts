@@ -7,53 +7,47 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogEntries: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
     lastModified: new Date(post.date),
-    changeFrequency: "monthly",
+    changeFrequency: "monthly" as const,
     priority: 0.7,
+    alternates: {
+      languages: {
+        "x-default": `${BASE_URL}/blog/${post.slug}`,
+        fr: `${BASE_URL}/blog/${post.slug}`,
+        en: `${BASE_URL}/blog/${post.slug}`,
+      },
+    },
   }));
 
   return [
+    // Homepage — covers all sections (/, #about, #skills, #portfolio, #experiences, #testimonials, #hobbies, #contact)
+    // Hash URLs are excluded: search engines don't index fragment identifiers
     {
       url: BASE_URL,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1.0,
+      alternates: {
+        languages: {
+          "x-default": BASE_URL,
+          fr: `${BASE_URL}?lang=fr`,
+          en: `${BASE_URL}?lang=en`,
+          ar: `${BASE_URL}?lang=ar`,
+        },
+      },
     },
     {
       url: `${BASE_URL}/blog`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
+      alternates: {
+        languages: {
+          "x-default": `${BASE_URL}/blog`,
+          fr: `${BASE_URL}/blog`,
+          en: `${BASE_URL}/blog`,
+        },
+      },
     },
     ...blogEntries,
-    {
-      url: `${BASE_URL}/#about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/#skills`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/#portfolio`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/#experiences`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/#contact`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.6,
-    },
   ];
 }
