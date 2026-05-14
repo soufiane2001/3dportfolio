@@ -27,7 +27,7 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    const sectionIds = ["portfolio", "about", "skills", "experiences", "testimonials", "hobbies"];
+    const sectionIds = ["portfolio", "about", "services", "skills", "experiences", "testimonials", "hobbies"];
     const observers: IntersectionObserver[] = [];
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
@@ -49,6 +49,7 @@ const Header = () => {
 
   const navLinks = [
     { name: t.nav.about,        href: "#about",        id: "about" },
+    { name: t.nav.services,     href: "#services",     id: "services" },
     { name: t.nav.skills,       href: "#skills",       id: "skills" },
     { name: t.nav.work,         href: "#portfolio",    id: "portfolio" },
     { name: t.nav.experience,   href: "#experiences",  id: "experiences" },

@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../i18n/LanguageContext";
+import Script from "next/script";
 
 const About = () => {
   const { t } = useLanguage();
@@ -107,6 +108,20 @@ const About = () => {
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+      <Script id="ad-options" strategy="afterInteractive">{`
+        atOptions = {
+          'key' : 'f43f0197f41f0836b6853767f4a5a3a1',
+          'format' : 'iframe',
+          'height' : 600,
+          'width' : 160,
+          'params' : {}
+        };
+      `}</Script>
+      <Script
+        src="https://www.highperformanceformat.com/f43f0197f41f0836b6853767f4a5a3a1/invoke.js"
+        strategy="afterInteractive"
+      />
     </section>
   );
 };

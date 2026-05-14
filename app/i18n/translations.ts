@@ -10,6 +10,7 @@ export const translations = {
       testimonials: "Témoignages",
       hobbies: "Loisirs",
       contact: "Contact",
+      services: "Services",
     },
     hero: {
       tag: "Développeur Créatif",
@@ -136,6 +137,51 @@ export const translations = {
       messagePlaceholder: "Votre message",
       send: "Envoyer le message",
     },
+    services: {
+      tag: "Ce que je fais",
+      title: "Mes",
+      titleGradient: "Services",
+      subtitle: "Des solutions digitales complètes adaptées à vos besoins et objectifs.",
+      cta: "Démarrer un projet",
+      items: [
+        {
+          icon: "Globe",
+          title: "Développement Web",
+          description: "Création de sites web modernes, rapides et responsives avec React.js et Next.js. Du site vitrine à la web-app complexe.",
+          tags: ["React.js", "Next.js", "TypeScript", "Tailwind CSS"],
+        },
+        {
+          icon: "Smartphone",
+          title: "Développement Mobile",
+          description: "Applications mobiles cross-platform performantes avec React Native pour iOS et Android, avec une expérience native.",
+          tags: ["React Native", "Expo", "iOS", "Android"],
+        },
+        {
+          icon: "Server",
+          title: "Développement Backend",
+          description: "APIs robustes et sécurisées, bases de données optimisées et logique serveur évolutive avec Laravel et PHP 8.",
+          tags: ["Laravel", "PHP 8", "MySQL", "REST API"],
+        },
+        {
+          icon: "Palette",
+          title: "Design UI/UX",
+          description: "Interfaces intuitives et esthétiques centrées sur l'expérience utilisateur, des maquettes Figma aux animations finales.",
+          tags: ["Figma", "Animations", "Responsive", "Prototypage"],
+        },
+        {
+          icon: "Monitor",
+          title: "Logiciel ERP",
+          description: "Solutions de gestion d'entreprise sur mesure en application desktop avec Electron.js et React.",
+          tags: ["Electron.js", "React", "Desktop App", "ERP"],
+        },
+        {
+          icon: "Zap",
+          title: "Intégration API",
+          description: "Intégration d'APIs tierces, paiement en ligne, authentification et développement de services RESTful performants.",
+          tags: ["REST API", "OAuth", "Stripe", "Webhooks"],
+        },
+      ],
+    },
   },
 
   en: {
@@ -147,6 +193,7 @@ export const translations = {
       testimonials: "Testimonials",
       hobbies: "Hobbies",
       contact: "Contact",
+      services: "Services",
     },
     hero: {
       tag: "Creative Developer",
@@ -273,6 +320,51 @@ export const translations = {
       messagePlaceholder: "Your message",
       send: "Send Message",
     },
+    services: {
+      tag: "What I Do",
+      title: "My",
+      titleGradient: "Services",
+      subtitle: "Complete digital solutions tailored to your needs and goals.",
+      cta: "Start a Project",
+      items: [
+        {
+          icon: "Globe",
+          title: "Web Development",
+          description: "Building modern, fast, and responsive websites with React.js and Next.js. From landing pages to complex web applications.",
+          tags: ["React.js", "Next.js", "TypeScript", "Tailwind CSS"],
+        },
+        {
+          icon: "Smartphone",
+          title: "Mobile Development",
+          description: "High-performance cross-platform mobile apps with React Native for iOS and Android, delivering a native experience.",
+          tags: ["React Native", "Expo", "iOS", "Android"],
+        },
+        {
+          icon: "Server",
+          title: "Backend Development",
+          description: "Robust and secure APIs, optimized databases, and scalable server-side logic using Laravel and PHP 8.",
+          tags: ["Laravel", "PHP 8", "MySQL", "REST API"],
+        },
+        {
+          icon: "Palette",
+          title: "UI/UX Design",
+          description: "Intuitive and aesthetic interfaces focused on user experience, from Figma mockups to polished animations.",
+          tags: ["Figma", "Animations", "Responsive", "Prototyping"],
+        },
+        {
+          icon: "Monitor",
+          title: "ERP Software",
+          description: "Custom enterprise management solutions as desktop applications built with Electron.js and React.",
+          tags: ["Electron.js", "React", "Desktop App", "ERP"],
+        },
+        {
+          icon: "Zap",
+          title: "API Integration",
+          description: "Third-party API integrations, online payments, authentication, and high-performance RESTful service development.",
+          tags: ["REST API", "OAuth", "Stripe", "Webhooks"],
+        },
+      ],
+    },
   },
 
   ar: {
@@ -284,6 +376,7 @@ export const translations = {
       testimonials: "التوصيات",
       hobbies: "الهوايات",
       contact: "تواصل",
+      services: "الخدمات",
     },
     hero: {
       tag: "مطور مبدع",
@@ -409,6 +502,51 @@ export const translations = {
       message: "الرسالة",
       messagePlaceholder: "رسالتك",
       send: "إرسال الرسالة",
+    },
+    services: {
+      tag: "ما أقدمه",
+      title: "خدماتي",
+      titleGradient: "المهنية",
+      subtitle: "حلول رقمية متكاملة مصممة لتلبية احتياجاتك وأهدافك.",
+      cta: "ابدأ مشروعك",
+      items: [
+        {
+          icon: "Globe",
+          title: "تطوير المواقع",
+          description: "بناء مواقع ويب حديثة وسريعة ومتجاوبة باستخدام React.js وNext.js، من الصفحات التعريفية إلى التطبيقات المعقدة.",
+          tags: ["React.js", "Next.js", "TypeScript", "Tailwind CSS"],
+        },
+        {
+          icon: "Smartphone",
+          title: "تطوير التطبيقات",
+          description: "تطبيقات جوال عالية الأداء لنظامي iOS وAndroid باستخدام React Native، بتجربة مستخدم أصيلة.",
+          tags: ["React Native", "Expo", "iOS", "Android"],
+        },
+        {
+          icon: "Server",
+          title: "تطوير الواجهة الخلفية",
+          description: "واجهات برمجية آمنة وقواعد بيانات محسّنة ومنطق خادم قابل للتوسع باستخدام Laravel وPHP 8.",
+          tags: ["Laravel", "PHP 8", "MySQL", "REST API"],
+        },
+        {
+          icon: "Palette",
+          title: "تصميم UI/UX",
+          description: "واجهات بديهية وجمالية تركز على تجربة المستخدم، من نماذج Figma إلى الرسوم المتحركة المصقولة.",
+          tags: ["Figma", "تحريك", "متجاوب", "نماذج أولية"],
+        },
+        {
+          icon: "Monitor",
+          title: "برامج ERP",
+          description: "حلول إدارة المؤسسات المخصصة كتطبيقات سطح مكتب مبنية باستخدام Electron.js وReact.",
+          tags: ["Electron.js", "React", "تطبيق سطح مكتب", "ERP"],
+        },
+        {
+          icon: "Zap",
+          title: "تكامل API",
+          description: "تكامل واجهات برمجية خارجية، الدفع الإلكتروني، المصادقة وتطوير خدمات RESTful عالية الأداء.",
+          tags: ["REST API", "OAuth", "Stripe", "Webhooks"],
+        },
+      ],
     },
   },
 } as const;
