@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { User, Mail, MessageSquare, Send, Github, Linkedin, Facebook } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
+import AdBanner from "../components/AdBanner";
 
 const WHATSAPP_NUMBER = "212689213015";
 
@@ -161,6 +162,8 @@ const Contact = () => {
             </div>
           </motion.div>
         </div>
+
+        <AdBanner />
       </div>
     </section>
   );

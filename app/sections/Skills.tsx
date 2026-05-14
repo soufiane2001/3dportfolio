@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../i18n/LanguageContext";
+import AdBanner from "../components/AdBanner";
 
 interface Skill {
   name: string;
@@ -112,6 +113,8 @@ const Skills = () => {
             <SkillCard key={skill.name} skill={skill} index={index} />
           ))}
         </div>
+
+        <AdBanner />
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />

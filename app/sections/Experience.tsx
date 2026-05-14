@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../i18n/LanguageContext";
+import AdBanner from "../components/AdBanner";
 
 const Experience = () => {
   const { t } = useLanguage();
@@ -75,6 +76,8 @@ const Experience = () => {
             </motion.div>
           ))}
         </div>
+
+        <AdBanner />
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />

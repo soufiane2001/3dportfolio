@@ -1,37 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../i18n/LanguageContext";
-
-const AdBanner = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-    (window as any).atOptions = {
-      key: "9b023632a679f5f14478f0b74f0983be",
-      format: "iframe",
-      height: 90,
-      width: 728,
-      params: {},
-    };
-    const script = document.createElement("script");
-    script.src =
-      "https://www.highperformanceformat.com/9b023632a679f5f14478f0b74f0983be/invoke.js";
-    script.async = true;
-    containerRef.current.appendChild(script);
-  }, []);
-
-  return (
-    <div
-      ref={containerRef}
-      style={{ width: 728, height: 90 }}
-      className="flex-shrink-0"
-    />
-  );
-};
+import AdBanner from "../components/AdBanner";
 
 const About = () => {
   const { t } = useLanguage();
@@ -134,10 +107,7 @@ const About = () => {
 
         </div>
 
-        {/* Ad banner — leaderboard 728×90, centered below content */}
-        <div className="flex justify-center mt-16 overflow-x-auto">
-          <AdBanner />
-        </div>
+        <AdBanner />
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
