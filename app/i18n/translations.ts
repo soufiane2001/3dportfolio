@@ -11,6 +11,7 @@ export const translations = {
       hobbies: "Loisirs",
       contact: "Contact",
       services: "Services",
+      autre: "Autre",
     },
     hero: {
       tag: "Développeur Créatif",
@@ -194,6 +195,7 @@ export const translations = {
       hobbies: "Hobbies",
       contact: "Contact",
       services: "Services",
+      autre: "More",
     },
     hero: {
       tag: "Creative Developer",
@@ -377,6 +379,7 @@ export const translations = {
       hobbies: "الهوايات",
       contact: "تواصل",
       services: "الخدمات",
+      autre: "المزيد",
     },
     hero: {
       tag: "مطور مبدع",

@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import type { Locale } from "../i18n/translations";
 
@@ -19,6 +19,8 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState("");
   const [hovered, setHovered] = useState<string | null>(null);
   const [langOpen, setLangOpen] = useState(false);
+  const [autreOpen, setAutreOpen] = useState(false);
+  const autreRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -47,6 +49,17 @@ const Header = () => {
     return () => { document.body.style.overflow = ""; };
   }, [isMobileMenuOpen]);
 
+  // Close "Autre" dropdown when clicking outside
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (autreRef.current && !autreRef.current.contains(e.target as Node)) {
+        setAutreOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
   const navLinks = [
     { name: t.nav.about,        href: "#about",        id: "about" },
     { name: t.nav.services,     href: "#services",     id: "services" },
@@ -54,9 +67,14 @@ const Header = () => {
     { name: t.nav.work,         href: "#portfolio",    id: "portfolio" },
     { name: t.nav.experience,   href: "#experiences",  id: "experiences" },
     { name: t.nav.testimonials, href: "#testimonials", id: "testimonials" },
-    { name: t.nav.hobbies,      href: "#hobbies",      id: "hobbies" },
   ];
 
+  const autreLinks = [
+    { name: t.nav.hobbies, href: "#hobbies", id: "hobbies" },
+    { name: "Blog",         href: "/blog",   id: "blog" },
+  ];
+
+  const isAutreActive = activeSection === "hobbies";
   const currentLang = LANGS.find((l) => l.code === locale)!;
 
   return (
@@ -111,6 +129,68 @@ const Header = () => {
                   </motion.a>
                 );
               })}
+
+              {/* Dropdown "Autre" */}
+              <div ref={autreRef} className="relative">
+                <motion.button
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: navLinks.length * 0.1, duration: 0.4 }}
+                  onClick={() => setAutreOpen(!autreOpen)}
+                  onMouseEnter={() => setHovered("autre")}
+                  className={`relative flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+                    isAutreActive ? "text-white" : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  {hovered === "autre" && (
+                    <motion.span
+                      layoutId="nav-hover-bg"
+                      className="absolute inset-0 rounded-full bg-white/8"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{t.nav.autre}</span>
+                  <ChevronDown
+                    className={`relative z-10 w-3.5 h-3.5 transition-transform duration-300 ${autreOpen ? "rotate-180" : ""}`}
+                  />
+                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-[#ff6b00] transition-all duration-300 ${
+                    isAutreActive || hovered === "autre" ? "w-4/5" : "w-0"
+                  }`} />
+                </motion.button>
+
+                <AnimatePresence>
+                  {autreOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute top-full mt-2 left-0 bg-black/90 border border-white/10 rounded-xl overflow-hidden backdrop-blur-xl shadow-xl min-w-[140px]"
+                    >
+                      {autreLinks.map((link) => {
+                        const isActive = isScrolled && activeSection === link.id;
+                        return (
+                          <a
+                            key={link.id}
+                            href={link.href}
+                            onClick={() => setAutreOpen(false)}
+                            className={`flex items-center gap-2 w-full px-4 py-2.5 text-sm transition-colors ${
+                              isActive
+                                ? "text-[#ff6b00] bg-[#ff6b00]/10"
+                                : "text-white/70 hover:text-white hover:bg-white/5"
+                            }`}
+                          >
+                            {link.name}
+                          </a>
+                        );
+                      })}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </nav>
 
             <div className="hidden md:flex items-center gap-3">
@@ -151,15 +231,6 @@ const Header = () => {
                 </AnimatePresence>
               </div>
 
-              <motion.a
-                href="/blog"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.45, duration: 0.4 }}
-                className="px-5 py-2.5 border border-white/10 text-white/70 hover:text-white hover:border-white/30 text-sm font-bold rounded-full transition-all duration-300"
-              >
-                Blog
-              </motion.a>
               <motion.a
                 href="#contact"
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -259,11 +330,34 @@ const Header = () => {
                   {link.name}
                 </motion.a>
               ))}
+
+              {/* Autre sub-links in mobile menu */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.1, duration: 0.4 }}
+                className="flex flex-col items-center gap-3"
+              >
+                <span className="text-sm font-semibold text-[#ff6b00] uppercase tracking-widest">
+                  {t.nav.autre}
+                </span>
+                {autreLinks.map((link) => (
+                  <a
+                    key={link.id}
+                    href={link.href}
+                    className="text-2xl font-bold text-white/70 hover:text-white transition-colors duration-300"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </motion.div>
+
               <motion.a
                 href="#contact"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.4 }}
+                transition={{ delay: (navLinks.length + 1) * 0.1, duration: 0.4 }}
                 className="mt-4 px-10 py-4 bg-[#ff6b00] text-white text-xl font-bold rounded-full"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
