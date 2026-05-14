@@ -1,10 +1,37 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../i18n/LanguageContext";
-import Script from "next/script";
+
+const AdBanner = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    (window as any).atOptions = {
+      key: "9b023632a679f5f14478f0b74f0983be",
+      format: "iframe",
+      height: 90,
+      width: 728,
+      params: {},
+    };
+    const script = document.createElement("script");
+    script.src =
+      "https://www.highperformanceformat.com/9b023632a679f5f14478f0b74f0983be/invoke.js";
+    script.async = true;
+    containerRef.current.appendChild(script);
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{ width: 728, height: 90 }}
+      className="flex-shrink-0"
+    />
+  );
+};
 
 const About = () => {
   const { t } = useLanguage();
@@ -16,7 +43,7 @@ const About = () => {
   return (
     <section id="about" className="relative py-32 bg-black overflow-hidden" aria-label="À propos de Soufiane Boutatss">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-transparent" />
-      
+
       <div className="container relative z-10" ref={ref}>
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           <motion.div
@@ -104,24 +131,16 @@ const About = () => {
               {t.about.cv}
             </motion.a>
           </motion.div>
+
+        </div>
+
+        {/* Ad banner — leaderboard 728×90, centered below content */}
+        <div className="flex justify-center mt-16 overflow-x-auto">
+          <AdBanner />
         </div>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
-      <Script id="ad-options" strategy="afterInteractive">{`
-        atOptions = {
-          'key' : 'f43f0197f41f0836b6853767f4a5a3a1',
-          'format' : 'iframe',
-          'height' : 600,
-          'width' : 160,
-          'params' : {}
-        };
-      `}</Script>
-      <Script
-        src="https://www.highperformanceformat.com/f43f0197f41f0836b6853767f4a5a3a1/invoke.js"
-        strategy="afterInteractive"
-      />
     </section>
   );
 };
