@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -28,10 +29,11 @@ const About = () => {
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
               <div className="absolute -inset-1 bg-gradient-to-r from-[#ff6b00] via-[#a855f7] to-[#3b82f6] rounded-3xl blur-xl opacity-30" />
               <div className="relative h-full rounded-3xl overflow-hidden border border-white/10">
-                <img
+                <Image
                   src="https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778368246/Gemini_Generated_Image_ac7qxeac7qxeac7q_t0xski.png"
                   alt="Soufiane Boutatss - Full Stack Developer"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 400px"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />

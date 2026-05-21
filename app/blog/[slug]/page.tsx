@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { posts, getPostBySlug } from "../posts";
@@ -119,8 +120,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         {/* Meta */}
         <div className="flex items-center gap-4 text-white/30 text-sm mb-12 pb-8 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <img
-              src="https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778438634/Gemini_Generated_Image_yfw0szyfw0szyfw0-removebg-preview_lft2su.png"
+            <Image
+              src={AUTHOR_IMAGE}
               alt="Soufiane Boutatss"
               width={32}
               height={32}
@@ -149,8 +150,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         {/* Footer */}
         <div className="mt-16 pt-8 border-t border-white/10">
           <div className="glass-card p-6 flex items-center gap-4">
-            <img
-              src="https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778438634/Gemini_Generated_Image_yfw0szyfw0szyfw0-removebg-preview_lft2su.png"
+            <Image
+              src={AUTHOR_IMAGE}
               alt="Soufiane Boutatss"
               width={56}
               height={56}

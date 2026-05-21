@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -51,11 +52,12 @@ const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
           className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
           style={{ backgroundColor: `${skill.color}20` }}
         >
-          <img
+          <Image
             src={skill.iconUrl}
             alt={skill.name}
             width={28}
             height={28}
+            unoptimized
             className={`object-contain${skill.invert ? " invert" : ""}`}
             onError={(e) => {
               (e.currentTarget as HTMLImageElement).style.display = "none";

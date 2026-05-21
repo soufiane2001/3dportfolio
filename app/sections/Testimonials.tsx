@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
@@ -92,10 +93,12 @@ const Testimonials = () => {
 
               <div className="flex flex-col items-center">
                 <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-[#ff6b00]/30 mb-4">
-                  <img
+                  <Image
                     src={avatars[currentIndex]}
                     alt={current.name}
-                    className="object-cover w-full h-full"
+                    fill
+                    sizes="64px"
+                    className="object-cover"
                   />
                 </div>
                 <h4 className="text-lg font-bold text-white">

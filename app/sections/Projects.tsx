@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ChevronLeft, ChevronRight, Play, ExternalLink, Github, X } from "lucide-react";
@@ -156,10 +157,11 @@ const Projects = () => {
                 >
                   <div className="glass-card overflow-hidden group">
                     <div className="relative h-64 overflow-hidden">
-                      <img
+                      <Image
                         src={project.image}
                         alt={project.title}
-                   
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
