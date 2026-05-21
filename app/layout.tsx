@@ -90,7 +90,6 @@ export const metadata: Metadata = {
     images: [
       "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778438634/Gemini_Generated_Image_yfw0szyfw0szyfw0-removebg-preview_lft2su.png",
     ],
-    creator: "@soufiane",
   },
   alternates: {
     canonical: BASE_URL,
@@ -107,9 +106,6 @@ export const metadata: Metadata = {
     ],
     shortcut: "/favicon.svg",
     apple: "/favicon.svg",
-  },
-  verification: {
-    google: "",
   },
 };
 
@@ -183,7 +179,7 @@ const jsonLd = {
       description: "Portfolio de Soufiane Boutatss, développeur web et mobile freelance au Maroc",
       publisher: { "@id": `${BASE_URL}/#person` },
       inLanguage: ["fr-MA", "en-US", "ar"],
-      dateModified: "2026-05-13",
+      dateModified: new Date().toISOString().split("T")[0],
     },
     {
       "@type": "ProfessionalService",
@@ -248,6 +244,23 @@ const jsonLd = {
       },
     },
     {
+      "@type": "WebPage",
+      "@id": `${BASE_URL}/#webpage`,
+      url: BASE_URL,
+      name: "Soufiane Boutatss | Développeur Web & Mobile React Laravel Next.js",
+      description:
+        "Portfolio de Soufiane Boutatss, développeur web et mobile freelance au Maroc. React.js, React Native, Laravel, Next.js.",
+      isPartOf: { "@id": `${BASE_URL}/#website` },
+      about: { "@id": `${BASE_URL}/#person` },
+      inLanguage: ["fr-MA", "en-US", "ar"],
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778438634/Gemini_Generated_Image_yfw0szyfw0szyfw0-removebg-preview_lft2su.png",
+        width: 1200,
+        height: 630,
+      },
+    },
+    {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Accueil", item: BASE_URL },
@@ -271,19 +284,14 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#ff6b00" />
         <meta name="msapplication-TileColor" content="#ff6b00" />
-        {/* Morocco */}
         <meta name="geo.region" content="MA" />
-        <meta name="geo.placename" content="Maroc, France, United States" />
+        <meta name="geo.placename" content="Maroc" />
         <meta name="geo.position" content="31.7917;-7.0926" />
         <meta name="ICBM" content="31.7917, -7.0926" />
-        {/* France */}
-        <meta name="geo.region" content="FR" />
-        {/* USA */}
-        <meta name="geo.region" content="US" />
         <meta name="rating" content="general" />
-        <meta name="revisit-after" content="7 days" />
-        <link rel="apple-touch-icon" href="https://soufianeboutatssdev.com/static/media/so.c04a87ed30752959fd17.png" />
-        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
         <script

@@ -88,7 +88,7 @@ function CentralSphere() {
   return (
     <Float speed={1.5} rotationIntensity={0.4} floatIntensity={0.4}>
       <mesh ref={meshRef}>
-        <sphereGeometry args={[sphereRadius, 64, 64]} />
+        <sphereGeometry args={[sphereRadius, 32, 32]} />
         <MeshDistortMaterial
           color="#ff6b00"
           emissive="#ff3300"
@@ -139,7 +139,7 @@ export default function Loader3DScene() {
       <pointLight position={[-4, -4, -4]} color="#a855f7" intensity={2.5} />
       <pointLight position={[0, 5, -4]}   color="#3b82f6" intensity={1.5} />
 
-      <Stars radius={50} depth={30} count={2000} factor={3} fade speed={1.2} />
+      <Stars radius={50} depth={30} count={500} factor={3} fade speed={1.2} />
       <CentralSphere />
       <FloatingParticles />
 

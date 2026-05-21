@@ -89,7 +89,7 @@ function FloatingSphere({ position, color, scale = 1, speed = 1 }: {
   return (
     <Float speed={speed} rotationIntensity={0.5} floatIntensity={0.5}>
       <mesh ref={mesh} position={position} scale={scale}>
-        <sphereGeometry args={[1, 64, 64]} />
+        <sphereGeometry args={[1, 32, 32]} />
         <MeshDistortMaterial
           color={color}
           speed={2}
@@ -144,7 +144,7 @@ function MovingRing({ position, color }: { position: [number, number, number]; c
 
   return (
     <mesh ref={mesh} position={position}>
-      <torusGeometry args={[1.5, 0.02, 16, 100]} />
+      <torusGeometry args={[1.5, 0.02, 8, 50]} />
       <meshStandardMaterial
         color={color}
         emissive={color}
@@ -167,7 +167,7 @@ function Scene() {
       <pointLight position={[-10, -10, -10]} intensity={0.5} color="#a855f7" />
       <spotLight position={[0, 10, 0]} angle={0.3} intensity={0.5} color="#ffffff" />
       
-      <FloatingParticles count={800} />
+      <FloatingParticles count={200} />
       
       <FloatingSphere position={[-4, 2, -3]} color="#ff6b00" scale={0.8} speed={1.2} />
       <FloatingSphere position={[4, -1, -4]} color="#a855f7" scale={0.6} speed={0.8} />
@@ -186,7 +186,7 @@ export default function Scene3D() {
     <div className="absolute inset-0 z-0">
       <Canvas
         camera={{ position: [0, 0, 6], fov: 60 }}
-        dpr={[1, 1.5]}
+        dpr={[1, 1]}
         gl={{ 
           antialias: false, 
           powerPreference: "high-performance",

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { posts } from "./posts";
 
+const OG_IMAGE = "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778438634/Gemini_Generated_Image_yfw0szyfw0szyfw0-removebg-preview_lft2su.png";
+
 export const metadata: Metadata = {
   title: "Blog | Soufiane Boutatss — Développeur Web & Mobile",
   description: "Articles techniques sur React, React Native, Laravel, Next.js et le développement web moderne. Conseils et bonnes pratiques par Soufiane Boutatss.",
@@ -11,6 +13,20 @@ export const metadata: Metadata = {
     description: "Articles techniques sur React, React Native, Laravel et Next.js.",
     url: "https://soufianeboutatssdev.com/blog",
     type: "website",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "Blog Soufiane Boutatss — Articles techniques",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog — Soufiane Boutatss",
+    description: "Articles techniques sur React, React Native, Laravel et Next.js.",
+    images: [OG_IMAGE],
   },
 };
 

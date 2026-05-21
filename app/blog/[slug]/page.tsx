@@ -4,6 +4,7 @@ import Link from "next/link";
 import { posts, getPostBySlug } from "../posts";
 
 const BASE_URL = "https://soufianeboutatssdev.com";
+const AUTHOR_IMAGE = "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778438634/Gemini_Generated_Image_yfw0szyfw0szyfw0-removebg-preview_lft2su.png";
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -16,6 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${post.title} | Blog Soufiane Boutatss`,
     description: post.excerpt,
+    keywords: post.tags,
+    authors: [{ name: "Soufiane Boutatss", url: BASE_URL }],
     alternates: { canonical: `${BASE_URL}/blog/${post.slug}` },
     openGraph: {
       title: post.title,
@@ -23,8 +26,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `${BASE_URL}/blog/${post.slug}`,
       type: "article",
       publishedTime: post.date,
+      modifiedTime: post.date,
       authors: ["Soufiane Boutatss"],
       tags: post.tags,
+      images: [
+        {
+          url: AUTHOR_IMAGE,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [AUTHOR_IMAGE],
     },
   };
 }
@@ -42,6 +60,16 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     datePublished: post.date,
     dateModified: post.date,
     url: `${BASE_URL}/blog/${post.slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${BASE_URL}/blog/${post.slug}`,
+    },
+    image: {
+      "@type": "ImageObject",
+      url: AUTHOR_IMAGE,
+      width: 1200,
+      height: 630,
+    },
     author: {
       "@type": "Person",
       name: "Soufiane Boutatss",
