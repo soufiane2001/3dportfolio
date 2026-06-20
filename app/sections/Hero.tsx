@@ -46,6 +46,7 @@ const Hero = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b00] via-[#ff8533] to-[#a855f7]">
               {t.hero.nameSub}
             </span>
+            <span className="sr-only">{` — ${t.hero.subtitle} ${t.hero.tag}`}</span>
           </motion.h1>
 
           <motion.div

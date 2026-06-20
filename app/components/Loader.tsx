@@ -42,7 +42,7 @@ export default function Loader() {
               Welcome to
             </motion.p>
 
-            <motion.h1
+            <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.9, duration: 0.7, ease: "backOut" }}
@@ -52,7 +52,7 @@ export default function Loader() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b00] via-[#ff8533] to-[#a855f7]">
                 Portfolio
               </span>
-            </motion.h1>
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0 }}
