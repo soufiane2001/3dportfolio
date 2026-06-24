@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
+import Analytics from "./components/Analytics";
 
 const BASE_URL = "https://soufianeboutatssdev.com";
 
@@ -317,6 +318,7 @@ export default function RootLayout({
           data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );
