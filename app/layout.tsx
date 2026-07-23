@@ -283,7 +283,6 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
-        <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17614508548"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-17614508548'); </script>
         <meta name="theme-color" content="#ff6b00" />
         <meta name="msapplication-TileColor" content="#ff6b00" />
         <meta name="geo.region" content="MA" />
@@ -296,13 +295,31 @@ export default function RootLayout({
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-<title>soufdigital</title>
-          <script
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className="antialiased">
+        {/* Intégration correcte de Google Analytics avec next/script */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=AW-17614508548`}
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-17614508548');
+            `,
+          }}
+        />
+
+        {/* Autres scripts */}
         <Script
           id="orchids-browser-logs"
           src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts/orchids-browser-logs.js"
@@ -310,6 +327,7 @@ export default function RootLayout({
           data-orchids-project-id="25fe0452-9320-4752-80dd-44fdc2737b22"
         />
         <Script
+          id="route-messenger"
           src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts//route-messenger.js"
           strategy="afterInteractive"
           data-target-origin="*"
@@ -319,6 +337,7 @@ export default function RootLayout({
           data-debug="true"
           data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
         />
+
         {children}
         <Analytics />
       </body>
