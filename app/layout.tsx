@@ -283,6 +283,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17614508548"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-17614508548'); </script>
         <meta name="theme-color" content="#ff6b00" />
         <meta name="msapplication-TileColor" content="#ff6b00" />
         <meta name="geo.region" content="MA" />
@@ -295,7 +296,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-        <script
+<title>soufdigital</title>
+          <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
