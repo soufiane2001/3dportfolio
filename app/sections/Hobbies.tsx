@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { MapPin, Play } from "lucide-react";
@@ -67,9 +68,11 @@ const Hobbies = () => {
                 transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
                 className="group relative rounded-2xl overflow-hidden h-64 cursor-default"
               >
-                <img
+                <Image
                   src={meta.image}
                   alt={dest.country}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
@@ -123,6 +126,7 @@ const Hobbies = () => {
                     src={vid.videoUrl}
                     className="w-full h-full object-cover"
                     controls
+                    preload="none"
                     playsInline
                     loop
                   />

@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { posts } from "./posts";
+import { absoluteUrl } from "../lib/site";
 
-const OG_IMAGE = "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778438634/Gemini_Generated_Image_yfw0szyfw0szyfw0-removebg-preview_lft2su.png";
+const OG_IMAGE = absoluteUrl("/soufiane-boutatss-creation-site-web-casablanca-og.png");
 
 export const metadata: Metadata = {
   title: "Blog | Soufiane Boutatss — Développeur Web & Mobile",
   description: "Articles techniques sur React, React Native, Laravel, Next.js et le développement web moderne. Conseils et bonnes pratiques par Soufiane Boutatss.",
-  alternates: { canonical: "https://soufianeboutatssdev.com/blog" },
+  alternates: { canonical: absoluteUrl("/blog") },
   openGraph: {
     title: "Blog — Soufiane Boutatss",
     description: "Articles techniques sur React, React Native, Laravel et Next.js.",
-    url: "https://soufianeboutatssdev.com/blog",
+    url: absoluteUrl("/blog"),
     type: "website",
     images: [
       {

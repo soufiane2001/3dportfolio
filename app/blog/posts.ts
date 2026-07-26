@@ -721,6 +721,115 @@ add_filter('the_title', function($title) {
 <p>Java pour Android reste une compétence précieuse, notamment pour maintenir des applications existantes en entreprise. Pour de nouveaux projets, Kotlin ou React Native offrent une meilleure expérience développeur, mais Java reste une base solide pour comprendre les fondamentaux Android.</p>
 `.trim(),
   },
+  {
+    slug: "creation-site-web-casablanca",
+    title: "Comment choisir un développeur web à Casablanca ?",
+    excerpt: "Les critères concrets pour choisir un développeur web à Casablanca : portfolio, méthode, technologies, SEO, maintenance et clarté du devis.",
+    date: "2026-07-26",
+    readTime: 7,
+    tags: ["Casablanca", "Création Site Web", "Freelance", "Conseils"],
+    image: `${DEVICON}/nextjs/nextjs-original.svg`,
+    content: `
+<p>Choisir un développeur web à Casablanca ne consiste pas seulement à comparer des prix ou une liste de technologies. Le bon prestataire doit comprendre votre activité, vos futurs clients et l'objectif réel du site : obtenir des demandes de devis, vendre en ligne, présenter une expertise ou simplifier un processus métier.</p>
+<h2>Commencez par définir l'objectif du projet</h2>
+<p>Avant de contacter un freelance ou une agence, précisez ce que le site doit accomplir. Une PME qui souhaite générer des contacts n'a pas les mêmes besoins qu'un commerce qui lance une boutique en ligne ou qu'une startup qui développe un produit SaaS. Notez les pages essentielles, les fonctionnalités attendues, les langues, les personnes qui géreront le contenu et les outils à connecter.</p>
+<p>Ce cadrage permet de recevoir des propositions comparables. Un devis très bas peut simplement couvrir un périmètre beaucoup plus limité qu'une offre incluant le design, le responsive, les contenus, le SEO technique, les tests et le déploiement.</p>
+<h2>Vérifiez des réalisations réelles</h2>
+<p>Un portfolio utile montre plus que de belles captures. Cherchez le contexte du projet, le type de client, la solution apportée, les technologies et les fonctionnalités effectivement développées. Visitez les sites encore actifs sur mobile et ordinateur. Lorsqu'un lien n'est plus disponible, une étude de cas documentée peut néanmoins démontrer le travail réalisé.</p>
+<p>Vous pouvez consulter les <a href="/portfolio">réalisations de Soufiane Boutatss</a>, notamment des sites vitrines, un e-commerce avec paiement à la livraison et des applications métier.</p>
+<h2>Évaluez la méthode et la communication</h2>
+<p>Un projet web demande des validations. Demandez comment seront organisés la découverte du besoin, la maquette, le développement, les retours et la mise en ligne. Un interlocuteur direct facilite les décisions, mais il doit aussi être capable d'expliquer les compromis sans jargon inutile.</p>
+<p>Le devis doit préciser le périmètre, les livrables, les responsabilités, les étapes de paiement et ce qui se passe après la livraison. Aucun délai sérieux ne peut être donné sans connaître la complexité et la disponibilité des contenus.</p>
+<h2>Ne négligez pas le SEO et la performance</h2>
+<p>Un site moderne doit fournir son contenu important dans le HTML, utiliser des titres structurés, des métadonnées propres, un sitemap, des images optimisées et une expérience mobile stable. Ces fondations ne garantissent pas une première place Google, mais elles évitent de partir avec un handicap technique.</p>
+<p>Pour une activité locale, le site doit également présenter naturellement la zone de service et rester cohérent avec la fiche Google Business Profile. Évitez les prestataires qui promettent une position numéro un garantie ou proposent des dizaines de pages géographiques presque identiques.</p>
+<h2>Freelance ou agence web à Casablanca ?</h2>
+<p>Un freelance offre généralement une relation directe et peut convenir à un site vitrine, un e-commerce ou une application bien cadrée. Une agence peut être pertinente lorsqu'un projet nécessite simultanément une grande équipe de stratégie, production photo, rédaction et achat média. Le meilleur choix dépend du périmètre, pas du titre utilisé par le prestataire.</p>
+<h2>Les questions à poser avant de signer</h2>
+<ul><li>Qui réalise concrètement le projet ?</li><li>Quels livrables sont inclus ?</li><li>Le site sera-t-il responsive et indexable ?</li><li>Comment les contenus et images seront-ils fournis ?</li><li>Qui possède le domaine, les comptes et le code ?</li><li>Quelles options existent pour la maintenance ?</li></ul>
+<p>Pour cadrer votre besoin, consultez la page <a href="/creation-site-web-casablanca">création de site web à Casablanca</a> ou <a href="/contact">demandez une estimation personnalisée</a>.</p>
+`.trim(),
+  },
+  {
+    slug: "site-vitrine-ou-ecommerce",
+    title: "Site vitrine ou e-commerce : lequel choisir ?",
+    excerpt: "Comparez site vitrine et boutique e-commerce selon vos objectifs, votre catalogue, votre organisation et les attentes de vos clients au Maroc.",
+    date: "2026-07-26",
+    readTime: 6,
+    tags: ["Site Vitrine", "E-commerce", "Maroc", "Stratégie"],
+    image: `${DEVICON}/react/react-original.svg`,
+    content: `
+<p>Un site vitrine présente une activité et génère des contacts. Un site e-commerce permet aux visiteurs de consulter un catalogue et de passer commande. Cette différence paraît simple, mais le bon choix dépend surtout de votre organisation et du parcours que vous souhaitez proposer à vos clients.</p>
+<h2>Quand choisir un site vitrine ?</h2>
+<p>Le site vitrine convient aux consultants, cabinets, artisans, restaurants, centres de formation, entreprises de services et professions libérales. Il explique votre offre, présente vos preuves et facilite la prise de contact par formulaire, email, téléphone ou WhatsApp.</p>
+<p>Il reste adapté lorsqu'un échange est nécessaire avant de vendre : diagnostic, rendez-vous, devis personnalisé ou prestation dont le prix dépend du besoin. Découvrez les éléments d'un <a href="/site-vitrine-casablanca">site vitrine professionnel à Casablanca</a>.</p>
+<h2>Quand choisir une boutique e-commerce ?</h2>
+<p>L'e-commerce devient pertinent lorsque vos produits peuvent être décrits, tarifés et commandés en ligne. Il nécessite un catalogue, des fiches produits, un panier, la gestion des commandes et une organisation claire pour le stock, la livraison et le service client.</p>
+<p>Au Maroc, le paiement à la livraison peut faire partie du parcours, mais il ne suffit pas d'ajouter un bouton de commande. Il faut prévoir la validation, les notifications, le traitement des commandes et les éventuels retours. Les paiements en ligne dépendent quant à eux du prestataire choisi et de ses conditions.</p>
+<h2>Comparez la complexité de gestion</h2>
+<p>Un site vitrine demande surtout de maintenir les services, réalisations et coordonnées à jour. Une boutique nécessite une gestion continue des produits, prix, disponibilités, commandes et promotions. Avant de choisir, identifiez la personne responsable de ces tâches.</p>
+<p>Le budget d'un e-commerce est généralement supérieur parce que les fonctionnalités, tests et contraintes de sécurité sont plus nombreux. Aucun prix exact ne peut être défini sans connaître le catalogue, les paiements, la livraison et les intégrations.</p>
+<h2>Peut-on commencer par un site vitrine ?</h2>
+<p>Oui. Une entreprise peut lancer une présence professionnelle, valider son offre puis ajouter une boutique lorsque le catalogue et l'organisation sont prêts. Cette évolution doit néanmoins être anticipée dans l'architecture afin d'éviter une reconstruction inutile.</p>
+<h2>Les critères de décision</h2>
+<ul><li>Le client peut-il acheter sans échange préalable ?</li><li>Les prix et variantes sont-ils clairement définis ?</li><li>Qui gérera le catalogue et les commandes ?</li><li>Quels modes de paiement et livraison sont réellement disponibles ?</li><li>Le volume attendu justifie-t-il l'automatisation ?</li></ul>
+<p>Consultez la page <a href="/creation-site-ecommerce-casablanca">création de site e-commerce à Casablanca</a> ou présentez votre besoin via la <a href="/contact">page contact</a>.</p>
+`.trim(),
+  },
+  {
+    slug: "seo-site-entreprise-maroc",
+    title: "Comment référencer le site de son entreprise au Maroc ?",
+    excerpt: "Une méthode durable pour améliorer le référencement d’un site d’entreprise au Maroc : technique, contenu, SEO local, autorité et mesure.",
+    date: "2026-07-26",
+    readTime: 8,
+    tags: ["SEO", "Maroc", "Google", "Entreprise"],
+    image: `${DEVICON_LATEST}/google/google-original.svg`,
+    content: `
+<p>Référencer un site d'entreprise au Maroc demande davantage que placer quelques mots-clés dans une page. Google doit pouvoir explorer le site, comprendre l'activité, identifier les pages les plus importantes et trouver des signaux de confiance cohérents sur le web.</p>
+<h2>Assurez des fondations techniques propres</h2>
+<p>Commencez par vérifier l'indexabilité, les codes HTTP, les canonicals, le sitemap, le fichier robots.txt et le rendu HTML. Les contenus commerciaux essentiels ne doivent pas dépendre d'une interaction ou d'un chargement client tardif. Sur mobile, les images, polices et scripts doivent préserver un affichage rapide et stable.</p>
+<p>Google Search Console permet ensuite de soumettre le sitemap, inspecter une URL et suivre les erreurs d'indexation. Elle ne remplace pas le SEO, mais elle montre comment Google perçoit le site.</p>
+<h2>Créez une page pour chaque intention importante</h2>
+<p>Une homepage ne peut pas répondre précisément à toutes les recherches. Une entreprise qui propose plusieurs services doit créer des pages réellement distinctes, chacune centrée sur une intention, des bénéfices, des preuves et des questions spécifiques. Il faut éviter les variantes copiées pour chaque ville ou quartier.</p>
+<p>Les titres, descriptions, H1 et sous-titres doivent décrire naturellement le service. Le maillage interne relie ensuite la homepage, les services, les études de cas et les articles utiles.</p>
+<h2>Travaillez le SEO local</h2>
+<p>Pour une entreprise desservant Casablanca ou une autre ville marocaine, indiquez honnêtement la zone de service. N'inventez pas d'adresse. Une fiche Google Business Profile est utile uniquement si l'activité respecte les règles d'éligibilité. Le nom, le téléphone, le site et la catégorie doivent rester cohérents.</p>
+<p>Les avis doivent venir de vrais clients. Les mentions dans des annuaires professionnels de qualité, chez des partenaires ou sur des sites clients peuvent renforcer l'autorité locale, contrairement aux milliers de backlinks automatisés.</p>
+<h2>Publiez du contenu qui aide à décider</h2>
+<p>Les meilleurs contenus répondent aux questions des prospects : coût, délais, choix entre vitrine et e-commerce, préparation des contenus ou critères de sélection d'un prestataire. Une réponse claire et factuelle peut aussi être comprise par les moteurs IA et les résumés génératifs.</p>
+<h2>Mesurez les demandes, pas seulement les visites</h2>
+<p>Configurez les clics WhatsApp, emails et formulaires comme événements. Suivez dans Search Console les requêtes qui obtiennent des impressions mais peu de clics, puis améliorez titres et contenus. Comparez les résultats sur des périodes suffisamment longues, car le SEO évolue rarement en quelques jours.</p>
+<h2>Ce qu'aucun prestataire sérieux ne garantit</h2>
+<p>Personne ne contrôle l'algorithme de Google ni les actions des concurrents. Une première position garantie est donc une promesse trompeuse. Une démarche white-hat améliore les éléments contrôlables : qualité technique, pertinence, expérience, preuves et autorité.</p>
+<p>Pour un diagnostic technique et local, consultez l'offre de <a href="/referencement-seo-casablanca">référencement SEO à Casablanca</a>.</p>
+`.trim(),
+  },
+  {
+    slug: "site-web-pme-casablanca",
+    title: "Pourquoi une PME à Casablanca a besoin d’un site professionnel",
+    excerpt: "Découvrez comment un site professionnel aide une PME à Casablanca à rassurer, être trouvée localement et générer des demandes qualifiées.",
+    date: "2026-07-26",
+    readTime: 6,
+    tags: ["PME", "Casablanca", "Site Professionnel", "Business"],
+    image: `${DEVICON}/html5/html5-original.svg`,
+    content: `
+<p>À Casablanca, un prospect vérifie souvent une entreprise en ligne avant d'appeler, de visiter un commerce ou de demander un devis. Un site professionnel donne à une PME un espace qu'elle contrôle pour expliquer son offre, montrer ses réalisations et faciliter la prise de contact.</p>
+<h2>Être crédible avant le premier échange</h2>
+<p>Un profil social seul ne répond pas toujours aux questions importantes : services, zone couverte, références, méthode, coordonnées et conditions de contact. Un site structuré rassemble ces informations et reste accessible aux personnes qui ne connaissent pas encore la marque.</p>
+<p>La crédibilité vient d'éléments simples et vérifiables : identité claire, vrais projets, témoignages authentiques, email professionnel, pages à jour et navigation stable sur mobile.</p>
+<h2>Être trouvé pour un besoin précis</h2>
+<p>Chaque service important peut disposer d'une page qui répond à l'intention du prospect. Cette architecture aide Google à comprendre l'activité et permet de partager une adresse plus pertinente qu'une homepage générale.</p>
+<p>Pour une recherche locale, le site doit mentionner Casablanca naturellement et rester cohérent avec la fiche Google Business Profile si l'entreprise est éligible. Il n'est pas nécessaire de créer une page artificielle pour chaque quartier.</p>
+<h2>Transformer la visite en contact</h2>
+<p>Un visiteur doit comprendre rapidement ce que l'entreprise propose, à qui le service s'adresse et quelle action effectuer. Les CTA comme « demander un devis », « appeler » ou « discuter sur WhatsApp » doivent être visibles sans masquer les informations utiles.</p>
+<p>Le formulaire doit rester court, accessible et adapté au type de demande. Sur mobile, les boutons doivent être faciles à utiliser et les pages ne doivent pas être ralenties par des animations ou vidéos inutiles.</p>
+<h2>Choisir le bon format</h2>
+<p>Une PME de services peut commencer par un site vitrine avec pages de services, réalisations, à propos et contact. Un commerce disposant d'un catalogue prêt à vendre peut choisir un e-commerce. Un processus métier particulier peut nécessiter une application web sur mesure.</p>
+<h2>Préparer le projet</h2>
+<ul><li>Définissez les objectifs et les demandes attendues.</li><li>Listez les services prioritaires.</li><li>Rassemblez logos, photos, références et coordonnées.</li><li>Identifiez la personne qui validera les contenus.</li><li>Précisez les outils à connecter.</li></ul>
+<p>Une solution claire vaut mieux qu'une accumulation de fonctionnalités. Pour étudier votre besoin, découvrez la <a href="/creation-site-web-casablanca">création de site web à Casablanca</a> et les <a href="/portfolio">projets déjà réalisés</a>.</p>
+`.trim(),
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

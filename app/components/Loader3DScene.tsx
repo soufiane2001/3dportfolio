@@ -66,7 +66,6 @@ function OrbitingTech({ logo, name, color, radius, speed, angleOffset, inclinati
           }}
           title={name}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={logo} alt={name} width={imgSize} height={imgSize} style={{ objectFit: "contain" }} />
         </div>
       </Html>

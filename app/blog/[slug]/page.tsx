@@ -3,9 +3,11 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { posts, getPostBySlug } from "../posts";
+import { SITE_URL } from "../../lib/site";
 
-const BASE_URL = "https://soufianeboutatssdev.com";
+const BASE_URL = SITE_URL;
 const AUTHOR_IMAGE = "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778438634/Gemini_Generated_Image_yfw0szyfw0szyfw0-removebg-preview_lft2su.png";
+const OG_IMAGE = `${BASE_URL}/soufiane-boutatss-creation-site-web-casablanca-og.png`;
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -32,9 +34,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       tags: post.tags,
       images: [
         {
-          url: AUTHOR_IMAGE,
-          width: 1200,
-          height: 630,
+          url: OG_IMAGE,
+          width: 1730,
+          height: 902,
           alt: post.title,
         },
       ],
@@ -43,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
-      images: [AUTHOR_IMAGE],
+      images: [OG_IMAGE],
     },
   };
 }
@@ -67,9 +69,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     },
     image: {
       "@type": "ImageObject",
-      url: AUTHOR_IMAGE,
-      width: 1200,
-      height: 630,
+      url: OG_IMAGE,
+      width: 1730,
+      height: 902,
     },
     author: {
       "@type": "Person",

@@ -9,14 +9,15 @@ import AdBanner from "../components/AdBanner";
 
 const WHATSAPP_NUMBER = "212689213015";
 
-const Contact = () => {
+const Contact = ({ asPage = false }: { asPage?: boolean }) => {
   const { t } = useLanguage();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSend = () => {
+  const handleSend = (event?: React.FormEvent) => {
+    event?.preventDefault();
     const text = `Hi Soufiane! I'm ${name}${email ? ` (${email})` : ""}.\n\n${message}`;
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
@@ -43,9 +44,15 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <p className="section-subtitle">{t.contact.tag}</p>
+          {asPage ? (
+          <h1 className="section-title text-white">
+            {t.contact.title} <span className="text-gradient">{t.contact.titleGradient}</span>
+          </h1>
+          ) : (
           <h2 className="section-title text-white">
             {t.contact.title} <span className="text-gradient">{t.contact.titleGradient}</span>
           </h2>
+          )}
           <p className="text-white/50 max-w-xl mx-auto mt-4">
             {t.contact.subtitle}
           </p>
@@ -108,14 +115,18 @@ const Contact = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="glass-card p-8 space-y-6">
+            <form className="glass-card p-8 space-y-6" onSubmit={handleSend} data-conversion="generate_lead">
               <div className="space-y-2">
-                <label className="flex items-center gap-2 text-white/60 text-sm font-medium">
+                <label htmlFor="contact-name" className="flex items-center gap-2 text-white/60 text-sm font-medium">
                   <User size={16} />
                   {t.contact.name}
                 </label>
                 <input
+                  id="contact-name"
+                  name="name"
                   type="text"
+                  autoComplete="name"
+                  required
                   placeholder={t.contact.namePlaceholder}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -124,12 +135,16 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="flex items-center gap-2 text-white/60 text-sm font-medium">
+                <label htmlFor="contact-email" className="flex items-center gap-2 text-white/60 text-sm font-medium">
                   <Mail size={16} />
                   {t.contact.email}
                 </label>
                 <input
+                  id="contact-email"
+                  name="email"
                   type="email"
+                  autoComplete="email"
+                  required
                   placeholder={t.contact.emailPlaceholder}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -138,12 +153,15 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="flex items-center gap-2 text-white/60 text-sm font-medium">
+                <label htmlFor="contact-message" className="flex items-center gap-2 text-white/60 text-sm font-medium">
                   <MessageSquare size={16} />
                   {t.contact.message}
                 </label>
                 <textarea
+                  id="contact-message"
+                  name="message"
                   rows={5}
+                  required
                   placeholder={t.contact.messagePlaceholder}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
@@ -152,14 +170,13 @@ const Contact = () => {
               </div>
 
               <button
-                type="button"
-                onClick={handleSend}
+                type="submit"
                 className="w-full py-4 bg-gradient-to-r from-[#ff6b00] to-[#ff8533] text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:shadow-[0_0_30px_rgba(255,107,0,0.4)] transition-all duration-300"
               >
                 <Send size={18} />
                 {t.contact.send}
               </button>
-            </div>
+            </form>
           </motion.div>
         </div>
 

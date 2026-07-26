@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { ArrowDown, Github, Linkedin, Facebook } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 
@@ -10,12 +11,40 @@ const Scene3D = dynamic(() => import("../components/Scene3D"), { ssr: false });
 
 const Hero = () => {
   const { t } = useLanguage();
+  const [show3D, setShow3D] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(
+      "(min-width: 1024px) and (prefers-reduced-motion: no-preference)"
+    );
+    if (!media.matches) return;
+
+    const enable3D = () => setShow3D(true);
+    const requestIdle = window.requestIdleCallback;
+    const idleId =
+      typeof requestIdle === "function"
+        ? requestIdle(enable3D, { timeout: 2000 })
+        : window.setTimeout(enable3D, 1200);
+
+    return () => {
+      if (typeof window.cancelIdleCallback === "function") {
+        window.cancelIdleCallback(idleId);
+      } else {
+        window.clearTimeout(idleId);
+      }
+    };
+  }, []);
+
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <Scene3D />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,107,0,0.16),transparent_35%),radial-gradient(circle_at_20%_30%,rgba(168,85,247,0.12),transparent_30%)]"
+      />
+      {show3D && <Scene3D />}
 
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60 z-[1]" />
 
@@ -41,13 +70,15 @@ const Hero = () => {
             transition={{ delay: 0.3, duration: 0.7 }}
             className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tight mb-6"
           >
-            {t.hero.name}
+            Création de Sites Web
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b00] via-[#ff8533] to-[#a855f7]">
-              {t.hero.nameSub}
+              à Casablanca
             </span>
-            <span className="sr-only">{` — ${t.hero.subtitle} ${t.hero.tag}`}</span>
           </motion.h1>
+          <p className="-mt-2 mb-5 text-sm font-bold uppercase tracking-[.22em] text-white/55">
+            Soufiane Boutatss — Développeur Web Freelance
+          </p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -58,7 +89,7 @@ const Hero = () => {
             <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-[#ff6b00] animate-pulse" />
               <span className="text-white/80 text-sm md:text-base font-medium">
-                {t.hero.subtitle}
+                Sites vitrines, e-commerce, applications web et mobile optimisés pour votre activité
               </span>
             </div>
           </motion.div>
@@ -75,15 +106,14 @@ const Hero = () => {
               rel="noopener noreferrer"
               className="group relative px-8 py-4 bg-[#ff6b00] text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,107,0,0.5)]"
             >
-              <span className="relative z-10">{t.hero.cta}</span>
+              <span className="relative z-10">Demander un devis</span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#ff8533] to-[#ff6b00] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </a>
             <a
-              href="/cv.pdf"
-              download
+              href="#portfolio"
               className="px-8 py-4 border border-white/20 text-white font-bold rounded-full hover:bg-white/5 hover:border-white/40 transition-all duration-300"
             >
-              {t.hero.cv}
+              Voir mes réalisations
             </a>
           </motion.div>
 

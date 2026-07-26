@@ -81,14 +81,37 @@ export default function Analytics() {
         el.getAttribute("href") ||
         el.tagName.toLowerCase();
 
-      if (label) send({ type: "event", name: label });
+      const href = el.getAttribute("href") || "";
+      const eventName = href.includes("wa.me")
+        ? "whatsapp_click"
+        : href.startsWith("mailto:")
+          ? "email_click"
+          : href.startsWith("tel:")
+            ? "phone_click"
+            : el.getAttribute("data-track") || label;
+
+      if (eventName) {
+        send({ type: "event", name: eventName, label });
+        const dataLayer = (window as typeof window & { dataLayer?: Record<string, unknown>[] }).dataLayer;
+        dataLayer?.push({ event: eventName, event_label: label, page_path: path });
+      }
+    };
+    const onSubmit = (e: SubmitEvent) => {
+      const form = e.target as HTMLFormElement | null;
+      if (!form) return;
+      const eventName = form.getAttribute("data-conversion") || "contact_form_submit";
+      send({ type: "event", name: eventName });
+      const dataLayer = (window as typeof window & { dataLayer?: Record<string, unknown>[] }).dataLayer;
+      dataLayer?.push({ event: eventName, page_path: path });
     };
     document.addEventListener("click", onClick, { capture: true });
+    document.addEventListener("submit", onSubmit, { capture: true });
 
     return () => {
       document.removeEventListener("visibilitychange", onHide);
       window.removeEventListener("pagehide", flushDuration);
       document.removeEventListener("click", onClick, { capture: true } as never);
+      document.removeEventListener("submit", onSubmit, { capture: true } as never);
     };
   }, []);
 

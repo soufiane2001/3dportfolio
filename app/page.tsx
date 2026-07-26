@@ -1,8 +1,9 @@
 import dynamic from "next/dynamic";
 import Header from "./sections/Header";
 import Hero from "./sections/Hero";
-import Loader from "./components/Loader";
 import { LanguageProvider } from "./i18n/LanguageContext";
+import LocalServices from "./components/LocalServices";
+import SiteFooter from "./components/SiteFooter";
 
 const About = dynamic(() => import("./sections/About"));
 const Services = dynamic(() => import("./sections/Services"));
@@ -16,10 +17,10 @@ const Contact = dynamic(() => import("./sections/Contact"));
 export default function Home() {
   return (
     <LanguageProvider>
-      <Loader />
       <div className="flex min-h-screen flex-col bg-black">
         <Header />
         <Hero />
+        <LocalServices />
         <About />
         <Services />
         <Skills />
@@ -28,6 +29,7 @@ export default function Home() {
         <Testimonials />
         <Hobbies />
         <Contact />
+        <SiteFooter />
       </div>
     </LanguageProvider>
   );
