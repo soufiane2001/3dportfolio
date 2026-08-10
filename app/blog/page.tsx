@@ -6,7 +6,7 @@ import { absoluteUrl } from "../lib/site";
 const OG_IMAGE = absoluteUrl("/soufiane-boutatss-creation-site-web-casablanca-og.png");
 
 export const metadata: Metadata = {
-  title: "Blog | Soufiane Boutatss — Développeur Web & Mobile",
+  title: { absolute: "Blog | Soufiane Boutatss — Développeur Web & Mobile" },
   description: "Articles techniques sur React, React Native, Laravel, Next.js et le développement web moderne. Conseils et bonnes pratiques par Soufiane Boutatss.",
   alternates: { canonical: absoluteUrl("/blog") },
   openGraph: {
@@ -57,7 +57,7 @@ export default function BlogPage() {
               className="group block glass-card p-8 hover:border-[#ff6b00]/30 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-4">
-                <img src={post.image} alt={post.tags[0]} width={28} height={28} className="object-contain" />
+                <img src={post.image} alt="" width={28} height={28} loading="lazy" decoding="async" className="object-contain" />
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag) => (
                     <span key={tag} className="text-xs px-2 py-0.5 rounded-full bg-[#ff6b00]/10 text-[#ff6b00] border border-[#ff6b00]/20">

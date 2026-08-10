@@ -18,9 +18,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getPostBySlug(slug);
   if (!post) return {};
   return {
-    title: `${post.title} | Blog Soufiane Boutatss`,
+    title: { absolute: `${post.title} | Soufiane Boutatss` },
     description: post.excerpt,
-    keywords: post.tags,
     authors: [{ name: "Soufiane Boutatss", url: BASE_URL }],
     alternates: { canonical: `${BASE_URL}/blog/${post.slug}` },
     openGraph: {
@@ -55,9 +54,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const jsonLd = {
+  const jsonLd = [{
     "@context": "https://schema.org",
-    "@type": "TechArticle",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
@@ -90,7 +89,15 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     keywords: post.tags.join(", "),
     inLanguage: "fr-FR",
     timeRequired: `PT${post.readTime}M`,
-  };
+  }, {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: BASE_URL },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${BASE_URL}/blog/${post.slug}` },
+    ],
+  }];
 
   return (
     <main className="min-h-screen bg-black pt-32 pb-24">

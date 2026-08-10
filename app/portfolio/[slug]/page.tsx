@@ -15,17 +15,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const project = getCaseStudy((await params).slug);
   if (!project) return {};
   return {
-    title: `${project.title} | Étude de cas`,
+    title: { absolute: `${project.title} | Étude de cas` },
     description: project.summary,
     alternates: { canonical: absoluteUrl(`/portfolio/${project.slug}`) },
     openGraph: { title: project.title, description: project.summary, url: absoluteUrl(`/portfolio/${project.slug}`), images: [{ url: project.image, alt: project.title }] },
+    twitter: { card: "summary_large_image", title: project.title, description: project.summary, images: [project.image] },
   };
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
   const project = getCaseStudy((await params).slug);
   if (!project) notFound();
-  const jsonLd = {
+  const jsonLd = [{
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     name: project.title,
@@ -34,7 +35,15 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
     creator: { "@type": "Person", "@id": `${absoluteUrl()}/#person`, name: "Soufiane Boutatss" },
     image: project.image,
     keywords: project.technologies.join(", "),
-  };
+  }, {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: absoluteUrl() },
+      { "@type": "ListItem", position: 2, name: "Portfolio", item: absoluteUrl("/portfolio") },
+      { "@type": "ListItem", position: 3, name: project.title, item: absoluteUrl(`/portfolio/${project.slug}`) },
+    ],
+  }];
   return (
     <>
       <SiteHeader />

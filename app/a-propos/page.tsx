@@ -3,13 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
-import { absoluteUrl } from "../lib/site";
+import { pageMetadata } from "../lib/site";
 
-export const metadata: Metadata = {
-  title: "À Propos de Soufiane Boutatss | Développeur Web",
-  description: "Découvrez le parcours, l’expérience, les compétences et la méthode de travail de Soufiane Boutatss, développeur web et mobile Full Stack.",
-  alternates: { canonical: absoluteUrl("/a-propos") },
-};
+export const metadata: Metadata = pageMetadata("/a-propos", "À propos de Soufiane Boutatss | Développeur Web", "Découvrez le parcours, l’expérience, les compétences et la méthode de travail de Soufiane Boutatss, développeur web et mobile Full Stack.");
 
 export default function AboutPage() {
   return (

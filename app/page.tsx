@@ -1,9 +1,17 @@
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Header from "./sections/Header";
 import Hero from "./sections/Hero";
 import { LanguageProvider } from "./i18n/LanguageContext";
 import LocalServices from "./components/LocalServices";
 import SiteFooter from "./components/SiteFooter";
+import { pageMetadata } from "./lib/site";
+
+export const metadata: Metadata = pageMetadata(
+  "/",
+  "Développeur Web Freelance Casablanca | Soufiane Boutatss",
+  "Développeur web freelance Full Stack à Casablanca, j’accompagne entreprises et PME au Maroc pour leurs sites et applications. Discutons de votre projet."
+);
 
 const About = dynamic(() => import("./sections/About"));
 const Services = dynamic(() => import("./sections/Services"));

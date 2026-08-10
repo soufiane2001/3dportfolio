@@ -4,13 +4,9 @@ import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import { caseStudies } from "../lib/portfolio";
-import { absoluteUrl } from "../lib/site";
+import { pageMetadata } from "../lib/site";
 
-export const metadata: Metadata = {
-  title: "Portfolio Développeur Web | Sites & Applications",
-  description: "Découvrez des sites vitrines, e-commerce, applications web, mobiles et logiciels réalisés par Soufiane Boutatss.",
-  alternates: { canonical: absoluteUrl("/portfolio") },
-};
+export const metadata: Metadata = pageMetadata("/portfolio", "Portfolio Développeur Web | Sites & Applications", "Découvrez des sites vitrines, e-commerce, applications web, mobiles et logiciels réalisés par Soufiane Boutatss, avec leur contexte et leurs technologies.");
 
 export default function PortfolioPage() {
   return (

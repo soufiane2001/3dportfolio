@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import Analytics from "./components/Analytics";
-import { SITE_URL } from "./lib/site";
+import { OG_IMAGE, SITE_URL } from "./lib/site";
 
-const OG_IMAGE = "/soufiane-boutatss-creation-site-web-casablanca-og.png";
 const GOOGLE_ADS_ID = "AW-17614508548";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "Création Site Web Casablanca | Soufiane Boutatss", template: "%s | Soufiane Boutatss" },
+  title: { default: "Développeur Web Freelance Casablanca | Soufiane Boutatss", template: "%s | Soufiane Boutatss" },
   description: "Développeur web freelance à Casablanca spécialisé dans la création de sites vitrines, e-commerce, applications web et mobile. Demandez votre devis.",
   applicationName: "Soufiane Boutatss — Développeur Web Freelance",
   authors: [{ name: "Soufiane Boutatss", url: SITE_URL }],
@@ -20,12 +19,12 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
   openGraph: {
     type: "website", locale: "fr_MA", url: SITE_URL, siteName: "Soufiane Boutatss",
-    title: "Création Site Web Casablanca | Soufiane Boutatss",
+    title: "Développeur Web Freelance Casablanca | Soufiane Boutatss",
     description: "Sites vitrines, boutiques e-commerce, applications web et mobile pour entreprises et entrepreneurs à Casablanca et au Maroc.",
     images: [{ url: OG_IMAGE, width: 1730, height: 902, alt: "Création de sites web à Casablanca par Soufiane Boutatss" }],
   },
   twitter: {
-    card: "summary_large_image", title: "Création Site Web Casablanca | Soufiane Boutatss",
+    card: "summary_large_image", title: "Développeur Web Freelance Casablanca | Soufiane Boutatss",
     description: "Développeur web freelance : sites vitrines, e-commerce et applications à Casablanca.", images: [OG_IMAGE],
   },
   icons: { icon: [{ url: "/favicon.svg", type: "image/svg+xml" }], shortcut: "/favicon.svg", apple: "/favicon.svg" },
@@ -34,7 +33,7 @@ export const metadata: Metadata = {
 const jsonLd = [
   {
     "@context": "https://schema.org", "@type": "Person", "@id": `${SITE_URL}/#person`,
-    name: "Soufiane Boutatss", url: SITE_URL, image: OG_IMAGE,
+    name: "Soufiane Boutatss", url: SITE_URL, image: `${SITE_URL}${OG_IMAGE}`,
     jobTitle: "Développeur Web & Mobile / Full Stack",
     description: "Développeur web freelance et créateur de sites internet proposant ses services à Casablanca et au Maroc.",
     knowsAbout: ["Web Development", "React", "Next.js", "Laravel", "PHP", "MySQL", "React Native", "Technical SEO"],
