@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight, Github, Play, X } from "lucide-react";
+import { useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { ChevronLeft, ChevronRight, Play, ExternalLink, Github, X } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 
 interface Project {
@@ -19,259 +19,73 @@ interface Project {
 }
 
 const projects: Project[] = [
-  {
-    id: 1,
-    title: "Ecommerce Website",
-    description: "Full-featured ecommerce platform with cash on delivery",
-    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369049/Capture_d_%C3%A9cran_2026-05-10_022349_pn3hp8.png",
-
-    demoUrl: "https://bdmstore.store/ecom/index.php",
-    repoUrl: "https://github.com/yourusername/portfolio",
-    tech: ["PHP", "CSS", "MySQL"],
-  },
-  {
-    id: 2,
-    title: "Reby Art Portfolio",
-    description: "Elegant portfolio for a French painter",
-    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369125/Capture_d_%C3%A9cran_2026-05-10_022508_ecupwg.png",
-    demoUrl: "https://rebyart.vercel.app/",
-    repoUrl: "https://github.com/soufiane2001/rebyart",
-    tech: ["React", "JavaScript"],
-  },
-  {
-    id: 3,
-    title: "HighUp Counselling",
-    description: "Professional psychology services website",
-    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369183/Capture_d_%C3%A9cran_2026-05-10_022608_m8mer3.png",
-    demoUrl: "https://www.highupcounselling.ca/",
-    tech: ["Wix"],
-  },
-  {
-    id: 4,
-    title: "Cash Management App",
-    description: "Mobile app for expense tracking",
-    image: "/cash-management-app.svg",
-    videoUrl: "https://www.youtube.com/embed/F3Pjh49qdzE?si=0fTnYNxOnF-oEWd8",
-    repoUrl: "https://github.com/soufiane2001/cashappv4",
-    tech: ["React Native expo ", "Firebase"],
-  },
-  {
-    id: 5,
-    title: "Patient Management",
-    description: "Healthcare management system",
-    image: "/patient-management-app.svg",
-    videoUrl: "https://www.youtube.com/embed/FiacG53K6fs?si=3VGAVs-gx6k6hi1_",
-    tech: ["Electron js"],
-  },
-  {
-    id: 6,
-    title: "Horea Formation",
-    description: "Training center website",
-    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369246/Capture_d_%C3%A9cran_2026-05-10_022707_yrmkgs.png",
-    demoUrl: "https://www.horea-formation.com/",
-    tech: ["Wordpress"],
-  }, 
-  {
-    id: 7,
-    title: "Dar Mooris",
-    description: "textile website",
-    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774035266/Capture_d_%C3%A9cran_2026-03-20_213032_ksgiwn.png",
-    demoUrl: "https://darmooris.ma/",
-    tech: ["php"],
-  },
-   {
-    id: 8,
-    title: "gamlastan",
-    description: "shoping website",
-    image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1775161310/Capture_d_%C3%A9cran_2026-04-02_231851_senzhp.png",
-    demoUrl: "https://gamlastanshop.space/",
-    tech: ["nextjs"]
-  }
+  { id: 1, title: "BDM Store", description: "Plateforme e-commerce complète pensée pour convertir, avec paiement à la livraison.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369049/Capture_d_%C3%A9cran_2026-05-10_022349_pn3hp8.png", demoUrl: "https://bdmstore.store/ecom/index.php", tech: ["PHP", "CSS", "MySQL"] },
+  { id: 2, title: "Reby Art", description: "Un portfolio sobre et immersif qui laisse toute la place au travail de l’artiste.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369125/Capture_d_%C3%A9cran_2026-05-10_022508_ecupwg.png", demoUrl: "https://rebyart.vercel.app/", repoUrl: "https://github.com/soufiane2001/rebyart", tech: ["React", "JavaScript"] },
+  { id: 3, title: "HighUp Counselling", description: "Une présence digitale rassurante et accessible pour un cabinet de psychologie.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369183/Capture_d_%C3%A9cran_2026-05-10_022608_m8mer3.png", demoUrl: "https://www.highupcounselling.ca/", tech: ["Wix"] },
+  { id: 4, title: "Cash Management", description: "Application mobile claire et rapide pour suivre ses dépenses au quotidien.", image: "/cash-management-app.svg", videoUrl: "https://www.youtube.com/embed/F3Pjh49qdzE?si=0fTnYNxOnF-oEWd8", repoUrl: "https://github.com/soufiane2001/cashappv4", tech: ["React Native", "Firebase"] },
+  { id: 5, title: "Patient Management", description: "Outil desktop centralisant le suivi et la gestion des dossiers patients.", image: "/patient-management-app.svg", videoUrl: "https://www.youtube.com/embed/FiacG53K6fs?si=3VGAVs-gx6k6hi1_", tech: ["Electron.js"] },
+  { id: 6, title: "Horea Formation", description: "Site institutionnel structuré pour présenter les programmes et générer des contacts.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369246/Capture_d_%C3%A9cran_2026-05-10_022707_yrmkgs.png", demoUrl: "https://www.horea-formation.com/", tech: ["WordPress"] },
+  { id: 7, title: "Dar Mooris", description: "Vitrine digitale raffinée pour une maison textile marocaine.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774035266/Capture_d_%C3%A9cran_2026-03-20_213032_ksgiwn.png", demoUrl: "https://darmooris.ma/", tech: ["PHP"] },
+  { id: 8, title: "Gamlastan", description: "Expérience shopping moderne, fluide et pensée pour tous les écrans.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1775161310/Capture_d_%C3%A9cran_2026-04-02_231851_senzhp.png", demoUrl: "https://gamlastanshop.space/", tech: ["Next.js"] },
+  { id: 9, title: "Dr Boutatss Nora", description: "Site médical clair et rassurant pour présenter l’expertise du cabinet et faciliter la prise de rendez-vous.", image: "/project-dr-boutatss-nora.png", demoUrl: "https://www.drboutatssnora.com/", tech: ["Site vitrine", "Responsive", "SEO local"] },
+  { id: 10, title: "Pizza Napoli Toul", description: "Une vitrine gourmande et chaleureuse avec menu, horaires et informations pratiques immédiatement accessibles.", image: "/project-pizza-napoli-toul.png", demoUrl: "https://pizzanapoli-toul.fr/", tech: ["Web design", "Responsive", "SEO local"] },
 ];
 
-const Projects = () => {
-  const { t } = useLanguage();
-  const [currentIndex, setCurrentIndex] = useState(0);
+export default function Projects() {
+  const { t, locale } = useLanguage();
   const [videoModal, setVideoModal] = useState<string | null>(null);
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-
-  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % projects.length);
-  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 });
+  const reduceMotion = useReducedMotion();
+  const isRtl = locale === "ar";
 
   return (
-    <section id="portfolio" className="relative py-32 bg-black overflow-hidden" aria-label="Projets et réalisations de Soufiane Boutatss">
-      <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ff6b00]/5 rounded-full blur-[200px]" />
-      </div>
-
+    <section id="portfolio" className="relative overflow-hidden bg-[#050505] py-20 sm:py-28 lg:py-36" dir={isRtl ? "rtl" : "ltr"} aria-label="Projets et réalisations">
+      <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(255,255,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] [background-size:72px_72px]" />
       <div className="container relative z-10" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="section-subtitle">{t.projects.tag}</p>
-          <h2 className="section-title text-white">
-            {t.projects.title} <span className="text-gradient">{t.projects.titleGradient}</span>
-          </h2>
-        </motion.div>
-
-        <div className="relative flex items-center justify-center min-h-[600px]">
-          <button
-            onClick={prevSlide}
-            className="absolute left-0 md:left-8 z-40 p-4 rounded-full bg-white/5 border border-white/10 hover:bg-[#ff6b00]/20 hover:border-[#ff6b00]/50 transition-all duration-300"
-          >
-            <ChevronLeft className="w-6 h-6 text-white" />
-          </button>
-
-          <button
-            onClick={nextSlide}
-            className="absolute right-0 md:right-8 z-40 p-4 rounded-full bg-white/5 border border-white/10 hover:bg-[#ff6b00]/20 hover:border-[#ff6b00]/50 transition-all duration-300"
-          >
-            <ChevronRight className="w-6 h-6 text-white" />
-          </button>
-
-          <div className="relative w-full max-w-5xl flex items-center justify-center">
-            {projects.map((project, index) => {
-              const diff = (index - currentIndex + projects.length) % projects.length;
-              let position = "hidden";
-              if (diff === 0) position = "center";
-              else if (diff === 1) position = "right";
-              else if (diff === projects.length - 1) position = "left";
-
-              return (
-                <motion.div
-                  key={project.id}
-                  initial={false}
-                  animate={{
-                    x: position === "center" ? 0 : position === "right" ? "50%" : "-50%",
-                    scale: position === "center" ? 1 : 0.8,
-                    opacity: position === "center" ? 1 : position === "hidden" ? 0 : 0.3,
-                    zIndex: position === "center" ? 30 : 10,
-                  }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className={`absolute w-full max-w-lg ${
-                    position === "hidden" ? "pointer-events-none" : ""
-                  }`}
-                >
-                  <div className="glass-card overflow-hidden group">
-                    <div className="relative h-64 overflow-hidden">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                    </div>
-
-                    <div className="p-8">
-                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[#ff6b00] transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-white/50 mb-6">{project.description}</p>
-
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.tech.map((t) => (
-                          <span
-                            key={t}
-                            className="px-3 py-1 text-xs font-medium text-white/70 bg-white/5 border border-white/10 rounded-full"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="flex flex-wrap gap-3">
-                        {project.videoUrl && (
-                          <button
-                            onClick={() => setVideoModal(project.videoUrl!)}
-                            className="flex items-center gap-2 px-4 py-2 bg-[#ff6b00] text-white text-sm font-bold rounded-full hover:shadow-[0_0_20px_rgba(255,107,0,0.4)] transition-all"
-                          >
-                            <Play size={14} fill="white" /> Video
-                          </button>
-                        )}
-                        {project.demoUrl && (
-                          <a
-                            href={project.demoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 text-white text-sm font-bold rounded-full hover:bg-white/10 transition-all"
-                          >
-                            <ExternalLink size={14} /> Demo
-                          </a>
-                        )}
-                        {project.repoUrl && (
-                          <a
-                            href={project.repoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 text-white text-sm font-bold rounded-full hover:bg-white/10 transition-all"
-                          >
-                            <Github size={14} /> Code
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+        <div className="mb-12 grid items-end gap-8 border-b border-white/10 pb-8 md:grid-cols-[1fr_auto] md:mb-16">
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: reduceMotion ? 0 : .6 }}>
+            <p className="mb-4 text-xs font-bold uppercase tracking-[.28em] text-[#ff6b00]">{t.projects.tag} / 2026</p>
+            <h2 className="max-w-3xl text-4xl font-black leading-[.98] tracking-[-.055em] text-white sm:text-6xl lg:text-7xl">
+              {t.projects.title} <span className="text-white/35">{t.projects.titleGradient}</span>
+            </h2>
+          </motion.div>
+          <p className="max-w-sm text-sm leading-7 text-white/50 md:text-right">Une sélection de produits digitaux conçus pour être beaux, utiles et efficaces.</p>
         </div>
 
-        <div className="flex justify-center gap-2 mt-12">
-          {projects.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentIndex(i)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i === currentIndex ? "w-8 bg-[#ff6b00]" : "w-2 bg-white/20 hover:bg-white/40"
-              }`}
-            />
+        <div className="grid gap-x-6 gap-y-10 md:grid-cols-2 lg:gap-x-8 lg:gap-y-16">
+          {projects.map((project, index) => (
+            <motion.article key={project.id} initial={{ opacity: 0, y: 36 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: reduceMotion ? 0 : .55, delay: reduceMotion ? 0 : Math.min(index * .06, .3) }} className={index === 0 || index === 5 ? "md:col-span-2" : ""}>
+              <div className="group relative overflow-hidden rounded-[1.25rem] border border-white/10 bg-[#0b0b0b]">
+                <div className={`relative overflow-hidden ${index === 0 || index === 5 ? "aspect-[16/10] sm:aspect-[16/8]" : "aspect-[4/3]"}`}>
+                  <Image src={project.image} alt={`Aperçu du projet ${project.title}`} fill sizes={index === 0 || index === 5 ? "(max-width: 768px) 100vw, 90vw" : "(max-width: 768px) 100vw, 45vw"} className="object-cover object-top transition duration-700 ease-out group-hover:scale-[1.025]" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10" />
+                  <div className="absolute left-4 top-4 flex h-9 min-w-9 items-center justify-center rounded-full border border-white/20 bg-black/50 px-3 text-xs font-bold text-white backdrop-blur-md sm:left-6 sm:top-6">0{index + 1}</div>
+                  {(project.demoUrl || project.videoUrl) && <a href={project.demoUrl || "#"} onClick={project.videoUrl ? (e) => { e.preventDefault(); setVideoModal(project.videoUrl!); } : undefined} target={project.demoUrl ? "_blank" : undefined} rel="noopener noreferrer" aria-label={`${project.demoUrl ? t.projects.demo : t.projects.video} — ${project.title}`} className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-white text-black transition hover:scale-105 hover:bg-[#ff6b00] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ff6b00] sm:right-6 sm:top-6">
+                    {project.videoUrl ? <Play size={17} fill="currentColor" /> : <ArrowUpRight size={19} />}
+                  </a>}
+                </div>
+                <div className="grid gap-5 p-5 sm:p-7 lg:grid-cols-[1fr_auto] lg:items-end">
+                  <div>
+                    <h3 className="mb-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">{project.title}</h3>
+                    <p className="max-w-xl text-sm leading-6 text-white/55 sm:text-base">{project.description}</p>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2 lg:justify-end">
+                    {project.tech.map((tech) => <span key={tech} className="border-b border-white/20 px-1 py-1 text-[11px] font-semibold uppercase tracking-[.14em] text-white/55">{tech}</span>)}
+                    {project.repoUrl && <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.projects.code} — ${project.title}`} className="ml-1 rounded-full border border-white/15 p-2 text-white/65 transition hover:border-[#ff6b00] hover:text-[#ff6b00] focus-visible:outline-2 focus-visible:outline-[#ff6b00]"><Github size={16} /></a>}
+                  </div>
+                </div>
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>
 
-      <AnimatePresence>
-        {videoModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[300] flex items-center justify-center bg-black/95 backdrop-blur-sm"
-            onClick={() => setVideoModal(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-4xl aspect-video mx-4"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setVideoModal(null)}
-                className="absolute -top-12 right-0 p-2 text-white hover:text-[#ff6b00] transition-colors"
-              >
-                <X className="w-8 h-8" />
-              </button>
-              <iframe
-                src={videoModal}
-                title="Project Video"
-                className="w-full h-full rounded-2xl"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <AnimatePresence>{videoModal && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[300] grid place-items-center bg-black/95 p-4 backdrop-blur-sm" onClick={() => setVideoModal(null)} role="dialog" aria-modal="true" aria-label={t.projects.video}>
+        <motion.div initial={{ scale: reduceMotion ? 1 : .96, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: reduceMotion ? 1 : .96, opacity: 0 }} className="relative aspect-video w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+          <button onClick={() => setVideoModal(null)} className="absolute -top-12 right-0 rounded-full p-2 text-white transition hover:text-[#ff6b00] focus-visible:outline-2 focus-visible:outline-[#ff6b00]" aria-label="Fermer"><X size={28} /></button>
+          <iframe src={videoModal} title={t.projects.video} className="h-full w-full rounded-xl border border-white/10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+        </motion.div>
+      </motion.div>}</AnimatePresence>
     </section>
   );
-};
-
-export default Projects;
+}

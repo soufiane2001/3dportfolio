@@ -1,94 +1,51 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight, Globe, Monitor, Palette, Server, Smartphone, Zap, type LucideIcon } from "lucide-react";
 import { useInView } from "react-intersection-observer";
-import { Globe, Smartphone, Server, Palette, Monitor, Zap, type LucideIcon } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 
 const ICONS: Record<string, LucideIcon> = { Globe, Smartphone, Server, Palette, Monitor, Zap };
 
-const Services = () => {
+export default function Services() {
   const { t, locale } = useLanguage();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 });
+  const reduceMotion = useReducedMotion();
   const isRtl = locale === "ar";
 
   return (
-    <section
-      id="services"
-      className="relative py-32 bg-black overflow-hidden"
-      dir={isRtl ? "rtl" : "ltr"}
-      aria-label="Services"
-    >
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#ff6b00]/[0.03] to-transparent pointer-events-none" />
-
+    <section id="services" className="relative overflow-hidden bg-black py-20 sm:py-28 lg:py-36" dir={isRtl ? "rtl" : "ltr"} aria-label="Services">
       <div className="container relative z-10" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-20"
-        >
-          <p className="section-subtitle">{t.services.tag}</p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6">
-            {t.services.title}{" "}
-            <span className="text-gradient">{t.services.titleGradient}</span>
-          </h2>
-          <p className="text-white/50 text-lg max-w-2xl mx-auto">{t.services.subtitle}</p>
-        </motion.div>
+        <div className="grid gap-10 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
+          <motion.header initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: reduceMotion ? 0 : .6 }} className="lg:sticky lg:top-28 lg:h-fit">
+            <p className="mb-5 text-xs font-bold uppercase tracking-[.28em] text-[#ff6b00]">{t.services.tag}</p>
+            <h2 className="mb-6 text-4xl font-black leading-[.98] tracking-[-.05em] text-white sm:text-6xl">
+              {t.services.title}<br /><span className="text-white/35">{t.services.titleGradient}</span>
+            </h2>
+            <p className="mb-8 max-w-md text-base leading-7 text-white/50">{t.services.subtitle}</p>
+            <a href="#contact" className="group inline-flex items-center gap-3 border-b border-[#ff6b00] pb-2 text-sm font-bold uppercase tracking-[.12em] text-white transition hover:text-[#ff6b00] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ff6b00]">
+              {t.services.cta}<ArrowUpRight size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </a>
+          </motion.header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {t.services.items.map((service, i) => {
-            const Icon = ICONS[service.icon];
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="group relative glass-card p-8 rounded-3xl border border-white/5 hover:border-[#ff6b00]/30 transition-all duration-500 hover:-translate-y-1"
-              >
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#ff6b00]/0 to-transparent group-hover:from-[#ff6b00]/5 transition-all duration-500" />
-
-                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-[#ff6b00]/10 border border-[#ff6b00]/20 flex items-center justify-center mb-6 group-hover:bg-[#ff6b00]/20 transition-colors duration-300">
-                    {Icon && <Icon className="w-7 h-7 text-[#ff6b00]" />}
-                  </div>
-
-                  <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed mb-6">{service.description}</p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {service.tags.map((tag, j) => (
-                      <span
-                        key={j}
-                        className="px-3 py-1 text-xs font-medium text-white/60 border border-white/10 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+          <div className="border-t border-white/15">
+            {t.services.items.map((service, index) => {
+              const Icon = ICONS[service.icon];
+              return <motion.article key={service.title} initial={{ opacity: 0, x: isRtl ? 24 : -24 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: reduceMotion ? 0 : .55, delay: reduceMotion ? 0 : index * .07 }} className="group grid gap-5 border-b border-white/15 py-7 transition-colors hover:border-[#ff6b00]/60 sm:grid-cols-[4rem_1fr] sm:py-9">
+                <div className="flex items-start justify-between sm:block">
+                  <span className="text-xs font-semibold tracking-[.18em] text-white/30">0{index + 1}</span>
+                  <div className="mt-0 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-[#ff6b00] transition group-hover:border-[#ff6b00] group-hover:bg-[#ff6b00] group-hover:text-white sm:mt-5">{Icon && <Icon size={20} strokeWidth={1.7} />}</div>
                 </div>
-              </motion.div>
-            );
-          })}
+                <div>
+                  <h3 className="mb-3 text-2xl font-bold tracking-tight text-white transition group-hover:translate-x-1 sm:text-3xl">{service.title}</h3>
+                  <p className="mb-5 max-w-2xl text-sm leading-6 text-white/50 sm:text-base sm:leading-7">{service.description}</p>
+                  <div className="flex flex-wrap gap-x-5 gap-y-2">{service.tags.map((tag) => <span key={tag} className="text-[11px] font-semibold uppercase tracking-[.14em] text-white/35 transition group-hover:text-white/60">{tag}</span>)}</div>
+                </div>
+              </motion.article>;
+            })}
+          </div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="text-center mt-16"
-        >
-          <a href="#contact" className="btn-primary inline-flex">
-            {t.services.cta}
-          </a>
-        </motion.div>
       </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
     </section>
   );
-};
-
-export default Services;
+}
