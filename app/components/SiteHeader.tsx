@@ -18,7 +18,7 @@ export default function SiteHeader() {
           </Link>
         </nav>
         <details className="relative lg:hidden">
-          <summary className="cursor-pointer list-none rounded-lg border border-white/15 px-4 py-2 text-sm text-white">
+          <summary className="cursor-pointer list-none rounded-lg border border-white/15 px-4 py-2 text-sm text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ff6b00]">
             Menu
           </summary>
           <nav className="absolute right-0 mt-3 w-72 rounded-2xl border border-white/10 bg-[#0a0a0a] p-4 shadow-2xl">

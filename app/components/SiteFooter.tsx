@@ -30,7 +30,7 @@ export default function SiteFooter() {
           <h2 className="text-sm font-bold uppercase tracking-wider text-white">Contact</h2>
           <p className="mt-4 text-sm text-white/55">Zone de service : Casablanca, Maroc</p>
           <a className="mt-2 block text-sm text-white/70 hover:text-[#ff6b00]" href={`mailto:${EMAIL}`}>{EMAIL}</a>
-          <a className="mt-4 inline-block rounded-full border border-[#ff6b00]/50 px-4 py-2 text-sm font-bold text-[#ff6b00]" href={whatsappUrl("Bonjour Soufiane, je souhaite discuter de mon projet web.")}>WhatsApp</a>
+          <a className="mt-4 inline-block rounded-full border border-[#ff6b00]/50 px-4 py-2 text-sm font-bold text-[#ff8a3d]" href={whatsappUrl("Bonjour Soufiane, je souhaite discuter de mon projet web.")} target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </div>
       </div>
       <div className="border-t border-white/10 py-5 text-center text-xs text-white/35">

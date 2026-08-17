@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
+import { caseStudies } from "../lib/portfolio";
 import { absoluteUrl, serviceLinks, whatsappUrl } from "../lib/site";
 
 export type ServicePageData = {
@@ -40,15 +42,6 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
         { "@type": "ListItem", position: 2, name: data.title, item: pageUrl },
       ],
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: data.faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: { "@type": "Answer", text: faq.answer },
-      })),
-    },
   ];
   return (
     <>
@@ -58,6 +51,13 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
         <section className="relative overflow-hidden border-b border-white/10 py-24 md:py-32">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(255,107,0,.18),transparent_35%),radial-gradient(circle_at_20%_70%,rgba(168,85,247,.12),transparent_30%)]" />
           <div className="container relative max-w-5xl">
+            <nav aria-label="Fil d’Ariane" className="mb-8 text-sm text-white/55">
+              <ol className="flex flex-wrap items-center gap-2">
+                <li><Link href="/" className="hover:text-white">Accueil</Link></li>
+                <li aria-hidden="true">/</li>
+                <li aria-current="page" className="text-white/80">{data.title}</li>
+              </ol>
+            </nav>
             <p className="mb-5 text-sm font-bold uppercase tracking-[.28em] text-[#ff6b00]">{data.eyebrow}</p>
             <h1 className="max-w-4xl text-4xl font-black leading-tight md:text-6xl lg:text-7xl">{data.title}</h1>
             <p className="mt-7 max-w-3xl text-lg leading-8 text-white/65">{data.intro}</p>
@@ -68,6 +68,29 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
             </div>
           </div>
         </section>
+
+        {data.slug === "creation-site-web-casablanca" && (
+          <section className="container py-20" aria-labelledby="types-sites">
+            <p className="section-subtitle">Un projet adapté à votre objectif</p>
+            <h2 id="types-sites" className="mt-3 text-3xl font-black md:text-4xl">Quel type de site souhaitez-vous créer ?</h2>
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                ["Site vitrine", "Présenter votre activité, vos services et vos preuves pour générer des demandes qualifiées.", "/site-vitrine-casablanca"],
+                ["Boutique e-commerce", "Vendre un catalogue avec un parcours de commande clair et une administration adaptée.", "/creation-site-ecommerce-casablanca"],
+                ["Landing page", "Concentrer une campagne ou une offre sur une page rapide avec un appel à l’action précis.", "/contact"],
+                ["Plateforme web", "Digitaliser un processus métier avec des rôles, des données, un tableau de bord et des API.", "/developpement-web-sur-mesure-casablanca"],
+                ["Refonte", "Clarifier le positionnement, moderniser l’expérience et corriger les freins techniques d’un site existant.", "/contact"],
+                ["Maintenance", "Sécuriser, corriger et faire évoluer un site après sa mise en ligne selon un périmètre convenu.", "/contact"],
+              ].map(([title, text, href]) => (
+                <article key={title} className="rounded-2xl border border-white/10 p-6">
+                  <h3 className="text-xl font-bold">{title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-white/60">{text}</p>
+                  <Link href={href} className="mt-5 inline-block text-sm font-bold text-[#ff8a3d] hover:text-white">En savoir plus →</Link>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="container grid gap-12 py-20 lg:grid-cols-[1.1fr_.9fr]">
           <div>
@@ -108,6 +131,31 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
             ))}
           </ol>
         </section>
+
+        {data.slug === "creation-site-web-casablanca" && (
+          <section className="border-y border-white/10 bg-white/[.02] py-20" aria-labelledby="preuves">
+            <div className="container">
+              <p className="section-subtitle">Projets réels</p>
+              <h2 id="preuves" className="mt-3 text-3xl font-black md:text-4xl">Des réalisations web à examiner avant de choisir</h2>
+              <p className="mt-5 max-w-3xl leading-7 text-white/60">Chaque étude de cas présente le contexte, les fonctionnalités et les technologies utilisées, sans résultats commerciaux inventés.</p>
+              <div className="mt-10 grid gap-6 md:grid-cols-3">
+                {caseStudies.slice(0, 3).map((project) => (
+                  <article key={project.slug} className="overflow-hidden rounded-2xl border border-white/10 bg-black">
+                    <div className="relative aspect-video">
+                      <Image src={project.image} alt={`Aperçu de ${project.title}`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                    </div>
+                    <div className="p-6">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#ff8a3d]">{project.category}</p>
+                      <h3 className="mt-2 text-lg font-bold">{project.title}</h3>
+                      <p className="mt-3 text-sm leading-6 text-white/55">{project.summary}</p>
+                      <Link href={`/portfolio/${project.slug}`} className="mt-5 inline-block font-bold hover:text-[#ff8a3d]">Voir l’étude de cas →</Link>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="border-y border-white/10 bg-white/[.02] py-20">
           <div className="container max-w-4xl">

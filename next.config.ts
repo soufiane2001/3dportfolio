@@ -3,6 +3,21 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
+  trailingSlash: false,
+  async redirects() {
+    return [
+      {
+        source: "/creation-site-internet-casablanca",
+        destination: "/creation-site-web-casablanca",
+        permanent: true,
+      },
+      {
+        source: "/creation-site-web",
+        destination: "/creation-site-web-casablanca",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

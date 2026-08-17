@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { ensureTables, getSql } from "../../lib/db";
+import { ensureTables, getSql, isDatabaseConfigured } from "../../lib/db";
 import { deviceFromUA, isBot, sourceFromReferrer } from "../../lib/analytics";
 
 export const runtime = "nodejs";
@@ -15,6 +15,12 @@ export const dynamic = "force-dynamic";
  * them and so bots never pollute the "real person" numbers.
  */
 export async function POST(req: NextRequest) {
+  // Analytics is optional. A deployment without Neon should not create a
+  // browser-visible 500 or affect the public site's UX and Core Web Vitals.
+  if (!isDatabaseConfigured()) {
+    return new NextResponse(null, { status: 204 });
+  }
+
   let body: Record<string, unknown>;
   try {
     body = await req.json();
