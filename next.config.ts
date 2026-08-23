@@ -7,15 +7,17 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/:path*",
+        has: [{ type: "host", value: "soufianeboutatss.sbs" }],
+        destination: "https://www.soufianeboutatss.sbs/:path*",
+        permanent: true,
+      },
+      {
         source: "/creation-site-internet-casablanca",
         destination: "/creation-site-web-casablanca",
         permanent: true,
       },
-      {
-        source: "/creation-site-web",
-        destination: "/creation-site-web-casablanca",
-        permanent: true,
-      },
+      { source: "/referencement-seo-casablanca", destination: "/casablanca/seo", permanent: true },
     ];
   },
   async headers() {

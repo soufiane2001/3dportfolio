@@ -73,11 +73,11 @@ const Hero = () => {
             Développeur Web Freelance
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b00] via-[#ff8533] to-[#a855f7]">
-              à Casablanca
+              France, Canada & International
             </span>
           </motion.h1>
           <p className="-mt-2 mb-5 text-sm font-bold uppercase tracking-[.22em] text-white/55">
-            Soufiane Boutatss — Développeur Web Freelance
+            Soufiane Boutatss — développement web sur mesure
           </p>
 
           <motion.div
@@ -89,7 +89,7 @@ const Hero = () => {
             <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-[#ff6b00] animate-pulse" />
               <span className="text-white/80 text-sm md:text-base font-medium">
-                Sites vitrines, e-commerce, applications web et mobile optimisés pour votre activité
+                Sites web, applications et solutions digitales pour entreprises, startups, indépendants et agences en Europe, au Canada et à distance.
               </span>
             </div>
           </motion.div>
@@ -101,7 +101,7 @@ const Hero = () => {
             className="flex flex-wrap gap-4 justify-center lg:justify-start mb-12"
           >
             <a
-              href="https://wa.me/212689213015"
+              href="/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative px-8 py-4 bg-[#ff6b00] text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,107,0,0.5)]"
@@ -115,28 +115,6 @@ const Hero = () => {
             >
               Voir mes réalisations
             </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="flex flex-wrap gap-8 justify-center lg:justify-start mb-10"
-          >
-            {[
-              { value: "30+", label: t.hero.stats.projects },
-              { value: "34+", label: t.hero.stats.clients },
-              { value: "6+", label: t.hero.stats.years },
-            ].map((stat, i) => (
-              <div key={i} className="text-center lg:text-left">
-                <div className="text-3xl md:text-4xl font-black text-white">
-                  {stat.value}
-                </div>
-                <div className="text-white/50 text-sm uppercase tracking-wider">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
           </motion.div>
 
           <motion.div

@@ -9,8 +9,8 @@ import { pageMetadata } from "./lib/site";
 
 export const metadata: Metadata = pageMetadata(
   "/",
-  "Développeur Web Freelance Casablanca | Soufiane Boutatss",
-  "Développeur web freelance Full Stack à Casablanca, j’accompagne entreprises et PME au Maroc pour leurs sites et applications. Discutons de votre projet."
+  "Développeur Web Freelance | France, Canada & International",
+  "Développeur web freelance : sites et applications sur mesure en React, Next.js, PHP et Laravel. Collaboration remote en France, Canada et international."
 );
 
 const About = dynamic(() => import("./sections/About"));
