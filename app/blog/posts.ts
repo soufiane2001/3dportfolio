@@ -41,7 +41,7 @@ export const posts: BlogPost[] = [
 <h2>Les étapes d'un projet réussi</h2>
 <p>Un projet web bien mené suit des phases claires : cadrage des besoins, maquettage, développement par itérations, phase de tests, mise en ligne, puis maintenance. La transparence à chaque étape est le meilleur gage de réussite.</p>
 <h2>Conclusion</h2>
-<p>Engager un développeur web freelance au Maroc en 2026 est un choix stratégique pour obtenir un site ou une application de qualité professionnelle à un coût maîtrisé. Spécialisé en React, React Native, Laravel et Next.js, je vous accompagne de l'idée à la mise en production. <a href="https://wa.me/212689213015">Contactez-moi</a> pour discuter de votre projet.</p>
+<p>Engager un développeur web freelance au Maroc en 2026 est un choix stratégique pour obtenir un site ou une application de qualité professionnelle à un coût maîtrisé. Spécialisé en React, React Native, Laravel et Next.js, je vous accompagne de l'idée à la mise en production. Consultez mon service de <a href="/developpement-web-sur-mesure-casablanca">développement d’application web sur mesure au Maroc</a> ou <a href="/contact">présentez-moi votre projet</a>.</p>
 `.trim(),
   },
   {
@@ -60,7 +60,7 @@ export const posts: BlogPost[] = [
 <h2>Site e-commerce</h2>
 <p>Une boutique en ligne nécessite davantage de fonctionnalités : catalogue produits, panier, paiement sécurisé, gestion des commandes et tableau de bord administrateur. Le budget est donc supérieur, mais l'investissement est rapidement rentabilisé par les ventes en ligne.</p>
 <h2>Application web sur mesure</h2>
-<p>Les applications web métier (espace client, plateforme de réservation, dashboard, SaaS) sont développées entièrement selon vos besoins spécifiques. Le coût reflète la complexité fonctionnelle, mais offre un outil parfaitement adapté à votre activité.</p>
+<p>Les applications web métier (espace client, plateforme de réservation, dashboard, SaaS) sont développées entièrement selon vos besoins spécifiques. Le coût reflète la complexité fonctionnelle, mais offre un outil parfaitement adapté à votre activité. Découvrez le service de <a href="/developpement-web-sur-mesure-casablanca">développement d’application web sur mesure au Maroc</a>.</p>
 <h2>Les facteurs qui influencent le prix</h2>
 <ul>
 <li><strong>Le design :</strong> template adapté ou design 100% sur mesure.</li>

@@ -83,9 +83,9 @@ export const services: Record<string, ServicePageData> = {
   "developpement-web-sur-mesure-casablanca": {
     slug: "developpement-web-sur-mesure-casablanca",
     eyebrow: "Développeur Full Stack à Casablanca",
-    title: "Développement Web Sur Mesure à Casablanca",
-    intro: "Conception d’applications web, plateformes métier, dashboards et APIs lorsque les limites d’un site standard ne répondent pas aux processus de votre entreprise.",
-    audienceHeading: "Une application web alignée sur vos processus métier",
+    title: "Développement d’Application Web Sur Mesure au Maroc",
+    intro: "Conception d’applications web sur mesure, plateformes métier, dashboards et API pour les entreprises à Casablanca et partout au Maroc lorsque les limites d’un site standard ne répondent plus à leurs processus.",
+    audienceHeading: "Une application web sur mesure alignée sur vos processus métier",
     benefitsHeading: "Architecture Full Stack, rôles utilisateurs et automatisations",
     processHeading: "Cadrer puis livrer votre logiciel web progressivement",
     faqHeading: "MVP, technologies et intégrations pour un projet sur mesure",

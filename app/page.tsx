@@ -9,8 +9,8 @@ import { pageMetadata } from "./lib/site";
 
 export const metadata: Metadata = pageMetadata(
   "/",
-  "Développeur Web Freelance | France, Canada & International",
-  "Développeur web freelance : sites et applications sur mesure en React, Next.js, PHP et Laravel. Collaboration remote en France, Canada et international."
+  "Développeur Web Freelance | Sites & Applications Sur Mesure",
+  "Développeur web freelance au Maroc : création de sites et développement d’applications web sur mesure pour la France, le Canada et l’international."
 );
 
 const About = dynamic(() => import("./sections/About"));

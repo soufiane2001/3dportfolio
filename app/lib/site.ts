@@ -40,6 +40,7 @@ export const marketLinks = [
   { href: "/canada", label: "Canada / Québec" },
   { href: "/belgique", label: "Belgique" },
   { href: "/suisse", label: "Suisse" },
-  { href: "/casablanca/seo", label: "Casablanca" },
+  { href: "/developpement-web-sur-mesure-casablanca", label: "Application web Maroc" },
+  { href: "/casablanca/seo", label: "SEO Casablanca" },
   { href: "/en", label: "English" },
 ] as const;

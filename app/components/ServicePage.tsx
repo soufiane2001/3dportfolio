@@ -42,6 +42,15 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
         { "@type": "ListItem", position: 2, name: data.title, item: pageUrl },
       ],
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: data.faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+    },
   ];
   return (
     <>
