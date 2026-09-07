@@ -4,21 +4,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
-import type { Locale } from "../i18n/translations";
-
-const LANGS: { code: Locale; label: string; flag: string }[] = [
-  { code: "fr", label: "FR", flag: "🇫🇷" },
-  { code: "en", label: "EN", flag: "🇬🇧" },
-  { code: "ar", label: "AR", flag: "🇲🇦" },
-];
+import LanguageLinks from "../components/LanguageLinks";
 
 const Header = () => {
-  const { t, locale, setLocale } = useLanguage();
+  const { t, locale } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [hovered, setHovered] = useState<string | null>(null);
-  const [langOpen, setLangOpen] = useState(false);
   const [autreOpen, setAutreOpen] = useState(false);
   const autreRef = useRef<HTMLDivElement>(null);
 
@@ -75,7 +68,6 @@ const Header = () => {
   ];
 
   const isAutreActive = activeSection === "hobbies";
-  const currentLang = LANGS.find((l) => l.code === locale)!;
 
   return (
     <>
@@ -97,7 +89,7 @@ const Header = () => {
             </motion.a>
 
             {/* Desktop nav */}
-            <nav className="hidden md:flex items-center gap-1" onMouseLeave={() => setHovered(null)}>
+            <nav className="hidden xl:flex items-center gap-1" onMouseLeave={() => setHovered(null)}>
               {navLinks.map((link, i) => {
                 const isActive = isScrolled && activeSection === link.id;
                 return (
@@ -193,43 +185,8 @@ const Header = () => {
               </div>
             </nav>
 
-            <div className="hidden md:flex items-center gap-3">
-              {/* Language switcher */}
-              <div className="relative">
-                <button
-                  onClick={() => setLangOpen(!langOpen)}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-white/70 hover:text-white hover:border-white/30 text-sm font-medium transition-all duration-300"
-                >
-                  <span>{currentLang.flag}</span>
-                  <span>{currentLang.label}</span>
-                </button>
-                <AnimatePresence>
-                  {langOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.95 }}
-                      transition={{ duration: 0.15 }}
-                      className="absolute top-full mt-2 right-0 bg-black/90 border border-white/10 rounded-xl overflow-hidden backdrop-blur-xl shadow-xl"
-                    >
-                      {LANGS.map((lang) => (
-                        <button
-                          key={lang.code}
-                          onClick={() => { setLocale(lang.code); setLangOpen(false); }}
-                          className={`flex items-center gap-2 w-full px-4 py-2.5 text-sm transition-colors ${
-                            locale === lang.code
-                              ? "text-[#ff6b00] bg-[#ff6b00]/10"
-                              : "text-white/70 hover:text-white hover:bg-white/5"
-                          }`}
-                        >
-                          <span>{lang.flag}</span>
-                          <span>{lang.label}</span>
-                        </button>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+            <div className="hidden xl:flex items-center gap-3">
+              <LanguageLinks locale={locale} />
 
               <motion.a
                 href="#contact"
@@ -245,39 +202,8 @@ const Header = () => {
             </div>
 
             {/* Mobile hamburger */}
-            <div className="md:hidden flex items-center gap-2">
-              <div className="relative">
-                <button
-                  onClick={() => setLangOpen(!langOpen)}
-                  className="flex items-center gap-1 px-2 py-1 rounded-full border border-white/10 bg-white/5 text-white/70 text-xs"
-                >
-                  <span>{currentLang.flag}</span>
-                  <span>{currentLang.label}</span>
-                </button>
-                <AnimatePresence>
-                  {langOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
-                      className="absolute top-full mt-2 right-0 bg-black/95 border border-white/10 rounded-xl overflow-hidden shadow-xl z-[300]"
-                    >
-                      {LANGS.map((lang) => (
-                        <button
-                          key={lang.code}
-                          onClick={() => { setLocale(lang.code); setLangOpen(false); }}
-                          className={`flex items-center gap-2 w-full px-4 py-2.5 text-sm transition-colors ${
-                            locale === lang.code ? "text-[#ff6b00] bg-[#ff6b00]/10" : "text-white/70 hover:text-white"
-                          }`}
-                        >
-                          <span>{lang.flag}</span>
-                          <span>{lang.label}</span>
-                        </button>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+            <div className="xl:hidden flex items-center gap-2">
+              <LanguageLinks locale={locale} />
               <button
                 className="relative z-[250] w-10 h-10 flex items-center justify-center"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -308,7 +234,7 @@ const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[200] md:hidden bg-black"
+            className="fixed inset-0 z-[200] xl:hidden bg-black"
           >
             <motion.nav
               initial={{ opacity: 0, y: 50 }}

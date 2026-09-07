@@ -1,0 +1,32 @@
+export const pageCopy = {
+  fr: {
+    title: "Développeur Web Freelance | Sites & Applications Sur Mesure",
+    description: "Développeur web freelance au Maroc : sites et applications sur mesure pour la France, le Canada et l’international.",
+    tag: "Services web internationaux", heading: "Sites et applications conçus pour générer des opportunités",
+    intro: "J’accompagne entreprises, startups, indépendants et agences en France, au Canada, en Europe et à l’international, avec un interlocuteur unique du cadrage à la mise en ligne.",
+    services: ["Création de site web", "Développement sur mesure", "React / Next.js", "PHP / Laravel", "Applications mobiles", "SEO & performance"],
+    detail: "Approche sur mesure, collaboration à distance, performance et conversion.", view: "Voir le service", zones: "Zones", contact: "Contact", serviceTitle: "Services",
+    remote: "Services disponibles à distance depuis le Maroc.", legal: "Mentions légales", privacy: "Confidentialité",
+    markets: ["France", "Canada / Québec", "Belgique", "Suisse", "Application web Maroc", "SEO Casablanca", "English"],
+  },
+  en: {
+    title: "Freelance Web Developer | Custom Websites & Applications",
+    description: "Freelance web developer in Morocco building custom websites and applications for clients in France, Canada and worldwide.",
+    tag: "International web services", heading: "Websites and applications built to create opportunities",
+    intro: "I help businesses, startups, freelancers and agencies in France, Canada, Europe and worldwide, with one point of contact from planning to launch.",
+    services: ["Website creation", "Custom development", "React / Next.js", "PHP / Laravel", "Mobile applications", "SEO & performance"],
+    detail: "Custom solutions, remote collaboration, performance and conversion.", view: "View service", zones: "Locations", contact: "Contact", serviceTitle: "Services",
+    remote: "Services available remotely from Morocco.", legal: "Legal notice (French)", privacy: "Privacy (French)",
+    markets: ["France", "Canada / Quebec", "Belgium", "Switzerland", "Web applications in Morocco", "SEO Casablanca", "English"],
+  },
+  ar: {
+    title: "مطور مواقع مستقل | مواقع وتطبيقات حسب الطلب",
+    description: "مطور مواقع وتطبيقات مستقل في المغرب. حلول رقمية حسب الطلب للشركات والعملاء في المغرب وحول العالم.",
+    tag: "خدمات تطوير الويب الدولية", heading: "مواقع وتطبيقات تفتح آفاقًا جديدة لأعمالك",
+    intro: "أساعد الشركات والناشئين والمستقلين والوكالات في فرنسا وكندا وأوروبا وحول العالم، مع تواصل مباشر من التخطيط إلى الإطلاق.",
+    services: ["إنشاء المواقع", "تطوير حسب الطلب", "React / Next.js", "PHP / Laravel", "تطبيقات الهاتف", "تحسين محركات البحث والأداء"],
+    detail: "حلول مخصصة وتعاون عن بُعد مع التركيز على الأداء وتحويل الزوار إلى عملاء.", view: "عرض الخدمة", zones: "المناطق", contact: "تواصل معي", serviceTitle: "الخدمات",
+    remote: "خدمات متاحة عن بُعد من المغرب.", legal: "الإشعار القانوني (بالفرنسية)", privacy: "الخصوصية (بالفرنسية)",
+    markets: ["فرنسا", "كندا / كيبيك", "بلجيكا", "سويسرا", "تطبيقات الويب في المغرب", "تحسين محركات البحث بالدار البيضاء", "English"],
+  },
+};

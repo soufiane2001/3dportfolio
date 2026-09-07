@@ -1,3 +1,4 @@
+import RelatedContent from "../../components/RelatedContent";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -39,7 +40,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: absoluteUrl() },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: absoluteUrl("/fr") },
       { "@type": "ListItem", position: 2, name: "Portfolio", item: absoluteUrl("/portfolio") },
       { "@type": "ListItem", position: 3, name: project.title, item: absoluteUrl(`/portfolio/${project.slug}`) },
     ],
@@ -69,7 +70,8 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             <Link href="/contact" className="px-5 py-3 font-bold text-white/70">Discuter de mon projet →</Link>
           </div>
         </article>
-      </main>
+      <RelatedContent path={`/portfolio/${project.slug}`} subject={project.technologies.join(" ")} />
+    </main>
       <SiteFooter />
     </>
   );

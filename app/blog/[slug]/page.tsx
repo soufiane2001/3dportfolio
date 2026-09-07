@@ -1,3 +1,4 @@
+import RelatedContent from "../../components/RelatedContent";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -93,7 +94,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: BASE_URL },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: `${BASE_URL}/fr` },
       { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
       { "@type": "ListItem", position: 3, name: post.title, item: `${BASE_URL}/blog/${post.slug}` },
     ],
@@ -177,6 +178,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           </div>
         </div>
       </div>
+    <RelatedContent path={`/blog/${post.slug}`} subject={post.tags.join(" ")} />
     </main>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import Script from "next/script";
 import "./globals.css";
 import Analytics from "./components/Analytics";
@@ -49,13 +50,14 @@ const jsonLd = [
   },
   {
     "@context": "https://schema.org", "@type": "WebSite", "@id": `${SITE_URL}/#website`,
-    url: SITE_URL, name: "Soufiane Boutatss", inLanguage: ["fr", "en"], publisher: { "@id": `${SITE_URL}/#person` },
+    url: SITE_URL, name: "Soufiane Boutatss", inLanguage: ["fr", "en", "ar"], publisher: { "@id": `${SITE_URL}/#person` },
   },
 ];
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const locale = (await headers()).get("x-site-locale") || "fr";
   return (
-    <html lang="fr">
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <head>
         <meta name="theme-color" content="#ff6b00" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />

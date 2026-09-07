@@ -21,7 +21,7 @@ export function pageMetadata(path: string, title: string, description: string, l
     title: { absolute: title },
     description,
     alternates: { canonical: url, languages },
-    openGraph: { type: "website", locale: "fr_FR", siteName: OWNER, title, description, url, images: [{ url: image, width: 1730, height: 902, alt: title }] },
+    openGraph: { type: "website", locale: path.startsWith("/en") ? "en_GB" : path === "/ar" ? "ar_MA" : "fr_FR", siteName: OWNER, title, description, url, images: [{ url: image, width: 1730, height: 902, alt: title }] },
     twitter: { card: "summary_large_image", title, description, images: [image] },
   };
 }

@@ -1,0 +1,5 @@
+import type { Locale } from "../i18n/translations";
+const languages = [{code: "fr", name: "Français", flag: "fr"}, {code: "en", name: "English", flag: "gb"}, {code: "ar", name: "العربية", flag: "ma"}] as const;
+export default function LanguageLinks({locale = "fr"}: {locale?: Locale}) {
+  return <nav aria-label="Languages" className="flex shrink-0 items-center gap-1" dir="ltr">{languages.map(language => <a key={language.code} href={`/${language.code}`} hrefLang={language.code} lang={language.code} aria-label={language.name} title={language.name} aria-current={locale === language.code ? "page" : undefined} className={`flex min-h-11 items-center gap-1.5 rounded-lg border px-2 text-xs font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ff6b00] ${locale === language.code ? "border-[#ff6b00]/60 bg-[#ff6b00]/10 text-[#ff8a3d]" : "border-transparent text-white/70 hover:border-white/25 hover:text-white"}`}><img src={`/flags/${language.flag}.svg`} width="22" height="15" alt="" className="h-[15px] w-[22px] rounded-[2px] object-cover"/><span>{language.code.toUpperCase()}</span></a>)}</nav>;
+}

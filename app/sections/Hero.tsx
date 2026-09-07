@@ -6,11 +6,19 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ArrowDown, Github, Linkedin, Facebook } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
+import { pageCopy } from "../i18n/page-copy";
+
+const heroCopy = {
+  fr: { title: "Développeur Web Freelance", market: "France, Canada & International", name: "Soufiane Boutatss — développement web sur mesure", quote: "Demander un devis", work: "Voir mes réalisations" },
+  en: { title: "Freelance Web Developer", market: "France, Canada & Worldwide", name: "Soufiane Boutatss — custom web development", quote: "Request a quote", work: "Explore my work" },
+  ar: { title: "مطور مواقع مستقل", market: "المغرب، فرنسا، كندا والعالم", name: "سفيان بوطاطس — تطوير مواقع حسب الطلب", quote: "اطلب عرض سعر", work: "شاهد أعمالي" },
+};
 
 const Scene3D = dynamic(() => import("../components/Scene3D"), { ssr: false });
 
 const Hero = () => {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const copy = heroCopy[locale];
   const [show3D, setShow3D] = useState(false);
 
   useEffect(() => {
@@ -53,7 +61,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex-1 text-center lg:text-left"
+          className="min-w-0 flex-1 text-center lg:text-start"
         >
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -68,16 +76,16 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tight mb-6"
+            className={`text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 ${locale === "ar" ? "leading-[1.25]" : "leading-[0.9] tracking-tight"}`}
           >
-            Développeur Web Freelance
+            {copy.title}
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b00] via-[#ff8533] to-[#a855f7]">
-              France, Canada & International
+              {copy.market}
             </span>
           </motion.h1>
           <p className="-mt-2 mb-5 text-sm font-bold uppercase tracking-[.22em] text-white/55">
-            Soufiane Boutatss — développement web sur mesure
+            {copy.name}
           </p>
 
           <motion.div
@@ -89,7 +97,7 @@ const Hero = () => {
             <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-[#ff6b00] animate-pulse" />
               <span className="text-white/80 text-sm md:text-base font-medium">
-                Sites web, applications et solutions digitales pour entreprises, startups, indépendants et agences en Europe, au Canada et à distance.
+                {pageCopy[locale].intro}
               </span>
             </div>
           </motion.div>
@@ -101,19 +109,17 @@ const Hero = () => {
             className="flex flex-wrap gap-4 justify-center lg:justify-start mb-12"
           >
             <a
-              href="/contact"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
               className="group relative px-8 py-4 bg-[#ff6b00] text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,107,0,0.5)]"
             >
-              <span className="relative z-10">Demander un devis</span>
+              <span className="relative z-10">{copy.quote}</span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#ff8533] to-[#ff6b00] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </a>
             <a
               href="#portfolio"
               className="px-8 py-4 border border-white/20 text-white font-bold rounded-full hover:bg-white/5 hover:border-white/40 transition-all duration-300"
             >
-              Voir mes réalisations
+              {copy.work}
             </a>
           </motion.div>
 

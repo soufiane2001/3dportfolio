@@ -1,3 +1,4 @@
+import RelatedContent from "./RelatedContent";
 import Link from "next/link";
 import Image from "next/image";
 import SiteHeader from "./SiteHeader";
@@ -38,7 +39,7 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Accueil", item: absoluteUrl() },
+        { "@type": "ListItem", position: 1, name: "Accueil", item: absoluteUrl("/fr") },
         { "@type": "ListItem", position: 2, name: data.title, item: pageUrl },
       ],
     },
@@ -62,7 +63,7 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
           <div className="container relative max-w-5xl">
             <nav aria-label="Fil d’Ariane" className="mb-8 text-sm text-white/55">
               <ol className="flex flex-wrap items-center gap-2">
-                <li><Link href="/" className="hover:text-white">Accueil</Link></li>
+                <li><Link href="/fr" className="hover:text-white">Accueil</Link></li>
                 <li aria-hidden="true">/</li>
                 <li aria-current="page" className="text-white/80">{data.title}</li>
               </ol>
@@ -197,7 +198,8 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
             <Link href="/contact" className="mt-8 inline-block rounded-full bg-[#ff6b00] px-8 py-4 font-bold">Obtenir une estimation</Link>
           </div>
         </section>
-      </main>
+      <RelatedContent path={`/${data.slug}`} subject={data.title} />
+    </main>
       <SiteFooter />
     </>
   );
