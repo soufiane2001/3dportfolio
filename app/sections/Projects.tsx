@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Github, Play, X } from "lucide-react";
 import { useState } from "react";
@@ -9,6 +10,7 @@ import { useLanguage } from "../i18n/LanguageContext";
 
 interface Project {
   id: number;
+  caseStudySlug: string;
   title: string;
   description: string;
   image: string;
@@ -19,16 +21,16 @@ interface Project {
 }
 
 const projects: Project[] = [
-  { id: 1, title: "BDM Store", description: "Plateforme e-commerce complète pensée pour convertir, avec paiement à la livraison.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369049/Capture_d_%C3%A9cran_2026-05-10_022349_pn3hp8.png", demoUrl: "https://bdmstore.store/ecom/index.php", tech: ["PHP", "CSS", "MySQL"] },
-  { id: 2, title: "Reby Art", description: "Un portfolio sobre et immersif qui laisse toute la place au travail de l’artiste.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369125/Capture_d_%C3%A9cran_2026-05-10_022508_ecupwg.png", demoUrl: "https://rebyart.vercel.app/", repoUrl: "https://github.com/soufiane2001/rebyart", tech: ["React", "JavaScript"] },
-  { id: 3, title: "HighUp Counselling", description: "Une présence digitale rassurante et accessible pour un cabinet de psychologie.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369183/Capture_d_%C3%A9cran_2026-05-10_022608_m8mer3.png", demoUrl: "https://www.highupcounselling.ca/", tech: ["Wix"] },
-  { id: 4, title: "Cash Management", description: "Application mobile claire et rapide pour suivre ses dépenses au quotidien.", image: "/cash-management-app.svg", videoUrl: "https://www.youtube.com/embed/F3Pjh49qdzE?si=0fTnYNxOnF-oEWd8", repoUrl: "https://github.com/soufiane2001/cashappv4", tech: ["React Native", "Firebase"] },
-  { id: 5, title: "Patient Management", description: "Outil desktop centralisant le suivi et la gestion des dossiers patients.", image: "/patient-management-app.svg", videoUrl: "https://www.youtube.com/embed/FiacG53K6fs?si=3VGAVs-gx6k6hi1_", tech: ["Electron.js"] },
-  { id: 6, title: "Horea Formation", description: "Site institutionnel structuré pour présenter les programmes et générer des contacts.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369246/Capture_d_%C3%A9cran_2026-05-10_022707_yrmkgs.png", demoUrl: "https://www.horea-formation.com/", tech: ["WordPress"] },
-  { id: 7, title: "Dar Mooris", description: "Vitrine digitale raffinée pour une maison textile marocaine.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774035266/Capture_d_%C3%A9cran_2026-03-20_213032_ksgiwn.png", demoUrl: "https://darmooris.ma/", tech: ["PHP"] },
-  { id: 8, title: "Gamlastan", description: "Expérience shopping moderne, fluide et pensée pour tous les écrans.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1775161310/Capture_d_%C3%A9cran_2026-04-02_231851_senzhp.png", demoUrl: "https://gamlastanshop.space/", tech: ["Next.js"] },
-  { id: 9, title: "Dr Boutatss Nora", description: "Site médical clair et rassurant pour présenter l’expertise du cabinet et faciliter la prise de rendez-vous.", image: "/project-dr-boutatss-nora.png", demoUrl: "https://www.drboutatssnora.com/", tech: ["Site vitrine", "Responsive", "SEO local"] },
-  { id: 10, title: "Pizza Napoli Toul", description: "Une vitrine gourmande et chaleureuse avec menu, horaires et informations pratiques immédiatement accessibles.", image: "/project-pizza-napoli-toul.png", demoUrl: "https://pizzanapoli-toul.fr/", tech: ["Web design", "Responsive", "SEO local"] },
+  { id: 1, caseStudySlug: "site-ecommerce", title: "BDM Store", description: "Plateforme e-commerce complète pensée pour convertir, avec paiement à la livraison.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369049/Capture_d_%C3%A9cran_2026-05-10_022349_pn3hp8.png", demoUrl: "https://bdmstore.store/ecom/index.php", tech: ["PHP", "CSS", "MySQL"] },
+  { id: 2, caseStudySlug: "reby-art", title: "Reby Art", description: "Un portfolio sobre et immersif qui laisse toute la place au travail de l’artiste.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369125/Capture_d_%C3%A9cran_2026-05-10_022508_ecupwg.png", demoUrl: "https://rebyart.vercel.app/", repoUrl: "https://github.com/soufiane2001/rebyart", tech: ["React", "JavaScript"] },
+  { id: 3, caseStudySlug: "highup-counselling", title: "HighUp Counselling", description: "Une présence digitale rassurante et accessible pour un cabinet de psychologie.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369183/Capture_d_%C3%A9cran_2026-05-10_022608_m8mer3.png", demoUrl: "https://www.highupcounselling.ca/", tech: ["Wix"] },
+  { id: 4, caseStudySlug: "cash-management-app", title: "Cash Management", description: "Application mobile claire et rapide pour suivre ses dépenses au quotidien.", image: "/cash-management-app.svg", videoUrl: "https://www.youtube.com/embed/F3Pjh49qdzE?si=0fTnYNxOnF-oEWd8", repoUrl: "https://github.com/soufiane2001/cashappv4", tech: ["React Native", "Firebase"] },
+  { id: 5, caseStudySlug: "patient-management", title: "Patient Management", description: "Outil desktop centralisant le suivi et la gestion des dossiers patients.", image: "/patient-management-app.svg", videoUrl: "https://www.youtube.com/embed/FiacG53K6fs?si=3VGAVs-gx6k6hi1_", tech: ["Electron.js"] },
+  { id: 6, caseStudySlug: "horea-formation", title: "Horea Formation", description: "Site institutionnel structuré pour présenter les programmes et générer des contacts.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369246/Capture_d_%C3%A9cran_2026-05-10_022707_yrmkgs.png", demoUrl: "https://www.horea-formation.com/", tech: ["WordPress"] },
+  { id: 7, caseStudySlug: "dar-mooris", title: "Dar Mooris", description: "Vitrine digitale raffinée pour une maison textile marocaine.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774035266/Capture_d_%C3%A9cran_2026-03-20_213032_ksgiwn.png", demoUrl: "https://darmooris.ma/", tech: ["PHP"] },
+  { id: 8, caseStudySlug: "gamlastan", title: "Gamlastan", description: "Expérience shopping moderne, fluide et pensée pour tous les écrans.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1775161310/Capture_d_%C3%A9cran_2026-04-02_231851_senzhp.png", demoUrl: "https://gamlastanshop.space/", tech: ["Next.js"] },
+  { id: 9, caseStudySlug: "dr-boutatss-nora", title: "Dr Boutatss Nora", description: "Site médical clair et rassurant pour présenter l’expertise du cabinet et faciliter la prise de rendez-vous.", image: "/project-dr-boutatss-nora.png", demoUrl: "https://www.drboutatssnora.com/", tech: ["Site vitrine", "Responsive", "SEO local"] },
+  { id: 10, caseStudySlug: "pizza-napoli-toul", title: "Pizza Napoli Toul", description: "Une vitrine gourmande et chaleureuse avec menu, horaires et informations pratiques immédiatement accessibles.", image: "/project-pizza-napoli-toul.png", demoUrl: "https://pizzanapoli-toul.fr/", tech: ["Web design", "Responsive", "SEO local"] },
 ];
 
 export default function Projects() {
@@ -43,7 +45,7 @@ export default function Projects() {
       <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(255,255,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] [background-size:72px_72px]" />
       <div className="container relative z-10" ref={ref}>
         <div className="mb-12 grid items-end gap-8 border-b border-white/10 pb-8 md:grid-cols-[1fr_auto] md:mb-16">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: reduceMotion ? 0 : .6 }}>
+          <motion.div initial={false} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: reduceMotion ? 0 : .6 }}>
             <p className="mb-4 text-xs font-bold uppercase tracking-[.28em] text-[#ff6b00]">{t.projects.tag} / 2026</p>
             <h2 className="max-w-3xl text-4xl font-black leading-[.98] tracking-[-.055em] text-white sm:text-6xl lg:text-7xl">
               {t.projects.title} <span className="text-white/35">{t.projects.titleGradient}</span>
@@ -54,7 +56,7 @@ export default function Projects() {
 
         <div className="grid gap-x-6 gap-y-10 md:grid-cols-2 lg:gap-x-8 lg:gap-y-16">
           {projects.map((project, index) => (
-            <motion.article key={project.id} initial={{ opacity: 0, y: 36 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: reduceMotion ? 0 : .55, delay: reduceMotion ? 0 : Math.min(index * .06, .3) }} className={index === 0 || index === 5 ? "md:col-span-2" : ""}>
+            <motion.article key={project.id} initial={false} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: reduceMotion ? 0 : .55, delay: reduceMotion ? 0 : Math.min(index * .06, .3) }} className={index === 0 || index === 5 ? "md:col-span-2" : ""}>
               <div className="group relative overflow-hidden rounded-[1.25rem] border border-white/10 bg-[#0b0b0b]">
                 <div className={`relative overflow-hidden ${index === 0 || index === 5 ? "aspect-[16/10] sm:aspect-[16/8]" : "aspect-[4/3]"}`}>
                   <Image src={project.image} alt={`Aperçu du projet ${project.title}`} fill sizes={index === 0 || index === 5 ? "(max-width: 768px) 100vw, 90vw" : "(max-width: 768px) 100vw, 45vw"} className="object-cover object-top transition duration-700 ease-out group-hover:scale-[1.025]" />
@@ -66,8 +68,9 @@ export default function Projects() {
                 </div>
                 <div className="grid gap-5 p-5 sm:p-7 lg:grid-cols-[1fr_auto] lg:items-end">
                   <div>
-                    <h3 className="mb-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">{project.title}</h3>
+                    <h3 className="mb-2 text-2xl font-bold tracking-tight text-white sm:text-3xl"><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} className="hover:text-[#ff8a3d]">{project.title}</Link></h3>
                     <p className="max-w-xl text-sm leading-6 text-white/55 sm:text-base">{project.description}</p>
+                    <Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} className="mt-4 inline-block text-sm font-bold text-[#ff8a3d] hover:text-white">{locale === "en" ? "Read the case study" : locale === "ar" ? "دراسة المشروع" : "Voir l’étude de cas"} — {project.title} →</Link>
                   </div>
                   <div className="flex flex-wrap items-center gap-2 lg:justify-end">
                     {project.tech.map((tech) => <span key={tech} className="border-b border-white/20 px-1 py-1 text-[11px] font-semibold uppercase tracking-[.14em] text-white/55">{tech}</span>)}

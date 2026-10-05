@@ -16,7 +16,7 @@ export default function LocalServices({locale = "fr"}: {locale?: Locale}) {
           {(locale === "en" ? englishServiceLinks : serviceLinks).map((service, index) => (
             <Link key={service.href} href={service.href} className="group rounded-2xl border border-white/10 bg-white/[.03] p-6 hover:border-[#ff6b00]/50">
               <h3 className="text-xl font-bold group-hover:text-[#ff6b00]">{locale === "en" ? service.label : copy.services[index]}</h3>
-              <p className="mt-3 text-sm leading-6 text-white/55">{copy.detail}</p>
+              <p className="mt-3 text-sm leading-6 text-white/55">{copy.serviceDetails[index]}</p>
               <span className="mt-5 inline-block text-sm font-bold text-white/75">{copy.view}</span>
             </Link>
           ))}

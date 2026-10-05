@@ -16,7 +16,7 @@ export default function PortfolioPage() {
         <div className="container">
           <p className="section-subtitle">Réalisations</p>
           <h1 className="mt-3 max-w-4xl text-4xl font-black md:text-6xl">Portfolio web, mobile et applications métier</h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-white/60">Des projets existants présentés sans statistiques inventées : contexte, solution, technologies et fonctionnalités visibles.</p>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-white/60">Sites de services au Canada, portfolio d’artiste, boutique en ligne, restaurant en France et applications de gestion : découvrez le besoin de chaque projet, sa solution et ses technologies.</p>
           <div className="mt-14 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
             {caseStudies.map((project) => (
               <article key={project.slug} className="glass-card overflow-hidden">
@@ -38,4 +38,3 @@ export default function PortfolioPage() {
     </>
   );
 }
-

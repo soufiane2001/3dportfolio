@@ -3,10 +3,11 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowDown, Github, Linkedin, Facebook } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { pageCopy } from "../i18n/page-copy";
+import { watchDecorativeScene } from "../lib/decorative-scene";
 
 const heroCopy = {
   fr: { title: "Développeur Web Freelance", market: "France, Canada & International", name: "Soufiane Boutatss — développement web sur mesure", quote: "Demander un devis", work: "Voir mes réalisations" },
@@ -20,31 +21,15 @@ const Hero = () => {
   const { t, locale } = useLanguage();
   const copy = heroCopy[locale];
   const [show3D, setShow3D] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const media = window.matchMedia(
-      "(min-width: 1024px) and (prefers-reduced-motion: no-preference)"
-    );
-    if (!media.matches) return;
-
-    const enable3D = () => setShow3D(true);
-    const requestIdle = window.requestIdleCallback;
-    const idleId =
-      typeof requestIdle === "function"
-        ? requestIdle(enable3D, { timeout: 2000 })
-        : window.setTimeout(enable3D, 1200);
-
-    return () => {
-      if (typeof window.cancelIdleCallback === "function") {
-        window.cancelIdleCallback(idleId);
-      } else {
-        window.clearTimeout(idleId);
-      }
-    };
+    if (heroRef.current) return watchDecorativeScene(heroRef.current, setShow3D);
   }, []);
 
   return (
     <section
+      ref={heroRef}
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
@@ -177,7 +162,7 @@ const Hero = () => {
                   alt="Soufiane Boutatss - Web & Mobile Developer"
                   fill
                   priority
-                  sizes="(max-width: 768px) 200px, 300px"
+                  sizes="(min-width: 1024px) 386px, (min-width: 768px) 316px, 216px"
                   className="object-cover"
                 />
               </div>
