@@ -1,3 +1,13 @@
+# Portfolio de Soufiane Boutatss
+
+Site professionnel de Soufiane Boutatss, développeur web freelance basé au Maroc, disponible à distance pour les clients francophones.
+
+**[Visiter le portfolio officiel de Soufiane Boutatss](https://www.soufianeboutatss.sbs/fr)**
+
+Le site présente les services de développement web et mobile, les réalisations et les moyens de contact.
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
