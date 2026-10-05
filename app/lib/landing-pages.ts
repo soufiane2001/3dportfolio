@@ -1,8 +1,14 @@
+import { serviceContent } from "./service-content";
+import { marketHubContent, regionalContent } from "./regional-content";
+import { casablancaSeo } from "./casablanca-seo";
+
 export type LandingPage = {
   path: string; lang: "fr" | "en"; title: string; description: string; eyebrow: string; h1: string; intro: string;
   market: string; currency?: string; sections: { title: string; paragraphs: string[]; items?: string[] }[];
   faqs: { question: string; answer: string }[]; related: { href: string; label: string }[];
   alternates?: Record<string, string>;
+  projectSlugs?: string[];
+  updatedAt?: string;
 };
 
 const methodsFr = [
@@ -34,7 +40,15 @@ const serviceInfo: Record<string, { title: string; h1: string; intro: string; fo
 
 function servicePage(slug: string): LandingPage {
   const s = serviceInfo[slug];
-  return { path: `/${slug}`, lang: "fr", title: `${s.title} | Soufiane Boutatss`, description: `${s.intro} Devis personnalisé et collaboration à distance en France, au Canada, en Europe et à l’international.`, eyebrow: "Services web internationaux", h1: s.h1, intro: s.intro, market: "France, Canada, Europe & international", sections: [{ title: "Des services adaptés à votre objectif", paragraphs: ["Chaque mission part du besoin métier et de l’action attendue de vos utilisateurs. Le périmètre peut couvrir une création complète, une refonte, une fonctionnalité précise ou l’amélioration d’un produit existant."], items: s.focus }, ...methodsFr], faqs: commonFaqFr, related: [{ href: "/france/developpeur-web-freelance", label: "Collaboration en France" }, { href: "/canada/developpeur-web-freelance", label: "Collaboration au Canada" }, { href: "/portfolio", label: "Voir les réalisations" }] };
+  const content = serviceContent[slug];
+  return {
+    path: `/${slug}`, lang: "fr", title: `${s.title} | Soufiane Boutatss`,
+    eyebrow: "Services web internationaux", h1: s.h1, intro: s.intro,
+    market: "France, Canada, Europe & international",
+    ...content,
+    sections: [...content.sections, { title: "Cadrage, validation et livraison", paragraphs: ["Le devis précise les fonctions, les contenus à fournir et les critères de réception. Les étapes sont validées à distance, puis les accès et la documentation sont remis selon le périmètre convenu."], items: s.focus }],
+    updatedAt: "2026-10-05",
+  };
 }
 
 const marketPages: LandingPage[] = [
@@ -53,9 +67,20 @@ const marketPages: LandingPage[] = [
 
 function countryVariant(country: "france"|"canada"|"belgique"|"suisse", slug: string): LandingPage {
   const names = { france: "France", canada: "Canada et Québec", belgique: "Belgique", suisse: "Suisse" };
-  const locales = { france: "fr-FR", canada: "fr-CA", belgique: "fr-BE", suisse: "fr-CH" };
   const s = serviceInfo[slug]; const name = names[country];
-  return { ...servicePage(slug), path: `/${country}/${slug}`, title: `${s.title} ${name} | Soufiane Boutatss`, description: `${s.intro} Service à distance pour les entreprises en ${name}, avec devis personnalisé.`, eyebrow: `${name} — collaboration à distance`, h1: `${s.h1} en ${name}`, market: name, sections: [{ title: `Un service pensé pour les projets en ${name}`, paragraphs: [`Le cadrage tient compte de votre audience, de votre vocabulaire commercial, de la devise et des contraintes du marché ${name}. La prestation est réalisée à distance, sans revendiquer d’agence ou de bureau local.`, "Les contenus et fonctionnalités sont définis selon votre activité réelle. Cette page ne remplace pas une stratégie locale fondée sur des pages artificiellement dupliquées."], items: s.focus }, ...methodsFr], alternates: { [locales[country]]: `/${country}/${slug}`, "x-default": `/${slug}` } };
+  const path = `/${country}/${slug}`;
+  const content = regionalContent[path];
+  const base = servicePage(slug);
+  const location = country === "canada" ? "au Canada et au Québec" : `en ${name}`;
+  return {
+    ...base, ...content, path,
+    title: `${s.title} ${name} | Soufiane Boutatss`,
+    description: `${s.title} pour les entreprises ${location}. Mission à distance, périmètre défini et devis personnalisé.`,
+    eyebrow: `${name} — collaboration à distance`, h1: `${s.h1} pour les entreprises ${location}`,
+    market: name,
+    // The two freelance variants use country-specific hub copy below.
+    sections: content?.sections ?? [...base.sections.slice(0, 2), marketHubContent[country][1]],
+  };
 }
 
 const englishInfo: Record<string, { title: string; h1: string; intro: string }> = {
@@ -81,7 +106,6 @@ function englishPage(slug: string): LandingPage {
   ], related: [{ href: "/en/web-development-services", label: "Web development services" }, { href: "/en/react-developer", label: "React development" }, { href: "/portfolio", label: "View selected work" }], alternates: slug === "freelance-web-developer" ? { "fr-FR": "/france/developpeur-web-freelance", "fr-CA": "/canada/developpeur-web-freelance", en: "/en/freelance-web-developer", "x-default": "/developpeur-web-freelance" } : undefined };
 }
 
-const casablancaSeo: LandingPage = { path: "/casablanca/seo", lang: "fr", title: "SEO Casablanca | Consultant en Référencement Naturel", description: "SEO à Casablanca : audit technique, référencement local, contenu, maillage et performance pour améliorer durablement la visibilité Google de votre entreprise.", eyebrow: "Casablanca — SEO local et technique", h1: "Consultant SEO à Casablanca pour votre visibilité Google", intro: "Audit et optimisation SEO pour entreprises de Casablanca : fondations techniques, pages utiles, référencement local et performance, sans promesse de première position.", market: "Casablanca, Maroc", sections: [{ title: "Référencement local à Casablanca", paragraphs: ["Le SEO local aide Google à comprendre votre activité, vos services et la zone réellement desservie. Le site, les coordonnées publiques et la fiche Google Business Profile doivent rester cohérents.", "Le travail porte sur des pages utiles et spécifiques. Il n’est pas nécessaire de créer des dizaines de pages par quartier ou ville avec un contenu quasi identique."], items: ["Audit de la fiche Google Business Profile", "Cohérence des informations", "Pages de services locales", "Maillage et citations pertinentes"] }, { title: "SEO technique et contenu", paragraphs: ["L’audit vérifie l’indexabilité, les codes HTTP, les canonical, le sitemap, robots.txt, les metadata, les données structurées et les Core Web Vitals.", "Les recommandations éditoriales associent une intention principale à chaque URL afin de réduire la cannibalisation et d’envoyer les articles vers les pages commerciales."], items: ["Audit technique", "Keyword mapping", "Optimisation on-page", "Suivi Search Console"] }, ...methodsFr.slice(0,1)], faqs: [{ question: "Pouvez-vous garantir la première position ?", answer: "Non. Les positions dépendent de la concurrence, de l’historique du domaine, du contenu et de l’autorité. Le travail améliore les signaux contrôlables." }, { question: "Qu’est-ce que le référencement local à Casablanca ?", answer: "Il regroupe les optimisations permettant de présenter clairement l’activité, les services et la zone desservie aux moteurs et aux utilisateurs locaux." }, ...commonFaqFr.slice(1,3)], related: [{ href: "/creation-site-web-casablanca", label: "Création de site web à Casablanca" }, { href: "/developpement-web-sur-mesure-casablanca", label: "Application web sur mesure au Maroc" }, { href: "/contact", label: "Demander un audit" }] };
 
 const servicePages = Object.keys(serviceInfo).map(servicePage);
 const variants: LandingPage[] = [
@@ -90,10 +114,24 @@ const variants: LandingPage[] = [
   countryVariant("belgique", "developpeur-web-freelance"), countryVariant("belgique", "creation-site-web"),
   countryVariant("suisse", "developpeur-web-freelance"), countryVariant("suisse", "creation-site-web"),
 ];
-const hubs = ["belgique", "suisse"].map(c => countryVariant(c as "belgique"|"suisse", "developpeur-web-freelance")).map(p => ({ ...p, path: `/${p.path.split("/")[1]}` }));
+const hubs = ["belgique", "suisse"].map(country => {
+  const base = countryVariant(country as "belgique" | "suisse", "developpeur-web-freelance");
+  return {
+    ...base, path: `/${country}`, sections: marketHubContent[country],
+    title: `Développement Web ${base.market} | Collaboration à Distance`,
+    h1: `Sites et applications pour les entreprises en ${base.market}`,
+    related: [
+      { href: `/${country}/creation-site-web`, label: "Création de site et contenus multilingues" },
+      { href: `/${country}/developpeur-web-freelance`, label: "Définir une mission de développement" },
+    ],
+  };
+});
 const englishPages = Object.keys(englishInfo).map(englishPage);
 const englishHub = { ...englishPage("web-development-services"), path: "/en", title: "Freelance Web Developer | Remote International Services" };
-const canadaQuebec = { ...marketPages[1], path: "/canada/developpeur-web-quebec", title: "Développeur Web Québec | Sites & Applications Remote", h1: "Développeur web pour le Québec, disponible à distance", intro: "Création de sites et applications pour entreprises et indépendants québécois, avec des contenus en français naturel, une collaboration 100 % remote et aucun bureau local revendiqué." };
+const canadaQuebec = { ...marketPages[1], path: "/canada/developpeur-web-quebec", title: "Développeur Web Québec | Sites & Applications Remote", h1: "Développeur web pour le Québec, disponible à distance", intro: "Création de sites et applications pour entreprises et indépendants québécois, avec des contenus en français naturel et une collaboration à distance depuis le Maroc.", updatedAt: "2026-10-05", sections: [
+  { title: "Un parcours en français du premier écran au contact", paragraphs: ["Les pages de services, les formulaires et les confirmations doivent employer un vocabulaire validé par votre équipe. Pour un site bilingue, le passage vers l’anglais conserve le contexte de la page consultée plutôt que ramener le visiteur à l’accueil.", "Le périmètre précise les régions servies, les informations de contact et les formats utiles à votre activité. Les contenus et les traductions sont validés avant la recette afin de tester les vrais textes sur mobile."], items: ["Vocabulaire validé", "Pages équivalentes par langue", "Formulaires et confirmations", "Recette mobile"] },
+  { title: "Des validations compatibles avec votre organisation au Québec", paragraphs: ["Nous convenons d’un référent, de créneaux de réunion et d’un format de retour écrit. Les questions bloquantes sont regroupées et les livraisons indiquent les parcours à vérifier.", "Le devis sépare la création initiale des évolutions et de la maintenance. La collaboration reste à distance depuis le Maroc ; aucune présence physique au Québec n’est annoncée."], items: ["Référent de validation", "Notes de livraison", "Créneaux communs", "Maintenance à définir"] },
+], related: [{ href: "/canada/creation-site-web", label: "Préparer un site francophone ou bilingue" }, { href: "/portfolio/highup-counselling", label: "Un site canadien présenté au portfolio" }] };
 
 export const landingPages: LandingPage[] = [...servicePages, ...marketPages, canadaQuebec, ...variants, ...hubs, englishHub, ...englishPages, casablancaSeo];
 export const getLandingPage = (path: string) => landingPages.find(page => page.path === path);

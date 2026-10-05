@@ -3,6 +3,7 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   date: string;
+  updatedAt?: string;
   readTime: number;
   tags: string[];
   image: string;
@@ -49,6 +50,7 @@ export const posts: BlogPost[] = [
     title: "Combien coûte la création d'un site web au Maroc en 2026 ?",
     excerpt: "Guide des prix pour la création d'un site web au Maroc en 2026 : site vitrine, e-commerce, application web. Découvrez les facteurs qui influencent le coût et comment obtenir le meilleur rapport qualité-prix.",
     date: "2026-06-12",
+    updatedAt: "2026-10-05",
     readTime: 6,
     tags: ["Site Web Maroc", "Prix", "E-commerce", "Web"],
     image: `${DEVICON_LATEST}/nextjs/nextjs-original.svg`,
@@ -58,7 +60,7 @@ export const posts: BlogPost[] = [
 <h2>Site vitrine</h2>
 <p>Un site vitrine présente votre activité, vos services et vos coordonnées. C'est l'option idéale pour les artisans, professions libérales et PME qui souhaitent une présence en ligne crédible. Développé avec Next.js, il offre d'excellentes performances et un référencement naturel (SEO) solide dès le départ.</p>
 <h2>Site e-commerce</h2>
-<p>Une boutique en ligne nécessite davantage de fonctionnalités : catalogue produits, panier, paiement sécurisé, gestion des commandes et tableau de bord administrateur. Le budget est donc supérieur, mais l'investissement est rapidement rentabilisé par les ventes en ligne.</p>
+<p>Une boutique en ligne nécessite davantage de fonctionnalités : catalogue produits, panier, paiement sécurisé, gestion des commandes et tableau de bord administrateur. Le budget dépend donc aussi des intégrations et des tests. La rentabilité dépend de la demande, des marges et du fonctionnement commercial ; elle n’est pas garantie par la création du site.</p>
 <h2>Application web sur mesure</h2>
 <p>Les applications web métier (espace client, plateforme de réservation, dashboard, SaaS) sont développées entièrement selon vos besoins spécifiques. Le coût reflète la complexité fonctionnelle, mais offre un outil parfaitement adapté à votre activité. Découvrez le service de <a href="/developpement-web-sur-mesure-casablanca">développement d’application web sur mesure au Maroc</a>.</p>
 <h2>Les facteurs qui influencent le prix</h2>
@@ -69,7 +71,7 @@ export const posts: BlogPost[] = [
 <li><strong>La maintenance :</strong> mises à jour, hébergement et support après livraison.</li>
 </ul>
 <h2>Site sur mesure vs CMS</h2>
-<p>Un site développé sur mesure avec React et Next.js est plus rapide, plus sécurisé et mieux référencé qu'un site monté sur un template générique. Pour un projet professionnel destiné à durer, le sur-mesure est un investissement judicieux qui évite les limitations à long terme.</p>
+<p>Un CMS et un développement sur mesure peuvent tous deux convenir à un projet professionnel. La performance, la sécurité et le référencement dépendent de la mise en œuvre, des contenus et de la maintenance. Comparez l’autonomie de gestion, les intégrations et le coût de suivi avant de choisir.</p>
 <h2>Conclusion</h2>
 <p>Le meilleur moyen de connaître le coût exact de votre projet est de demander un devis personnalisé et gratuit. En tant que développeur web freelance au Maroc, je vous propose une estimation transparente adaptée à vos objectifs et à votre budget. <a href="https://wa.me/212689213015">Demandez votre devis gratuit</a>.</p>
 `.trim(),
@@ -79,6 +81,7 @@ export const posts: BlogPost[] = [
     title: "Combien coûte le développement d'une application mobile au Maroc en 2026 ?",
     excerpt: "Tout savoir sur le coût de développement d'une application mobile au Maroc : iOS et Android, React Native, fonctionnalités, délais et conseils pour réduire le budget sans sacrifier la qualité.",
     date: "2026-06-08",
+    updatedAt: "2026-10-05",
     readTime: 7,
     tags: ["Application Mobile", "React Native", "Maroc", "Mobile"],
     image: `${DEVICON}/react/react-original.svg`,
@@ -86,7 +89,7 @@ export const posts: BlogPost[] = [
 <h2>Développer une application mobile au Maroc</h2>
 <p>Avec l'explosion de l'usage du smartphone, disposer d'une application mobile est devenu un atout majeur pour les entreprises marocaines. Mais combien coûte réellement le développement d'une application mobile au Maroc en 2026 ? La réponse dépend principalement de la technologie choisie et des fonctionnalités souhaitées.</p>
 <h2>React Native : le choix économique et performant</h2>
-<p>Plutôt que de développer deux applications natives distinctes (une pour iOS en Swift, une pour Android en Kotlin/Java), React Native permet de créer les deux à partir d'une seule base de code. Résultat : un budget réduit de moitié et un délai de développement beaucoup plus court, sans compromis sur la qualité de l'expérience utilisateur.</p>
+<p>Plutôt que de développer deux applications natives distinctes (une pour iOS en Swift, une pour Android en Kotlin/Java), React Native permet de créer les deux à partir d'une seule base de code. Une partie importante du code peut être partagée, mais le gain de budget et de délai dépend des fonctionnalités natives, des intégrations et des tests nécessaires sur chaque plateforme.</p>
 <h2>Les fonctionnalités qui font varier le prix</h2>
 <ul>
 <li><strong>Authentification :</strong> connexion email, Google, Facebook, Apple.</li>
@@ -787,30 +790,40 @@ add_filter('the_title', function($title) {
   },
   {
     slug: "seo-site-entreprise-maroc",
-    title: "Comment référencer le site de son entreprise au Maroc ?",
-    excerpt: "Une méthode durable pour améliorer le référencement d’un site d’entreprise au Maroc : technique, contenu, SEO local, autorité et mesure.",
+    title: "SEO d’un site d’entreprise au Maroc : indexation, clics et plan d’action",
+    excerpt: "Votre site reçoit peu de clics sur Google ? Distinguez indexation, position et contenu, puis préparez un plan SEO adapté à votre entreprise au Maroc.",
     date: "2026-07-26",
-    readTime: 8,
+    updatedAt: "2026-10-05",
+    readTime: 7,
     tags: ["SEO", "Maroc", "Google", "Entreprise"],
     image: `${DEVICON_LATEST}/google/google-original.svg`,
     content: `
-<p>Référencer un site d'entreprise au Maroc demande davantage que placer quelques mots-clés dans une page. Google doit pouvoir explorer le site, comprendre l'activité, identifier les pages les plus importantes et trouver des signaux de confiance cohérents sur le web.</p>
-<h2>Assurez des fondations techniques propres</h2>
-<p>Commencez par vérifier l'indexabilité, les codes HTTP, les canonicals, le sitemap, le fichier robots.txt et le rendu HTML. Les contenus commerciaux essentiels ne doivent pas dépendre d'une interaction ou d'un chargement client tardif. Sur mobile, les images, polices et scripts doivent préserver un affichage rapide et stable.</p>
-<p>Google Search Console permet ensuite de soumettre le sitemap, inspecter une URL et suivre les erreurs d'indexation. Elle ne remplace pas le SEO, mais elle montre comment Google perçoit le site.</p>
-<h2>Créez une page pour chaque intention importante</h2>
-<p>Une homepage ne peut pas répondre précisément à toutes les recherches. Une entreprise qui propose plusieurs services doit créer des pages réellement distinctes, chacune centrée sur une intention, des bénéfices, des preuves et des questions spécifiques. Il faut éviter les variantes copiées pour chaque ville ou quartier.</p>
-<p>Les titres, descriptions, H1 et sous-titres doivent décrire naturellement le service. Le maillage interne relie ensuite la homepage, les services, les études de cas et les articles utiles.</p>
-<h2>Travaillez le SEO local</h2>
-<p>Pour une entreprise desservant Casablanca ou une autre ville marocaine, indiquez honnêtement la zone de service. N'inventez pas d'adresse. Une fiche Google Business Profile est utile uniquement si l'activité respecte les règles d'éligibilité. Le nom, le téléphone, le site et la catégorie doivent rester cohérents.</p>
-<p>Les avis doivent venir de vrais clients. Les mentions dans des annuaires professionnels de qualité, chez des partenaires ou sur des sites clients peuvent renforcer l'autorité locale, contrairement aux milliers de backlinks automatisés.</p>
-<h2>Publiez du contenu qui aide à décider</h2>
-<p>Les meilleurs contenus répondent aux questions des prospects : coût, délais, choix entre vitrine et e-commerce, préparation des contenus ou critères de sélection d'un prestataire. Une réponse claire et factuelle peut aussi être comprise par les moteurs IA et les résumés génératifs.</p>
-<h2>Mesurez les demandes, pas seulement les visites</h2>
-<p>Configurez les clics WhatsApp, emails et formulaires comme événements. Suivez dans Search Console les requêtes qui obtiennent des impressions mais peu de clics, puis améliorez titres et contenus. Comparez les résultats sur des périodes suffisamment longues, car le SEO évolue rarement en quelques jours.</p>
-<h2>Ce qu'aucun prestataire sérieux ne garantit</h2>
-<p>Personne ne contrôle l'algorithme de Google ni les actions des concurrents. Une première position garantie est donc une promesse trompeuse. Une démarche white-hat améliore les éléments contrôlables : qualité technique, pertinence, expérience, preuves et autorité.</p>
-<p>Pour un diagnostic technique et local, consultez l'offre de <a href="/referencement-seo-casablanca">référencement SEO à Casablanca</a>.</p>
+<p>Un site visible sur Google n’attire pas automatiquement des demandes de clients. Avant de modifier vos pages, distinguez trois situations : Google ne retient pas la page, la page apparaît loin dans les résultats, ou elle apparaît mais reçoit peu de clics. Ces problèmes demandent des vérifications différentes.</p>
+<h2>1. Vérifier si la bonne page est indexée</h2>
+<p>Dans Search Console, inspectez l’URL de la prestation que vous souhaitez faire connaître. Vérifiez la dernière exploration, l’état d’indexation et l’URL canonique retenue par Google. Une page peut être accessible au navigateur tout en portant une directive qui empêche son indexation.</p>
+<p>Contrôlez aussi la réponse HTTP et les redirections. Une page supprimée doit fournir une réponse adaptée ; une page remplacée doit mener vers son équivalent. Le sitemap facilite la découverte des URLs, mais sa soumission ne garantit pas leur indexation.</p>
+<h2>2. Lire les résultats par page et par requête</h2>
+<p>Le rapport global mélange les recherches sur votre nom, les prestations, les articles et parfois plusieurs pays. Filtrez d’abord une page importante, puis examinez les requêtes qui lui donnent des impressions.</p>
+<ul><li><strong>Peu d’impressions :</strong> vérifiez l’indexation, la demande et l’adéquation de la page à la recherche.</li><li><strong>Impressions avec une position éloignée :</strong> examinez le contenu, les pages concurrentes et les liens qui présentent cette page.</li><li><strong>Bonne position mais peu de clics :</strong> examinez le titre, l’offre et les autres éléments présents dans les résultats. Le CTR dépend aussi du type de recherche.</li></ul>
+<p>Une moyenne peut changer lorsque le site apparaît sur de nouvelles requêtes. Comparez des périodes de même durée, avec les mêmes filtres, avant de conclure à une progression ou à une baisse.</p>
+<h2>3. Donner une réponse distincte sur chaque service</h2>
+<p>Une page commerciale doit préciser ce que vous réalisez, pour qui, ce que le client reçoit et comment préparer une demande. Une liste de technologies ou plusieurs paragraphes qui pourraient s’appliquer à n’importe quelle entreprise ne suffisent pas à expliquer votre prestation.</p>
+<p>Pour une société proposant un site vitrine, un e-commerce et une application, les questions diffèrent : présentation de l’offre, commandes et livraison, ou utilisateurs et données métier. Les exemples, les livrables et les FAQ doivent refléter ces différences.</p>
+<p>Si deux pages fournissent presque la même réponse, examinez leurs recherches et leur utilité. Elles peuvent être différenciées par un besoin réel ou regroupées. Une variante par ville ou pays ne devient pas utile uniquement parce que son titre change.</p>
+<h2>4. Relier les guides aux prestations et aux réalisations</h2>
+<p>Un guide sur le coût d’un site prépare une décision ; une page de service décrit une prestation ; une étude de cas montre un travail. Reliez ces contenus avec des liens qui expliquent leur destination et permettent au lecteur de poursuivre sa démarche.</p>
+<p>Le menu principal n’est pas le seul endroit utile pour ces liens. Un exemple peut renvoyer à sa réalisation, une question de préparation à un guide, et un article à la prestation correspondant au besoin. Vérifiez que ces liens pointent directement vers des pages accessibles.</p>
+<h2>5. Décrire votre présence locale honnêtement</h2>
+<p>Pour une entreprise desservant Casablanca, les coordonnées et la zone de service doivent correspondre à l’activité réelle. Expliquez les prestations proposées et présentez des projets pertinents. Évitez les adresses inventées et les pages qui ne font que répéter des noms de quartiers.</p>
+<p>Si votre activité est éligible à Google Business Profile, vérifiez la cohérence des informations entre le site et la fiche. Les avis et les références doivent être authentiques. Une mission à distance ne doit pas être présentée comme une implantation physique dans chaque pays servi.</p>
+<h2>6. Mesurer la page mobile et les demandes reçues</h2>
+<p>La vitesse perçue dépend notamment du contenu principal, des images et des scripts. Mesurez des pages représentatives et les interactions importantes, puis corrigez les problèmes observés. Ajouter une animation ou utiliser un framework moderne ne constitue pas une preuve de performance.</p>
+<p>Les clics sur un bouton de contact indiquent une intention, mais ne prouvent pas qu’un formulaire a été envoyé ou qu’une demande est qualifiée. Si vous mesurez les contacts, distinguez les clics, les envois réussis et les demandes réellement reçues.</p>
+<h2>Un plan d’action simple à préparer</h2>
+<ol><li>Listez vos prestations prioritaires et leurs URLs.</li><li>Vérifiez indexation, canonical et réponses HTTP.</li><li>Identifiez les requêtes et les pages déjà visibles.</li><li>Corrigez les contenus qui ne répondent pas clairement à la demande.</li><li>Ajoutez des exemples et des liens pertinents.</li><li>Contrôlez la publication, puis comparez des périodes équivalentes.</li></ol>
+<p>Le classement dépend aussi de la concurrence et de l’autorité. Ce plan vise des améliorations vérifiables ; il ne garantit pas le top 10. Pour examiner votre site, consultez l’accompagnement de <a href="/casablanca/seo">consultant SEO à Casablanca</a> ou le détail d’un <a href="/seo">audit SEO technique</a>.</p>
+<h2>Sources pour approfondir</h2>
+<ul><li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Google Search Central : créer des contenus utiles et fiables</a></li><li><a href="https://developers.google.com/search/docs/appearance/title-link">Google Search Central : titres dans les résultats de recherche</a></li></ul>
 `.trim(),
   },
   {

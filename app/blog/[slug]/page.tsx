@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { posts, getPostBySlug } from "../posts";
 import { SITE_URL } from "../../lib/site";
+import SiteHeader from "../../components/SiteHeader";
+import SiteFooter from "../../components/SiteFooter";
 
 const BASE_URL = SITE_URL;
 const AUTHOR_IMAGE = "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778438634/Gemini_Generated_Image_yfw0szyfw0szyfw0-removebg-preview_lft2su.png";
@@ -29,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `${BASE_URL}/blog/${post.slug}`,
       type: "article",
       publishedTime: post.date,
-      modifiedTime: post.date,
+      modifiedTime: post.updatedAt ?? post.date,
       authors: ["Soufiane Boutatss"],
       tags: post.tags,
       images: [
@@ -61,7 +63,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updatedAt ?? post.date,
     url: `${BASE_URL}/blog/${post.slug}`,
     mainEntityOfPage: {
       "@type": "WebPage",
@@ -76,7 +78,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     author: {
       "@type": "Person",
       name: "Soufiane Boutatss",
-      url: BASE_URL,
+      url: `${BASE_URL}/a-propos`,
       sameAs: [
         "https://github.com/soufiane2001",
         "https://www.linkedin.com/in/soufiane-boutatss-96400a1ba/",
@@ -101,7 +103,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   }];
 
   return (
-    <main className="min-h-screen bg-black pt-32 pb-24">
+    <>
+    <SiteHeader />
+    <main className="min-h-screen bg-black pt-20 pb-24">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -137,10 +141,10 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               height={32}
               className="rounded-full object-cover border border-white/10"
             />
-            <span className="text-white/60 font-medium">Soufiane Boutatss</span>
+            <Link href="/a-propos" className="text-white/60 font-medium hover:text-[#ff8a3d]">Soufiane Boutatss</Link>
           </div>
           <span>·</span>
-          <span>{new Date(post.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</span>
+          <span><time dateTime={post.date}>{new Date(post.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time>{post.updatedAt && <> · Mis à jour le <time dateTime={post.updatedAt}>{new Date(post.updatedAt).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time></>}</span>
           <span>·</span>
           <span>{post.readTime} min de lecture</span>
         </div>
@@ -180,5 +184,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       </div>
     <RelatedContent path={`/blog/${post.slug}`} subject={post.tags.join(" ")} />
     </main>
+    <SiteFooter />
+    </>
   );
 }

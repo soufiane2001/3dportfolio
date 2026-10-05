@@ -10,6 +10,9 @@ export type CaseStudy = {
   image: string;
   website?: string;
   relatedService: string;
+  updatedAt?: string;
+  imageKind?: "screenshot" | "illustration";
+  details?: { title: string; paragraphs: string[] }[];
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -67,14 +70,20 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "cash-management-app",
-    title: "Application mobile de gestion de dépenses",
+    title: "Cash Management — Application de gestion de dépenses",
     category: "Application mobile",
-    summary: "Une application mobile de suivi des dépenses développée avec React Native Expo et Firebase.",
+    summary: "Application mobile de gestion et de suivi des dépenses avec React Native, Expo et Firebase. Découvrez le contexte et les technologies du projet.",
     context: "Le projet répond à un besoin de suivi financier depuis un smartphone, avec des données accessibles dans une interface mobile dédiée.",
     solution: "Développement d’une application React Native Expo connectée à Firebase pour gérer l’expérience mobile et les données de l’application.",
     technologies: ["React Native", "Expo", "Firebase"],
     features: ["Suivi de dépenses", "Interface mobile", "Données Firebase", "Architecture cross-platform"],
     image: "/cash-management-app.svg",
+    imageKind: "illustration",
+    updatedAt: "2026-10-05",
+    details: [
+      { title: "Du besoin de suivi à une interface mobile", paragraphs: ["Cash Management répond à un usage depuis un smartphone : consulter et suivre ses dépenses dans une application dédiée. Le projet présenté associe une interface React Native, l’environnement Expo et Firebase pour les données.", "Cette combinaison distingue le travail sur les écrans et la navigation du travail sur les informations conservées. Elle constitue un exemple de projet mobile connecté à des données, à examiner pour préparer une application de gestion."] },
+      { title: "Préparer votre propre application de gestion", paragraphs: ["Pour une application similaire, le cadrage doit préciser les informations saisies, les comptes qui peuvent les consulter et les changements à synchroniser. Le comportement en cas de perte de connexion, les exports et les notifications sont des besoins à discuter, sans les supposer présents dans ce projet.", "Une demande de devis est plus facile à estimer avec quelques parcours décrits et des exemples de données. Le périmètre peut ensuite distinguer le MVP, les intégrations et les évolutions."] },
+    ],
     relatedService: "/application-mobile-casablanca",
   },
   {
@@ -87,6 +96,7 @@ export const caseStudies: CaseStudy[] = [
     technologies: ["Electron.js"],
     features: ["Application desktop", "Gestion de données métier", "Interface dédiée", "Navigation applicative"],
     image: "/patient-management-app.svg",
+    imageKind: "illustration",
     relatedService: "/developpement-web-sur-mesure-casablanca",
   },
 ];
@@ -94,4 +104,3 @@ export const caseStudies: CaseStudy[] = [
 export function getCaseStudy(slug: string) {
   return caseStudies.find((project) => project.slug === slug);
 }
-

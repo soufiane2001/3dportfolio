@@ -21,6 +21,13 @@ class Page(HTMLParser):
         self.description = False
         self.lang = None
         self.title = False
+        self.robots = ""
+        self.missing_alt = 0
+        self.ids = set()
+        self.anchors = set()
+        self.json_ld = []
+        self.in_json_ld = False
+        self.json_buffer = []
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -28,10 +35,25 @@ class Page(HTMLParser):
         if tag == "h1": self.h1 += 1
         if tag == "title": self.title = True
         if tag == "meta" and a.get("name") == "description": self.description = bool(a.get("content"))
+        if tag == "meta" and a.get("name") == "robots": self.robots = a.get("content", "")
+        if tag == "img" and "alt" not in a: self.missing_alt += 1
+        if a.get("id"): self.ids.add(a["id"])
+        if tag == "a" and a.get("href", "").startswith("#"): self.anchors.add(a["href"][1:])
+        if tag == "script" and a.get("type") == "application/ld+json":
+            self.in_json_ld = True
+            self.json_buffer = []
         if tag == "link" and a.get("rel") == "canonical": self.canonical.append(a.get("href"))
         if tag == "link" and a.get("hreflang"): self.alternates[a["hreflang"]] = a.get("href")
         if tag == "a" and a.get("href", "").startswith("/") and not a["href"].startswith("//"):
             self.links.add(urllib.parse.urlsplit(a["href"]).path)
+
+    def handle_data(self, data):
+        if self.in_json_ld: self.json_buffer.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "script" and self.in_json_ld:
+            self.json_ld.append("".join(self.json_buffer))
+            self.in_json_ld = False
 
 def fetch(path):
     try:
@@ -59,6 +81,14 @@ for path, (page, status) in pages.items():
         continue
     if page.canonical != [SITE + path]: issues.append(f"{path}: canonical {page.canonical}")
     if page.h1 != 1 or not page.description or not page.title: issues.append(f"{path}: missing metadata or H1 count {page.h1}")
+    if "noindex" in page.robots: issues.append(f"{path}: sitemap contains a noindex page")
+    if page.missing_alt: issues.append(f"{path}: {page.missing_alt} images missing alt")
+    for anchor in page.anchors - page.ids:
+        if anchor: issues.append(f"{path}: missing anchor #{anchor}")
+    if not page.json_ld: issues.append(f"{path}: missing structured data")
+    for script in page.json_ld:
+        try: json.loads(script)
+        except json.JSONDecodeError: issues.append(f"{path}: invalid JSON-LD")
     if page.lang != ("en" if path.startswith("/en") else "ar" if path == "/ar" else "fr"): issues.append(f"{path}: wrong HTML language")
     for href in page.links:
         if href in incoming and href != path: incoming[href].add(path)
