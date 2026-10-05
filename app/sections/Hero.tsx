@@ -58,13 +58,13 @@ const Hero = () => {
 
       <div className="container relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 pt-32 pb-20 px-6">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={false}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="min-w-0 flex-1 text-center lg:text-start"
         >
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-[#ff6b00] text-sm md:text-base font-medium tracking-[0.3em] uppercase mb-4"
@@ -73,7 +73,7 @@ const Hero = () => {
           </motion.p>
 
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
             className={`text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 ${locale === "ar" ? "leading-[1.25]" : "leading-[0.9] tracking-tight"}`}
@@ -89,7 +89,7 @@ const Hero = () => {
           </p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
             className="mb-10"
@@ -103,7 +103,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
             className="flex flex-wrap gap-4 justify-center lg:justify-start mb-12"
@@ -161,7 +161,7 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={false}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
           className="flex-1 flex justify-center lg:justify-end"

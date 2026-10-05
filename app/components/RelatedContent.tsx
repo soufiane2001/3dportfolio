@@ -2,12 +2,14 @@ import Link from "next/link";
 import { posts } from "../blog/posts";
 import { caseStudies } from "../lib/portfolio";
 import { landingPages } from "../lib/landing-pages";
+import { contentLinks } from "../lib/content-links";
 
 const topics = ["react", "next", "php", "laravel", "mobile", "seo", "ecommerce", "casablanca", "maroc", "france", "canada", "freelance"];
 const normalize = (text: string) => text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/e-commerce/g, "ecommerce");
 
 export default function RelatedContent({ path, subject, locale = "fr" }: { path: string; subject: string; locale?: "fr" | "en" | "ar" }) {
   const source = normalize(`${path} ${subject}`);
+  const curated = locale === "fr" ? contentLinks[path] ?? [] : [];
   const score = (text: string) => topics.filter(topic => source.includes(topic) && normalize(text).includes(topic)).length;
   const services = landingPages.filter(page => page.path !== path && page.path !== "/en" && page.lang === (locale === "en" ? "en" : "fr"))
     .map(page => ({ href: page.path, label: page.h1, score: score(`${page.path} ${page.h1}`) }))
@@ -22,7 +24,7 @@ export default function RelatedContent({ path, subject, locale = "fr" }: { path:
     ? landingPages.filter(page => page.path.startsWith(`${path}/`)).map(page => ({ href: page.path, label: page.h1 })) : [];
   const maintenance = locale === "fr" && ["/creation-site-web", "/seo", "/developpement-web-sur-mesure"].includes(path)
     ? [{ href: "/maintenance-site-web", label: "Maintenance et évolution du site après sa mise en ligne" }] : [];
-  const links = [...new Map([...marketServices, ...services, ...maintenance, ...articles, ...projects].map(link => [link.href, link])).values()];
+  const links = [...new Map([...curated, ...marketServices, ...(curated.length ? [] : services), ...maintenance, ...articles, ...projects].filter(link => link.href !== path).map(link => [link.href, link])).values()].slice(0, 8);
   if (!links.length) return null;
   const heading = locale === "en" ? "Services for your project" : locale === "ar" ? "خدمات ذات صلة (بالفرنسية)" : "Services, guides et réalisations associés";
   return <aside className="container border-t border-white/10 py-12"><h2 className="text-2xl font-bold">{heading}</h2><nav aria-label={heading}><ul className="mt-6 grid gap-x-8 gap-y-4 md:grid-cols-2">{links.map(link => <li key={link.href}><Link href={link.href} className="text-white/70 underline decoration-white/20 underline-offset-4 hover:text-[#ff8a3d] focus-visible:outline-2 focus-visible:outline-[#ff6b00]">{link.label}</Link></li>)}</ul></nav></aside>;
