@@ -15,16 +15,16 @@ const About = () => {
   });
 
   return (
-    <section id="about" className="relative py-32 bg-black overflow-hidden" aria-label="À propos de Soufiane Boutatss">
+    <section id="about" className="relative section-padding bg-black overflow-hidden" aria-label="À propos de Soufiane Boutatss">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-transparent" />
 
       <div className="container relative z-10" ref={ref}>
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="relative w-full max-w-[500px] lg:w-1/2"
+            className="relative w-full max-w-[380px] lg:w-2/5"
           >
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
               <div className="absolute -inset-1 bg-gradient-to-r from-[#ff6b00] via-[#a855f7] to-[#3b82f6] rounded-3xl blur-xl opacity-30" />
@@ -44,7 +44,7 @@ const About = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="absolute -bottom-8 -right-8 glass-card p-6"
+              className="absolute bottom-4 end-4 glass-card p-4 sm:p-5"
             >
               <div className="text-4xl font-black text-white">6+</div>
               <div className="text-sm text-white/50 uppercase tracking-wider">
@@ -59,18 +59,18 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex-1 text-center lg:text-left"
           >
-            <p className="section-subtitle">{t.about.tag}</p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-8">
+            <p className="section-subtitle lg:!text-start">{t.about.tag}</p>
+            <h2 className="section-heading text-white mb-6">
               {t.about.title}
               <br />
               <span className="text-gradient">{t.about.titleGradient}</span>
             </h2>
 
-            <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+            <p className="body-copy mb-8 max-w-xl mx-auto lg:mx-0">
               {t.about.p1}
             </p>
 
-            <p className="text-white/60 text-lg leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
+            <p className="body-copy mb-10 max-w-xl mx-auto lg:mx-0">
               {t.about.p2}
             </p>
 
@@ -88,7 +88,7 @@ const About = () => {
                   className="text-center"
                 >
                   <div className="text-3xl font-black text-white">{stat.value}</div>
-                  <div className="text-xs text-white/40 uppercase tracking-wider">
+                  <div className="text-sm text-white/65 uppercase tracking-wider">
                     {stat.label}
                   </div>
                 </motion.div>

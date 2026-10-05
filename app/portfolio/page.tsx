@@ -12,22 +12,22 @@ export default function PortfolioPage() {
   return (
     <>
       <SiteHeader />
-      <main className="min-h-screen bg-black py-24 text-white">
+      <main className="min-h-screen bg-black page-shell text-white">
         <div className="container">
-          <p className="section-subtitle">Réalisations</p>
-          <h1 className="mt-3 max-w-4xl text-4xl font-black md:text-6xl">Portfolio web, mobile et applications métier</h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-white/60">Sites de services au Canada, portfolio d’artiste, boutique en ligne, restaurant en France et applications de gestion : découvrez le besoin de chaque projet, sa solution et ses technologies.</p>
-          <div className="mt-14 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+          <p className="section-subtitle !text-start">Réalisations</p>
+          <h1 className="mt-3 max-w-4xl page-heading">Portfolio web, mobile et applications métier</h1>
+          <p className="mt-6 max-w-3xl body-copy">Sites de services au Canada, portfolio d’artiste, boutique en ligne, restaurant en France et applications de gestion : découvrez le besoin de chaque projet, sa solution et ses technologies.</p>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {caseStudies.map((project) => (
-              <article key={project.slug} className="glass-card overflow-hidden">
+              <article key={project.slug} className="content-card glass-card overflow-hidden">
                 <div className="relative aspect-video">
-                  <Image src={project.image} alt={`Aperçu du projet ${project.title} réalisé par Soufiane Boutatss`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                  <Image src={project.image} alt={`Aperçu du projet ${project.title} réalisé par Soufiane Boutatss`} fill sizes="(min-width: 1280px) 380px, (min-width: 640px) 46vw, 100vw" className="object-cover" />
                 </div>
-                <div className="p-6">
+                <div className="card-body">
                   <p className="text-xs font-bold uppercase tracking-wider text-[#ff6b00]">{project.category}</p>
                   <h2 className="mt-2 text-xl font-bold">{project.title}</h2>
-                  <p className="mt-3 text-sm leading-6 text-white/55">{project.summary}</p>
-                  <Link href={`/portfolio/${project.slug}`} className="mt-5 inline-block font-bold text-white hover:text-[#ff6b00]">Voir l’étude de cas →</Link>
+                  <p className="mt-3 body-copy">{project.summary}</p>
+                  <Link href={`/portfolio/${project.slug}`} className="card-link inline-block text-white hover:text-[#ff6b00]">Voir l’étude de cas →</Link>
                 </div>
               </article>
             ))}

@@ -31,7 +31,7 @@ const Hero = () => {
     <section
       ref={heroRef}
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="hero relative flex items-center justify-center overflow-hidden"
     >
       <div
         aria-hidden="true"
@@ -41,7 +41,7 @@ const Hero = () => {
 
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60 z-[1]" />
 
-      <div className="container relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 pt-32 pb-20 px-6">
+      <div className="hero-layout container relative z-10">
         <motion.div
           initial={false}
           animate={{ opacity: 1, x: 0 }}
@@ -52,7 +52,7 @@ const Hero = () => {
             initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-[#ff6b00] text-sm md:text-base font-medium tracking-[0.3em] uppercase mb-4"
+            className="section-subtitle !text-center lg:!text-start !text-[#ff8a3d] mb-5"
           >
             {t.hero.tag}
           </motion.p>
@@ -61,15 +61,12 @@ const Hero = () => {
             initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className={`text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 ${locale === "ar" ? "leading-[1.25]" : "leading-[0.9] tracking-tight"}`}
+            className={`hero-title text-white ${locale === "ar" ? "!leading-[1.3] !tracking-normal" : ""}`}
           >
             {copy.title}
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b00] via-[#ff8533] to-[#a855f7]">
-              {copy.market}
-            </span>
           </motion.h1>
-          <p className="-mt-2 mb-5 text-sm font-bold uppercase tracking-[.22em] text-white/55">
+          <p className="hero-market text-gradient">{copy.market}</p>
+          <p className="mt-5 text-base font-medium text-white/70">
             {copy.name}
           </p>
 
@@ -77,32 +74,29 @@ const Hero = () => {
             initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="mb-10"
+            className="mt-5 mb-7"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-[#ff6b00] animate-pulse" />
-              <span className="text-white/80 text-sm md:text-base font-medium">
+            <p className="body-copy max-w-[58ch] mx-auto lg:mx-0">
                 {pageCopy[locale].intro}
-              </span>
-            </div>
+            </p>
           </motion.div>
 
           <motion.div
             initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="flex flex-wrap gap-4 justify-center lg:justify-start mb-12"
+            className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-7"
           >
             <a
               href="#contact"
-              className="group relative px-8 py-4 bg-[#ff6b00] text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,107,0,0.5)]"
+              className="btn-primary group relative overflow-hidden"
             >
               <span className="relative z-10">{copy.quote}</span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#ff8533] to-[#ff6b00] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </a>
             <a
               href="#portfolio"
-              className="px-8 py-4 border border-white/20 text-white font-bold rounded-full hover:bg-white/5 hover:border-white/40 transition-all duration-300"
+              className="btn-secondary"
             >
               {copy.work}
             </a>
@@ -153,7 +147,7 @@ const Hero = () => {
         >
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-to-r from-[#ff6b00]/30 via-[#a855f7]/30 to-[#3b82f6]/30 rounded-full blur-[60px] animate-pulse" />
-            <div className="relative w-[280px] h-[280px] md:w-[380px] md:h-[380px] lg:w-[450px] lg:h-[450px]">
+            <div className="relative w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] lg:w-[360px] lg:h-[360px]">
               <div className="absolute inset-0 rounded-full border border-white/10 animate-[spin_20s_linear_infinite]" />
               <div className="absolute inset-4 rounded-full border border-[#ff6b00]/20 animate-[spin_15s_linear_infinite_reverse]" />
               <div className="absolute inset-8 rounded-full overflow-hidden border-2 border-[#ff6b00]/40">
@@ -162,7 +156,7 @@ const Hero = () => {
                   alt="Soufiane Boutatss - Web & Mobile Developer"
                   fill
                   priority
-                  sizes="(min-width: 1024px) 386px, (min-width: 768px) 316px, 216px"
+                  sizes="(min-width: 1024px) 296px, (min-width: 640px) 216px, 176px"
                   className="object-cover"
                 />
               </div>
@@ -175,7 +169,7 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden lg:block"
       >
         <a
           href="#about"

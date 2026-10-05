@@ -111,7 +111,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="container mx-auto px-6 md:px-12 max-w-3xl">
+      <div className="container mx-auto px-6 md:px-12 max-w-4xl">
         {/* Back */}
         <Link href="/blog" className="inline-flex items-center gap-2 text-white/40 hover:text-[#ff6b00] transition-colors text-sm mb-12">
           ← Retour au blog
@@ -127,12 +127,12 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl md:text-5xl font-black text-white leading-tight mb-6">
+        <h1 className="page-heading text-white mb-6">
           {post.title}
         </h1>
 
         {/* Meta */}
-        <div className="flex items-center gap-4 text-white/30 text-sm mb-12 pb-8 border-b border-white/10">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-3 text-white/65 text-sm mb-12 pb-8 border-b border-white/10">
           <div className="flex items-center gap-3">
             <Image
               src={AUTHOR_IMAGE}
@@ -151,10 +151,10 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
         {/* Content */}
         <article
-          className="prose prose-invert prose-orange max-w-none
+          className="prose prose-lg prose-invert prose-orange max-w-none
             prose-headings:font-black prose-headings:text-white
             prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-            prose-p:text-white/70 prose-p:leading-relaxed prose-p:mb-4
+            prose-p:text-white/70 prose-p:leading-[1.8] prose-p:mb-4
             prose-pre:bg-white/5 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl prose-pre:p-4
             prose-code:text-[#ff6b00] prose-code:bg-[#ff6b00]/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
             prose-strong:text-white"

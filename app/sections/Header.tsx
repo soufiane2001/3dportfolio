@@ -79,7 +79,7 @@ const Header = () => {
           isScrolled ? "bg-black/80 backdrop-blur-xl border-b border-white/5" : "bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-6 md:px-12">
+        <div className="container">
           <div className="flex items-center justify-between h-20">
             <motion.a href="#home" className="relative z-10" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <span className="text-2xl font-black tracking-tighter">
@@ -100,7 +100,7 @@ const Header = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.1, duration: 0.4 }}
                     onMouseEnter={() => setHovered(link.id)}
-                    className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+                    className={`relative px-3 py-3 text-sm font-medium transition-colors duration-300 ${
                       isActive ? "text-white" : "text-white/70 hover:text-white"
                     }`}
                   >
@@ -205,9 +205,11 @@ const Header = () => {
             <div className="xl:hidden flex items-center gap-2">
               <LanguageLinks locale={locale} />
               <button
-                className="relative z-[250] w-10 h-10 flex items-center justify-center"
+                className="relative w-11 h-11 flex items-center justify-center"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label="Toggle menu"
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-navigation"
               >
                 <AnimatePresence mode="wait">
                   {isMobileMenuOpen ? (
@@ -234,14 +236,15 @@ const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[200] xl:hidden bg-black"
+            className="fixed inset-0 z-[90] xl:hidden overflow-y-auto bg-black"
           >
             <motion.nav
+              id="mobile-navigation"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 50 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="flex flex-col items-center justify-center h-full gap-8"
+              className="flex min-h-[100svh] flex-col items-center justify-center gap-4 px-6 py-28"
             >
               {navLinks.map((link, i) => (
                 <motion.a
@@ -250,7 +253,7 @@ const Header = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1, duration: 0.4 }}
-                  className="text-3xl font-bold text-white hover:text-[#ff6b00] transition-colors duration-300"
+                  className="text-2xl font-bold text-white hover:text-[#ff6b00] transition-colors duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}

@@ -30,7 +30,7 @@ const Contact = ({ asPage = false }: { asPage?: boolean }) => {
   ];
 
   return (
-    <section id="contact" className="relative py-32 bg-black overflow-hidden" aria-label="Contact Soufiane Boutatss">
+    <section id="contact" className="relative section-padding bg-black overflow-hidden" aria-label="Contact Soufiane Boutatss">
       <div className="absolute inset-0">
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#ff6b00]/5 rounded-full blur-[200px]" />
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#a855f7]/5 rounded-full blur-[200px]" />
@@ -53,12 +53,12 @@ const Contact = ({ asPage = false }: { asPage?: boolean }) => {
             {t.contact.title} <span className="text-gradient">{t.contact.titleGradient}</span>
           </h2>
           )}
-          <p className="text-white/50 max-w-xl mx-auto mt-4">
+          <p className="body-copy max-w-xl mx-auto mt-4">
             {t.contact.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -69,19 +69,19 @@ const Contact = ({ asPage = false }: { asPage?: boolean }) => {
               <h3 className="text-2xl font-bold text-white mb-4">
                 {t.contact.ready}
               </h3>
-              <p className="text-white/60 leading-relaxed">
+              <p className="body-copy">
                 {t.contact.description}
               </p>
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#ff6b00]/10 flex items-center justify-center">
+              <div className="flex min-w-0 items-center gap-4">
+                <div className="w-12 h-12 shrink-0 rounded-xl bg-[#ff6b00]/10 flex items-center justify-center">
                   <Mail className="w-5 h-5 text-[#ff6b00]" />
                 </div>
                 <div>
                   <p className="text-white/40 text-sm">Email</p>
-                  <address className="not-italic">
+                  <address className="not-italic break-all">
                     <a href="mailto:sboutatss@gmail.com" className="text-white font-medium hover:text-[#ff6b00] transition-colors">sboutatss@gmail.com</a>
                   </address>
                 </div>
@@ -115,9 +115,9 @@ const Contact = ({ asPage = false }: { asPage?: boolean }) => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <form className="glass-card p-8 space-y-6" onSubmit={handleSend} data-conversion="generate_lead">
+            <form className="glass-card p-5 sm:p-8 space-y-6" onSubmit={handleSend} data-conversion="generate_lead">
               <div className="space-y-2">
-                <label htmlFor="contact-name" className="flex items-center gap-2 text-white/60 text-sm font-medium">
+                <label htmlFor="contact-name" className="flex items-center gap-2 text-white/75 text-base font-medium">
                   <User size={16} />
                   {t.contact.name}
                 </label>
@@ -135,7 +135,7 @@ const Contact = ({ asPage = false }: { asPage?: boolean }) => {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="contact-email" className="flex items-center gap-2 text-white/60 text-sm font-medium">
+                <label htmlFor="contact-email" className="flex items-center gap-2 text-white/75 text-base font-medium">
                   <Mail size={16} />
                   {t.contact.email}
                 </label>
@@ -153,7 +153,7 @@ const Contact = ({ asPage = false }: { asPage?: boolean }) => {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="contact-message" className="flex items-center gap-2 text-white/60 text-sm font-medium">
+                <label htmlFor="contact-message" className="flex items-center gap-2 text-white/75 text-base font-medium">
                   <MessageSquare size={16} />
                   {t.contact.message}
                 </label>

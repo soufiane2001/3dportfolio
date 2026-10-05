@@ -12,9 +12,9 @@ const Experience = () => {
   const experiences = t.experience.items;
 
   return (
-    <section id="experiences" className="relative py-32 bg-black overflow-hidden" aria-label="Expérience professionnelle de Soufiane Boutatss">
+    <section id="experiences" className="relative section-padding bg-black overflow-hidden" aria-label="Expérience professionnelle de Soufiane Boutatss">
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-transparent via-[#ff6b00]/30 to-transparent" />
+        <div className="absolute top-0 start-1/2 hidden md:block w-px h-full bg-gradient-to-b from-transparent via-[#ff6b00]/30 to-transparent" />
       </div>
 
       <div className="container relative z-10" ref={ref}>
@@ -31,6 +31,7 @@ const Experience = () => {
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto">
+          <div aria-hidden="true" className="absolute inset-y-0 start-[1.1rem] w-px bg-[#ff6b00]/30 md:hidden" />
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
@@ -43,12 +44,12 @@ const Experience = () => {
             >
               <div className="hidden md:block flex-1" />
 
-              <div className="absolute left-1/2 -translate-x-1/2 top-0 z-10">
+              <div className="absolute start-[.75rem] md:start-1/2 md:-translate-x-1/2 md:rtl:translate-x-1/2 top-0 z-10">
                 <div className="timeline-dot" />
               </div>
 
-              <div className="flex-1 md:max-w-[calc(50%-2rem)]">
-                <div className="glass-card glass-card-hover p-8 ml-8 md:ml-0">
+              <div className="min-w-0 flex-1 md:max-w-[calc(50%-2rem)]">
+                <div className="glass-card glass-card-hover p-5 sm:p-7 ms-8 md:ms-0">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="px-3 py-1 text-xs font-bold text-[#ff6b00] bg-[#ff6b00]/10 rounded-full">
                       {exp.period}
@@ -64,7 +65,7 @@ const Experience = () => {
                     {exp.description.map((item, i) => (
                       <li
                         key={i}
-                        className="flex items-start gap-2 text-white/60 text-sm"
+                        className="flex items-start gap-2 body-copy"
                       >
                         <span className="text-[#ff6b00] mt-1">→</span>
                         {item}

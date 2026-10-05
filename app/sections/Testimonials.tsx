@@ -43,7 +43,7 @@ const Testimonials = () => {
   const current = items[currentIndex];
 
   return (
-    <section id="testimonials" className="relative py-32 bg-black overflow-hidden">
+    <section id="testimonials" className="relative section-padding bg-black overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#a855f7]/5 rounded-full blur-[200px]" />
       </div>
@@ -61,17 +61,17 @@ const Testimonials = () => {
           </h2>
         </motion.div>
 
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-4xl mx-auto pb-16 sm:px-14 sm:pb-0">
           <button
             onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-16 z-10 p-3 rounded-full bg-white/5 border border-white/10 hover:bg-[#ff6b00]/20 hover:border-[#ff6b00]/50 transition-all"
+            className="absolute start-0 bottom-0 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 z-10 p-3 rounded-full bg-white/5 border border-white/10 hover:bg-[#ff6b00]/20 hover:border-[#ff6b00]/50 transition-all"
           >
             <ChevronLeft className="w-5 h-5 text-white" />
           </button>
 
           <button
             onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-16 z-10 p-3 rounded-full bg-white/5 border border-white/10 hover:bg-[#ff6b00]/20 hover:border-[#ff6b00]/50 transition-all"
+            className="absolute end-0 bottom-0 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 z-10 p-3 rounded-full bg-white/5 border border-white/10 hover:bg-[#ff6b00]/20 hover:border-[#ff6b00]/50 transition-all"
           >
             <ChevronRight className="w-5 h-5 text-white" />
           </button>
@@ -83,11 +83,11 @@ const Testimonials = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
-              className="glass-card p-8 md:p-12 text-center"
+              className="glass-card p-6 sm:p-8 text-center"
             >
               <Quote className="w-12 h-12 text-[#ff6b00]/30 mx-auto mb-6" />
 
-              <p className="text-xl md:text-2xl text-white/80 leading-relaxed mb-8 max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-white/85 leading-relaxed mb-8 max-w-2xl mx-auto">
                 &ldquo;{current.text}&rdquo;
               </p>
 
@@ -107,7 +107,7 @@ const Testimonials = () => {
                 <p className="text-[#ff6b00] text-sm font-medium">
                   {current.role}
                 </p>
-                <p className="text-white/40 text-sm">
+                <p className="text-white/65 text-sm">
                   {emails[currentIndex]}
                 </p>
               </div>

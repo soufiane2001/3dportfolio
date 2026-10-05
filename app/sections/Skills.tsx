@@ -66,7 +66,7 @@ const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
         </div>
         <div>
           <h3 className="text-white font-bold text-lg">{skill.name}</h3>
-          <p className="text-white/40 text-sm">{skill.percentage}% Proficiency</p>
+          <p className="text-white/65 text-sm">{skill.percentage}% Proficiency</p>
         </div>
       </div>
 
@@ -88,7 +88,7 @@ const Skills = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="skills" className="relative py-32 bg-black overflow-hidden" aria-label="Compétences et technologies de Soufiane Boutatss">
+    <section id="skills" className="relative section-padding bg-black overflow-hidden" aria-label="Compétences et technologies de Soufiane Boutatss">
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#ff6b00]/5 rounded-full blur-[150px]" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#a855f7]/5 rounded-full blur-[150px]" />
@@ -105,12 +105,12 @@ const Skills = () => {
           <h2 className="section-title text-white">
             {t.skills.title} <span className="text-gradient">{t.skills.titleGradient}</span>
           </h2>
-          <p className="text-white/50 max-w-2xl mx-auto mt-4">
+          <p className="body-copy max-w-2xl mx-auto mt-4">
             {t.skills.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
           {skillsData.map((skill, index) => (
             <SkillCard key={skill.name} skill={skill} index={index} />
           ))}

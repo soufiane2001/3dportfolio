@@ -120,6 +120,12 @@
     font-weight: 800;
     color: #ffffff;
     letter-spacing: -0.02em;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  section[id] {
+    scroll-margin-top: 6rem;
   }
 
   ::selection {
@@ -148,16 +154,102 @@
 @layer components {
   .container {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-inline: clamp(1.25rem, 3.5vw, 3rem);
   }
 
   .section-padding {
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .page-shell {
+    padding-block: clamp(3.5rem, 6vw, 6rem);
+  }
+
+  .page-heading {
+    max-width: 22ch;
+    font-size: clamp(2.125rem, 4vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+    overflow-wrap: anywhere;
+  }
+
+  .section-heading {
+    font-size: clamp(1.875rem, 3.3vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.16;
+    letter-spacing: -0.03em;
+  }
+
+  .body-copy {
+    font-size: clamp(1rem, .96rem + .2vw, 1.125rem);
+    line-height: 1.75;
+    color: #bcbcbc;
+    overflow-wrap: break-word;
+  }
+
+  .content-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+  }
+
+  .card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: clamp(1.25rem, 2.4vw, 1.75rem);
+  }
+
+  .card-link {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  .hero {
+    min-height: min(56rem, 100svh);
+  }
+
+  .hero-layout {
+    display: grid;
+    align-items: center;
+    gap: 3rem;
+    padding-block: 7.5rem 4rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-market {
+    margin-top: 1rem;
+    font-size: clamp(1.125rem, 2vw, 1.625rem);
+    font-weight: 700;
+    line-height: 1.4;
+    text-wrap: balance;
+  }
+
+  :lang(ar) :is(.hero-title, .page-heading, .section-heading, .section-title) {
+    line-height: 1.35;
+    letter-spacing: normal;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-layout {
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr);
+      gap: clamp(2rem, 5vw, 4rem);
+      padding-block: 9rem 6rem;
+    }
   }
 
   .text-gradient {
@@ -209,9 +301,8 @@
     background: linear-gradient(135deg, #ff6b00, #ff8533);
     color: #ffffff;
     font-weight: 700;
-    font-size: 0.875rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    min-height: 3rem;
+    font-size: 1rem;
     border-radius: 9999px;
     transition: all 0.3s ease;
   }
@@ -229,9 +320,8 @@
     background: transparent;
     color: #ffffff;
     font-weight: 700;
-    font-size: 0.875rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    min-height: 3rem;
+    font-size: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 9999px;
     transition: all 0.3s ease;
@@ -243,18 +333,19 @@
   }
 
   .section-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 900;
+    font-size: clamp(1.875rem, 3.3vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.16;
     text-align: center;
     margin-bottom: 1rem;
     letter-spacing: -0.03em;
   }
 
   .section-subtitle {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.14em;
     color: #ff6b00;
     text-align: center;
     margin-bottom: 0.5rem;

@@ -23,7 +23,7 @@ const Hobbies = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="hobbies" className="relative py-32 bg-black overflow-hidden">
+    <section id="hobbies" className="relative section-padding bg-black overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#ff6b00]/5 rounded-full blur-[150px]" />
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[#a855f7]/5 rounded-full blur-[150px]" />

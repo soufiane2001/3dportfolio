@@ -40,10 +40,10 @@ export default function BlogPage() {
           <p className="text-[#ff6b00] text-sm font-medium tracking-[0.3em] uppercase mb-4">
             Articles & Tutoriels
           </p>
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
+          <h1 className="page-heading mx-auto text-white mb-6">
             Blog <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b00] to-[#a855f7]">Technique</span>
           </h1>
-          <p className="text-white/50 max-w-xl mx-auto">
+          <p className="body-copy max-w-xl mx-auto">
             Partage d'expériences, bonnes pratiques et tutoriels sur le développement web et mobile.
           </p>
         </div>
@@ -54,7 +54,7 @@ export default function BlogPage() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group block glass-card p-8 hover:border-[#ff6b00]/30 transition-all duration-300"
+              className="content-card group glass-card p-5 sm:p-7 hover:border-[#ff6b00]/30 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-4">
                 <img src={post.image} alt="" width={28} height={28} loading="lazy" decoding="async" className="object-contain" />
@@ -70,11 +70,11 @@ export default function BlogPage() {
               <h2 className="text-xl font-bold text-white mb-3 group-hover:text-[#ff6b00] transition-colors leading-snug">
                 {post.title}
               </h2>
-              <p className="text-white/50 text-sm leading-relaxed mb-6">
+              <p className="body-copy mb-6">
                 {post.excerpt}
               </p>
 
-              <div className="flex items-center justify-between text-white/30 text-xs">
+              <div className="mt-auto flex flex-wrap items-center justify-between gap-2 text-white/65 text-sm">
                 <span>{new Date(post.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</span>
                 <span>{post.readTime} min de lecture</span>
               </div>
