@@ -11,7 +11,7 @@ export const regionalContent: Record<string, RegionalContent> = {
       { title: "Préparer une création ou une refonte à distance", paragraphs: ["Les maquettes et les textes sont validés en français, avec un responsable identifié pour chaque contenu. Avant une refonte, nous inventorions les anciennes adresses et les pages déjà visitées afin de préparer des redirections vers les pages correspondantes.", "Le dossier de livraison précise les accès, le domaine, l’hébergement et la procédure de mise à jour. Le devis distingue ce qui est fourni par votre entreprise de ce qui fait partie de la mission de développement."], items: ["Textes et images validés", "Inventaire des URLs", "Recette mobile", "Accès et prise en main"] },
     ],
     faqs: [{ question: "Dois-je être disponible à chaque étape ?", answer: "Un référent doit valider la structure, les maquettes et les contenus. Les décisions peuvent être regroupées lors de points planifiés ; le travail ne nécessite pas une présence continue." }, { question: "Puis-je conserver mon domaine actuel ?", answer: "Oui, si vous disposez des accès nécessaires. Le déploiement est préparé avec le domaine et l’hébergement retenus, en préservant les services associés comme votre messagerie." }],
-    projectSlugs: ["reby-art", "horea-formation"],
+    projectSlugs: ["pizza-napoli-toul", "reby-art", "horea-formation"],
     related: [{ href: "/portfolio/reby-art", label: "Portfolio React pour un peintre français" }, { href: "/france", label: "Collaboration avec les entreprises françaises" }, { href: "/creation-site-web", label: "Choisir le périmètre d’un site" }],
   },
   "/canada/creation-site-web": {

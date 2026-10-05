@@ -27,6 +27,38 @@ besoin du lecteur. Les illustrations du portfolio sont identifiées comme telles
 Les dates de modification ne sont renseignées que pour les contenus réellement
 modifiés ; les dates de publication des articles restent conservées.
 
+## Portfolio et chargement : seconde amélioration du 5 octobre 2026
+
+- Les dix projets de l’accueil renvoient vers leurs études de cas. Les titres,
+  descriptions et liens des projets restent visibles dans le HTML initial.
+- Quatre pages sont ajoutées : Dar Mooris, Gamlastan, Dr Nora Boutatss et Pizza
+  Napoli Toul. Les présentations distinguent les fonctionnalités décrites des
+  options d’un futur projet. Aucun résultat commercial n’est ajouté.
+- La page Next.js présente le projet Gamlastan ; la page de création de site en
+  France présente aussi Pizza Napoli Toul. Les études de cas renvoient vers les
+  prestations correspondantes, sans limiter la navigation à Casablanca.
+- Les six services de l’accueil ont des descriptions distinctes en français,
+  anglais et arabe. Le titre français précise React, Next.js et l’auteur ; sa
+  description présente la collaboration pour les publics francophones.
+- La 3D reste différée sur ordinateur et absente sur petit écran ou avec une
+  préférence de mouvement réduit. Elle est démontée quand le hero sort de
+  l’écran ou que l’onglet est masqué. Les changements de préférence et les
+  callbacks différés sont nettoyés à la sortie.
+- Les dimensions annoncées pour l’image du hero correspondent à ses tailles
+  d’affichage. Les pages ajoutées et les contenus modifiés portent leur date
+  réelle dans le sitemap.
+
+Le contrôle Search Console du 5 octobre confirme `/fr`, `/france` et
+`/belgique` comme « Submitted and indexed ». Le sitemap canonique est encore
+en attente de traitement. Les données du 5 septembre au 2 octobre précèdent
+ces changements : elles ne mesurent pas leur effet. Les données CrUX ne sont
+pas configurées dans GSC Wizard ; aucun gain de Core Web Vitals n’est annoncé.
+
+Validation de cette version : lint et build réussis ; quatre tests du cycle de
+vie de la 3D réussis ; audit de 87 pages et deux cibles supplémentaires sans
+erreur ni page orpheline. Les dix liens de projets, leur visibilité dans le
+HTML initial et les liens de la page Next.js et de la page France sont vérifiés.
+
 ## Validation
 
 Depuis la racine du dépôt :
@@ -34,6 +66,7 @@ Depuis la racine du dépôt :
 ```bash
 npm ci
 npm run lint
+node --test tools/decorative-scene.test.mjs
 npm run build
 npm run start -- --hostname 127.0.0.1 --port 3102
 ```

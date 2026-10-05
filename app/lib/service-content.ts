@@ -69,7 +69,7 @@ export const serviceContent: Record<string, ServiceContent> = {
       { question: "Next.js garantit-il un bon référencement ?", answer: "Non. Le framework fournit des outils de rendu, de métadonnées et d’optimisation, mais leur mise en œuvre, le contenu, les liens et la concurrence restent déterminants. La validation doit porter sur le site publié." },
       { question: "Pouvez-vous reprendre un projet Next.js existant ?", answer: "Oui, après examen de la version, des routes, des dépendances et de l’hébergement. L’estimation distingue les corrections nécessaires des évolutions facultatives." },
     ],
-    projectSlugs: ["reby-art"],
+    projectSlugs: ["gamlastan"],
     related: [{ href: "/blog/nextjs-seo-app-router-2026", label: "SEO et App Router" }, { href: "/seo", label: "Audit technique du site" }, { href: "/maintenance-site-web", label: "Maintenance et mises à jour" }],
   },
   "developpeur-php": {
