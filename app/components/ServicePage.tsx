@@ -56,10 +56,10 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
   return (
     <>
       <SiteHeader />
-      <main className="bg-black text-white">
+      <main className="bg-background text-white">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <section className="relative overflow-hidden border-b border-white/10 page-shell">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(255,107,0,.18),transparent_35%),radial-gradient(circle_at_20%_70%,rgba(168,85,247,.12),transparent_30%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(237,104,123,.18),transparent_35%),radial-gradient(circle_at_20%_70%,rgba(168,85,247,.12),transparent_30%)]" />
           <div className="container relative max-w-5xl">
             <nav aria-label="Fil d’Ariane" className="mb-8 text-sm text-white/55">
               <ol className="flex flex-wrap items-center gap-2">
@@ -68,12 +68,12 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
                 <li aria-current="page" className="text-white/80">{data.title}</li>
               </ol>
             </nav>
-            <p className="mb-5 text-sm font-bold uppercase tracking-[.28em] text-[#ff6b00]">{data.eyebrow}</p>
+            <p className="mb-5 text-sm font-bold uppercase tracking-[.28em] text-[#ed687b]">{data.eyebrow}</p>
             <h1 className="max-w-4xl page-heading">{data.title}</h1>
             <p className="mt-7 max-w-3xl body-copy">{data.intro}</p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/contact" className="rounded-full bg-[#ff6b00] px-7 py-4 font-bold">Demander un devis</Link>
-              <a href={whatsappUrl(`Bonjour Soufiane, je souhaite discuter de : ${data.title}.`)} className="rounded-full border border-white/20 px-7 py-4 font-bold hover:border-[#ff6b00]">Parler sur WhatsApp</a>
+              <Link href="/contact" className="rounded-full bg-primary px-7 py-4 font-bold">Demander un devis</Link>
+              <a href={whatsappUrl(`Bonjour Soufiane, je souhaite discuter de : ${data.title}.`)} className="rounded-full border border-white/20 px-7 py-4 font-bold hover:border-[#ed687b]">Parler sur WhatsApp</a>
               <Link href="/portfolio" className="px-4 py-4 font-bold text-white/70 hover:text-white">Voir mes réalisations →</Link>
             </div>
           </div>
@@ -95,7 +95,7 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
                 <article key={title} className="rounded-2xl border border-white/10 p-6">
                   <h3 className="text-xl font-bold">{title}</h3>
                   <p className="mt-3 body-copy">{text}</p>
-                  <Link href={href} className="mt-5 inline-block text-sm font-bold text-[#ff8a3d] hover:text-white">En savoir plus →</Link>
+                  <Link href={href} className="mt-5 inline-block text-sm font-bold text-[#f08b9b] hover:text-white">En savoir plus →</Link>
                 </article>
               ))}
             </div>
@@ -134,7 +134,7 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
           <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {data.process.map((step, index) => (
               <li key={step.title} className="rounded-2xl border border-white/10 p-6">
-                <span className="text-sm font-black text-[#ff6b00]">0{index + 1}</span>
+                <span className="text-sm font-medium text-[#ed687b]">0{index + 1}</span>
                 <h3 className="mt-3 font-bold">{step.title}</h3>
                 <p className="mt-2 body-copy">{step.text}</p>
               </li>
@@ -150,15 +150,15 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
               <p className="mt-5 max-w-3xl body-copy">Chaque étude de cas présente le contexte, les fonctionnalités et les technologies utilisées, sans résultats commerciaux inventés.</p>
               <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
                 {caseStudies.slice(0, 3).map((project) => (
-                  <article key={project.slug} className="overflow-hidden rounded-2xl border border-white/10 bg-black">
+                  <article key={project.slug} className="overflow-hidden rounded-2xl border border-white/10 bg-background">
                     <div className="relative aspect-video">
                       <Image src={project.image} alt={`Aperçu de ${project.title}`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                     </div>
                     <div className="p-6">
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#ff8a3d]">{project.category}</p>
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#f08b9b]">{project.category}</p>
                       <h3 className="mt-2 text-lg font-bold">{project.title}</h3>
                       <p className="mt-3 body-copy">{project.summary}</p>
-                      <Link href={`/portfolio/${project.slug}`} className="mt-5 inline-block font-bold hover:text-[#ff8a3d]">Voir l’étude de cas →</Link>
+                      <Link href={`/portfolio/${project.slug}`} className="mt-5 inline-block font-bold hover:text-[#f08b9b]">Voir l’étude de cas →</Link>
                     </div>
                   </article>
                 ))}
@@ -173,7 +173,7 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
             <h2 className="mt-3 section-heading">{data.faqHeading}</h2>
             <div className="mt-8 space-y-4">
               {data.faqs.map((faq) => (
-                <details key={faq.question} className="rounded-2xl border border-white/10 bg-black p-6">
+                <details key={faq.question} className="rounded-2xl border border-white/10 bg-background p-6">
                   <summary className="cursor-pointer font-bold">{faq.question}</summary>
                   <p className="mt-4 body-copy">{faq.answer}</p>
                 </details>
@@ -183,19 +183,19 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
         </section>
 
         <section className="container py-16">
-          <h2 className="text-2xl font-black">Explorer les services associés</h2>
+          <h2 className="text-2xl font-medium">Explorer les services associés</h2>
           <nav className="mt-6 flex flex-wrap gap-3" aria-label="Services associés">
             {serviceLinks.filter((link) => link.href !== `/${data.slug}`).map((link) => (
-              <Link key={link.href} href={link.href} className="rounded-full border border-white/10 px-4 py-2 text-sm text-white/65 hover:border-[#ff6b00]/50 hover:text-white">Découvrir {link.label.toLocaleLowerCase("fr")}</Link>
+              <Link key={link.href} href={link.href} className="rounded-full border border-white/10 px-4 py-2 text-sm text-white/65 hover:border-[#ed687b]/50 hover:text-white">Découvrir {link.label.toLocaleLowerCase("fr")}</Link>
             ))}
           </nav>
         </section>
 
-        <section className="bg-gradient-to-r from-[#ff6b00]/20 to-[#a855f7]/15 section-padding text-center">
+        <section className="bg-gradient-to-r from-[#ed687b]/20 to-[#ed687b]/15 section-padding text-center">
           <div className="container max-w-3xl">
             <h2 className="section-heading">Parlons de votre projet</h2>
             <p className="mx-auto mt-5 max-w-2xl text-white/65">Décrivez votre besoin, vos objectifs et les fonctionnalités importantes. Vous recevrez une estimation adaptée, sans tarif inventé ni formule imposée.</p>
-            <Link href="/contact" className="mt-8 inline-block rounded-full bg-[#ff6b00] px-8 py-4 font-bold">Obtenir une estimation</Link>
+            <Link href="/contact" className="mt-8 inline-block rounded-full bg-primary px-8 py-4 font-bold">Obtenir une estimation</Link>
           </div>
         </section>
       <RelatedContent path={`/${data.slug}`} subject={data.title} />

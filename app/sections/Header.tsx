@@ -1,303 +1,87 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import LanguageLinks from "../components/LanguageLinks";
+import BrandMark from "../components/BrandMark";
 
-const Header = () => {
+export default function Header() {
   const { t, locale } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [hovered, setHovered] = useState<string | null>(null);
   const [autreOpen, setAutreOpen] = useState(false);
   const autreRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   useEffect(() => {
-    const sectionIds = ["portfolio", "about", "services", "skills", "experiences", "testimonials", "hobbies"];
     const observers: IntersectionObserver[] = [];
-    sectionIds.forEach((id) => {
+    ["portfolio", "about", "services", "skills", "experiences", "testimonials", "hobbies"].forEach(id => {
       const el = document.getElementById(id);
       if (!el) return;
-      const observer = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
-        { threshold: 0.3 }
-      );
+      const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) setActiveSection(id); }, { threshold: 0.3 });
       observer.observe(el);
       observers.push(observer);
     });
-    return () => observers.forEach((o) => o.disconnect());
+    return () => observers.forEach(observer => observer.disconnect());
   }, []);
-
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    const previousOverflow = document.body.style.overflow;
+    if (isMobileMenuOpen) document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previousOverflow; };
   }, [isMobileMenuOpen]);
-
-  // Close "Autre" dropdown when clicking outside
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (autreRef.current && !autreRef.current.contains(e.target as Node)) {
-        setAutreOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    const outside = (event: MouseEvent) => { if (autreRef.current && !autreRef.current.contains(event.target as Node)) setAutreOpen(false); };
+    const escape = (event: KeyboardEvent) => { if (event.key === "Escape") { setAutreOpen(false); setIsMobileMenuOpen(false); } };
+    document.addEventListener("mousedown", outside);
+    document.addEventListener("keydown", escape);
+    return () => { document.removeEventListener("mousedown", outside); document.removeEventListener("keydown", escape); };
   }, []);
 
   const navLinks = [
-    { name: t.nav.about,        href: "#about",        id: "about" },
-    { name: t.nav.services,     href: "#services",     id: "services" },
-    { name: t.nav.skills,       href: "#skills",       id: "skills" },
-    { name: t.nav.work,         href: "#portfolio",    id: "portfolio" },
-    { name: t.nav.experience,   href: "#experiences",  id: "experiences" },
+    { name: t.nav.about, href: "#about", id: "about" },
+    { name: t.nav.services, href: "#services", id: "services" },
+    { name: t.nav.skills, href: "#skills", id: "skills" },
+    { name: t.nav.work, href: "#portfolio", id: "portfolio" },
+    { name: t.nav.experience, href: "#experiences", id: "experiences" },
     { name: t.nav.testimonials, href: "#testimonials", id: "testimonials" },
   ];
+  const autreLinks = [{ name: t.nav.hobbies, href: "#hobbies", id: "hobbies" }, { name: "Blog", href: "/blog", id: "blog" }];
+  const desktopLinks = [navLinks[3], navLinks[1], navLinks[4], navLinks[0]];
+  const dropdownLinks = [navLinks[2], navLinks[5], ...autreLinks];
 
-  const autreLinks = [
-    { name: t.nav.hobbies, href: "#hobbies", id: "hobbies" },
-    { name: "Blog",         href: "/blog",   id: "blog" },
-  ];
-
-  const isAutreActive = activeSection === "hobbies";
-
-  return (
-    <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-          isScrolled ? "bg-black/80 backdrop-blur-xl border-b border-white/5" : "bg-transparent"
-        }`}
-      >
-        <div className="container">
-          <div className="flex items-center justify-between h-20">
-            <motion.a href="#home" className="relative z-10" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <span className="text-2xl font-black tracking-tighter">
-                <span className="text-white">S</span>
-                <span className="text-[#ff6b00]">.</span>
-              </span>
-            </motion.a>
-
-            {/* Desktop nav */}
-            <nav className="hidden xl:flex items-center gap-1" onMouseLeave={() => setHovered(null)}>
-              {navLinks.map((link, i) => {
-                const isActive = isScrolled && activeSection === link.id;
-                return (
-                  <motion.a
-                    key={link.id}
-                    href={link.href}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1, duration: 0.4 }}
-                    onMouseEnter={() => setHovered(link.id)}
-                    className={`relative px-3 py-3 text-sm font-medium transition-colors duration-300 ${
-                      isActive ? "text-white" : "text-white/70 hover:text-white"
-                    }`}
-                  >
-                    {hovered === link.id && (
-                      <motion.span
-                        layoutId="nav-hover-bg"
-                        className="absolute inset-0 rounded-full bg-white/8"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                      />
-                    )}
-                    <span className="relative z-10">{link.name}</span>
-                    <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-[#ff6b00] transition-all duration-300 ${
-                      isActive || hovered === link.id ? "w-4/5" : "w-0"
-                    }`} />
-                  </motion.a>
-                );
-              })}
-
-              {/* Dropdown "Autre" */}
-              <div ref={autreRef} className="relative">
-                <motion.button
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: navLinks.length * 0.1, duration: 0.4 }}
-                  onClick={() => setAutreOpen(!autreOpen)}
-                  onMouseEnter={() => setHovered("autre")}
-                  className={`relative flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                    isAutreActive ? "text-white" : "text-white/70 hover:text-white"
-                  }`}
-                >
-                  {hovered === "autre" && (
-                    <motion.span
-                      layoutId="nav-hover-bg"
-                      className="absolute inset-0 rounded-full bg-white/8"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{t.nav.autre}</span>
-                  <ChevronDown
-                    className={`relative z-10 w-3.5 h-3.5 transition-transform duration-300 ${autreOpen ? "rotate-180" : ""}`}
-                  />
-                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-[#ff6b00] transition-all duration-300 ${
-                    isAutreActive || hovered === "autre" ? "w-4/5" : "w-0"
-                  }`} />
-                </motion.button>
-
-                <AnimatePresence>
-                  {autreOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.95 }}
-                      transition={{ duration: 0.15 }}
-                      className="absolute top-full mt-2 left-0 bg-black/90 border border-white/10 rounded-xl overflow-hidden backdrop-blur-xl shadow-xl min-w-[140px]"
-                    >
-                      {autreLinks.map((link) => {
-                        const isActive = isScrolled && activeSection === link.id;
-                        return (
-                          <a
-                            key={link.id}
-                            href={link.href}
-                            onClick={() => setAutreOpen(false)}
-                            className={`flex items-center gap-2 w-full px-4 py-2.5 text-sm transition-colors ${
-                              isActive
-                                ? "text-[#ff6b00] bg-[#ff6b00]/10"
-                                : "text-white/70 hover:text-white hover:bg-white/5"
-                            }`}
-                          >
-                            {link.name}
-                          </a>
-                        );
-                      })}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </nav>
-
-            <div className="hidden xl:flex items-center gap-3">
-              <LanguageLinks locale={locale} />
-
-              <motion.a
-                href="#contact"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5, duration: 0.4 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-2.5 bg-[#ff6b00] text-white text-sm font-bold rounded-full hover:shadow-[0_0_30px_rgba(255,107,0,0.4)] transition-all duration-300"
-              >
-                {t.nav.contact}
-              </motion.a>
-            </div>
-
-            {/* Mobile hamburger */}
-            <div className="xl:hidden flex items-center gap-2">
-              <LanguageLinks locale={locale} />
-              <button
-                className="relative w-11 h-11 flex items-center justify-center"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label="Toggle menu"
-                aria-expanded={isMobileMenuOpen}
-                aria-controls="mobile-navigation"
-              >
-                <AnimatePresence mode="wait">
-                  {isMobileMenuOpen ? (
-                    <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                      <X className="w-6 h-6 text-white" />
-                    </motion.div>
-                  ) : (
-                    <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                      <Menu className="w-6 h-6 text-white" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </button>
-            </div>
+  return <>
+    <header className={`okc-header ${isScrolled ? "is-scrolled" : ""}`}>
+      <div className="container okc-header-inner">
+        <a href="#home" aria-label="Soufiane Boutatss"><BrandMark /></a>
+        <nav className="okc-header-nav" aria-label={locale === "ar" ? "التنقل الرئيسي" : locale === "en" ? "Main navigation" : "Navigation principale"}>
+          {desktopLinks.map(link => <a key={link.id} href={link.href} className="okc-header-link" aria-current={isScrolled && activeSection === link.id ? "location" : undefined}>{link.name}</a>)}
+          <div className="okc-dropdown" ref={autreRef}>
+            <button type="button" className="okc-header-link inline-flex items-center gap-1" onClick={() => setAutreOpen(!autreOpen)} aria-expanded={autreOpen} aria-controls="secondary-navigation">{t.nav.autre}<ChevronDown size={12} /></button>
+            {autreOpen && <div className="okc-dropdown-panel" id="secondary-navigation">{dropdownLinks.map(link => <a key={link.id} href={link.href} onClick={() => setAutreOpen(false)}>{link.name}</a>)}</div>}
           </div>
+        </nav>
+        <div className="okc-header-actions">
+          <LanguageLinks locale={locale} />
+          <a href="#contact" className="okc-circle-link">{t.nav.contact}</a>
+          <button type="button" className="okc-menu-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"} aria-expanded={isMobileMenuOpen} aria-controls="mobile-navigation">{isMobileMenuOpen ? <X size={19} /> : <Menu size={19} />}</button>
         </div>
-      </motion.header>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[90] xl:hidden overflow-y-auto bg-black"
-          >
-            <motion.nav
-              id="mobile-navigation"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 50 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="flex min-h-[100svh] flex-col items-center justify-center gap-4 px-6 py-28"
-            >
-              {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.id}
-                  href={link.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1, duration: 0.4 }}
-                  className="text-2xl font-bold text-white hover:text-[#ff6b00] transition-colors duration-300"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </motion.a>
-              ))}
-
-              {/* Autre sub-links in mobile menu */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.1, duration: 0.4 }}
-                className="flex flex-col items-center gap-3"
-              >
-                <span className="text-sm font-semibold text-[#ff6b00] uppercase tracking-widest">
-                  {t.nav.autre}
-                </span>
-                {autreLinks.map((link) => (
-                  <a
-                    key={link.id}
-                    href={link.href}
-                    className="text-2xl font-bold text-white/70 hover:text-white transition-colors duration-300"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </a>
-                ))}
-              </motion.div>
-
-              <motion.a
-                href="#contact"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: (navLinks.length + 1) * 0.1, duration: 0.4 }}
-                className="mt-4 px-10 py-4 bg-[#ff6b00] text-white text-xl font-bold rounded-full"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {t.nav.contact}
-              </motion.a>
-            </motion.nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
-  );
-};
-
-export default Header;
+      </div>
+    </header>
+    <AnimatePresence>{isMobileMenuOpen && <motion.div className="okc-mobile-menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduceMotion ? 0 : .2 }}>
+      <nav id="mobile-navigation">
+        {navLinks.map(link => <a key={link.id} href={link.href} onClick={() => setIsMobileMenuOpen(false)}>{link.name}</a>)}
+        <div className="okc-mobile-secondary"><span>{t.nav.autre}</span>{autreLinks.map(link => <a key={link.id} href={link.href} onClick={() => setIsMobileMenuOpen(false)}>{link.name}</a>)}</div>
+        <a href="#contact" className="btn-primary mt-6 self-start" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.contact}</a>
+      </nav>
+    </motion.div>}</AnimatePresence>
+  </>;
+}

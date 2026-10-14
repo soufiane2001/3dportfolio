@@ -29,19 +29,22 @@ const Contact = dynamic(() => import("./sections/Contact"));
 export function PortfolioHome({ locale = "fr" }: { locale?: import("./i18n/translations").Locale }) {
   return (
     <LanguageProvider locale={locale}>
-      <div className="flex min-h-screen flex-col bg-black">
+      <div className="site-shell">
+        <div className="site-orbits" aria-hidden="true" />
         <Header />
-        <Hero />
-        <LocalServices locale={locale} />
-        <About />
-        <Services />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Testimonials />
-        <Hobbies />
-        <RelatedContent path={`/${locale}`} subject="freelance react php maroc france canada" locale={locale} />
-        <Contact />
+        <main id="main">
+          <Hero />
+          <Projects />
+          <Services />
+          <About />
+          <Skills />
+          <Experience />
+          <Testimonials />
+          <Hobbies />
+          <LocalServices locale={locale} />
+          <RelatedContent path={`/${locale}`} subject="freelance react php maroc france canada" locale={locale} />
+          <Contact />
+        </main>
         <SiteFooter locale={locale} />
       </div>
     </LanguageProvider>

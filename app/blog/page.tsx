@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteHeader from "../components/SiteHeader";
+import SiteFooter from "../components/SiteFooter";
 import { posts } from "./posts";
 import { absoluteUrl } from "../lib/site";
 
@@ -33,41 +35,43 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen bg-black pt-32 pb-24">
+    <>
+    <SiteHeader />
+    <main className="min-h-screen bg-background page-shell">
       <div className="container mx-auto px-6 md:px-12 max-w-5xl">
         {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-[#ff6b00] text-sm font-medium tracking-[0.3em] uppercase mb-4">
+        <div className="mb-16">
+          <p className="text-[#ed687b] text-sm font-medium tracking-[0.3em] uppercase mb-4">
             Articles & Tutoriels
           </p>
-          <h1 className="page-heading mx-auto text-white mb-6">
-            Blog <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b00] to-[#a855f7]">Technique</span>
+          <h1 className="page-heading text-white mb-6">
+            Blog <span className="text-primary">Technique</span>
           </h1>
-          <p className="body-copy max-w-xl mx-auto">
+          <p className="body-copy max-w-xl">
             Partage d'expériences, bonnes pratiques et tutoriels sur le développement web et mobile.
           </p>
         </div>
 
         {/* Posts grid */}
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="okc-journal-grid grid gap-x-12 gap-y-8 md:grid-cols-2">
           {posts.map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="content-card group glass-card p-5 sm:p-7 hover:border-[#ff6b00]/30 transition-all duration-300"
+              className="content-card group glass-card p-5 sm:p-7 hover:border-[#ed687b]/30 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-4">
                 <img src={post.image} alt="" width={28} height={28} loading="lazy" decoding="async" className="object-contain" />
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag) => (
-                    <span key={tag} className="text-xs px-2 py-0.5 rounded-full bg-[#ff6b00]/10 text-[#ff6b00] border border-[#ff6b00]/20">
+                    <span key={tag} className="text-xs px-2 py-0.5 rounded-full bg-[#ed687b]/10 text-[#ed687b] border border-[#ed687b]/20">
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <h2 className="text-xl font-bold text-white mb-3 group-hover:text-[#ff6b00] transition-colors leading-snug">
+              <h2 className="text-xl font-bold text-white mb-3 group-hover:text-[#ed687b] transition-colors leading-snug">
                 {post.title}
               </h2>
               <p className="body-copy mb-6">
@@ -83,11 +87,13 @@ export default function BlogPage() {
         </div>
 
         <div className="text-center mt-16">
-          <Link href="/" className="inline-flex items-center gap-2 text-white/40 hover:text-[#ff6b00] transition-colors text-sm">
+          <Link href="/" className="inline-flex items-center gap-2 text-white/40 hover:text-[#ed687b] transition-colors text-sm">
             ← Retour au portfolio
           </Link>
         </div>
       </div>
     </main>
+    <SiteFooter />
+    </>
   );
 }

@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 
 const avatars = [
@@ -21,118 +21,25 @@ const emails = [
   "degreff@hotmail.com",
 ];
 
-const Testimonials = () => {
-  const { t } = useLanguage();
+export default function Testimonials() {
+  const { t, locale } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [ref] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const reduceMotion = useReducedMotion();
   const items = t.testimonials.items;
-
-  const next = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % items.length);
-  }, [items.length]);
-
-  const prev = () => {
-    setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
-  };
-
-  useEffect(() => {
-    const interval = setInterval(next, 6000);
-    return () => clearInterval(interval);
-  }, [next]);
-
+  const next = useCallback(() => { setCurrentIndex(prev => (prev + 1) % items.length); }, [items.length]);
+  const prev = () => { setCurrentIndex(prev => (prev - 1 + items.length) % items.length); };
+  useEffect(() => { const interval = setInterval(next, 6000); return () => clearInterval(interval); }, [next]);
   const current = items[currentIndex];
 
-  return (
-    <section id="testimonials" className="relative section-padding bg-black overflow-hidden">
-      <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#a855f7]/5 rounded-full blur-[200px]" />
-      </div>
-
-      <div className="container relative z-10" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="section-subtitle">{t.testimonials.tag}</p>
-          <h2 className="section-title text-white">
-            {t.testimonials.title} <span className="text-gradient">{t.testimonials.titleGradient}</span>
-          </h2>
-        </motion.div>
-
-        <div className="relative max-w-4xl mx-auto pb-16 sm:px-14 sm:pb-0">
-          <button
-            onClick={prev}
-            className="absolute start-0 bottom-0 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 z-10 p-3 rounded-full bg-white/5 border border-white/10 hover:bg-[#ff6b00]/20 hover:border-[#ff6b00]/50 transition-all"
-          >
-            <ChevronLeft className="w-5 h-5 text-white" />
-          </button>
-
-          <button
-            onClick={next}
-            className="absolute end-0 bottom-0 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 z-10 p-3 rounded-full bg-white/5 border border-white/10 hover:bg-[#ff6b00]/20 hover:border-[#ff6b00]/50 transition-all"
-          >
-            <ChevronRight className="w-5 h-5 text-white" />
-          </button>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-              className="glass-card p-6 sm:p-8 text-center"
-            >
-              <Quote className="w-12 h-12 text-[#ff6b00]/30 mx-auto mb-6" />
-
-              <p className="text-lg md:text-xl text-white/85 leading-relaxed mb-8 max-w-2xl mx-auto">
-                &ldquo;{current.text}&rdquo;
-              </p>
-
-              <div className="flex flex-col items-center">
-                <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-[#ff6b00]/30 mb-4">
-                  <Image
-                    src={avatars[currentIndex]}
-                    alt={current.name}
-                    fill
-                    sizes="64px"
-                    className="object-cover"
-                  />
-                </div>
-                <h4 className="text-lg font-bold text-white">
-                  {current.name}
-                </h4>
-                <p className="text-[#ff6b00] text-sm font-medium">
-                  {current.role}
-                </p>
-                <p className="text-white/65 text-sm">
-                  {emails[currentIndex]}
-                </p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          <div className="flex justify-center gap-2 mt-8">
-            {items.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentIndex(i)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  i === currentIndex
-                    ? "w-8 bg-[#ff6b00]"
-                    : "w-2 bg-white/20 hover:bg-white/40"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-    </section>
-  );
-};
-
-export default Testimonials;
+  return <section id="testimonials" className="okc-section"><div className="container" ref={ref}>
+    <div className="okc-section-intro"><p className="section-subtitle">{t.testimonials.tag}</p><h2 className="section-heading">{t.testimonials.title} <span>{t.testimonials.titleGradient}</span></h2></div>
+    <div className="okc-testimonial-stage">
+      <AnimatePresence mode="wait" initial={false}><motion.div key={currentIndex} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduceMotion ? 0 : .3 }}>
+        <blockquote className="okc-testimonial-quote">&ldquo;{current.text}&rdquo;</blockquote>
+        <div className="okc-testimonial-person"><div className="okc-testimonial-avatar"><Image src={avatars[currentIndex]} alt={current.name} fill sizes="56px" className="object-cover" /></div><div><h3>{current.name}</h3><p>{current.role}</p><p>{emails[currentIndex]}</p></div></div>
+      </motion.div></AnimatePresence>
+      <div className="okc-testimonial-controls"><div className="flex gap-1">{items.map((_, i) => <button key={i} type="button" onClick={() => setCurrentIndex(i)} aria-label={`${t.testimonials.tag} ${i + 1}`} aria-current={i === currentIndex ? "true" : undefined} className="flex h-11 w-8 items-center justify-center"><span className={`h-1.5 w-1.5 rounded-full ${i === currentIndex ? "bg-primary" : "bg-white/30"}`} /></button>)}</div><div className="okc-arrow-buttons"><button type="button" onClick={prev} aria-label={locale === "en" ? "Previous testimonial" : locale === "ar" ? "الرأي السابق" : "Avis précédent"}><ChevronLeft size={18} /></button><button type="button" onClick={next} aria-label={locale === "en" ? "Next testimonial" : locale === "ar" ? "الرأي التالي" : "Avis suivant"}><ChevronRight size={18} /></button></div></div>
+    </div>
+  </div></section>;
+}

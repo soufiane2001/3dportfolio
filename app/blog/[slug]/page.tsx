@@ -105,7 +105,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   return (
     <>
     <SiteHeader />
-    <main className="min-h-screen bg-black pt-20 pb-24">
+    <main className="min-h-screen bg-background pt-20 pb-24">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -113,14 +113,14 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
       <div className="container mx-auto px-6 md:px-12 max-w-4xl">
         {/* Back */}
-        <Link href="/blog" className="inline-flex items-center gap-2 text-white/40 hover:text-[#ff6b00] transition-colors text-sm mb-12">
+        <Link href="/blog" className="inline-flex items-center gap-2 text-white/40 hover:text-[#ed687b] transition-colors text-sm mb-12">
           ← Retour au blog
         </Link>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-6">
           {post.tags.map((tag) => (
-            <span key={tag} className="text-xs px-3 py-1 rounded-full bg-[#ff6b00]/10 text-[#ff6b00] border border-[#ff6b00]/20">
+            <span key={tag} className="text-xs px-3 py-1 rounded-full bg-[#ed687b]/10 text-[#ed687b] border border-[#ed687b]/20">
               {tag}
             </span>
           ))}
@@ -141,7 +141,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               height={32}
               className="rounded-full object-cover border border-white/10"
             />
-            <Link href="/a-propos" className="text-white/60 font-medium hover:text-[#ff8a3d]">Soufiane Boutatss</Link>
+            <Link href="/a-propos" className="text-white/60 font-medium hover:text-[#f08b9b]">Soufiane Boutatss</Link>
           </div>
           <span>·</span>
           <span><time dateTime={post.date}>{new Date(post.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time>{post.updatedAt && <> · Mis à jour le <time dateTime={post.updatedAt}>{new Date(post.updatedAt).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time></>}</span>
@@ -151,12 +151,12 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
         {/* Content */}
         <article
-          className="prose prose-lg prose-invert prose-orange max-w-none
-            prose-headings:font-black prose-headings:text-white
+          className="prose prose-lg prose-invert prose-rose max-w-none
+            prose-headings:font-medium prose-headings:text-white
             prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
             prose-p:text-white/70 prose-p:leading-[1.8] prose-p:mb-4
             prose-pre:bg-white/5 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl prose-pre:p-4
-            prose-code:text-[#ff6b00] prose-code:bg-[#ff6b00]/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+            prose-code:text-[#ed687b] prose-code:bg-[#ed687b]/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
             prose-strong:text-white"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
@@ -169,13 +169,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               alt="Soufiane Boutatss"
               width={56}
               height={56}
-              className="rounded-full object-cover border-2 border-[#ff6b00]/30 shrink-0"
+              className="rounded-full object-cover border-2 border-[#ed687b]/30 shrink-0"
             />
             <div>
               <p className="text-white font-bold">Soufiane Boutatss</p>
               <p className="text-white/50 text-sm">Développeur Web & Mobile — React, React Native, Laravel, Next.js</p>
               <a href="https://wa.me/212689213015" target="_blank" rel="noopener noreferrer"
-                className="inline-block mt-2 text-xs px-3 py-1 bg-[#ff6b00] text-white rounded-full hover:opacity-90 transition-opacity">
+                className="inline-block mt-2 text-xs px-3 py-1 bg-primary text-white rounded-full hover:opacity-90 transition-opacity">
                 Me contacter
               </a>
             </div>

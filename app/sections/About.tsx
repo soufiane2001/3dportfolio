@@ -1,120 +1,27 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../i18n/LanguageContext";
 import AdBanner from "../components/AdBanner";
 
-const About = () => {
+export default function About() {
   const { t } = useLanguage();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
-  });
-
-  return (
-    <section id="about" className="relative section-padding bg-black overflow-hidden" aria-label="À propos de Soufiane Boutatss">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-transparent" />
-
-      <div className="container relative z-10" ref={ref}>
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="relative w-full max-w-[380px] lg:w-2/5"
-          >
-            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#ff6b00] via-[#a855f7] to-[#3b82f6] rounded-3xl blur-xl opacity-30" />
-              <div className="relative h-full rounded-3xl overflow-hidden border border-white/10">
-                <Image
-                  src="https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778368246/Gemini_Generated_Image_ac7qxeac7qxeac7q_t0xski.png"
-                  alt="Soufiane Boutatss - Full Stack Developer"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 400px"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              </div>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="absolute bottom-4 end-4 glass-card p-4 sm:p-5"
-            >
-              <div className="text-4xl font-black text-white">6+</div>
-              <div className="text-sm text-white/50 uppercase tracking-wider">
-                Years Experience
-              </div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex-1 text-center lg:text-left"
-          >
-            <p className="section-subtitle lg:!text-start">{t.about.tag}</p>
-            <h2 className="section-heading text-white mb-6">
-              {t.about.title}
-              <br />
-              <span className="text-gradient">{t.about.titleGradient}</span>
-            </h2>
-
-            <p className="body-copy mb-8 max-w-xl mx-auto lg:mx-0">
-              {t.about.p1}
-            </p>
-
-            <p className="body-copy mb-10 max-w-xl mx-auto lg:mx-0">
-              {t.about.p2}
-            </p>
-
-            <div className="flex flex-wrap gap-6 justify-center lg:justify-start mb-10">
-              {[
-                { label: t.about.stats.projects, value: "30+" },
-                { label: t.about.stats.clients,  value: "34+" },
-                { label: t.about.stats.years,    value: "6+" },
-              ].map((stat, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.4 + i * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="text-3xl font-black text-white">{stat.value}</div>
-                  <div className="text-sm text-white/65 uppercase tracking-wider">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.a
-              href="/cv.pdf"
-              download
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.7 }}
-              className="btn-primary inline-flex"
-            >
-              {t.about.cv}
-            </motion.a>
-          </motion.div>
-
-        </div>
-
-        <AdBanner />
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const reduceMotion = useReducedMotion();
+  return <section id="about" className="okc-section" aria-label="À propos de Soufiane Boutatss">
+    <div className="container" ref={ref}>
+      <div className="okc-about-layout">
+        <figure><div className="okc-about-photo"><Image src="https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778368246/Gemini_Generated_Image_ac7qxeac7qxeac7q_t0xski.png" alt="Soufiane Boutatss - Full Stack Developer" fill sizes="(max-width: 767px) 100vw, 35vw" /></div><figcaption className="okc-about-photo-caption">6+ · Years Experience</figcaption></figure>
+        <motion.div className="okc-about-copy" initial={false} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: reduceMotion ? 0 : .6 }}>
+          <p className="section-subtitle">{t.about.tag}</p><h2 className="section-heading">{t.about.title}<br /><span>{t.about.titleGradient}</span></h2>
+          <p className="body-copy">{t.about.p1}</p><p className="body-copy">{t.about.p2}</p>
+          <div className="okc-stats">{[{ label: t.about.stats.projects, value: "30+" }, { label: t.about.stats.clients, value: "34+" }, { label: t.about.stats.years, value: "6+" }].map(stat => <div key={stat.label}><div className="stat-value">{stat.value}</div><div className="stat-label">{stat.label}</div></div>)}</div>
+          <a href="/cv.pdf" download className="btn-primary">{t.about.cv}</a>
+        </motion.div>
       </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-    </section>
-  );
-};
-
-export default About;
+      <AdBanner />
+    </div>
+  </section>;
+}
