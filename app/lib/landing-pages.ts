@@ -119,6 +119,9 @@ const hubs = ["belgique", "suisse"].map(country => {
   return {
     ...base, path: `/${country}`, sections: marketHubContent[country],
     title: `Développement Web ${base.market} | Collaboration à Distance`,
+    description: country === "belgique"
+      ? "Sites et applications web pour les entreprises en Belgique : contenus multilingues, périmètre et livraison. Collaboration à distance depuis le Maroc."
+      : "Sites et applications web pour les entreprises en Suisse : publics, langues, livraison et maintenance. Collaboration à distance depuis le Maroc.",
     h1: `Sites et applications pour les entreprises en ${base.market}`,
     related: [
       { href: `/${country}/creation-site-web`, label: "Création de site et contenus multilingues" },
@@ -128,7 +131,7 @@ const hubs = ["belgique", "suisse"].map(country => {
 });
 const englishPages = Object.keys(englishInfo).map(englishPage);
 const englishHub = { ...englishPage("web-development-services"), path: "/en", title: "Freelance Web Developer | Remote International Services" };
-const canadaQuebec = { ...marketPages[1], path: "/canada/developpeur-web-quebec", title: "Développeur Web Québec | Sites & Applications Remote", h1: "Développeur web pour le Québec, disponible à distance", intro: "Création de sites et applications pour entreprises et indépendants québécois, avec des contenus en français naturel et une collaboration à distance depuis le Maroc.", updatedAt: "2026-10-05", sections: [
+const canadaQuebec: LandingPage = { ...marketPages.find(page => page.path === "/canada/developpeur-web-freelance")!, path: "/canada/developpeur-web-quebec", title: "Développeur Web Québec | Sites & Applications Remote", description: "Développeur web pour le Québec : sites francophones ou bilingues, applications et devis personnalisé. Collaboration à distance depuis le Maroc.", eyebrow: "Québec — collaboration à distance", h1: "Développeur web pour le Québec, disponible à distance", intro: "Création de sites et applications pour entreprises et indépendants québécois, avec des contenus en français naturel et une collaboration à distance depuis le Maroc.", updatedAt: "2026-10-14", sections: [
   { title: "Un parcours en français du premier écran au contact", paragraphs: ["Les pages de services, les formulaires et les confirmations doivent employer un vocabulaire validé par votre équipe. Pour un site bilingue, le passage vers l’anglais conserve le contexte de la page consultée plutôt que ramener le visiteur à l’accueil.", "Le périmètre précise les régions servies, les informations de contact et les formats utiles à votre activité. Les contenus et les traductions sont validés avant la recette afin de tester les vrais textes sur mobile."], items: ["Vocabulaire validé", "Pages équivalentes par langue", "Formulaires et confirmations", "Recette mobile"] },
   { title: "Des validations compatibles avec votre organisation au Québec", paragraphs: ["Nous convenons d’un référent, de créneaux de réunion et d’un format de retour écrit. Les questions bloquantes sont regroupées et les livraisons indiquent les parcours à vérifier.", "Le devis sépare la création initiale des évolutions et de la maintenance. La collaboration reste à distance depuis le Maroc ; aucune présence physique au Québec n’est annoncée."], items: ["Référent de validation", "Notes de livraison", "Créneaux communs", "Maintenance à définir"] },
 ], related: [{ href: "/canada/creation-site-web", label: "Préparer un site francophone ou bilingue" }, { href: "/portfolio/highup-counselling", label: "Un site canadien présenté au portfolio" }] };
