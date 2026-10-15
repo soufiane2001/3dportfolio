@@ -42,12 +42,12 @@ function servicePage(slug: string): LandingPage {
   const s = serviceInfo[slug];
   const content = serviceContent[slug];
   return {
-    path: `/${slug}`, lang: "fr", title: `${s.title} | Soufiane Boutatss`,
+    path: `/${slug}`, lang: "fr", title: slug === "creation-site-web" ? "Création de site web professionnel | Soufiane Boutatss" : `${s.title} | Soufiane Boutatss`,
     eyebrow: "Services web internationaux", h1: s.h1, intro: s.intro,
     market: "France, Canada, Europe & international",
     ...content,
     sections: [...content.sections, { title: "Cadrage, validation et livraison", paragraphs: ["Le devis précise les fonctions, les contenus à fournir et les critères de réception. Les étapes sont validées à distance, puis les accès et la documentation sont remis selon le périmètre convenu."], items: s.focus }],
-    updatedAt: "2026-10-05",
+    updatedAt: slug === "creation-site-web" ? "2026-10-15" : "2026-10-05",
   };
 }
 
@@ -78,6 +78,7 @@ function countryVariant(country: "france"|"canada"|"belgique"|"suisse", slug: st
     description: `${s.title} pour les entreprises ${location}. Mission à distance, périmètre défini et devis personnalisé.`,
     eyebrow: `${name} — collaboration à distance`, h1: `${s.h1} pour les entreprises ${location}`,
     market: name,
+    updatedAt: slug === "creation-site-web" ? (country === "france" ? "2026-10-15" : "2026-10-05") : base.updatedAt,
     // The two freelance variants use country-specific hub copy below.
     sections: content?.sections ?? [...base.sections.slice(0, 2), marketHubContent[country][1]],
   };
