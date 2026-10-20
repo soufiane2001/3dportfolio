@@ -1,0 +1,201 @@
+import { articleOutline } from "../../../lib/article-outline";
+import RelatedContent from "../../../components/RelatedContent";
+import type { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { posts, getPostBySlug } from "../../../blog/posts";
+import { SITE_URL } from "../../../lib/site";
+import SiteHeader from "../../../components/SiteHeader";
+import SiteFooter from "../../../components/SiteFooter";
+
+const BASE_URL = SITE_URL;
+const AUTHOR_IMAGE = "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778438634/Gemini_Generated_Image_yfw0szyfw0szyfw0-removebg-preview_lft2su.png";
+const OG_IMAGE = `${BASE_URL}/soufiane-boutatss-creation-site-web-casablanca-og.png`;
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return posts.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (!post) return {};
+  return {
+    title: { absolute: post.seoTitle ?? `${post.title} | Soufiane Boutatss` },
+    description: post.excerpt,
+    authors: [{ name: "Soufiane Boutatss", url: BASE_URL }],
+    alternates: { canonical: `${BASE_URL}/blog/${post.slug}` },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: `${BASE_URL}/blog/${post.slug}`,
+      type: "article",
+      publishedTime: post.date,
+      modifiedTime: post.updatedAt ?? post.date,
+      authors: ["Soufiane Boutatss"],
+      tags: post.tags,
+      images: [
+        {
+          url: OG_IMAGE,
+          width: 1730,
+          height: 902,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [OG_IMAGE],
+    },
+  };
+}
+
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (!post) notFound();
+
+  const outline = articleOutline(post.content);
+  const jsonLd = [{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.updatedAt ?? post.date,
+    url: `${BASE_URL}/blog/${post.slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${BASE_URL}/blog/${post.slug}`,
+    },
+    image: {
+      "@type": "ImageObject",
+      url: OG_IMAGE,
+      width: 1730,
+      height: 902,
+    },
+    author: {
+      "@type": "Person",
+      name: "Soufiane Boutatss",
+      url: `${BASE_URL}/a-propos`,
+      sameAs: [
+        "https://github.com/soufiane2001",
+        "https://www.linkedin.com/in/soufiane-boutatss-96400a1ba/",
+      ],
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Soufiane Boutatss",
+      url: BASE_URL,
+    },
+    keywords: post.tags.join(", "),
+    inLanguage: "fr-FR",
+    timeRequired: `PT${post.readTime}M`,
+  }, {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: `${BASE_URL}/fr` },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${BASE_URL}/blog/${post.slug}` },
+    ],
+  }];
+
+  return (
+    <>
+    <SiteHeader />
+    <main className="min-h-screen bg-background pt-20 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <div className="container mx-auto px-6 md:px-12 max-w-4xl">
+        {/* Back */}
+        <Link href="/blog" className="inline-flex items-center gap-2 text-white/40 hover:text-[#ed687b] transition-colors text-sm mb-12">
+          ← Retour au blog
+        </Link>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {post.tags.map((tag) => (
+            <span key={tag} className="text-xs px-3 py-1 rounded-full bg-[#ed687b]/10 text-[#ed687b] border border-[#ed687b]/20">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Title */}
+        <h1 className="page-heading text-white mb-6">
+          {post.title}
+        </h1>
+
+        {/* Meta */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-3 text-white/65 text-sm mb-12 pb-8 border-b border-white/10">
+          <div className="flex items-center gap-3">
+            <Image
+              src={AUTHOR_IMAGE}
+              alt="Soufiane Boutatss"
+              width={32}
+              height={32}
+              className="rounded-full object-cover border border-white/10"
+            />
+            <Link href="/a-propos" className="text-white/60 font-medium hover:text-[#f08b9b]">Soufiane Boutatss</Link>
+          </div>
+          <span>·</span>
+          <span><time dateTime={post.date}>{new Date(post.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time>{post.updatedAt && <> · Mis à jour le <time dateTime={post.updatedAt}>{new Date(post.updatedAt).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time></>}</span>
+          <span>·</span>
+          <span>{post.readTime} min de lecture</span>
+        </div>
+
+        {outline.headings.length > 1 && <nav aria-label="Sommaire de l’article" className="mb-10 border-y border-white/15 py-6">
+          <p className="text-sm font-bold uppercase tracking-wider text-white/70">Dans ce guide</p>
+          <ol className="mt-4 grid gap-3 sm:grid-cols-2">{outline.headings.map(heading => <li key={heading.id}>
+            <a href={`#${heading.id}`} className="text-white/75 underline decoration-white/20 underline-offset-4 hover:text-[#f08b9b]">{heading.label}</a>
+          </li>)}</ol>
+        </nav>}
+
+        {/* Content */}
+        <article
+          className="prose prose-lg prose-invert prose-rose max-w-none
+            prose-headings:font-medium prose-headings:text-white
+            prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:scroll-mt-28
+            prose-p:text-white/70 prose-p:leading-[1.8] prose-p:mb-4
+            prose-pre:bg-white/5 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl prose-pre:p-4
+            prose-code:text-[#ed687b] prose-code:bg-[#ed687b]/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+            prose-strong:text-white"
+          dangerouslySetInnerHTML={{ __html: outline.html }}
+        />
+
+        {/* Footer */}
+        <div className="mt-16 pt-8 border-t border-white/10">
+          <div className="glass-card p-6 flex items-center gap-4">
+            <Image
+              src={AUTHOR_IMAGE}
+              alt="Soufiane Boutatss"
+              width={56}
+              height={56}
+              className="rounded-full object-cover border-2 border-[#ed687b]/30 shrink-0"
+            />
+            <div>
+              <p className="text-white font-bold">Soufiane Boutatss</p>
+              <p className="text-white/50 text-sm">Développeur Web & Mobile — React, React Native, Laravel, Next.js</p>
+              <a href="https://wa.me/212689213015" target="_blank" rel="noopener noreferrer"
+                className="inline-block mt-2 text-xs px-3 py-1 bg-primary text-white rounded-full hover:opacity-90 transition-opacity">
+                Me contacter
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <RelatedContent path={`/blog/${post.slug}`} subject={post.tags.join(" ")} />
+    </main>
+    <SiteFooter />
+    </>
+  );
+}

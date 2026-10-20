@@ -24,7 +24,7 @@ export default function RelatedContent({ path, subject, locale = "fr" }: { path:
     ? landingPages.filter(page => page.path.startsWith(`${path}/`)).map(page => ({ href: page.path, label: page.h1 })) : [];
   const maintenance = locale === "fr" && ["/creation-site-web", "/seo", "/developpement-web-sur-mesure"].includes(path)
     ? [{ href: "/maintenance-site-web", label: "Maintenance et évolution du site après sa mise en ligne" }] : [];
-  const links = [...new Map([...curated, ...marketServices, ...(curated.length ? [] : services), ...maintenance, ...articles, ...projects].filter(link => link.href !== path).map(link => [link.href, link])).values()].slice(0, 8);
+  const links = [...new Map([...curated, ...marketServices, ...(curated.length ? [] : services), ...maintenance, ...(curated.length ? [] : [...articles, ...projects])].filter(link => link.href !== path).map(link => [link.href, link])).values()].slice(0, 8);
   if (!links.length) return null;
   const heading = locale === "en" ? "Services for your project" : locale === "ar" ? "خدمات ذات صلة (بالفرنسية)" : "Services, guides et réalisations associés";
   return <aside className="container okc-related-content border-t border-white/10 py-12"><h2 className="text-2xl font-bold">{heading}</h2><nav aria-label={heading}><ul className="mt-6 grid gap-x-8 gap-y-4 md:grid-cols-2">{links.map(link => <li key={link.href}><Link href={link.href} className="text-white/70 underline decoration-white/20 underline-offset-4 hover:text-[#f08b9b] focus-visible:outline-2 focus-visible:outline-[#ed687b]">{link.label}</Link></li>)}</ul></nav></aside>;
