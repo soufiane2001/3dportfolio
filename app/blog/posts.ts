@@ -111,8 +111,8 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "developpeur-web-freelance-france-remote",
-    title: "Engager un développeur web freelance à distance : le guide pour les entreprises françaises",
-    excerpt: "Comment collaborer efficacement avec un développeur web freelance à distance depuis la France : avantages, communication, gestion de projet et bonnes pratiques pour réussir votre projet web ou mobile.",
+    title: "Développeur web freelance à distance en France : comment choisir",
+    excerpt: "Vous cherchez un développeur web freelance pour un projet en France ? Découvrez comment comparer les profils, cadrer le budget, organiser les échanges à distance et vérifier les livrables avant de démarrer.",
     date: "2026-06-02",
     readTime: 6,
     tags: ["Développeur France", "Freelance", "Remote", "React"],
