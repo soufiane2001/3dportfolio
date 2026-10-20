@@ -1,5 +1,5 @@
 import { homeLanguages } from "../lib/seo";
-import { PortfolioHome } from "../page";
+import { PortfolioHome } from "../(fr)/page";
 import { pageMetadata } from "../lib/site";
 import { pageCopy } from "../i18n/page-copy";
 const base = pageMetadata("/en", pageCopy.en.title, pageCopy.en.description, homeLanguages);

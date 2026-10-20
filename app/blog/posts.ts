@@ -1,6 +1,7 @@
 export interface BlogPost {
   slug: string;
   title: string;
+  seoTitle?: string;
   excerpt: string;
   date: string;
   updatedAt?: string;
@@ -14,6 +15,60 @@ const DEVICON = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons";
 const DEVICON_LATEST = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
 
 export const posts: BlogPost[] = [
+  {
+    slug: "cahier-des-charges-site-web",
+    title: "Cahier des charges de site web : modèle et checklist",
+    seoTitle: "Cahier des charges site web : modèle à compléter",
+    excerpt: "Un modèle de cahier des charges à compléter : objectifs, pages, fonctionnalités, contenus, refonte, budget et critères de livraison de votre site web.",
+    date: "2026-10-20",
+    readTime: 4,
+    tags: ["Site web", "Cahier des charges", "Refonte"],
+    image: "/favicon.svg",
+    content: `
+<p>Un cahier des charges de site web explique le résultat attendu, les contenus disponibles et les critères de livraison. Il n’a pas besoin d’être long : il doit permettre au développeur et à la personne qui valide de comprendre le même projet.</p>
+<p>Le modèle ci-dessous convient à une création ou à une refonte. Remplacez les exemples par vos informations et marquez clairement les points encore à décider. Aucun choix technique n’est nécessaire pour commencer.</p>
+<h2>1. L’activité et le résultat attendu</h2>
+<p>Présentez votre activité en quelques lignes, les personnes que vous souhaitez toucher et ce qu’elles doivent faire sur le site. « Recevoir une demande contenant le type de prestation et la ville » est plus précis que « avoir un site moderne ».</p>
+<ul><li>Activité et services proposés.</li><li>Publics, langues et territoires servis.</li><li>Action principale : contact, devis, commande ou réservation.</li><li>URL actuelle, si elle existe, et problèmes à résoudre.</li></ul>
+<h2>2. Les pages et les contenus</h2>
+<p>Listez les pages avec, pour chacune, son objectif et le contenu nécessaire. Pour un site de services, on peut commencer par l’accueil, les prestations, les réalisations, la présentation et le contact. Ajoutez les pages d’information adaptées à votre activité.</p>
+<p>Indiquez qui fournit les textes, les traductions, les photos et le logo. Une maquette validée avec du faux texte ne garantit pas qu’un contenu réel plus long restera lisible sur téléphone. Prévoyez la validation des contenus avant la recette finale.</p>
+<h2>3. Les fonctionnalités, avec un exemple de parcours</h2>
+<p>Décrivez une action de bout en bout : « Le visiteur choisit un service, saisit son message, reçoit une confirmation et la demande arrive dans notre messagerie. » Précisez les informations obligatoires et les erreurs à gérer.</p>
+<div class="overflow-x-auto"><table><caption>Exemples de critères à écrire dans le brief</caption><thead><tr><th scope="col">Fonction</th><th scope="col">Question de cadrage</th><th scope="col">Vérification à la livraison</th></tr></thead><tbody>
+<tr><th scope="row">Formulaire</th><td>Qui reçoit la demande et quelles données sont utiles ?</td><td>Un message de test arrive au bon destinataire.</td></tr>
+<tr><th scope="row">Catalogue</th><td>Quelles catégories, variantes et photos faut-il gérer ?</td><td>Le produit et les options choisis sont conservés dans la demande.</td></tr>
+<tr><th scope="row">Administration</th><td>Quels contenus pouvez-vous modifier ?</td><td>Une personne autorisée réalise une mise à jour sans toucher au code.</td></tr>
+<tr><th scope="row">Multilingue</th><td>Quelles pages ont une traduction validée ?</td><td>Le changement de langue mène à la bonne page équivalente.</td></tr>
+</tbody></table></div>
+<h2>4. Les références visuelles et les contraintes</h2>
+<p>Donnez quelques exemples en expliquant ce qui vous intéresse : une navigation, une mise en page ou la présentation d’un produit. Précisez les couleurs et éléments de marque à conserver, ainsi que les contenus dont vous possédez les droits d’utilisation.</p>
+<p>Listez les outils existants : hébergement, CMS, messagerie, catalogue ou logiciel de gestion. Signalez les connexions indispensables. Ne placez jamais de mots de passe ou de clés privées dans le brief ; les accès nécessaires sont transmis séparément par un canal adapté.</p>
+<h2>5. Les précautions pour une refonte</h2>
+<p>Une refonte commence par l’inventaire des pages, des URL utiles, des formulaires et des données. Identifiez les pages qui reçoivent des visites ou des liens. Lorsqu’une adresse doit changer, préparez une correspondance avec la page équivalente ; une redirection générale vers l’accueil ne remplace pas ce travail.</p>
+<p>Le brief indique aussi comment les contenus seront transférés, quand la bascule peut avoir lieu et comment vérifier les demandes reçues après publication. Demandez une méthode de retour arrière adaptée à l’hébergement.</p>
+<h2>6. Le budget, les étapes et les responsabilités</h2>
+<p>Indiquez une enveloppe si vous en avez une et séparez les fonctions indispensables des options. Le devis peut alors distinguer une première version des évolutions. L’hébergement, les licences, les contenus et la maintenance doivent être identifiables pour comprendre le coût de fonctionnement.</p>
+<p>Désignez la personne qui valide. Convenez des étapes : structure, maquettes, intégration, tests, publication et prise en main. Une échéance dépend aussi de la disponibilité des textes, images, accès et retours.</p>
+<h2>Modèle court à copier et compléter</h2>
+<pre><code>Activité et site actuel :
+Publics, langues et zones servies :
+Objectif principal du site :
+Pages souhaitées :
+Fonctionnalités indispensables :
+Options à envisager plus tard :
+Textes, photos et logo disponibles :
+Outils à connecter :
+URL et données à conserver pour une refonte :
+Références visuelles et éléments appréciés :
+Budget envisagé et échéance :
+Personne chargée de la validation :
+Accès, documentation et maintenance attendus :</code></pre>
+<h2>Quel service correspond à votre brief ?</h2>
+<p>Pour présenter votre activité, examinez la <a href="/creation-site-web">création de site professionnel</a>. Pour des produits et des commandes, consultez la <a href="/site-ecommerce">création de boutique en ligne</a>. Pour un outil avec des rôles et des données métier, voyez le <a href="/developpement-web-sur-mesure">développement d’application sur mesure</a>.</p>
+<p>Si vous hésitez sur le parcours commercial, le guide <a href="/blog/site-vitrine-ou-ecommerce">site vitrine ou e-commerce</a> aide à distinguer les besoins. Vous pouvez ensuite <a href="/contact">présenter votre projet</a> en reprenant les rubriques du modèle.</p>
+`.trim(),
+  },
   {
     slug: "developpeur-web-freelance-maroc-2026",
     title: "Engager un développeur web freelance au Maroc en 2026 : le guide complet",
@@ -47,33 +102,42 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "prix-creation-site-web-maroc-2026",
-    title: "Combien coûte la création d'un site web au Maroc en 2026 ?",
-    excerpt: "Guide des prix pour la création d'un site web au Maroc en 2026 : site vitrine, e-commerce, application web. Découvrez les facteurs qui influencent le coût et comment obtenir le meilleur rapport qualité-prix.",
+    title: "Prix d’un site web au Maroc : comprendre et comparer un devis",
+    seoTitle: "Prix d’un site web au Maroc : devis et coûts à prévoir",
+    excerpt: "Pages, boutique, contenus, hébergement et maintenance : les postes à comparer pour comprendre le prix d’un site web au Maroc et préparer votre devis.",
     date: "2026-06-12",
-    updatedAt: "2026-10-05",
-    readTime: 6,
+    updatedAt: "2026-10-20",
+    readTime: 3,
     tags: ["Site Web Maroc", "Prix", "E-commerce", "Web"],
     image: `${DEVICON_LATEST}/nextjs/nextjs-original.svg`,
     content: `
-<h2>Le prix d'un site web dépend de vos besoins</h2>
-<p>Il n'existe pas de prix unique pour la création d'un site web au Maroc : le coût dépend du type de site, des fonctionnalités, du design et de la technologie utilisée. Un site vitrine simple n'a pas le même budget qu'une plateforme e-commerce ou une application web sur mesure.</p>
-<h2>Site vitrine</h2>
-<p>Un site vitrine présente votre activité, vos services et vos coordonnées. C'est l'option idéale pour les artisans, professions libérales et PME qui souhaitent une présence en ligne crédible. Développé avec Next.js, il offre d'excellentes performances et un référencement naturel (SEO) solide dès le départ.</p>
-<h2>Site e-commerce</h2>
-<p>Une boutique en ligne nécessite davantage de fonctionnalités : catalogue produits, panier, paiement sécurisé, gestion des commandes et tableau de bord administrateur. Le budget dépend donc aussi des intégrations et des tests. La rentabilité dépend de la demande, des marges et du fonctionnement commercial ; elle n’est pas garantie par la création du site.</p>
-<h2>Application web sur mesure</h2>
-<p>Les applications web métier (espace client, plateforme de réservation, dashboard, SaaS) sont développées entièrement selon vos besoins spécifiques. Le coût reflète la complexité fonctionnelle, mais offre un outil parfaitement adapté à votre activité. Découvrez le service de <a href="/developpement-web-sur-mesure-casablanca">développement d’application web sur mesure au Maroc</a>.</p>
-<h2>Les facteurs qui influencent le prix</h2>
-<ul>
-<li><strong>Le design :</strong> template adapté ou design 100% sur mesure.</li>
-<li><strong>Les fonctionnalités :</strong> multilingue, paiement, espace membre, intégrations tierces.</li>
-<li><strong>Le contenu :</strong> nombre de pages et rédaction.</li>
-<li><strong>La maintenance :</strong> mises à jour, hébergement et support après livraison.</li>
-</ul>
-<h2>Site sur mesure vs CMS</h2>
-<p>Un CMS et un développement sur mesure peuvent tous deux convenir à un projet professionnel. La performance, la sécurité et le référencement dépendent de la mise en œuvre, des contenus et de la maintenance. Comparez l’autonomie de gestion, les intégrations et le coût de suivi avant de choisir.</p>
-<h2>Conclusion</h2>
-<p>Le meilleur moyen de connaître le coût exact de votre projet est de demander un devis personnalisé et gratuit. En tant que développeur web freelance au Maroc, je vous propose une estimation transparente adaptée à vos objectifs et à votre budget. <a href="https://wa.me/212689213015">Demandez votre devis gratuit</a>.</p>
+<p>Le prix d’un site web au Maroc dépend de ce qui sera réellement livré : pages, contenus, fonctions, intégrations et accompagnement. Ce guide ne présente pas une grille tarifaire : il permet de préparer un périmètre comparable et d’identifier les coûts qui pourraient manquer dans un devis.</p>
+<h2>Commencer par un périmètre concret</h2>
+<p>« Un site de cinq pages » ne décrit pas le travail nécessaire. Les textes peuvent être déjà prêts ou à rédiger ; les maquettes peuvent être fournies ou à créer ; le formulaire peut être simple ou relié à un outil de gestion. Ces différences influencent la charge et le suivi.</p>
+<p>Pour une <a href="/creation-site-web">création de site professionnel</a>, indiquez les pages attendues, les langues, le contenu disponible et l’action principale du visiteur. Pour une boutique, ajoutez le nombre de produits à saisir, leurs variantes, la commande, la livraison et les moyens de paiement envisagés.</p>
+<h2>Les postes à retrouver dans un devis</h2>
+<div class="overflow-x-auto"><table><caption>Grille de comparaison de deux propositions</caption><thead><tr><th scope="col">Poste</th><th scope="col">Question à poser</th><th scope="col">À préciser</th></tr></thead><tbody>
+<tr><th scope="row">Cadrage et design</th><td>Quelles pages et maquettes seront validées ?</td><td>Création initiale et retours inclus</td></tr>
+<tr><th scope="row">Contenu</th><td>Qui rédige, traduit et fournit les images ?</td><td>Volume et responsable de validation</td></tr>
+<tr><th scope="row">Développement</th><td>Quelles fonctions sont prévues ?</td><td>Parcours, intégrations et administration</td></tr>
+<tr><th scope="row">Mise en ligne</th><td>Qui configure domaine, hébergement et formulaires ?</td><td>Accès, tests et transfert éventuel</td></tr>
+<tr><th scope="row">Services externes</th><td>Quels abonnements ou licences faut-il payer ?</td><td>Coût, fréquence et titulaire du compte</td></tr>
+<tr><th scope="row">Maintenance</th><td>Quelles interventions sont incluses après livraison ?</td><td>Durée, périmètre et demandes supplémentaires</td></tr>
+</tbody></table></div>
+<h2>Exemple de brief pour un site vitrine</h2>
+<p>Une entreprise souhaite présenter trois services, montrer ses réalisations et recevoir des demandes de devis. Elle fournit ses textes, son logo et ses photos. Le périmètre peut comprendre l’accueil, trois pages de services, une présentation, les réalisations et le contact. Le formulaire doit transmettre les demandes à une adresse vérifiée.</p>
+<p>Pour comparer les propositions, demandez si elles incluent la préparation mobile, l’intégration des contenus, les titres de pages, les tests de formulaire et la prise en main. Précisez aussi les pages d’information nécessaires à votre activité. Une seconde langue, un espace client ou un système de réservation sont des options distinctes à chiffrer.</p>
+<h2>Ce qui change pour un e-commerce ou une application</h2>
+<p>Une <a href="/site-ecommerce">boutique en ligne</a> ajoute des produits, des variantes, la commande et une administration. Le devis doit indiquer combien de fiches seront intégrées et qui prendra ensuite en charge le catalogue. Les tests couvrent les erreurs autant que le parcours normal.</p>
+<p>Une <a href="/developpement-web-sur-mesure">application sur mesure</a> demande de préciser les rôles, les données, les validations et les outils connectés. Une première version peut se limiter à un parcours utile, puis évoluer après les premiers retours. Le nombre d’écrans seul ne reflète pas la complexité des règles de gestion.</p>
+<h2>Calculer le budget de la première année</h2>
+<p>Construisez une liste simple : création initiale + préparation des contenus + services récurrents + maintenance choisie + options retenues. Pour chaque ligne, notez le fournisseur, la devise, la périodicité et ce qui est inclus dans le devis. Vérifiez les conditions de facturation avec le prestataire avant de comparer les totaux.</p>
+<p>Ne confondez pas frais de lancement et renouvellements. Demandez notamment qui reçoit les notifications de domaine et d’hébergement, et comment récupérer les accès si vous changez de prestataire.</p>
+<h2>Les questions à poser avant de signer</h2>
+<ul><li>Quels livrables permettent de dire que le projet est terminé ?</li><li>Quels contenus et accès dois-je fournir, et à quelle étape ?</li><li>Comment sont validées les maquettes et les fonctions ?</li><li>Que se passe-t-il si je demande une fonction supplémentaire ?</li><li>Quels fichiers, accès et documents sont remis à la livraison ?</li><li>Quelle maintenance est incluse, et pendant combien de temps ?</li></ul>
+<h2>Obtenir une estimation adaptée</h2>
+<p>Préparez votre activité, les pages souhaitées, deux ou trois références visuelles, les fonctions indispensables et une échéance envisagée. Si vous avez un site, joignez son URL et les éléments à conserver. Le <a href="/blog/cahier-des-charges-site-web">modèle de cahier des charges</a> vous aide à rassembler ces informations.</p>
+<p>Pour une entreprise à Casablanca, consultez la <a href="/creation-site-web-casablanca">prestation de création et de refonte à Casablanca</a>. Pour un projet francophone réalisé à distance, utilisez la <a href="/contact">demande de devis</a>. Le montant est confirmé après examen du périmètre, sans prix d’appel fictif.</p>
 `.trim(),
   },
   {
@@ -111,41 +175,46 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "developpeur-web-freelance-france-remote",
-    title: "Développeur web freelance à distance en France : comment choisir",
-    excerpt: "Vous cherchez un développeur web freelance pour un projet en France ? Découvrez comment comparer les profils, cadrer le budget, organiser les échanges à distance et vérifier les livrables avant de démarrer.",
+    title: "Comment choisir un développeur web freelance à distance pour un projet en France ?",
+    seoTitle: "Développeur web freelance à distance : guide France",
+    excerpt: "Portfolio, devis, budget, suivi et livraison : les points à vérifier pour choisir un développeur web freelance à distance pour votre entreprise en France.",
     date: "2026-06-02",
-    readTime: 6,
+    updatedAt: "2026-10-20",
+    readTime: 4,
     tags: ["Développeur France", "Freelance", "Remote", "React"],
     image: `${DEVICON}/react/react-original.svg`,
     content: `
-<h2>Le travail à distance, nouvelle norme du développement web</h2>
-<p>De plus en plus d'entreprises françaises font appel à des développeurs web freelances à distance. Cette approche élargit l'accès aux talents, optimise les coûts et fonctionne parfaitement pour des projets web et mobiles, à condition de respecter quelques bonnes pratiques de collaboration.</p>
-<h2>Les avantages d'un développeur freelance à distance</h2>
-<ul>
-<li><strong>Flexibilité :</strong> engagement au projet, sans les contraintes d'un recrutement en CDI.</li>
-<li><strong>Coûts maîtrisés :</strong> pas de charges salariales ni de frais de structure.</li>
-<li><strong>Accès à des compétences pointues :</strong> React, Next.js, React Native, Laravel.</li>
-<li><strong>Réactivité :</strong> un interlocuteur unique et disponible.</li>
-</ul>
-<h2>Le fuseau horaire, un faux problème</h2>
-<p>Travailler avec un développeur basé au Maroc présente un avantage souvent ignoré : le même fuseau horaire que la France (ou une heure de décalage selon la saison). Les échanges en temps réel, réunions et points quotidiens se font donc sans contrainte, contrairement à une délégation vers l'Asie ou les Amériques.</p>
-<h2>Bien communiquer à distance</h2>
-<p>La réussite d'un projet à distance repose sur des outils adaptés : WhatsApp ou Slack pour les échanges rapides, Trello ou Notion pour le suivi des tâches, Figma pour valider les maquettes, et GitHub pour le code. Des points réguliers et des livraisons par itérations maintiennent la transparence tout au long du projet.</p>
-<h2>Comment cadrer le projet ?</h2>
-<p>Avant de démarrer, définissez clairement vos objectifs, votre cible et vos fonctionnalités prioritaires. Un cahier des charges même simple, accompagné d'exemples de sites que vous appréciez, permet au développeur de proposer un devis précis et une solution adaptée.</p>
-<h2>Sécuriser la collaboration</h2>
-<p>Un contrat ou un devis signé précisant le périmètre, les délais, les modalités de paiement et la propriété du code protège les deux parties. Privilégiez un paiement par jalons (acompte, livraisons intermédiaires, solde) pour avancer en confiance.</p>
-<h2>Comment choisir sans confondre article et offre commerciale ?</h2>
-<p>Ce guide répond aux questions de méthode avant une collaboration. Si votre besoin est déjà défini et que vous cherchez un prestataire, consultez la page dédiée au <a href="/france/developpeur-web-freelance">développement web freelance en France</a>, puis examinez les <a href="/portfolio">études de cas du portfolio</a>.</p>
+<p>Pour choisir un développeur web freelance à distance, commencez par vérifier trois éléments : un projet comparable au vôtre, un devis qui décrit les livrables et une méthode de validation claire. Une liste de technologies ou un tarif journalier ne suffit pas à comparer deux propositions.</p>
+<p>Ce guide s’adresse aux entreprises françaises qui préparent une création de site, une refonte ou une application. Pour examiner directement les prestations, consultez mon <a href="/france/developpeur-web-freelance">offre de développement web pour les entreprises en France</a>.</p>
+<h2>Définir la mission avant de chercher un profil</h2>
+<p>Un développeur chargé de présenter une activité n’a pas le même périmètre que celui qui reprend une application utilisée chaque jour. Décrivez d’abord le parcours attendu, puis les compétences nécessaires.</p>
+<div class="overflow-x-auto"><table><caption>Le besoin et les preuves à demander</caption><thead><tr><th scope="col">Votre projet</th><th scope="col">Ce qu’il faut examiner</th></tr></thead><tbody>
+<tr><th scope="row">Site vitrine ou refonte</th><td>Navigation mobile, pages de services, formulaire fonctionnel et conservation des anciennes URL.</td></tr>
+<tr><th scope="row">Boutique en ligne</th><td>Catalogue, variantes, commande, administration et gestion des erreurs de paiement.</td></tr>
+<tr><th scope="row">Application métier</th><td>Rôles utilisateurs, règles de gestion, intégrations et documentation.</td></tr>
+<tr><th scope="row">Renfort d’une équipe</th><td>Compréhension du dépôt existant, qualité des contributions et manière de faire valider les changements.</td></tr>
+</tbody></table></div>
+<h2>Vérifier un portfolio avec des questions concrètes</h2>
+<p>Ouvrez un projet sur téléphone, parcourez ses pages et demandez quelle partie a été réalisée par le prestataire. La présence d’un logo client ne décrit ni son rôle, ni les résultats obtenus. Un exemple utile explique le besoin de départ, les choix et les limites de l’intervention.</p>
+<p>Dans mon portfolio, <a href="/portfolio/reby-art">Reby Art</a> présente un portfolio d’artiste avec React, tandis que <a href="/portfolio/site-ecommerce">BDM Store</a> illustre un catalogue et un parcours de commande avec paiement à la livraison. Ces projets servent à examiner des fonctionnalités et des choix techniques ; ils ne constituent pas une promesse de ventes ou de classement Google.</p>
+<h2>Comparer les devis et le budget complet</h2>
+<p>Envoyez le même brief aux personnes consultées. Comparez ensuite les pages, les fonctionnalités, les contenus à préparer, les tests, la mise en ligne et les conditions de reprise. Un montant plus bas peut correspondre à un périmètre plus réduit.</p>
+<ul><li><strong>Création :</strong> structure, design, développement et contenu inclus ou fourni par vous.</li><li><strong>Services externes :</strong> domaine, hébergement, messagerie, licences et frais éventuels des outils connectés.</li><li><strong>Après livraison :</strong> corrections couvertes, maintenance, évolutions et modalités d’intervention.</li><li><strong>Organisation :</strong> jalons, personne qui valide et traitement des demandes supplémentaires.</li></ul>
+<p>Un tarif journalier devient comparable avec une estimation de charge et des hypothèses écrites. Un forfait doit préciser ce qui déclenche un devis complémentaire. Pour préparer la demande, utilisez le <a href="/blog/cahier-des-charges-site-web">modèle de cahier des charges pour un site web</a>.</p>
+<h2>Organiser la collaboration à distance</h2>
+<p>Au démarrage, fixez un canal pour les décisions, une personne chargée de valider et des créneaux de réunion compatibles avec vos fuseaux horaires. Un tableau de suivi indique les tâches en cours, les éléments attendus et la prochaine livraison. Les outils comptent moins que la clarté des décisions écrites.</p>
+<p>Demandez une démonstration avec un parcours testable : consulter une offre, envoyer un formulaire ou terminer une commande. Les retours sont regroupés et classés entre correction du périmètre convenu et nouvelle fonctionnalité. Cette distinction évite de découvrir trop tard que chacun imaginait un produit différent.</p>
+<h2>Prévoir la livraison et l’autonomie</h2>
+<p>Avant de solder le projet, vérifiez les accès prévus au devis, la procédure de mise à jour et la documentation. Le nom de domaine et les comptes nécessaires au fonctionnement doivent rester accessibles à leur propriétaire. La remise du code et les droits associés sont à préciser dans les documents de la mission.</p>
+<ul><li>Tester les parcours importants sur téléphone et ordinateur.</li><li>Vérifier la réception réelle des formulaires sans confondre un message affiché avec un envoi réussi.</li><li>Contrôler les liens, les redirections d’une refonte et l’indexabilité des pages publiques.</li><li>Identifier qui s’occupe des sauvegardes, des renouvellements et des mises à jour.</li><li>Prévoir une prise en main et un contact pour les problèmes après lancement.</li></ul>
 <h2>Questions fréquentes</h2>
-<h3>Comment vérifier le sérieux d'un freelance remote ?</h3>
-<p>Examinez des projets accessibles, la qualité des explications techniques, le périmètre du devis, les étapes de validation et la façon dont sont traités la maintenance, la sécurité et la propriété du code.</p>
-<h3>Faut-il choisir un développeur React, Next.js ou PHP ?</h3>
-<p>Le choix dépend du projet. React et Next.js conviennent aux interfaces et sites modernes ; PHP et Laravel sont solides pour les backends et applications métier. Un bon cadrage doit précéder la décision.</p>
-<h3>Un développeur à distance peut-il reprendre un site existant ?</h3>
-<p>Oui, après un audit du code, de l'hébergement, des dépendances, des données et des risques. Les URL qui obtiennent déjà de la visibilité doivent être préservées ou redirigées proprement.</p>
-<h2>Conclusion</h2>
-<p>Engager un développeur web freelance à distance peut être une solution efficace pour une entreprise française lorsque le périmètre, la communication et les validations sont clairs. Pour un besoin commercial, <a href="/france/developpeur-web-freelance">découvrez l'offre dédiée à la France</a> ou <a href="/contact">présentez votre projet</a>.</p>
+<h3>Le développeur doit-il être situé en France ?</h3>
+<p>La mission peut être réalisée à distance si le périmètre, les échanges, la contractualisation et la livraison conviennent aux deux parties. Pour ma prestation, la collaboration est organisée en ligne : la page France présente le public servi et ne revendique pas un bureau local.</p>
+<h3>Freelance ou agence : lequel choisir ?</h3>
+<p>Un freelance offre un interlocuteur direct pour une mission cadrée. Une équipe peut être nécessaire si plusieurs spécialités doivent intervenir en parallèle ou si le volume dépasse la disponibilité d’une seule personne. Comparez la capacité réelle de livraison et le suivi proposé.</p>
+<h3>Peut-on reprendre un site existant ?</h3>
+<p>Oui, après examen du code, des accès, de l’hébergement et des dépendances. Préparez les erreurs observées et les parcours à conserver. La reprise peut être progressive ; elle ne demande pas systématiquement une réécriture.</p>
+<p>Vous avez déjà un brief ? <a href="/contact">Présentez votre projet</a> avec l’URL existante, les fonctions prioritaires et votre échéance. Vous pouvez aussi comparer les <a href="/services">services de création, d’application et de maintenance</a>.</p>
 `.trim(),
   },
   {
@@ -764,28 +833,39 @@ add_filter('the_title', function($title) {
   },
   {
     slug: "site-vitrine-ou-ecommerce",
-    title: "Site vitrine ou e-commerce : lequel choisir ?",
-    excerpt: "Comparez site vitrine et boutique e-commerce selon vos objectifs, votre catalogue, votre organisation et les attentes de vos clients au Maroc.",
+    title: "Site vitrine ou e-commerce : que choisir pour votre activité ?",
+    seoTitle: "Site vitrine ou e-commerce : différences et choix",
+    excerpt: "Comparez site vitrine, catalogue et boutique en ligne : objectifs, commande, contenus et maintenance, avec des exemples pour choisir le bon périmètre.",
     date: "2026-07-26",
-    readTime: 6,
+    updatedAt: "2026-10-20",
+    readTime: 3,
     tags: ["Site Vitrine", "E-commerce", "Maroc", "Stratégie"],
     image: `${DEVICON}/react/react-original.svg`,
     content: `
-<p>Un site vitrine présente une activité et génère des contacts. Un site e-commerce permet aux visiteurs de consulter un catalogue et de passer commande. Cette différence paraît simple, mais le bon choix dépend surtout de votre organisation et du parcours que vous souhaitez proposer à vos clients.</p>
-<h2>Quand choisir un site vitrine ?</h2>
-<p>Le site vitrine convient aux consultants, cabinets, artisans, restaurants, centres de formation, entreprises de services et professions libérales. Il explique votre offre, présente vos preuves et facilite la prise de contact par formulaire, email, téléphone ou WhatsApp.</p>
-<p>Il reste adapté lorsqu'un échange est nécessaire avant de vendre : diagnostic, rendez-vous, devis personnalisé ou prestation dont le prix dépend du besoin. Découvrez les éléments d'un <a href="/site-vitrine-casablanca">site vitrine professionnel à Casablanca</a>.</p>
-<h2>Quand choisir une boutique e-commerce ?</h2>
-<p>L'e-commerce devient pertinent lorsque vos produits peuvent être décrits, tarifés et commandés en ligne. Il nécessite un catalogue, des fiches produits, un panier, la gestion des commandes et une organisation claire pour le stock, la livraison et le service client.</p>
-<p>Au Maroc, le paiement à la livraison peut faire partie du parcours, mais il ne suffit pas d'ajouter un bouton de commande. Il faut prévoir la validation, les notifications, le traitement des commandes et les éventuels retours. Les paiements en ligne dépendent quant à eux du prestataire choisi et de ses conditions.</p>
-<h2>Comparez la complexité de gestion</h2>
-<p>Un site vitrine demande surtout de maintenir les services, réalisations et coordonnées à jour. Une boutique nécessite une gestion continue des produits, prix, disponibilités, commandes et promotions. Avant de choisir, identifiez la personne responsable de ces tâches.</p>
-<p>Le budget d'un e-commerce est généralement supérieur parce que les fonctionnalités, tests et contraintes de sécurité sont plus nombreux. Aucun prix exact ne peut être défini sans connaître le catalogue, les paiements, la livraison et les intégrations.</p>
-<h2>Peut-on commencer par un site vitrine ?</h2>
-<p>Oui. Une entreprise peut lancer une présence professionnelle, valider son offre puis ajouter une boutique lorsque le catalogue et l'organisation sont prêts. Cette évolution doit néanmoins être anticipée dans l'architecture afin d'éviter une reconstruction inutile.</p>
-<h2>Les critères de décision</h2>
-<ul><li>Le client peut-il acheter sans échange préalable ?</li><li>Les prix et variantes sont-ils clairement définis ?</li><li>Qui gérera le catalogue et les commandes ?</li><li>Quels modes de paiement et livraison sont réellement disponibles ?</li><li>Le volume attendu justifie-t-il l'automatisation ?</li></ul>
-<p>Consultez la page <a href="/creation-site-ecommerce-casablanca">création de site e-commerce à Casablanca</a> ou présentez votre besoin via la <a href="/contact">page contact</a>.</p>
+<p>Choisissez un site vitrine si votre objectif est de présenter vos services et de recevoir des demandes. Choisissez une boutique e-commerce si le visiteur doit sélectionner des produits et passer commande. Entre les deux, un catalogue avec demande de devis peut répondre à une vente qui exige un échange préalable.</p>
+<h2>Les différences à connaître</h2>
+<div class="overflow-x-auto"><table><caption>Trois parcours possibles pour vos visiteurs</caption><thead><tr><th scope="col">Critère</th><th scope="col">Site vitrine</th><th scope="col">Catalogue et devis</th><th scope="col">Boutique e-commerce</th></tr></thead><tbody>
+<tr><th scope="row">Action principale</th><td>Prendre contact</td><td>Demander une offre sur un produit</td><td>Passer commande</td></tr>
+<tr><th scope="row">Contenus à préparer</th><td>Services, réalisations, présentation</td><td>Fiches produits et caractéristiques</td><td>Produits, variantes, prix et informations de livraison</td></tr>
+<tr><th scope="row">Gestion courante</th><td>Mettre à jour les informations</td><td>Actualiser le catalogue et répondre aux devis</td><td>Suivre commandes, disponibilité et service client</td></tr>
+<tr><th scope="row">Tests essentiels</th><td>Navigation et formulaire</td><td>Recherche et demande liée au bon produit</td><td>Panier, commande, paiement et confirmations</td></tr>
+</tbody></table></div>
+<h2>Quand un site vitrine suffit</h2>
+<p>Un artisan, un consultant ou un cabinet peut avoir besoin d’expliquer son offre avant de chiffrer chaque mission. Le site aide alors le prospect à comprendre le service, à examiner des réalisations et à transmettre une demande précise. Ajouter un panier n’apporte rien si aucune prestation ne peut être achetée directement.</p>
+<p>Prévoyez une page par service réellement distinct, des informations de contact faciles à trouver et un formulaire qui demande seulement les éléments utiles. Le <a href="/portfolio/reby-art">portfolio Reby Art</a> illustre une présentation d’œuvres ; <a href="/portfolio/highup-counselling">HighUp Counselling</a> présente des services. Ces exemples montrent des structures différentes selon le contenu.</p>
+<h2>Quand choisir une boutique en ligne</h2>
+<p>Une boutique devient pertinente si le client peut choisir un produit, sa variante et sa quantité sans validation préalable. Le projet doit couvrir aussi ce qui arrive après le clic : réception de la commande, préparation, livraison, annulation et assistance.</p>
+<p>Le paiement en ligne n’est pas la seule possibilité. Le <a href="/portfolio/site-ecommerce">projet BDM Store</a> présente une commande avec paiement à la livraison. Le mode retenu doit correspondre au fonctionnement commercial réel et aux services disponibles pour votre activité.</p>
+<ul><li>Quelles variantes modifient le prix, l’image ou la disponibilité ?</li><li>Qui met à jour les stocks et les fiches produits ?</li><li>Comment sont calculés les frais et les zones de livraison ?</li><li>Quels messages reçoivent le client et l’équipe après la commande ?</li><li>Comment traiter une commande impossible, un paiement refusé ou une annulation ?</li></ul>
+<h2>Un catalogue avec demande de devis : l’option intermédiaire</h2>
+<p>Pour des meubles personnalisés, du matériel professionnel ou une prestation configurable, le prix peut dépendre d’informations à confirmer. Un catalogue permet de montrer les produits et leurs options, puis d’envoyer une demande contenant la référence sélectionnée. Le formulaire doit conserver le bon produit et les choix du visiteur.</p>
+<p>Cette solution reste un vrai travail de conception : catégories, photos, recherche, fiches et gestion des demandes. Elle ne doit pas être présentée comme une boutique complète si le paiement et le suivi des commandes sont absents.</p>
+<h2>Comparer le coût de création et le coût de fonctionnement</h2>
+<p>Le nombre de pages ne suffit pas à estimer le travail. Une boutique implique des parcours et des tests supplémentaires ; un grand site vitrine multilingue peut aussi demander beaucoup de préparation. Comparez les livrables, la saisie des contenus, les intégrations et la maintenance sur un même périmètre.</p>
+<p>Listez séparément domaine, hébergement, licences et frais éventuels de paiement. Pour organiser votre demande, reprenez le <a href="/blog/cahier-des-charges-site-web">cahier des charges de création de site</a>, puis consultez les services de <a href="/creation-site-web">création de site professionnel</a> et de <a href="/site-ecommerce">création de boutique en ligne</a>.</p>
+<h2>Peut-on faire évoluer un site vitrine vers une boutique ?</h2>
+<p>Oui, mais il faut examiner la technologie, les contenus, le catalogue et les intégrations. Conserver le domaine ne garantit pas que tout le code sera réutilisable. Les pages déjà utiles sont inventoriées et les changements d’URL sont accompagnés de redirections vers leurs équivalents.</p>
+<p>Commencez par le parcours dont vous avez besoin aujourd’hui. Documentez les fonctions envisagées pour plus tard afin de choisir une base qui permette une évolution raisonnable, sans développer dès le départ des options qui ne seront pas utilisées.</p>
 `.trim(),
   },
   {

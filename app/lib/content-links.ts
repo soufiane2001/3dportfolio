@@ -4,9 +4,10 @@ export type ContentLink = { href: string; label: string };
 // keyword such as "freelance" pushing every page to the same destinations.
 export const contentLinks: Record<string, ContentLink[]> = {
   "/fr": [
-    { href: "/creation-site-web-casablanca", label: "Création de site web à Casablanca" },
-    { href: "/casablanca/seo", label: "Audit et référencement naturel à Casablanca" },
-    { href: "/portfolio/cash-management-app", label: "Application de gestion de dépenses : le projet mobile" },
+    { href: "/services", label: "Comparer toutes les prestations web" },
+    { href: "/france/developpeur-web-freelance", label: "Développement à distance pour les entreprises en France" },
+    { href: "/canada/creation-site-web", label: "Préparer un site pour le Canada et le Québec" },
+    { href: "/blog/cahier-des-charges-site-web", label: "Rédiger le brief de votre projet" },
   ],
   "/casablanca/seo": [
     { href: "/blog/seo-site-entreprise-maroc", label: "Diagnostiquer la visibilité d’un site d’entreprise" },
@@ -53,5 +54,66 @@ export const contentLinks: Record<string, ContentLink[]> = {
   "/blog/prix-application-mobile-maroc-2026": [
     { href: "/application-mobile-casablanca", label: "Demander un devis pour une application mobile" },
     { href: "/portfolio/cash-management-app", label: "Voir un projet de suivi de dépenses" },
+  ],
+  "/creation-site-web": [
+    { href: "/blog/cahier-des-charges-site-web", label: "Préparer les pages et contenus du site" },
+    { href: "/blog/site-vitrine-ou-ecommerce", label: "Choisir entre vitrine, catalogue et boutique" },
+    { href: "/portfolio/reby-art", label: "Exemple de présentation d’un artiste" },
+    { href: "/site-ecommerce", label: "Prévoir un parcours de commande" },
+    { href: "/maintenance-site-web", label: "Organiser le suivi après publication" }
+  ],
+  "/developpeur-web-freelance": [
+    { href: "/blog/developpeur-web-freelance-france-remote", label: "Comparer les profils et les livrables" },
+    { href: "/blog/cahier-des-charges-site-web", label: "Préparer un brief pour obtenir un devis" },
+    { href: "/portfolio", label: "Examiner les projets et leurs technologies" },
+    { href: "/maintenance-site-web", label: "Faire reprendre un site existant" }
+  ],
+  "/france/developpeur-web-freelance": [
+    { href: "/blog/developpeur-web-freelance-france-remote", label: "Le guide de collaboration à distance" },
+    { href: "/france/creation-site-web", label: "Créer un site pour votre entreprise en France" },
+    { href: "/portfolio/reby-art", label: "Reby Art : présentation d’un projet React" },
+    { href: "/blog/cahier-des-charges-site-web", label: "La checklist avant une demande de devis" }
+  ],
+  "/france/creation-site-web": [
+    { href: "/blog/cahier-des-charges-site-web", label: "Préparer les contenus et fonctions du site" },
+    { href: "/blog/site-vitrine-ou-ecommerce", label: "Définir le parcours commercial" },
+    { href: "/portfolio/pizza-napoli-toul", label: "Une vitrine pour un restaurant à Toul" },
+    { href: "/maintenance-site-web", label: "Prévoir la maintenance du site" }
+  ],
+  "/blog/developpeur-web-freelance-france-remote": [
+    { href: "/france/developpeur-web-freelance", label: "Examiner la prestation de développement pour la France" },
+    { href: "/blog/cahier-des-charges-site-web", label: "Compléter le modèle de brief" },
+    { href: "/portfolio/reby-art", label: "Voir le projet React Reby Art" },
+    { href: "/contact", label: "Présenter votre besoin et votre échéance" }
+  ],
+  "/blog/cahier-des-charges-site-web": [
+    { href: "/services", label: "Choisir une prestation à partir du brief" },
+    { href: "/blog/site-vitrine-ou-ecommerce", label: "Vitrine ou boutique : comparer les parcours" },
+    { href: "/blog/developpeur-web-freelance-france-remote", label: "Choisir un développeur et organiser le suivi" },
+    { href: "/contact", label: "Transmettre votre demande de projet" }
+  ],
+  "/blog/site-vitrine-ou-ecommerce": [
+    { href: "/creation-site-web", label: "Création de site professionnel" },
+    { href: "/site-ecommerce", label: "Création d’une boutique avec commande" },
+    { href: "/portfolio/site-ecommerce", label: "Voir un parcours de vente avec paiement à la livraison" },
+    { href: "/blog/cahier-des-charges-site-web", label: "Décrire les fonctions à développer" }
+  ],
+  "/blog/prix-creation-site-web-maroc-2026": [
+    { href: "/creation-site-web-casablanca", label: "Demander une création de site à Casablanca" },
+    { href: "/blog/cahier-des-charges-site-web", label: "Préparer un périmètre comparable" },
+    { href: "/blog/site-vitrine-ou-ecommerce", label: "Choisir le type de site à chiffrer" },
+    { href: "/maintenance-site-web", label: "Séparer création et maintenance" }
+  ],
+  "/site-ecommerce": [
+    { href: "/blog/site-vitrine-ou-ecommerce", label: "Comparer catalogue, devis et commande" },
+    { href: "/portfolio/site-ecommerce", label: "BDM Store : catalogue et paiement à la livraison" },
+    { href: "/blog/cahier-des-charges-site-web", label: "Préparer les fonctions et les contenus" },
+    { href: "/maintenance-site-web", label: "Maintenir le parcours de commande" }
+  ],
+  "/maintenance-site-web": [
+    { href: "/seo", label: "Vérifier l’indexation et les liens du site" },
+    { href: "/developpeur-php", label: "Reprise PHP et MySQL" },
+    { href: "/developpeur-nextjs", label: "Reprise et optimisation Next.js" },
+    { href: "/blog/cahier-des-charges-site-web", label: "Inventorier les parcours et URL à préserver" }
   ],
 };
