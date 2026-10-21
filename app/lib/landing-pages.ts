@@ -1,4 +1,5 @@
 import { specialistServices } from "./specialist-services";
+import { dentalServices } from "./dental-services";
 import { serviceContent } from "./service-content";
 import { marketHubContent, regionalContent } from "./regional-content";
 import { casablancaSeo } from "./casablanca-seo";
@@ -138,5 +139,5 @@ const canadaQuebec: LandingPage = { ...marketPages.find(page => page.path === "/
   { title: "Des validations compatibles avec votre organisation au Québec", paragraphs: ["Nous convenons d’un référent, de créneaux de réunion et d’un format de retour écrit. Les questions bloquantes sont regroupées et les livraisons indiquent les parcours à vérifier.", "Le devis sépare la création initiale des évolutions et de la maintenance. La collaboration reste à distance depuis le Maroc ; aucune présence physique au Québec n’est annoncée."], items: ["Référent de validation", "Notes de livraison", "Créneaux communs", "Maintenance à définir"] },
 ], related: [{ href: "/canada/creation-site-web", label: "Préparer un site francophone ou bilingue" }, { href: "/portfolio/highup-counselling", label: "Un site canadien présenté au portfolio" }] };
 
-export const landingPages: LandingPage[] = [...servicePages, ...specialistServices, ...marketPages, canadaQuebec, ...variants, ...hubs, englishHub, ...englishPages, casablancaSeo];
+export const landingPages: LandingPage[] = [...servicePages, ...specialistServices, ...dentalServices, ...marketPages, canadaQuebec, ...variants, ...hubs, englishHub, ...englishPages, casablancaSeo];
 export const getLandingPage = (path: string) => landingPages.find(page => page.path === path);
