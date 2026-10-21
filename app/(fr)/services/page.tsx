@@ -7,7 +7,7 @@ import { absoluteUrl, pageMetadata } from "../../lib/site";
 export const metadata = pageMetadata("/services", "Services web freelance : sites, applications et maintenance", "Comparez les prestations de création de site, e-commerce, application web ou mobile, maintenance et SEO. Projets et devis en français, à distance.");
 
 const groups = [
-  { title: "Créer un site ou vendre en ligne", intro: "Présenter vos services, montrer vos réalisations ou permettre à un client de commander : le parcours attendu détermine le type de site.", slugs: ["creation-site-web", "site-ecommerce", "developpeur-web-freelance"] },
+  { title: "Créer un site ou vendre en ligne", intro: "Présenter vos services, montrer vos réalisations ou permettre à un client de commander : le parcours attendu détermine le type de site.", slugs: ["creation-site-web", "creation-site-catalogue", "site-ecommerce", "creation-site-web-cabinet-medical", "developpeur-web-freelance"] },
   { title: "Développer une application ou renforcer une équipe", intro: "Construire un outil métier, connecter une API ou reprendre un produit existant, avec des tâches et des critères de validation définis.", slugs: ["developpement-web-sur-mesure", "developpeur-application-mobile", "developpeur-react", "developpeur-nextjs", "developpeur-php", "developpeur-laravel"] },
   { title: "Entretenir et améliorer un site existant", intro: "Corriger un problème, vérifier l’indexation ou faire évoluer un parcours après examen du site et de son environnement.", slugs: ["maintenance-site-web", "seo"] },
 ];

@@ -115,7 +115,7 @@ export const caseStudies: CaseStudy[] = [
     features: ["Présentation des collections", "Offre pour entreprises", "Explication du processus de personnalisation", "Accès au contact WhatsApp"],
     image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1774035266/Capture_d_%C3%A9cran_2026-03-20_213032_ksgiwn.png",
     website: "https://darmooris.ma/",
-    relatedService: "/creation-site-web",
+    relatedService: "/creation-site-catalogue",
     updatedAt: "2026-10-05",
     details: [
       { title: "Deux publics, des demandes différentes", paragraphs: ["Un particulier peut rechercher un cadeau personnalisé, tandis qu’une entreprise prépare des uniformes ou un événement. La navigation sépare ces besoins pour rendre les informations utiles plus faciles à trouver.", "Le contact WhatsApp prolonge la consultation du site : le visiteur peut décrire sa personnalisation et échanger avec l’atelier. Ce parcours constitue une demande de contact, et ne doit pas être confondu avec une commande payée en ligne."] },
@@ -148,7 +148,7 @@ export const caseStudies: CaseStudy[] = [
     features: ["Présentation du médecin et des expertises", "Informations d’accès au cabinet", "Liens vers les moyens de rendez-vous", "Présentation du cabinet"],
     image: "/project-dr-boutatss-nora.png",
     website: "https://drboutatssnora.com/",
-    relatedService: "/creation-site-web",
+    relatedService: "/creation-site-web-cabinet-medical",
     updatedAt: "2026-10-05",
     details: [
       { title: "Un parcours centré sur les informations pratiques", paragraphs: ["Les visiteurs n’arrivent pas tous avec le même besoin : certains souhaitent découvrir le cabinet, d’autres connaître son adresse ou prendre rendez-vous. La navigation et les liens de contact donnent accès à ces informations sans les enfouir dans une longue présentation.", "Cette étude de cas porte sur le site et son organisation. Un lien vers un agenda externe facilite l’accès à la réservation ; il ne constitue pas un système de gestion médicale intégré au site."] },
