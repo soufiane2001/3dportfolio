@@ -4,7 +4,7 @@ import { caseStudies } from "../lib/portfolio";
 import { landingPages } from "../lib/landing-pages";
 import { contentLinks } from "../lib/content-links";
 
-const topics = ["react", "next", "php", "laravel", "mobile", "seo", "ecommerce", "casablanca", "maroc", "france", "canada", "freelance"];
+const topics = ["react", "next", "php", "laravel", "mobile", "seo", "ecommerce", "casablanca", "maroc", "france", "canada", "freelance", "dentiste", "dentaire", "cabinet"];
 const normalize = (text: string) => text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/e-commerce/g, "ecommerce");
 
 export default function RelatedContent({ path, subject, locale = "fr" }: { path: string; subject: string; locale?: "fr" | "en" | "ar" }) {
