@@ -3,6 +3,36 @@ export type ContentLink = { href: string; label: string };
 // Links are selected for the reader's next question, rather than a shared
 // keyword such as "freelance" pushing every page to the same destinations.
 export const contentLinks: Record<string, ContentLink[]> = {
+  "/creation-site-catalogue": [
+    { href: "/portfolio/dar-mooris", label: "Dar Mooris : collections et demande sur WhatsApp" },
+    { href: "/blog/site-vitrine-ou-ecommerce", label: "Choisir un catalogue ou une boutique en ligne" },
+    { href: "/developpeur-php", label: "Développement PHP et administration des données" },
+    { href: "/contact", label: "Décrire vos références et le traitement des devis" },
+  ],
+  "/creation-site-web-cabinet-medical": [
+    { href: "/portfolio/dr-boutatss-nora", label: "Le site du cabinet du Dr Nora Boutatss" },
+    { href: "/blog/cahier-des-charges-site-web", label: "Préparer les pages et informations du cabinet" },
+    { href: "/maintenance-site-web", label: "Organiser les mises à jour après livraison" },
+    { href: "/contact", label: "Présenter le projet de votre cabinet" },
+  ],
+  "/developpeur-nextjs": [
+    { href: "/portfolio/gamlastan", label: "Gamlastan : une interface de boutique Next.js" },
+    { href: "/blog/nextjs-seo-app-router-2026", label: "Comprendre le rendu et les métadonnées Next.js" },
+    { href: "/maintenance-site-web", label: "Maintenance après la reprise ou la refonte" },
+    { href: "/blog/cahier-des-charges-site-web", label: "Lister les parcours et les contenus à conserver" },
+  ],
+  "/portfolio/dar-mooris": [
+    { href: "/creation-site-catalogue", label: "Créer un catalogue avec demande de devis" },
+    { href: "/blog/site-vitrine-ou-ecommerce", label: "Comparer contact, devis et commande en ligne" },
+  ],
+  "/portfolio/dr-boutatss-nora": [
+    { href: "/creation-site-web-cabinet-medical", label: "Créer le site vitrine de votre cabinet médical" },
+    { href: "/maintenance-site-web", label: "Actualiser les informations de votre cabinet" },
+  ],
+  "/portfolio/gamlastan": [
+    { href: "/developpeur-nextjs", label: "Création et reprise de sites Next.js" },
+    { href: "/site-ecommerce", label: "Définir les fonctionnalités d’une boutique en ligne" },
+  ],
   "/fr": [
     { href: "/services", label: "Comparer toutes les prestations web" },
     { href: "/france/developpeur-web-freelance", label: "Développement à distance pour les entreprises en France" },
@@ -56,6 +86,8 @@ export const contentLinks: Record<string, ContentLink[]> = {
     { href: "/portfolio/cash-management-app", label: "Voir un projet de suivi de dépenses" },
   ],
   "/creation-site-web": [
+    { href: "/creation-site-catalogue", label: "Présenter des produits et recevoir des demandes de devis" },
+    { href: "/creation-site-web-cabinet-medical", label: "Présenter un cabinet et ses moyens de rendez-vous" },
     { href: "/blog/cahier-des-charges-site-web", label: "Préparer les pages et contenus du site" },
     { href: "/blog/site-vitrine-ou-ecommerce", label: "Choisir entre vitrine, catalogue et boutique" },
     { href: "/portfolio/reby-art", label: "Exemple de présentation d’un artiste" },
@@ -93,6 +125,7 @@ export const contentLinks: Record<string, ContentLink[]> = {
     { href: "/contact", label: "Transmettre votre demande de projet" }
   ],
   "/blog/site-vitrine-ou-ecommerce": [
+    { href: "/creation-site-catalogue", label: "Créer un catalogue sans paiement en ligne" },
     { href: "/creation-site-web", label: "Création de site professionnel" },
     { href: "/site-ecommerce", label: "Création d’une boutique avec commande" },
     { href: "/portfolio/site-ecommerce", label: "Voir un parcours de vente avec paiement à la livraison" },
@@ -105,6 +138,7 @@ export const contentLinks: Record<string, ContentLink[]> = {
     { href: "/maintenance-site-web", label: "Séparer création et maintenance" }
   ],
   "/site-ecommerce": [
+    { href: "/creation-site-catalogue", label: "Un catalogue avec devis si le prix dépend du projet" },
     { href: "/blog/site-vitrine-ou-ecommerce", label: "Comparer catalogue, devis et commande" },
     { href: "/portfolio/site-ecommerce", label: "BDM Store : catalogue et paiement à la livraison" },
     { href: "/blog/cahier-des-charges-site-web", label: "Préparer les fonctions et les contenus" },

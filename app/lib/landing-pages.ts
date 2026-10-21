@@ -1,3 +1,4 @@
+import { specialistServices } from "./specialist-services";
 import { serviceContent } from "./service-content";
 import { marketHubContent, regionalContent } from "./regional-content";
 import { casablancaSeo } from "./casablanca-seo";
@@ -29,7 +30,7 @@ const serviceInfo: Record<string, { title: string; h1: string; intro: string; fo
   "creation-site-web": { title: "Création Site Web", h1: "Création de site web professionnel et performant", intro: "Un site sur mesure pour présenter votre offre, rassurer vos visiteurs et transformer les recherches en demandes qualifiées.", focus: ["Site vitrine", "Site institutionnel", "Refonte", "Landing page orientée conversion"] },
   "developpement-web-sur-mesure": { title: "Développement Web Sur Mesure", h1: "Développement web sur mesure pour vos processus métier", intro: "Applications, plateformes et outils web conçus autour de vos utilisateurs, de vos règles métier et de vos données.", focus: ["MVP et SaaS", "Portails clients", "Dashboards", "APIs et automatisations"] },
   "developpeur-react": { title: "Développeur React Freelance", h1: "Développeur React freelance pour interfaces web modernes", intro: "Développement d’interfaces React maintenables, rapides et accessibles pour applications, plateformes et sites interactifs.", focus: ["Architecture de composants", "TypeScript", "Intégration API", "Performance frontend"] },
-  "developpeur-nextjs": { title: "Développeur Next.js Freelance", h1: "Développeur Next.js freelance pour sites et applications", intro: "Sites et applications Next.js avec rendu performant, SEO technique propre et architecture adaptée à l’évolution du produit.", focus: ["App Router", "Server Components", "SEO technique", "Déploiement et performance"] },
+  "developpeur-nextjs": { title: "Développeur Next.js Freelance", h1: "Développeur Next.js freelance : création, reprise et refonte", intro: "Vous souhaitez lancer un site Next.js ou reprendre un projet existant ? Je cadre les routes, les contenus et les parcours à préserver, puis développe les corrections ou fonctionnalités convenues. Collaboration à distance pour les entreprises et équipes francophones.", focus: ["App Router", "Server Components", "SEO technique", "Déploiement et performance"] },
   "developpeur-php": { title: "Développeur PHP Freelance", h1: "Développeur PHP freelance pour applications robustes", intro: "Backends, sites dynamiques et intégrations PHP conçus pour rester lisibles, sécurisés et maintenables.", focus: ["PHP moderne", "MySQL", "APIs REST", "Maintenance et refonte"] },
   "developpeur-laravel": { title: "Développeur Laravel Freelance", h1: "Développeur Laravel freelance pour applications métier", intro: "Applications Laravel, APIs et espaces d’administration structurés autour de vos règles métier.", focus: ["Architecture Laravel", "Authentification et rôles", "Queues et tâches", "APIs et intégrations"] },
   "developpeur-application-mobile": { title: "Développeur Application Mobile", h1: "Développement d’applications mobiles React Native", intro: "Applications Android et iOS avec React Native et Expo, de la définition du MVP aux builds de livraison.", focus: ["React Native et Expo", "Firebase ou API Laravel", "Navigation et authentification", "Tests sur appareils"] },
@@ -42,12 +43,12 @@ function servicePage(slug: string): LandingPage {
   const s = serviceInfo[slug];
   const content = serviceContent[slug];
   return {
-    path: `/${slug}`, lang: "fr", title: slug === "creation-site-web" ? "Création de site web professionnel | Soufiane Boutatss" : `${s.title} | Soufiane Boutatss`,
+    path: `/${slug}`, lang: "fr", title: slug === "developpeur-nextjs" ? "Développeur Next.js freelance : création et refonte" : slug === "creation-site-web" ? "Création de site web professionnel | Soufiane Boutatss" : `${s.title} | Soufiane Boutatss`,
     eyebrow: "Services web internationaux", h1: s.h1, intro: s.intro,
     market: "France, Canada, Europe & international",
     ...content,
     sections: [...content.sections, { title: "Cadrage, validation et livraison", paragraphs: ["Le devis précise les fonctions, les contenus à fournir et les critères de réception. Les étapes sont validées à distance, puis les accès et la documentation sont remis selon le périmètre convenu."], items: s.focus }],
-    updatedAt: slug === "creation-site-web" ? "2026-10-15" : "2026-10-05",
+    updatedAt: slug === "developpeur-nextjs" ? "2026-10-21" : slug === "creation-site-web" ? "2026-10-15" : "2026-10-05",
   };
 }
 
@@ -137,5 +138,5 @@ const canadaQuebec: LandingPage = { ...marketPages.find(page => page.path === "/
   { title: "Des validations compatibles avec votre organisation au Québec", paragraphs: ["Nous convenons d’un référent, de créneaux de réunion et d’un format de retour écrit. Les questions bloquantes sont regroupées et les livraisons indiquent les parcours à vérifier.", "Le devis sépare la création initiale des évolutions et de la maintenance. La collaboration reste à distance depuis le Maroc ; aucune présence physique au Québec n’est annoncée."], items: ["Référent de validation", "Notes de livraison", "Créneaux communs", "Maintenance à définir"] },
 ], related: [{ href: "/canada/creation-site-web", label: "Préparer un site francophone ou bilingue" }, { href: "/portfolio/highup-counselling", label: "Un site canadien présenté au portfolio" }] };
 
-export const landingPages: LandingPage[] = [...servicePages, ...marketPages, canadaQuebec, ...variants, ...hubs, englishHub, ...englishPages, casablancaSeo];
+export const landingPages: LandingPage[] = [...servicePages, ...specialistServices, ...marketPages, canadaQuebec, ...variants, ...hubs, englishHub, ...englishPages, casablancaSeo];
 export const getLandingPage = (path: string) => landingPages.find(page => page.path === path);
