@@ -18,9 +18,44 @@ try {
   if (audit.stderr) process.stderr.write(audit.stderr);
   assert.equal(audit.status, 0, 'Rendered sitemap audit failed');
 
-  const sitemap = await (await fetch(`${base}/sitemap.xml`)).text();
+  const sitemapResponse = await fetch(`${base}/sitemap.xml`, { redirect: 'manual' });
+  assert.equal(sitemapResponse.status, 200, 'Sitemap must be directly accessible');
+  assert.match(sitemapResponse.headers.get('content-type'), /xml/);
+  const sitemap = await sitemapResponse.text();
   const paths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => new URL(match[1]).pathname);
   const prerender = JSON.parse(readFileSync('.next/prerender-manifest.json', 'utf8'));
+  const manifest = JSON.parse(readFileSync('.next/app-path-routes-manifest.json', 'utf8'));
+  const pageSources = new Set(Object.entries(manifest)
+    .filter(([name]) => name.endsWith('/page'))
+    .map(([, route]) => route));
+  const sitemapPaths = new Set(paths);
+  assert.equal(paths.length, sitemapPaths.size, 'Duplicate sitemap paths');
+  assert.ok(paths.length > 0, 'Sitemap must contain public pages');
+  for (const match of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+    const url = new URL(match[1]);
+    assert.equal(url.origin, 'https://www.soufianeboutatss.sbs', 'Wrong sitemap host');
+    assert.equal(url.search + url.hash, '', `Noncanonical URL: ${url}`);
+  }
+  // Compare against the build output, so a missing sitemap entry cannot hide
+  // simply because all the remaining sitemap URLs pass their page checks.
+  let publicPages = 0;
+  for (const [path, route] of Object.entries(prerender.routes)) {
+    if (pageSources.has(route.srcRoute ?? path)) {
+      const response = await fetch(base + path, { redirect: 'manual' });
+      const html = await response.text();
+      if (response.status === 200 && !/<meta name="robots" content="[^"]*noindex/.test(html)) {
+        publicPages++;
+        assert.ok(sitemapPaths.has(path), `Public page missing from sitemap: ${path}`);
+      }
+    }
+  }
+  assert.equal(publicPages, paths.length, 'Sitemap must cover every public page exactly once');
+  for (const match of sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)) {
+    const modified = Date.parse(match[1]);
+    assert.ok(Number.isFinite(modified) && modified <= Date.now(), `Invalid lastmod: ${match[1]}`);
+  }
+  const robots = await (await fetch(`${base}/robots.txt`)).text();
+  assert.match(robots, /^Sitemap: https:\/\/www\.soufianeboutatss\.sbs\/sitemap\.xml$/m);
   const titles = new Map();
   const descriptions = new Map();
   for (const path of paths) {
