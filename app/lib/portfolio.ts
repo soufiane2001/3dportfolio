@@ -17,6 +17,21 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "mirado-clothing",
+    updatedAt: "2026-11-02",
+    title: "Mirado Clothing — Boutique de vêtements en ligne",
+    category: "E-commerce / Mode",
+    summary: "Boutique de mode avec catalogue, fiches produits et parcours de commande adapté aux mobiles.",
+    context: "Mirado Clothing avait besoin d’une boutique en ligne pour présenter les vêtements, faciliter la consultation des articles et permettre aux clients de passer commande.",
+    solution: "Mise en place d’une interface e-commerce responsive avec pages produits, sélection des quantités, parcours de commande et espace de consultation des commandes côté administration.",
+    technologies: ["PHP", "MySQL", "Responsive"],
+    features: ["Catalogue de vêtements", "Fiches produits", "Sélection des quantités", "Parcours de commande", "Suivi des commandes dans l’administration", "Interface adaptée au mobile"],
+    image: "/project-mirado-clothing.svg",
+    imageKind: "illustration",
+    website: "https://miradoclothing.com/",
+    relatedService: "/site-ecommerce",
+  },
+  {
     slug: "site-ecommerce",
     updatedAt: "2026-10-05",
     title: "Site e-commerce avec paiement à la livraison",
