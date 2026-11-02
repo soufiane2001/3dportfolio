@@ -21,6 +21,7 @@ interface Project {
 }
 
 const projects: Project[] = [
+  { id: 11, caseStudySlug: "mirado-clothing", title: "Mirado Clothing", description: "Boutique de vêtements avec catalogue, fiches produits et commandes sur mobile.", image: "/project-mirado-clothing.svg", demoUrl: "https://miradoclothing.com/", tech: ["PHP", "MySQL", "E-commerce"] },
   { id: 1, caseStudySlug: "site-ecommerce", title: "BDM Store", description: "Plateforme e-commerce complète pensée pour convertir, avec paiement à la livraison.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369049/Capture_d_%C3%A9cran_2026-05-10_022349_pn3hp8.png", demoUrl: "https://bdmstore.store/ecom/index.php", tech: ["PHP", "CSS", "MySQL"] },
   { id: 2, caseStudySlug: "reby-art", title: "Reby Art", description: "Un portfolio sobre et immersif qui laisse toute la place au travail de l’artiste.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369125/Capture_d_%C3%A9cran_2026-05-10_022508_ecupwg.png", demoUrl: "https://rebyart.vercel.app/", repoUrl: "https://github.com/soufiane2001/rebyart", tech: ["React", "JavaScript"] },
   { id: 3, caseStudySlug: "highup-counselling", title: "HighUp Counselling", description: "Une présence digitale rassurante et accessible pour un cabinet de psychologie.", image: "https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778369183/Capture_d_%C3%A9cran_2026-05-10_022608_m8mer3.png", demoUrl: "https://www.highupcounselling.ca/", tech: ["Wix"] },
