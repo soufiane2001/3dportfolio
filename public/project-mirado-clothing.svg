@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Mirado Clothing — présentation du projet</title>
+  <desc id="desc">Visuel typographique éditorial pour la boutique de vêtements Mirado Clothing, sans représentation du site réel.</desc>
+  <rect width="1200" height="675" fill="#eae6de"/>
+  <rect x="0" y="0" width="438" height="675" fill="#292c25"/>
+  <path d="M96 104H341" stroke="#bbb8a9" stroke-width="1" opacity=".6"/>
+  <text x="98" y="83" fill="#d4d1c7" font-family="Arial, Helvetica, sans-serif" font-size="14" letter-spacing="5">SELECTED WORK / 2026</text>
+  <g stroke="#d2cbbd" fill="none" stroke-width="2" opacity=".87">
+    <path d="M165 232 Q219 252 273 232 L310 263 L371 344 L322 380 L293 344 L293 520 L146 520 L146 344 L117 380 L68 344 L129 263 Z"/>
+    <path d="M165 232 Q183 285 219 298 Q255 285 273 232"/>
+    <path d="M146 520 L293 520" opacity=".6"/>
+    <path d="M192 244 L188 465 M251 245 L255 465" stroke-width="1" opacity=".22"/>
+  </g>
+  <text x="96" y="590" fill="#d4d1c7" font-family="Arial, Helvetica, sans-serif" font-size="15" letter-spacing="4">FASHION / DIGITAL</text>
+  <path d="M510 105H1120" stroke="#bcb6ac" stroke-width="1"/>
+  <text x="514" y="86" fill="#5f5b54" font-family="Arial, Helvetica, sans-serif" font-size="14" letter-spacing="3.5">E-COMMERCE PROJECT</text>
+  <text x="510" y="325" fill="#222821" font-family="Georgia, 'Times New Roman', serif" font-size="128" letter-spacing="-7">MIRADO</text>
+  <text x="516" y="386" fill="#5f5b54" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="12">CLOTHING</text>
+  <path d="M512 434H1118" stroke="#bcb6ac" stroke-width="1"/>
+  <text x="516" y="487" fill="#333830" font-family="Arial, Helvetica, sans-serif" font-size="23" letter-spacing=".2">Boutique en ligne · Mode</text>
+  <text x="516" y="530" fill="#68645e" font-family="Arial, Helvetica, sans-serif" font-size="18">Catalogue, produits et commandes</text>
+  <text x="516" y="610" fill="#4d5149" font-family="Arial, Helvetica, sans-serif" font-size="14" letter-spacing="1">MIRADOCLOTHING.COM</text>
+  <path d="M512 625H1118" stroke="#bcb6ac" stroke-width="1"/>
+</svg>
