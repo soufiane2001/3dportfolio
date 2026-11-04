@@ -1,21 +1,14 @@
 import Link from "next/link";
 import type { Bucket, DayPoint, Stats } from "../lib/stats";
-import { countryFlag } from "../lib/analytics";
+import { countryFlag, formatDuration } from "../lib/analytics";
 import AdminControls from "./AdminControls";
-
-function fmtDuration(ms: number): string {
-  const s = Math.round(ms / 1000);
-  if (s < 60) return `${s}s`;
-  const m = Math.floor(s / 60);
-  const rem = s % 60;
-  return `${m}m ${rem}s`;
-}
+import VisitorSessions from "./VisitorSessions";
 
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
       <div className="text-sm text-white/50">{label}</div>
-      <div className="mt-1 text-3xl font-semibold text-white">{value}</div>
+      <div className="mt-1 text-2xl font-semibold tabular-nums text-white sm:text-3xl">{value}</div>
     </div>
   );
 }
@@ -99,7 +92,7 @@ export default function Dashboard({ stats, days }: { stats: Stats; days: number 
           <div>
             <h1 className="text-2xl font-semibold text-white">Statistiques visiteurs</h1>
             <p className="text-sm text-white/50">
-              Personnes réelles uniquement — les bots sont exclus.
+              Sessions par onglet, sans nom. Les robots connus sont exclus.
             </p>
           </div>
           <AdminControls />
@@ -121,11 +114,22 @@ export default function Dashboard({ stats, days }: { stats: Stats; days: number 
           ))}
         </div>
 
-        <div className="mb-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <StatCard label="Visiteurs uniques" value={String(stats.uniqueVisitors)} />
-          <StatCard label="Pages vues" value={String(stats.totalVisits)} />
-          <StatCard label="Temps moyen / page" value={fmtDuration(stats.avgDurationMs)} />
+        <div className="mb-3 grid grid-cols-2 gap-4 lg:grid-cols-5">
+          <StatCard label="Sessions" value={String(stats.uniqueVisitors)} />
+          <StatCard label="Pages consultées" value={String(stats.totalVisits)} />
+          <StatCard label="Temps cumulé" value={formatDuration(stats.totalDurationMs)} />
+          <StatCard label="Temps moyen / session" value={formatDuration(stats.avgSessionDurationMs)} />
           <StatCard label="Clics boutons" value={String(stats.totalClicks)} />
+        </div>
+        <p className="mb-6 text-xs leading-5 text-white/45">
+          Temps mesuré lorsque l’onglet est visible, enregistré toutes les 15 secondes et au départ.
+          {" "}Moyenne par page : {formatDuration(stats.avgDurationMs)}.
+          {" "}Une même page est regroupée par session, y compris lors d’un retour.
+          {" "}Le calcul du temps visible s’applique aux nouvelles visites.
+        </p>
+
+        <div className="mb-6">
+          <VisitorSessions visitors={stats.recentVisitors} />
         </div>
 
         <div className="mb-6">
@@ -134,6 +138,7 @@ export default function Dashboard({ stats, days }: { stats: Stats; days: number 
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <BarList title="Pays" items={stats.topCountries} flags />
+          <BarList title="Villes estimées" items={stats.topCities} />
           <BarList title="Sources de trafic" items={stats.topSources} />
           <BarList title="Boutons cliqués" items={stats.topClicks} />
           <BarList title="Appareils" items={stats.topDevices} />

@@ -43,16 +43,38 @@ export function ensureTables() {
         path          TEXT NOT NULL DEFAULT '/',
         country       TEXT,
         city          TEXT,
+        region        TEXT,
+        postal_code   TEXT,
         source        TEXT NOT NULL DEFAULT 'Direct',
         referrer      TEXT,
         device        TEXT,
         is_bot        BOOLEAN NOT NULL DEFAULT FALSE,
         duration_ms   INTEGER NOT NULL DEFAULT 0,
-        created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
+        created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        last_seen_at  TIMESTAMPTZ
       )
+    `;
+    // Upgrade existing installations without deleting historical visits.
+    await sql`
+      ALTER TABLE visits
+        ADD COLUMN IF NOT EXISTS region TEXT,
+        ADD COLUMN IF NOT EXISTS postal_code TEXT,
+        ADD COLUMN IF NOT EXISTS last_seen_at TIMESTAMPTZ
     `;
     await sql`CREATE UNIQUE INDEX IF NOT EXISTS visits_session_path_idx ON visits (session_id, path)`;
     await sql`CREATE INDEX IF NOT EXISTS visits_created_idx ON visits (created_at)`;
+
+    // Cumulative samples make duplicate/reordered beacons idempotent.
+    await sql`
+      CREATE TABLE IF NOT EXISTS visit_durations (
+        session_id    TEXT NOT NULL,
+        path          TEXT NOT NULL,
+        page_view_id  TEXT NOT NULL,
+        duration_ms   INTEGER NOT NULL DEFAULT 0,
+        delta_ms      INTEGER NOT NULL DEFAULT 0,
+        PRIMARY KEY (session_id, path, page_view_id)
+      )
+    `;
 
     // One row per tracked interaction (button / link click).
     await sql`
@@ -65,6 +87,9 @@ export function ensureTables() {
       )
     `;
     await sql`CREATE INDEX IF NOT EXISTS events_created_idx ON events (created_at)`;
-  })();
+  })().catch((error) => {
+    _ready = null;
+    throw error;
+  });
   return _ready;
 }

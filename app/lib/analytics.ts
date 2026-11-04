@@ -68,11 +68,19 @@ function capitalize(s: string): string {
 
 /** ISO-3166 alpha-2 → flag emoji (e.g. "MA" → 🇲🇦). */
 export function countryFlag(code: string | null | undefined): string {
-  if (!code || code.length !== 2) return "🏳️";
+  if (!code || !/^[a-z]{2}$/i.test(code)) return "🏳️";
   const A = 0x1f1e6;
   const cc = code.toUpperCase();
   return String.fromCodePoint(
     A + cc.charCodeAt(0) - 65,
     A + cc.charCodeAt(1) - 65
   );
+}
+
+export function formatDuration(ms: number): string {
+  const seconds = Math.max(0, Math.round(ms / 1000));
+  if (seconds < 60) return `${seconds} s`;
+  const minutes = Math.floor(seconds / 60);
+  if (minutes < 60) return `${minutes} min ${seconds % 60} s`;
+  return `${Math.floor(minutes / 60)} h ${minutes % 60} min`;
 }

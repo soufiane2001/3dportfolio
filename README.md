@@ -6,6 +6,14 @@ Site professionnel de Soufiane Boutatss, développeur web freelance basé au Mar
 
 Le site présente les services de développement web et mobile, les réalisations et les moyens de contact.
 
+## Statistiques des visiteurs
+
+L’espace `/admin`, protégé par `ADMIN_PASSWORD`, affiche les 100 dernières sessions de la période choisie : ville et pays estimés, région/code postal disponibles, arrivée, dernier passage, pages consultées et durée cumulée. Un identifiant de session correspond à un onglet, pas à une personne identifiée. Le quartier exact n’est pas déduit d’une adresse IP.
+
+Le suivi utilise `DATABASE_URL` (Neon). Les tables et colonnes manquantes sont ajoutées automatiquement, en conservant les anciennes visites. Le temps des nouvelles visites est mesuré uniquement quand l’onglet est visible, envoyé toutes les 15 secondes et lors du départ. Les retours sur une page s’additionnent ; les envois identiques ou retardés ne doublent pas les durées. Les pages sont regroupées par chemin et par session. Les robots reconnus sont exclus des chiffres.
+
+Vérification du suivi : `node --test tools/analytics.test.mjs`. Vérification de l’application : `npm run build`.
+
 ---
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
