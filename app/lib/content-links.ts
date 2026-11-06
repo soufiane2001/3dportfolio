@@ -15,6 +15,14 @@ export const contentLinks: Record<string, ContentLink[]> = {
     { href: "/maintenance-site-web", label: "Organiser les mises à jour après livraison" },
     { href: "/contact", label: "Présenter le projet de votre cabinet" },
   ],
+  "/creation-site-web-dentiste": [
+    { href: "/prix-site-web-dentiste", label: "Comprendre le budget d’un site de dentiste" },
+    { href: "/site-dentiste-prise-rendez-vous", label: "Relier le site à la prise de rendez-vous" },
+    { href: "/referencement-seo-dentiste", label: "Développer le référencement du cabinet" },
+    { href: "/refonte-site-web-dentiste", label: "Refondre un site dentaire existant" },
+    { href: "/site-web-clinique-dentaire", label: "Organiser un site de clinique multi-praticiens" },
+    { href: "/contact", label: "Présenter le projet du cabinet" },
+  ],
   "/developpeur-nextjs": [
     { href: "/portfolio/gamlastan", label: "Gamlastan : une interface de boutique Next.js" },
     { href: "/blog/nextjs-seo-app-router-2026", label: "Comprendre le rendu et les métadonnées Next.js" },
@@ -88,6 +96,7 @@ export const contentLinks: Record<string, ContentLink[]> = {
   "/creation-site-web": [
     { href: "/creation-site-catalogue", label: "Présenter des produits et recevoir des demandes de devis" },
     { href: "/creation-site-web-cabinet-medical", label: "Présenter un cabinet et ses moyens de rendez-vous" },
+    { href: "/creation-site-web-dentiste", label: "Créer un site pour dentiste ou cabinet dentaire" },
     { href: "/blog/cahier-des-charges-site-web", label: "Préparer les pages et contenus du site" },
     { href: "/blog/site-vitrine-ou-ecommerce", label: "Choisir entre vitrine, catalogue et boutique" },
     { href: "/portfolio/reby-art", label: "Exemple de présentation d’un artiste" },
