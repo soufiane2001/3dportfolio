@@ -12,6 +12,7 @@ export type CaseStudy = {
   relatedService: string;
   updatedAt?: string;
   imageKind?: "screenshot" | "illustration";
+  imageAspectRatio?: number;
   details?: { title: string; paragraphs: string[] }[];
 };
 
@@ -26,8 +27,9 @@ export const caseStudies: CaseStudy[] = [
     solution: "Mise en place d’une interface e-commerce responsive avec pages produits, sélection des quantités, parcours de commande et espace de consultation des commandes côté administration.",
     technologies: ["PHP", "MySQL", "Responsive"],
     features: ["Catalogue de vêtements", "Fiches produits", "Sélection des quantités", "Parcours de commande", "Suivi des commandes dans l’administration", "Interface adaptée au mobile"],
-    image: "/project-mirado-clothing.svg",
-    imageKind: "illustration",
+    image: "/project-mirado-clothing.jpg",
+    imageKind: "screenshot",
+    imageAspectRatio: 1333 / 926,
     website: "https://miradoclothing.com/",
     relatedService: "/site-ecommerce",
   },

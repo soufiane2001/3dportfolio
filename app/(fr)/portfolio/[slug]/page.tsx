@@ -58,7 +58,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           <h1 className="mt-3 page-heading">{project.title}</h1>
           <p className="mt-6 max-w-3xl body-copy">{project.summary}</p>
           <figure className="mt-12">
-            <div className="relative aspect-video overflow-hidden rounded-3xl border border-white/10">
+            <div className="relative aspect-video overflow-hidden rounded-3xl border border-white/10" style={{ aspectRatio: project.imageAspectRatio }}>
               <Image src={project.image} alt={`${project.imageKind === "illustration" ? "Illustration de" : "Capture du projet"} ${project.title}`} fill priority sizes="(max-width: 1024px) 100vw, 1000px" className="object-cover" />
             </div>
             {project.imageKind === "illustration" && <figcaption className="mt-3 text-sm text-white/50">Illustration de présentation du projet.</figcaption>}
