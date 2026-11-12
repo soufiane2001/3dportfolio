@@ -16,6 +16,65 @@ const DEVICON_LATEST = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icon
 
 export const posts: BlogPost[] = [
   {
+    slug: "prix-site-vitrine",
+    title: "Combien coûte un site vitrine ?",
+    seoTitle: "Prix d’un site vitrine | Comparer les devis sur 12 mois",
+    excerpt: "Comparez les prix publiés pour un site vitrine en France, au Québec et dans d’autres marchés francophones. Calculez le coût sur douze mois avec deux devis.",
+    date: "2026-11-13",
+    readTime: 5,
+    tags: ["Site vitrine","Budget","Devis"],
+    image: `${DEVICON}/html5/html5-original.svg`,
+    content: `
+<p>Le prix d’un site vitrine dépend des pages à concevoir, des textes et photos à préparer, et des fonctions à tester. Pour comparer deux devis, calculez ce que vous paierez sur douze mois. Ajoutez à la création le nom de domaine, l’hébergement, les licences et la maintenance facturés à part.</p>
+
+<h2 id="reperes-de-prix">Quels prix sont publiés pour un site vitrine ?</h2>
+<p>Les montants ci-dessous viennent de guides et d’offres publics. Le nombre de pages, la rédaction et l’assistance incluse varient selon la source. Pour comparer vos propres devis, vérifiez les taxes, la devise et la date du premier renouvellement.</p>
+<div class="overflow-x-auto"><table>
+<caption>Repères de création d’un site vitrine publiés par marché</caption>
+<thead><tr><th scope="col">Marché</th><th scope="col">Repère publié</th><th scope="col">Périmètre et source</th></tr></thead>
+<tbody>
+<tr><th scope="row">France</th><td>2 000 à 8 000 €</td><td>Estimation selon la complexité, avec conception graphique, développement, intégration de contenu et formation. <a href="https://www.francenum.gouv.fr/guides-et-conseils/developpement-commercial/site-web/batir-le-cahier-des-charges-du-site-internet">France Num</a></td></tr>
+<tr><th scope="row">Québec</th><td>3 000 à 8 000 CAD</td><td>Fourchette indicative publiée par une agence pour une vitrine de 5 à 10 pages. <a href="https://www.bolle.ca/guides/combien-coute-site-web-pme-quebec">Bollé Communications</a></td></tr>
+<tr><th scope="row">Belgique</th><td>650 à 2 660 € TTC</td><td>Relevé d’offres pour des vitrines de 3 à 7 pages, principalement en Wallonie. <a href="https://danian.be/guides/prix-site-internet-belgique/">Danian</a></td></tr>
+<tr><th scope="row">Suisse romande</th><td>Dès 3 900 CHF</td><td>Tarif de départ affiché par un prestataire pour 5 à 7 pages, avec rédaction et formation. <a href="https://alpellia.ch/tarifs.html">Alpellia</a></td></tr>
+<tr><th scope="row">Dakar, Sénégal</th><td>250 000 à 350 000 FCFA</td><td>Fourchette de site vitrine publiée par une agence de Dakar. <a href="https://khidmaservices.com/blog/combien-coute-site-web-dakar-senegal">Khidma Services</a></td></tr>
+<tr><th scope="row">Abidjan, Côte d’Ivoire</th><td>Dès 200 000 FCFA</td><td>Tarif de départ affiché par un prestataire pour une vitrine. <a href="https://dilogo.ci/creation-de-site-web/">Dilogo</a></td></tr>
+</tbody></table></div>
+<p>Pour un devis en dirhams, retrouvez les postes à vérifier dans le <a href="/blog/prix-creation-site-web-maroc-2026">guide du prix d’un site web au Maroc</a>.</p>
+
+<h2 id="perimetre">Ce qui change le prix à nombre de pages égal</h2>
+<ul>
+<li><strong>Les contenus.</strong> Précisez qui fournit, rédige et valide les textes et photos. Pour un site bilingue, comptez aussi la traduction des formulaires et des confirmations.</li>
+<li><strong>Le parcours principal.</strong> Un restaurant peut avoir besoin d’une carte facile à consulter et d’un appel en un geste. Une entreprise de services peut demander un formulaire qui dirige chaque demande vers la bonne personne.</li>
+<li><strong>La reprise de l’existant.</strong> Demandez quelles pages, quelles adresses et quels contenus seront transférés. Précisez qui vérifie les redirections et le formulaire après la mise en ligne.</li>
+<li><strong>La mise à jour.</strong> Pour WordPress, demandez quels thèmes ou extensions nécessitent un renouvellement et qui s’occupe des sauvegardes et des mises à jour. Pour un constructeur hébergé, demandez le prix du forfait au renouvellement. Pour un site sur mesure, vérifiez la remise du code et des accès.</li>
+</ul>
+
+<h2 id="cout-sur-douze-mois">Comparer deux devis sur douze mois</h2>
+<p>Dans cet exemple fictif, les deux offres couvrent cinq pages et le même niveau d’accompagnement. Les montants sont en euros et calculés sur une même base de taxes. Le devis A coûte moins cher à la création. Avec les frais récurrents, le devis B revient à 50 € de moins la première année.</p>
+<div class="overflow-x-auto"><table>
+<caption>Exemple de calcul avec deux devis de site vitrine</caption>
+<thead><tr><th scope="col">Poste</th><th scope="col">Devis A</th><th scope="col">Devis B</th></tr></thead>
+<tbody>
+<tr><th scope="row">Création et mise en ligne</th><td>1 500 €</td><td>1 850 €</td></tr>
+<tr><th scope="row">Préparation des contenus</th><td>250 €</td><td>150 €</td></tr>
+<tr><th scope="row">Domaine et hébergement</th><td>20 € × 12 = 240 €</td><td>10 € × 12 = 120 €</td></tr>
+<tr><th scope="row">Maintenance</th><td>40 € × 12 = 480 €</td><td>25 € × 12 = 300 €</td></tr>
+<tr><th scope="row">Total la première année</th><td><strong>2 470 €</strong></td><td><strong>2 420 €</strong></td></tr>
+<tr><th scope="row">Renouvellements annuels si les tarifs restent identiques</th><td>720 €</td><td>420 €</td></tr>
+</tbody></table></div>
+<p>Reprenez ce calcul dans la devise de vos devis. Ajoutez les licences ou les options dont vous avez besoin, puis écartez les doublons si un abonnement est compris dans l’hébergement. Demandez le coût et les conditions du transfert du domaine si vous changez de prestataire.</p>
+
+<h2 id="deux-realisations">Deux exemples de périmètre</h2>
+<p>Pour Pizza Napoli à Toul, la vitrine réunit la carte, les horaires, l’adresse et le téléphone. Le devis d’un projet de ce type peut préciser qui met à jour les prix du menu et comment les clients accèdent à la carte sur mobile. <a href="/portfolio/pizza-napoli-toul">Voir le site du restaurant dans le portfolio</a>.</p>
+<p>Pour HighUp Counselling au Canada, le site Wix présente les services du cabinet et les moyens de le contacter. Pour un projet similaire, demandez qui peut modifier les pages, quel forfait couvre l’hébergement et comment le formulaire est testé. <a href="/portfolio/highup-counselling">Voir la vitrine de services dans le portfolio</a>.</p>
+
+<h2 id="demande-de-devis">Quoi préparer avant de demander un devis</h2>
+<p>Listez les pages, les langues, les contenus prêts et l’action attendue du visiteur. Demandez ensuite un montant pour la création et un montant pour les frais récurrents, avec la date de renouvellement. Le <a href="/blog/cahier-des-charges-site-web">modèle de cahier des charges</a> aide à préciser ces éléments.</p>
+<p>Pour faire chiffrer une vitrine ou une refonte, <a href="/contact">envoyez le périmètre de votre projet</a> avec l’adresse du site actuel si vous en avez un.</p>
+`.trim(),
+  },
+  {
     slug: "cahier-des-charges-site-web",
     title: "Cahier des charges de site web : modèle et checklist",
     seoTitle: "Cahier des charges site web : modèle à compléter",

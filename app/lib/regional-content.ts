@@ -13,7 +13,12 @@ export const regionalContent: Record<string, RegionalContent> = {
     ],
     faqs: [{ question: "Dois-je être disponible à chaque étape ?", answer: "Un référent doit valider la structure, les maquettes et les contenus. Les décisions peuvent être regroupées lors de points planifiés ; le travail ne nécessite pas une présence continue." }, { question: "Puis-je conserver mon domaine actuel ?", answer: "Oui, si vous disposez des accès nécessaires. Le déploiement est préparé avec le domaine et l’hébergement retenus, en préservant les services associés comme votre messagerie." }, { question: "Quel est le prix de création d’un site web pour une entreprise en France ?", answer: "Le budget dépend des pages, des contenus, des langues et des fonctions attendues. Pour une estimation, transmettez votre périmètre et les outils à intégrer. Le devis précise les livrables, les options et le suivi ; aucun montant unique ne remplace le cadrage du projet." }, { question: "Comment choisir entre un CMS et un site sur mesure ?", answer: "Le choix dépend de la fréquence de publication, de votre autonomie et des fonctionnalités. Un CMS peut répondre à des besoins de contenu courants ; un développement sur mesure convient à des parcours ou intégrations spécifiques. Comparez aussi les besoins de maintenance et la reprise future du site." }],
     projectSlugs: ["pizza-napoli-toul", "reby-art", "horea-formation"],
-    related: [{ href: "/portfolio/reby-art", label: "Portfolio React pour un peintre français" }, { href: "/france", label: "Collaboration avec les entreprises françaises" }, { href: "/creation-site-web", label: "Choisir le périmètre d’un site" }],
+    related: [
+      { href: "/portfolio/reby-art", label: "Portfolio React pour un peintre français" },
+      { href: "/france", label: "Collaboration avec les entreprises françaises" },
+      { href: "/creation-site-web", label: "Choisir le périmètre d’un site" },
+      { href: "/blog/prix-site-vitrine", label: "Comparer le budget d’un site vitrine" },
+    ],
   },
   "/canada/creation-site-web": {
     sections: [
@@ -22,7 +27,12 @@ export const regionalContent: Record<string, RegionalContent> = {
     ],
     faqs: [{ question: "Un site bilingue double-t-il le travail ?", answer: "Les composants peuvent être partagés, mais chaque langue demande des contenus, des validations et des vérifications de navigation. Le devis précise les pages et fonctions disponibles dans chaque version." }, { question: "Comment valider le site avec un décalage horaire ?", answer: "Les retours sont regroupés dans un document partagé, avec des démonstrations et des réunions planifiées. Les heures de disponibilité sont convenues avant de commencer." }],
     projectSlugs: ["highup-counselling"],
-    related: [{ href: "/portfolio/highup-counselling", label: "HighUp Counselling : site canadien de services" }, { href: "/canada", label: "Développement pour le Canada et le Québec" }, { href: "/creation-site-web", label: "Préparer un projet de site" }],
+    related: [
+      { href: "/portfolio/highup-counselling", label: "HighUp Counselling : site canadien de services" },
+      { href: "/canada", label: "Développement pour le Canada et le Québec" },
+      { href: "/creation-site-web", label: "Préparer un projet de site" },
+      { href: "/blog/prix-site-vitrine", label: "Comparer le budget d’un site vitrine" },
+    ],
   },
   "/france/developpeur-react": {
     sections: [
@@ -67,7 +77,11 @@ export const regionalContent: Record<string, RegionalContent> = {
     ],
     faqs: [{ question: "Pouvez-vous prévoir une version néerlandaise ?", answer: "La structure technique peut l’accueillir. Les traductions doivent être fournies ou validées par une personne compétente dans cette langue ; elles ne sont pas supposées incluses dans le développement." }, { question: "Disposez-vous d’une agence en Belgique ?", answer: "Non. Vous échangez directement avec un développeur freelance basé au Maroc et disponible à distance." }],
     projectSlugs: ["reby-art", "horea-formation"],
-    related: [{ href: "/belgique", label: "Organiser une collaboration depuis la Belgique" }, { href: "/creation-site-web", label: "Comparer CMS et développement sur mesure" }],
+    related: [
+      { href: "/belgique", label: "Organiser une collaboration depuis la Belgique" },
+      { href: "/creation-site-web", label: "Comparer CMS et développement sur mesure" },
+      { href: "/blog/prix-site-vitrine", label: "Comparer le budget d’un site vitrine" },
+    ],
   },
   "/suisse/creation-site-web": {
     sections: [
@@ -76,7 +90,11 @@ export const regionalContent: Record<string, RegionalContent> = {
     ],
     faqs: [{ question: "Une version allemande ou italienne peut-elle être prévue ?", answer: "Oui pour la structure du site. Les contenus et leur validation doivent être organisés dans chaque langue retenue et précisés au devis." }, { question: "Pouvez-vous utiliser mon hébergement existant ?", answer: "L’hébergement est examiné selon la technologie et les fonctions du site. Il peut être conservé s’il permet un déploiement et une maintenance adaptés." }],
     projectSlugs: ["reby-art", "horea-formation"],
-    related: [{ href: "/suisse", label: "Développement à distance pour la Suisse" }, { href: "/creation-site-web", label: "Préparer la structure et les contenus" }],
+    related: [
+      { href: "/suisse", label: "Développement à distance pour la Suisse" },
+      { href: "/creation-site-web", label: "Préparer la structure et les contenus" },
+      { href: "/blog/prix-site-vitrine", label: "Comparer le budget d’un site vitrine" },
+    ],
   },
 };
 

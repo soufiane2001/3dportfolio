@@ -7,6 +7,7 @@ export const categories = [
 ] as const;
 
 const projectSlugs = new Set([
+  "prix-site-vitrine",
   "cahier-des-charges-site-web", "developpeur-web-freelance-france-remote",
   "developpeur-web-freelance-maroc-2026", "prix-creation-site-web-maroc-2026",
   "prix-application-mobile-maroc-2026", "creation-site-web-casablanca",

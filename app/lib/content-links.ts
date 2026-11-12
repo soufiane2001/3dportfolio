@@ -86,6 +86,7 @@ export const contentLinks: Record<string, ContentLink[]> = {
     { href: "/portfolio/cash-management-app", label: "Voir un projet de suivi de dépenses" },
   ],
   "/creation-site-web": [
+    { href: "/blog/prix-site-vitrine", label: "Comparer le budget d’un site vitrine" },
     { href: "/creation-site-catalogue", label: "Présenter des produits et recevoir des demandes de devis" },
     { href: "/creation-site-web-cabinet-medical", label: "Présenter un cabinet et ses moyens de rendez-vous" },
     { href: "/blog/cahier-des-charges-site-web", label: "Préparer les pages et contenus du site" },
@@ -119,12 +120,14 @@ export const contentLinks: Record<string, ContentLink[]> = {
     { href: "/contact", label: "Présenter votre besoin et votre échéance" }
   ],
   "/blog/cahier-des-charges-site-web": [
+    { href: "/blog/prix-site-vitrine", label: "Comparer le budget d’un site vitrine" },
     { href: "/services", label: "Choisir une prestation à partir du brief" },
     { href: "/blog/site-vitrine-ou-ecommerce", label: "Vitrine ou boutique : comparer les parcours" },
     { href: "/blog/developpeur-web-freelance-france-remote", label: "Choisir un développeur et organiser le suivi" },
     { href: "/contact", label: "Transmettre votre demande de projet" }
   ],
   "/blog/site-vitrine-ou-ecommerce": [
+    { href: "/blog/prix-site-vitrine", label: "Comparer le budget d’un site vitrine" },
     { href: "/creation-site-catalogue", label: "Créer un catalogue sans paiement en ligne" },
     { href: "/creation-site-web", label: "Création de site professionnel" },
     { href: "/site-ecommerce", label: "Création d’une boutique avec commande" },
