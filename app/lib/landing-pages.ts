@@ -25,10 +25,12 @@ const commonFaqFr = [
   { question: "Assurez-vous la maintenance après livraison ?", answer: "Une maintenance corrective ou évolutive peut être prévue selon un périmètre et un rythme définis ensemble." },
 ];
 
-const serviceInfo: Record<string, { title: string; h1: string; intro: string; focus: string[] }> = {
+const serviceInfo: Record<string, { title: string; h1: string; intro: string; focus: string[]; seoTitle?: string; regionalHeading?: string }> = {
   "developpeur-web-freelance": {
-    title: "Développeur web freelance à distance",
+    title: "Développeur Web Freelance",
     h1: "Développeur web freelance pour vos sites et applications",
+    seoTitle: "Développeur web freelance à distance | Soufiane Boutatss",
+    regionalHeading: "Développeur web freelance",
     intro: "Je crée des sites vitrines, des boutiques en ligne et des applications web sur mesure. Je travaille à distance en français, de la préparation du devis à la mise en ligne, et j’interviens aussi sur des projets React ou PHP existants.",
     focus: ["Sites professionnels et landing pages", "Applications web et dashboards", "E-commerce et intégrations", "Maintenance, performance et SEO"],
   },
@@ -48,7 +50,7 @@ function servicePage(slug: string): LandingPage {
   const s = serviceInfo[slug];
   const content = serviceContent[slug];
   return {
-    path: `/${slug}`, lang: "fr", title: slug === "developpeur-nextjs" ? "Développeur Next.js freelance : création et refonte" : slug === "creation-site-web" ? "Création de site web professionnel | Soufiane Boutatss" : `${s.title} | Soufiane Boutatss`,
+    path: `/${slug}`, lang: "fr", title: s.seoTitle ?? (slug === "developpeur-nextjs" ? "Développeur Next.js freelance : création et refonte" : slug === "creation-site-web" ? "Création de site web professionnel | Soufiane Boutatss" : `${s.title} | Soufiane Boutatss`),
     eyebrow: "Services web internationaux", h1: s.h1, intro: s.intro,
     market: "France, Canada, Europe & international",
     ...content,
@@ -82,7 +84,7 @@ function countryVariant(country: "france"|"canada"|"belgique"|"suisse", slug: st
     ...base, ...content, path,
     title: `${s.title} ${name} | Soufiane Boutatss`,
     description: `${s.title} pour les entreprises ${location}. Mission à distance, périmètre défini et devis personnalisé.`,
-    eyebrow: `${name} — collaboration à distance`, h1: `${s.h1} pour les entreprises ${location}`,
+    eyebrow: `${name} — collaboration à distance`, h1: `${s.regionalHeading ?? s.h1} pour les entreprises ${location}`,
     market: name,
     updatedAt: slug === "creation-site-web" ? (country === "france" ? "2026-10-15" : "2026-10-05") : base.updatedAt,
     // The two freelance variants use country-specific hub copy below.
