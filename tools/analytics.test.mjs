@@ -12,10 +12,10 @@ function loadTs(path, mocks = {}) {
   const { outputText } = ts.transpileModule(source, {
     compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX },
   });
-  const module = { exports: {} };
+  const loadedModule = { exports: {} };
   const localRequire = (name) => Object.hasOwn(mocks, name) ? mocks[name] : require(name);
-  new Function("require", "module", "exports", outputText)(localRequire, module, module.exports);
-  return module.exports;
+  new Function("require", "module", "exports", outputText)(localRequire, loadedModule, loadedModule.exports);
+  return loadedModule.exports;
 }
 
 const { createVisibleTimer } = loadTs("app/lib/visible-time.ts");
@@ -60,8 +60,8 @@ test("the visitor table handles missing geography and filters by city", () => {
     { sessionId: "sample-first", country: "CA", city: "Montréal", region: "QC", postalCode: null, source: "Google", device: "Desktop", startedAt: "2026-11-04T12:00:00Z", lastSeenAt: "2026-11-04T12:01:00Z", durationMs: 60000, pages: [{ path: "/portfolio", durationMs: 60000 }] },
     { sessionId: "sample-second", country: null, city: null, region: null, postalCode: null, source: "Direct", device: null, startedAt: "2026-11-04T12:00:00Z", lastSeenAt: "2026-11-04T12:00:00Z", durationMs: 0, pages: [{ path: "/", durationMs: 0 }] },
   ];
-  const module = loadTs("app/admin/VisitorSessions.tsx", { "../lib/analytics": analytics });
-  const markup = renderToStaticMarkup(React.createElement(module.default, { visitors: rows }));
+  const visitorSessions = loadTs("app/admin/VisitorSessions.tsx", { "../lib/analytics": analytics });
+  const markup = renderToStaticMarkup(React.createElement(visitorSessions.default, { visitors: rows }));
   assert.match(markup, /Ville non disponible/);
   assert.match(markup, /1 min 0 s/);
   const filtered = loadTs("app/admin/VisitorSessions.tsx", {
@@ -130,6 +130,32 @@ test("durations are bounded and legacy tabs can still report time", async () => 
   assert.equal(calls[1].values.at(-1), 21600000);
 });
 
+test("visit attribution retains only the HTTP origin of a referrer", async () => {
+  const { request, calls } = trackHarness();
+  await request({ type: "visit", sessionId: "test", referrer: "https://www.google.fr/path?q=private#fragment" });
+  assert.ok(calls[0].values.includes("https://www.google.fr"));
+  assert.ok(calls[0].values.includes("Google"));
+  assert.ok(!calls[0].values.some((value) => String(value).includes("private")));
+  assert.equal(analytics.referrerOrigin("javascript:alert(1)"), null);
+});
+
+test("interaction totals include the event types outside the dashboard’s top 15", async () => {
+  const db = {
+    ensureTables: async () => {},
+    getSql: () => async (parts) => {
+      const query = parts.join("?");
+      if (!query.includes("FROM events")) return [];
+      assert.match(query, /SUM\(COUNT\(\*\)\) OVER \(\) AS total/);
+      return Array.from({ length: 15 }, (_, i) => ({ label: `Event ${i}`, value: 2, total: "34" }));
+    },
+  };
+  const { getStats } = loadTs("app/lib/stats.ts", { "./db": db });
+  const stats = await getStats();
+  assert.equal(stats.totalClicks, 34);
+  assert.equal(stats.topClicks.length, 15);
+  assert.deepEqual(stats.topClicks[0], { label: "Event 0", value: 2 });
+});
+
 test("client tracks each route and falls back when beacon delivery is refused", async () => {
   const originals = new Map();
   const install = (key, value) => {
@@ -142,6 +168,7 @@ test("client tracks each route and falls back when beacon delivery is refused", 
   let effect;
   let dependencies;
   let heartbeat;
+  const activeChoice = { current: { audience: true, advertising: false } };
   const target = {
     visibilityState: "visible", referrer: "https://google.com/",
     addEventListener: (name, handler) => listeners.set(name, handler),
@@ -158,9 +185,10 @@ test("client tracks each route and falls back when beacon delivery is refused", 
       react: { useEffect: (callback, deps) => { effect = callback; dependencies = deps; } },
       "next/navigation": { usePathname: () => "/portfolio" },
       "../lib/visible-time": { createVisibleTimer },
+      "../lib/analytics": analytics,
     });
-    Analytics();
-    assert.deepEqual(dependencies, ["/portfolio"]);
+    Analytics({ ...activeChoice.current, activeChoice });
+    assert.deepEqual(dependencies, ["/portfolio", true, false, activeChoice]);
     const cleanup = effect();
     now = 15000;
     heartbeat();
@@ -175,6 +203,20 @@ test("client tracks each route and falls back when beacon delivery is refused", 
     assert.equal(payloads.at(-1).durationMs, 20000);
     assert.equal(new Set(payloads.map((payload) => payload.pageViewId)).size, 1);
     assert.equal(listeners.size, 0);
+
+    payloads.length = 0;
+    activeChoice.current = { audience: false, advertising: true };
+    Analytics({ ...activeChoice.current, activeChoice });
+    effect()();
+    assert.deepEqual(payloads, []);
+
+    activeChoice.current = { audience: true, advertising: false };
+    Analytics({ ...activeChoice.current, activeChoice });
+    const unsubscribe = effect();
+    activeChoice.current = { audience: false, advertising: false };
+    heartbeat();
+    unsubscribe();
+    assert.deepEqual(payloads.map((p) => p.type), ["visit"]);
   } finally {
     for (const [key, descriptor] of originals) {
       if (descriptor) Object.defineProperty(globalThis, key, descriptor);

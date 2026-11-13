@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ensureTables, getSql, isDatabaseConfigured } from "../../lib/db";
-import { deviceFromUA, isBot, sourceFromReferrer } from "../../lib/analytics";
+import { deviceFromUA, isBot, referrerOrigin, sourceFromReferrer } from "../../lib/analytics";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
       const city = decodeHeader(req.headers.get("x-vercel-ip-city"), 200);
       const region = decodeHeader(req.headers.get("x-vercel-ip-country-region"), 100);
       const postalCode = decodeHeader(req.headers.get("x-vercel-ip-postal-code"), 32);
-      const referrer = strOrNull(body.referrer, 1000);
+      const referrer = referrerOrigin(strOrNull(body.referrer, 1000));
       const source = sourceFromReferrer(referrer, strOrNull(body.utmSource, 100), req.headers.get("host"));
       const device = deviceFromUA(ua);
 

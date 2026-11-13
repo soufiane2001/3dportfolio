@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Stars, MeshDistortMaterial, Float, Html } from "@react-three/drei";
 import * as THREE from "three";
@@ -105,8 +105,9 @@ function CentralSphere() {
 function FloatingParticles() {
   const { size } = useThree();
   const count = size.width < 640 ? 40 : 80;
-  const positions = useRef(
-    new Float32Array(Array.from({ length: count * 3 }, () => (Math.random() - 0.5) * 14))
+  const positions = useMemo(
+    () => new Float32Array(Array.from({ length: count * 3 }, () => (Math.random() - 0.5) * 14)),
+    [count]
   );
   const geoRef = useRef<THREE.BufferGeometry>(null);
 
@@ -122,7 +123,7 @@ function FloatingParticles() {
   return (
     <points>
       <bufferGeometry ref={geoRef}>
-        <bufferAttribute attach="attributes-position" args={[positions.current, 3]} />
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
       <pointsMaterial size={0.05} color="#ff6b00" transparent opacity={0.7} />
     </points>

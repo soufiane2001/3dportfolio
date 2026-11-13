@@ -64,7 +64,7 @@ function TrendChart({ data }: { data: DayPoint[] }) {
       ) : (
         <div className="flex h-40 items-end gap-1">
           {data.map((d) => (
-            <div key={d.day} className="group flex flex-1 flex-col items-center justify-end">
+            <div key={d.day} className="group flex h-full flex-1 flex-col items-center justify-end">
               <div
                 className="w-full rounded-t bg-orange-500/80 transition group-hover:bg-orange-400"
                 style={{ height: `${(d.value / max) * 100}%` }}
@@ -119,7 +119,7 @@ export default function Dashboard({ stats, days }: { stats: Stats; days: number 
           <StatCard label="Pages consultées" value={String(stats.totalVisits)} />
           <StatCard label="Temps cumulé" value={formatDuration(stats.totalDurationMs)} />
           <StatCard label="Temps moyen / session" value={formatDuration(stats.avgSessionDurationMs)} />
-          <StatCard label="Clics boutons" value={String(stats.totalClicks)} />
+          <StatCard label="Interactions" value={String(stats.totalClicks)} />
         </div>
         <p className="mb-6 text-xs leading-5 text-white/45">
           Temps mesuré lorsque l’onglet est visible, enregistré toutes les 15 secondes et au départ.
@@ -140,7 +140,7 @@ export default function Dashboard({ stats, days }: { stats: Stats; days: number 
           <BarList title="Pays" items={stats.topCountries} flags />
           <BarList title="Villes estimées" items={stats.topCities} />
           <BarList title="Sources de trafic" items={stats.topSources} />
-          <BarList title="Boutons cliqués" items={stats.topClicks} />
+          <BarList title="Interactions fréquentes" items={stats.topClicks} />
           <BarList title="Appareils" items={stats.topDevices} />
           <BarList title="Pages" items={stats.topPages} />
         </div>

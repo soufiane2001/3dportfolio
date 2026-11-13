@@ -2,14 +2,16 @@ import { createHmac, timingSafeEqual } from "crypto";
 import { cookies } from "next/headers";
 
 export const ADMIN_COOKIE = "sb_admin";
+export const ADMIN_SESSION_MAX_AGE = 30 * 24 * 60 * 60;
 
-/**
- * Deterministic session token derived from the admin password. The raw
- * password is never stored in the cookie — only its HMAC. Changing
- * ADMIN_PASSWORD instantly invalidates every existing session.
- */
+function signExpiry(password: string, expiresAt: string): string {
+  return createHmac("sha256", password).update(`portfolio-admin-v2:${expiresAt}`).digest("hex");
+}
+
+/** Sign the expiry so the server enforces the same lifetime as the cookie. */
 export function makeToken(password: string): string {
-  return createHmac("sha256", "sb-admin-v1").update(password).digest("hex");
+  const expiresAt = String(Math.floor(Date.now() / 1000) + ADMIN_SESSION_MAX_AGE);
+  return `${expiresAt}.${signExpiry(password, expiresAt)}`;
 }
 
 function safeEqual(a: string, b: string): boolean {
@@ -29,7 +31,9 @@ export function checkPassword(input: string): boolean {
 export async function isAuthenticated(): Promise<boolean> {
   const expected = process.env.ADMIN_PASSWORD;
   if (!expected) return false;
-  const token = (await cookies()).get(ADMIN_COOKIE)?.value;
-  if (!token) return false;
-  return safeEqual(token, makeToken(expected));
+  const token = (await cookies()).get(ADMIN_COOKIE)?.value ?? "";
+  const match = /^(\d{1,12})\.([a-f0-9]{64})$/.exec(token);
+  if (!match) return false;
+  const [, expiresAt, signature] = match;
+  return Number(expiresAt) > Math.floor(Date.now() / 1000) && safeEqual(signature, signExpiry(expected, expiresAt));
 }

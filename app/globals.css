@@ -242,7 +242,7 @@
 .okc-contact-heading { max-width: 60rem; margin-bottom: 4rem; }
 .okc-contact-heading > .body-copy { max-width: 39rem; margin-top: 2rem; }
 .okc-contact-layout { display: grid; grid-template-columns: .9fr 1.1fr; align-items: start; gap: clamp(3rem, 8vw, 8rem); }
-.okc-contact-info h3 { font-size: 1.6rem; font-weight: 400; margin-bottom: 1rem; }
+.okc-contact-info :is(h2, h3) { font-size: 1.6rem; font-weight: 400; margin-bottom: 1rem; }
 .okc-contact-info > .body-copy { margin-bottom: 3rem; }
 .okc-contact-email { margin-top: 2.5rem; }
 .okc-contact-email address { margin-top: .5rem; font-size: clamp(1.2rem, 2.1vw, 2rem); letter-spacing: -.03em; overflow-wrap: anywhere; }

@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "../globals.css";
-import Analytics from "./Analytics";
+import SitePrivacy from "./SitePrivacy";
 import { OG_IMAGE, SITE_URL } from "../lib/site";
-
-const GOOGLE_ADS_ID = "AW-17614508548";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -62,15 +59,7 @@ export default function RootDocument({ children, locale }: Readonly<{ children: 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body className="antialiased">
-        {children}
-        <Analytics />
-        <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`} />
-        <Script id="google-ads-init" strategy="afterInteractive">{`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${GOOGLE_ADS_ID}');
-        `}</Script>
+        <SitePrivacy locale={locale}>{children}</SitePrivacy>
       </body>
     </html>
   );

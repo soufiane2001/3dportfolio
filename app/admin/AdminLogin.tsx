@@ -33,6 +33,7 @@ export default function AdminLogin() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-black px-4">
       <form
+        method="post"
         onSubmit={submit}
         className="w-full max-w-sm rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur"
       >
@@ -42,13 +43,18 @@ export default function AdminLogin() {
         </p>
         <input
           type="password"
+          autoComplete="current-password"
+          aria-label="Mot de passe"
+          aria-invalid={Boolean(error)}
+          aria-describedby={error ? "admin-login-error" : undefined}
+          required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Mot de passe"
           autoFocus
           className="mb-3 w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 text-white outline-none focus:border-orange-500"
         />
-        {error && <p className="mb-3 text-sm text-red-400">{error}</p>}
+        {error && <p id="admin-login-error" role="alert" className="mb-3 text-sm text-red-400">{error}</p>}
         <button
           type="submit"
           disabled={loading}

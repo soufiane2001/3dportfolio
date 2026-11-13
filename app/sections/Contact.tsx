@@ -6,8 +6,7 @@ import { useInView } from "react-intersection-observer";
 import { Send, Github, Linkedin, Facebook } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import AdBanner from "../components/AdBanner";
-
-const WHATSAPP_NUMBER = "212689213015";
+import { EMAIL, whatsappUrl } from "../lib/site";
 
 const Contact = ({ asPage = false }: { asPage?: boolean }) => {
   const { t } = useLanguage();
@@ -15,12 +14,12 @@ const Contact = ({ asPage = false }: { asPage?: boolean }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const InfoHeading = asPage ? "h2" : "h3";
 
-  const handleSend = (event?: React.FormEvent) => {
-    event?.preventDefault();
-    const text = `Hi Soufiane! I'm ${name}${email ? ` (${email})` : ""}.\n\n${message}`;
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
-    window.open(url, "_blank");
+  const handleSend = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const text = `${t.contact.greeting}\n${name.trim()} (${email.trim()})\n\n${message.trim()}`;
+    window.location.assign(whatsappUrl(text));
   };
 
   const socialLinks = [
@@ -38,15 +37,22 @@ const Contact = ({ asPage = false }: { asPage?: boolean }) => {
       </motion.div>
       <div className="okc-contact-layout">
         <div className="okc-contact-info">
-          <h3>{t.contact.ready}</h3><p className="body-copy">{t.contact.description}</p>
-          <div className="okc-contact-email"><p className="text-sm text-white/50">Email</p><address className="not-italic"><a href="mailto:sboutatss@gmail.com">sboutatss@gmail.com</a></address></div>
+          <InfoHeading>{t.contact.ready}</InfoHeading><p className="body-copy">{t.contact.description}</p>
+          <div className="okc-contact-email"><p className="text-sm text-white/50">{t.contact.email}</p><address className="not-italic"><a href={`mailto:${EMAIL}`}>{EMAIL}</a></address></div>
           <div className="mt-8"><p className="text-sm text-white/50">{t.contact.follow}</p><div className="okc-socials">{socialLinks.map(social => <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}><social.icon size={20} /></a>)}</div></div>
         </div>
-        <form className="okc-contact-form" onSubmit={handleSend} data-conversion="generate_lead">
-          <div className="okc-contact-field"><label htmlFor="contact-name">{t.contact.name}</label><input id="contact-name" name="name" type="text" autoComplete="name" required placeholder={t.contact.namePlaceholder} value={name} onChange={(e) => setName(e.target.value)} /></div>
-          <div className="okc-contact-field"><label htmlFor="contact-email">{t.contact.email}</label><input id="contact-email" name="email" type="email" autoComplete="email" required placeholder={t.contact.emailPlaceholder} value={email} onChange={(e) => setEmail(e.target.value)} /></div>
-          <div className="okc-contact-field"><label htmlFor="contact-message">{t.contact.message}</label><textarea id="contact-message" name="message" rows={5} required placeholder={t.contact.messagePlaceholder} value={message} onChange={(e) => setMessage(e.target.value)} /></div>
-          <button type="submit" className="btn-primary"><span className="inline-flex items-center gap-2"><Send size={16} />{t.contact.send}</span></button>
+        <form className="okc-contact-form" method="post" onSubmit={handleSend} data-conversion="whatsapp_form_submit" aria-describedby="contact-delivery-note">
+          <div className="okc-contact-field"><label htmlFor="contact-name">{t.contact.name}</label><input id="contact-name" type="text" autoComplete="name" required pattern={".*\\S.*"} placeholder={t.contact.namePlaceholder} value={name} onChange={(e) => setName(e.target.value)} /></div>
+          <div className="okc-contact-field"><label htmlFor="contact-email">{t.contact.email}</label><input id="contact-email" type="email" autoComplete="email" required placeholder={t.contact.emailPlaceholder} value={email} onChange={(e) => setEmail(e.target.value)} /></div>
+          <div className="okc-contact-field"><label htmlFor="contact-message">{t.contact.message}</label><textarea id="contact-message" rows={5} required placeholder={t.contact.messagePlaceholder} value={message} onChange={(e) => {
+            const text = e.target.value;
+            e.target.setCustomValidity(text && !text.trim() ? t.contact.messagePlaceholder : "");
+            setMessage(text);
+          }} /></div>
+          <div>
+            <button type="submit" className="btn-primary"><span className="inline-flex items-center gap-2"><Send size={16} />{t.contact.send}</span></button>
+            <p id="contact-delivery-note" className="mt-3 text-sm text-white/65">{t.contact.deliveryNote}</p>
+          </div>
         </form>
       </div>
       <AdBanner />

@@ -1,10 +1,18 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, type RefObject } from "react";
 import { usePathname } from "next/navigation";
 import { createVisibleTimer } from "../lib/visible-time";
+import { referrerOrigin } from "../lib/analytics";
+
+export type TrackingPreferences = { audience: boolean; advertising: boolean };
 
 let fallbackSessionId: string | null = null;
+
+export function clearAnalyticsSession() {
+  fallbackSessionId = null;
+  try { sessionStorage.removeItem("sb_sid"); } catch { /* Storage is unavailable. */ }
+}
 
 function newId() {
   return globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`;
@@ -34,24 +42,24 @@ function getSessionId() {
  * Bots that don't run JS never reach this code; those that do are filtered
  * server-side by user-agent.
  */
-export default function Analytics() {
+export default function Analytics({ audience, advertising, activeChoice }: TrackingPreferences & {
+  activeChoice: RefObject<TrackingPreferences>;
+}) {
   const pathname = usePathname();
 
   useEffect(() => {
     const path = pathname;
     if (!path || /^\/(admin|api)(\/|$)/.test(path)) return;
 
-    const sessionId = getSessionId();
-    const pageViewId = newId();
-
     const params = new URLSearchParams(window.location.search);
-    const context = {
-      sessionId, pageViewId, path,
-      referrer: document.referrer || null,
+    const context = audience ? {
+      sessionId: getSessionId(), pageViewId: newId(), path,
+      referrer: referrerOrigin(document.referrer),
       utmSource: params.get("utm_source"),
-    };
+    } : null;
 
     const send = (payload: Record<string, unknown>) => {
+      if (!context || !activeChoice.current.audience) return;
       try {
         fetch("/api/track", {
           method: "POST",
@@ -70,6 +78,7 @@ export default function Analytics() {
     // 2) Heartbeats expose time before departure; hidden tabs are paused.
     const timer = createVisibleTimer(() => performance.now(), document.visibilityState === "visible");
     const flushDuration = (beacon = false) => {
+      if (!context || !activeChoice.current.audience) return;
       const payload = { type: "duration", durationMs: timer.durationMs() };
       if (beacon && navigator.sendBeacon) {
         try {
@@ -94,25 +103,31 @@ export default function Analytics() {
       flushDuration(true);
     };
     const onPageShow = () => timer.setVisible(document.visibilityState === "visible");
-    const heartbeat = window.setInterval(() => {
+    const heartbeat = audience ? window.setInterval(() => {
       if (document.visibilityState === "visible") flushDuration();
-    }, 15000);
-    document.addEventListener("visibilitychange", onVisibility);
-    window.addEventListener("pagehide", onPageHide);
-    window.addEventListener("pageshow", onPageShow);
+    }, 15000) : undefined;
+    if (audience) {
+      document.addEventListener("visibilitychange", onVisibility);
+      window.addEventListener("pagehide", onPageHide);
+      window.addEventListener("pageshow", onPageShow);
+    }
 
     // 3) Click tracking on buttons / links.
+    const pushAdEvent = (event: string, label?: string) => {
+      if (!advertising || !activeChoice.current.advertising) return;
+      const dataLayer = (window as typeof window & { dataLayer?: Record<string, unknown>[] }).dataLayer;
+      dataLayer?.push({ event, event_label: label, page_path: path });
+    };
     const onClick = (e: MouseEvent) => {
       const el = (e.target instanceof Element ? e.target : null)?.closest(
         "[data-track], a[href], button"
       ) as HTMLElement | null;
-      if (!el) return;
+      if (!el || el.closest("[data-no-track]") || el.matches("[data-conversion] button[type=submit]")) return;
 
       const label =
         el.getAttribute("data-track") ||
         el.getAttribute("aria-label") ||
         el.textContent?.trim().replace(/\s+/g, " ").slice(0, 80) ||
-        el.getAttribute("href") ||
         el.tagName.toLowerCase();
 
       const href = el.getAttribute("href") || "";
@@ -126,31 +141,28 @@ export default function Analytics() {
 
       if (eventName) {
         send({ type: "event", name: eventName, label });
-        const dataLayer = (window as typeof window & { dataLayer?: Record<string, unknown>[] }).dataLayer;
-        dataLayer?.push({ event: eventName, event_label: label, page_path: path });
+        pushAdEvent(eventName, label);
       }
     };
     const onSubmit = (e: SubmitEvent) => {
-      const form = e.target as HTMLFormElement | null;
-      if (!form) return;
-      const eventName = form.getAttribute("data-conversion") || "contact_form_submit";
+      const eventName = (e.target as HTMLFormElement | null)?.getAttribute("data-conversion");
+      if (!eventName) return;
       send({ type: "event", name: eventName });
-      const dataLayer = (window as typeof window & { dataLayer?: Record<string, unknown>[] }).dataLayer;
-      dataLayer?.push({ event: eventName, page_path: path });
+      pushAdEvent(eventName);
     };
     document.addEventListener("click", onClick, { capture: true });
     document.addEventListener("submit", onSubmit, { capture: true });
 
     return () => {
-      onPageHide();
-      window.clearInterval(heartbeat);
+      if (audience) onPageHide();
+      if (heartbeat !== undefined) window.clearInterval(heartbeat);
       document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("pagehide", onPageHide);
       window.removeEventListener("pageshow", onPageShow);
       document.removeEventListener("click", onClick, true);
       document.removeEventListener("submit", onSubmit, true);
     };
-  }, [pathname]);
+  }, [pathname, audience, advertising, activeChoice]);
 
   return null;
 }

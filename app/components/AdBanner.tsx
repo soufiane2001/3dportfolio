@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useAdvertisingConsent } from "./SitePrivacy";
 
 const AD_HTML = `<!DOCTYPE html>
 <html>
@@ -19,9 +20,13 @@ atOptions={
 </body>
 </html>`;
 
-const AdBanner = () => {
+export default function AdBanner() {
+  const allowed = useAdvertisingConsent();
+  return allowed ? <AdvertisingSlot /> : null;
+}
+
+function AdvertisingSlot() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -38,29 +43,21 @@ const AdBanner = () => {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (!visible || !iframeRef.current) return;
-    const blob = new Blob([AD_HTML], { type: "text/html" });
-    const url = URL.createObjectURL(blob);
-    iframeRef.current.src = url;
-    return () => URL.revokeObjectURL(url);
-  }, [visible]);
-
   return (
     <div ref={containerRef} className="flex justify-center my-8 overflow-x-auto" style={{ minHeight: 90 }}>
       {visible && (
         <iframe
-          ref={iframeRef}
+          srcDoc={AD_HTML}
           width={728}
           height={90}
           className="flex-shrink-0 border-0"
           scrolling="no"
           title="Advertisement"
           loading="lazy"
+          sandbox="allow-scripts allow-popups"
+          referrerPolicy="no-referrer"
         />
       )}
     </div>
   );
-};
-
-export default AdBanner;
+}

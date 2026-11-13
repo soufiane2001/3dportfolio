@@ -17,6 +17,17 @@ export function deviceFromUA(userAgent: string | null | undefined): string {
   return "Desktop";
 }
 
+/** Retain the referring site without its path, query or credentials. */
+export function referrerOrigin(value: string | null): string | null {
+  if (!value) return null;
+  try {
+    const url = new URL(value);
+    return url.protocol === "http:" || url.protocol === "https:" ? url.origin : null;
+  } catch {
+    return null;
+  }
+}
+
 /**
  * Turn a referrer URL (and optional ?utm_source) into a readable traffic
  * source bucket. Returns "Direct" when there is no referrer.

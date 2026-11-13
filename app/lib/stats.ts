@@ -72,7 +72,7 @@ export async function getStats(days = 30): Promise<Stats> {
         GROUP BY 1 ORDER BY value DESC LIMIT 12
       `,
       sql`
-        SELECT name AS label, COUNT(*)::int AS value
+        SELECT name AS label, COUNT(*)::int AS value, SUM(COUNT(*)) OVER () AS total
         FROM events
         WHERE is_bot = FALSE AND created_at >= NOW() - ${days} * INTERVAL '1 day'
         GROUP BY 1 ORDER BY value DESC LIMIT 15
@@ -117,13 +117,12 @@ export async function getStats(days = 30): Promise<Stats> {
     ]);
 
   const t = (totals as Record<string, unknown>[])[0] ?? {};
-  const clickBuckets = clicks as Bucket[];
-  const totalClicks = clickBuckets.reduce((s, r) => s + Number(r.value), 0);
+  const clickBuckets = clicks as (Bucket & { total: number | string })[];
 
   return {
     uniqueVisitors: Number(t.unique_visitors ?? 0),
     totalVisits: Number(t.total_visits ?? 0),
-    totalClicks,
+    totalClicks: Number(clickBuckets[0]?.total ?? 0),
     avgDurationMs: Number(t.avg_duration_ms ?? 0),
     avgSessionDurationMs: Number(t.avg_session_duration_ms ?? 0),
     totalDurationMs: Number(t.total_duration_ms ?? 0),
@@ -131,7 +130,7 @@ export async function getStats(days = 30): Promise<Stats> {
     topCities: cities as Bucket[],
     topSources: sources as Bucket[],
     topPages: pages as Bucket[],
-    topClicks: clickBuckets,
+    topClicks: clickBuckets.map(({ label, value }) => ({ label, value })),
     topDevices: devices as Bucket[],
     byDay: daily as DayPoint[],
     recentVisitors: (visitors as Record<string, unknown>[]).map((row) => ({

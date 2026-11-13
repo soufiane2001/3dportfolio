@@ -136,7 +136,9 @@ export const translations = {
       emailPlaceholder: "Votre email",
       message: "Message",
       messagePlaceholder: "Votre message",
-      send: "Envoyer le message",
+      send: "Continuer sur WhatsApp",
+      greeting: "Bonjour Soufiane,",
+      deliveryNote: "Votre message sera prérempli. Vous pourrez le relire et l’envoyer dans WhatsApp.",
     },
     services: {
       tag: "Ce que je fais",
@@ -320,7 +322,9 @@ export const translations = {
       emailPlaceholder: "Your email",
       message: "Message",
       messagePlaceholder: "Your message",
-      send: "Send Message",
+      send: "Continue to WhatsApp",
+      greeting: "Hi Soufiane,",
+      deliveryNote: "You can review and send your prefilled message in WhatsApp.",
     },
     services: {
       tag: "What I Do",
@@ -504,7 +508,9 @@ export const translations = {
       emailPlaceholder: "بريدك الإلكتروني",
       message: "الرسالة",
       messagePlaceholder: "رسالتك",
-      send: "إرسال الرسالة",
+      send: "المتابعة إلى واتساب",
+      greeting: "مرحباً سفيان،",
+      deliveryNote: "يمكنك مراجعة رسالتك المكتوبة مسبقاً وإرسالها عبر واتساب.",
     },
     services: {
       tag: "ما أقدمه",

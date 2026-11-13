@@ -1,3 +1,33 @@
-import type { Metadata } from "next"; import SiteHeader from "../../components/SiteHeader"; import SiteFooter from "../../components/SiteFooter"; import { EMAIL, pageMetadata } from "../../lib/site";
-export const metadata: Metadata = pageMetadata("/politique-confidentialite", "Politique de confidentialité | Soufiane Boutatss", "Informations sur les données transmises via le site et les moyens de contacter Soufiane Boutatss.");
-export default function Page(){return <><SiteHeader/><main className="container min-h-[60vh] py-20 text-white"><h1 className="text-4xl font-medium">Politique de confidentialité</h1><div className="mt-8 max-w-3xl space-y-5 leading-8 text-white/65"><p>Les informations envoyées volontairement par e-mail, WhatsApp ou formulaire sont utilisées pour répondre à votre demande et étudier votre projet.</p><p>La mesure d’audience du site utilise un identifiant aléatoire conservé dans le stockage de session de votre navigateur. Elle enregistre les pages consultées, le temps pendant lequel l’onglet est visible, les interactions, le type d’appareil et la provenance de la visite. L’hébergeur fournit une estimation du pays, de la ville, de la région et parfois du code postal à partir du réseau. Ces statistiques ne contiennent ni adresse IP brute ni position GPS et ne permettent pas de connaître votre quartier exact. Leur détail est réservé à l’administration protégée du site.</p><p>Le site utilise des outils de mesure d’audience et de conversion configurés dans le projet. Leur paramétrage, leur durée de conservation et le mécanisme de consentement doivent être vérifiés selon les pays ciblés avant le déploiement.</p><p>Pour demander l’accès, la correction ou la suppression d’une information transmise, contactez <a className="text-[#f08b9b]" href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p><p><strong className="text-white">TODO propriétaire :</strong> valider les prestataires, bases légales, durées de conservation et modalités de consentement avec un conseil juridique compétent.</p></div></main><SiteFooter/></>}
+import type { Metadata } from "next";
+import SiteHeader from "../../components/SiteHeader";
+import SiteFooter from "../../components/SiteFooter";
+import { PrivacySettingsButton } from "../../components/SitePrivacy";
+import { EMAIL, pageMetadata } from "../../lib/site";
+
+export const metadata: Metadata = pageMetadata(
+  "/politique-confidentialite",
+  "Politique de confidentialité | Soufiane Boutatss",
+  "Informations sur les données de contact, la mesure des visites et les préférences de confidentialité du portfolio."
+);
+
+export default function Page() {
+  return <>
+    <SiteHeader />
+    <main className="container min-h-[60vh] py-20 text-white">
+      <h1 className="text-4xl font-medium">Politique de confidentialité</h1>
+      <div className="mt-8 max-w-3xl space-y-5 leading-8 text-white/75">
+        <h2 className="text-xl font-medium text-white">Demandes de contact</h2>
+        <p>Soufiane Boutatss utilise les informations que vous lui envoyez pour répondre à votre demande et étudier votre projet. Le formulaire prépare un message qui s’ouvre dans WhatsApp, où vous décidez de l’envoyer. Vous pouvez aussi prendre contact par e-mail.</p>
+        <h2 className="text-xl font-medium text-white">Mesure des visites</h2>
+        <p>Si vous l’autorisez, un identifiant aléatoire conservé dans le stockage de session relie les pages consultées, le temps de lecture et les interactions d’un même onglet. Le suivi enregistre le type d’appareil et le site d’origine. Vercel fournit une estimation de la ville, du pays, de la région et parfois du code postal. Les statistiques sont conservées dans une base Neon accessible depuis l’administration protégée du site.</p>
+        <h2 className="text-xl font-medium text-white">Publicité</h2>
+        <p>Si vous l’autorisez, la balise Google Ads est chargée et des bannières peuvent s’afficher via la régie qui les diffuse depuis highperformanceformat.com.</p>
+        <h2 className="text-xl font-medium text-white">Vos choix</h2>
+        <p>Votre navigateur mémorise vos choix pendant 180 jours. Vous pouvez modifier ou retirer une autorisation à tout moment.</p>
+        <PrivacySettingsButton />
+        <p>Pour une demande d’accès, de correction ou de suppression, contactez <a className="text-[#f08b9b]" href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
+      </div>
+    </main>
+    <SiteFooter />
+  </>;
+}
