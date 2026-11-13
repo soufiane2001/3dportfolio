@@ -83,13 +83,13 @@ export const services: Record<string, ServicePageData> = {
   "developpement-web-sur-mesure-casablanca": {
     slug: "developpement-web-sur-mesure-casablanca",
     eyebrow: "Développeur Full Stack à Casablanca",
-    title: "Développement d’Application Web Sur Mesure au Maroc",
-    intro: "Conception d’applications web sur mesure, plateformes métier, dashboards et API pour les entreprises à Casablanca et partout au Maroc lorsque les limites d’un site standard ne répondent plus à leurs processus.",
-    audienceHeading: "Une application web sur mesure alignée sur vos processus métier",
+    title: "Développement de logiciels sur mesure à Casablanca",
+    intro: "Je développe des logiciels métier et des applications web sur mesure pour les entreprises de Casablanca et du reste du Maroc. Le projet part d’une tâche à simplifier, comme suivre des commandes, valider des demandes ou donner à vos clients accès à leurs dossiers.",
+    audienceHeading: "Du processus métier à la première version du logiciel",
     benefitsHeading: "Architecture Full Stack, rôles utilisateurs et automatisations",
     processHeading: "Cadrer puis livrer votre logiciel web progressivement",
     faqHeading: "MVP, technologies et intégrations pour un projet sur mesure",
-    audience: "Un développement sur mesure est pertinent pour un SaaS, ERP, CRM, marketplace, outil interne, portail client, automatisation ou plateforme nécessitant des règles métier, des rôles utilisateurs et des données structurées.",
+    audience: "Si votre équipe suit ses commandes dans Excel, décrivez qui les saisit, qui peut valider leur statut et de quels exports vous avez besoin. Ces éléments permettent de définir les écrans, les droits d’accès et les données à reprendre. La première version couvre un parcours complet que votre équipe peut tester avant d’ajouter d’autres fonctions.",
     benefits: [
       { title: "Compréhension métier", text: "Les écrans et automatisations sont définis à partir des tâches, rôles et contraintes de vos utilisateurs." },
       { title: "Full Stack", text: "React, Next.js, Laravel, PHP, MySQL, Firebase et REST API couvrent l’interface, le serveur et les intégrations." },
@@ -100,6 +100,7 @@ export const services: Record<string, ServicePageData> = {
     faqs: [
       { question: "Quand choisir une application sur mesure ?", answer: "Lorsque votre activité repose sur des règles, données ou workflows spécifiques qu’un CMS ou un logiciel standard ne couvre pas correctement." },
       { question: "Peut-on commencer par un MVP ?", answer: "Oui. Un périmètre initial centré sur les fonctions essentielles permet de tester l’usage avant de développer les modules secondaires." },
+      { question: "Pouvez-vous reprendre les données d’un fichier Excel ou d’un logiciel existant ?", answer: "Nous examinons d’abord un exemple anonymisé et les formats d’export disponibles. Le devis peut inclure un import de test, la vérification des champs et des doublons, puis la reprise des données validées avant la mise en service." },
       { question: "Quelles technologies utilisez-vous ?", answer: "Selon le besoin : React, Next.js, Laravel, PHP, MySQL, Firebase, Electron.js et APIs REST. La technologie est choisie après le cadrage." },
       { question: "Une API peut-elle être connectée ?", answer: "Oui, si le service tiers propose une API documentée et accessible. Les contraintes techniques et commerciales sont vérifiées avant engagement." },
     ],
