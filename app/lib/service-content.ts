@@ -17,7 +17,7 @@ export const serviceContent: Record<string, ServiceContent> = {
       { question: "Quand choisir un freelance plutôt qu’une agence ?", answer: "Un freelance convient à une mission avec un périmètre clair et un interlocuteur technique direct. Si votre projet exige plusieurs spécialités à temps plein en parallèle, une équipe ou une agence peut être plus adaptée. Nous vérifions la capacité nécessaire avant de démarrer." },
       { question: "Que transmettre pour estimer une reprise de projet ?", answer: "Le dépôt de code, une présentation des fonctionnalités, les erreurs observées et la configuration de déploiement. Les accès sont partagés par un canal adapté, sans publier de secrets dans un formulaire ou une issue." },
     ],
-    projectSlugs: ["reby-art", "site-ecommerce", "patient-management"],
+    projectSlugs: ["reby-art", "mirado-clothing", "patient-management"],
     related: [{ href: "/a-propos", label: "Mon parcours de développeur" }, { href: "/developpement-web-sur-mesure", label: "Développement d’applications sur mesure" }],
   },
   "creation-site-web": {

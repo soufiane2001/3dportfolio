@@ -35,6 +35,7 @@ export const contentLinks: Record<string, ContentLink[]> = {
   ],
   "/fr": [
     { href: "/services", label: "Comparer toutes les prestations web" },
+    { href: "/developpeur-web-freelance", label: "Travailler avec un développeur web freelance" },
     { href: "/france/developpeur-web-freelance", label: "Développement à distance pour les entreprises en France" },
     { href: "/canada/creation-site-web", label: "Préparer un site pour le Canada et le Québec" },
     { href: "/blog/cahier-des-charges-site-web", label: "Rédiger le brief de votre projet" },
