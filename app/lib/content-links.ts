@@ -66,6 +66,11 @@ export const contentLinks: Record<string, ContentLink[]> = {
     { href: "/casablanca/seo", label: "Améliorer le référencement du site existant" },
     { href: "/blog/prix-creation-site-web-maroc-2026", label: "Préparer un budget de création de site" },
   ],
+  "/creation-site-ecommerce-casablanca": [
+    { href: "/portfolio/mirado-clothing", label: "Voir la boutique Mirado Clothing et son parcours de commande" },
+    { href: "/portfolio/site-ecommerce", label: "Voir le parcours de paiement à la livraison de BDM Store" },
+    { href: "/blog/prix-creation-site-web-maroc-2026", label: "Préparer le budget de création d’une boutique au Maroc" },
+  ],
   "/developpement-web-sur-mesure-casablanca": [
     { href: "/developpement-web-sur-mesure", label: "Cadrer un MVP ou une plateforme SaaS" },
     { href: "/portfolio/patient-management", label: "Exemple d’outil de gestion métier" },
@@ -141,6 +146,7 @@ export const contentLinks: Record<string, ContentLink[]> = {
     { href: "/maintenance-site-web", label: "Séparer création et maintenance" }
   ],
   "/site-ecommerce": [
+    { href: "/portfolio/mirado-clothing", label: "Mirado Clothing, boutique de vêtements avec commande sur mobile" },
     { href: "/creation-site-catalogue", label: "Un catalogue avec devis si le prix dépend du projet" },
     { href: "/blog/site-vitrine-ou-ecommerce", label: "Comparer catalogue, devis et commande" },
     { href: "/portfolio/site-ecommerce", label: "BDM Store : catalogue et paiement à la livraison" },
