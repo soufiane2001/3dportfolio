@@ -73,7 +73,7 @@ export const contentLinks: Record<string, ContentLink[]> = {
     { href: "/blog/prix-creation-site-web-maroc-2026", label: "Préparer le budget de création d’une boutique au Maroc" },
   ],
   "/developpement-web-sur-mesure-casablanca": [
-    { href: "/developpement-web-sur-mesure", label: "Cadrer un MVP ou une plateforme SaaS" },
+    { href: "/developpement-web-sur-mesure", label: "Cadrer une plateforme SaaS sur mesure" },
     { href: "/portfolio/patient-management", label: "Exemple d’outil de gestion métier" },
     { href: "/developpeur-laravel", label: "API et applications métier avec Laravel" },
   ],

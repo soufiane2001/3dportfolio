@@ -26,7 +26,12 @@ const commonFaqFr = [
 ];
 
 const serviceInfo: Record<string, { title: string; h1: string; intro: string; focus: string[] }> = {
-  "developpeur-web-freelance": { title: "Développeur Web Freelance", h1: "Développeur Web Freelance pour vos projets digitaux", intro: "Conception de sites, applications web et solutions métier avec un interlocuteur technique unique, du cadrage à la mise en ligne.", focus: ["Sites professionnels et landing pages", "Applications web et dashboards", "E-commerce et intégrations", "Maintenance, performance et SEO"] },
+  "developpeur-web-freelance": {
+    title: "Développeur web freelance à distance",
+    h1: "Développeur web freelance pour vos sites et applications",
+    intro: "Je crée des sites vitrines, des boutiques en ligne et des applications web sur mesure. Je travaille à distance en français, de la préparation du devis à la mise en ligne, et j’interviens aussi sur des projets React ou PHP existants.",
+    focus: ["Sites professionnels et landing pages", "Applications web et dashboards", "E-commerce et intégrations", "Maintenance, performance et SEO"],
+  },
   "creation-site-web": { title: "Création Site Web", h1: "Création de site web professionnel et performant", intro: "Un site sur mesure pour présenter votre offre, rassurer vos visiteurs et transformer les recherches en demandes qualifiées.", focus: ["Site vitrine", "Site institutionnel", "Refonte", "Landing page orientée conversion"] },
   "developpement-web-sur-mesure": { title: "Développement Web Sur Mesure", h1: "Développement web sur mesure pour vos processus métier", intro: "Applications, plateformes et outils web conçus autour de vos utilisateurs, de vos règles métier et de vos données.", focus: ["MVP et SaaS", "Portails clients", "Dashboards", "APIs et automatisations"] },
   "developpeur-react": { title: "Développeur React Freelance", h1: "Développeur React freelance pour interfaces web modernes", intro: "Développement d’interfaces React maintenables, rapides et accessibles pour applications, plateformes et sites interactifs.", focus: ["Architecture de composants", "TypeScript", "Intégration API", "Performance frontend"] },
@@ -48,7 +53,7 @@ function servicePage(slug: string): LandingPage {
     market: "France, Canada, Europe & international",
     ...content,
     sections: [...content.sections, { title: "Cadrage, validation et livraison", paragraphs: ["Le devis précise les fonctions, les contenus à fournir et les critères de réception. Les étapes sont validées à distance, puis les accès et la documentation sont remis selon le périmètre convenu."], items: s.focus }],
-    updatedAt: slug === "developpeur-nextjs" ? "2026-10-21" : slug === "creation-site-web" ? "2026-10-15" : "2026-10-05",
+    updatedAt: content.updatedAt ?? "2026-10-05",
   };
 }
 

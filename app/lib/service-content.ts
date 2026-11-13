@@ -1,6 +1,6 @@
 import type { LandingPage } from "./landing-pages";
 
-type ServiceContent = Pick<LandingPage, "description" | "sections" | "faqs" | "related"> & {
+type ServiceContent = Pick<LandingPage, "description" | "sections" | "faqs" | "related" | "updatedAt"> & {
   projectSlugs: string[];
 };
 
@@ -8,7 +8,8 @@ type ServiceContent = Pick<LandingPage, "description" | "sections" | "faqs" | "r
 // in a short process section, rather than replacing the service explanation.
 export const serviceContent: Record<string, ServiceContent> = {
   "developpeur-web-freelance": {
-    description: "Développeur web freelance : sites, applications et renfort React ou PHP. Découvrez mes projets et définissons votre périmètre de travail.",
+    description: "Développeur web freelance à distance pour vos sites vitrines, boutiques et applications. Création, refonte et renfort React, Next.js ou PHP.",
+    updatedAt: "2026-11-13",
     sections: [
       { title: "Création complète ou renfort de votre équipe", paragraphs: ["Pour un nouveau projet, nous définissons d’abord ce que vos visiteurs doivent pouvoir faire : comprendre une offre, demander un devis, commander ou utiliser un outil métier. Cette décision permet de choisir entre un site de contenu, un e-commerce et une application.", "Pour une équipe existante, la mission peut porter sur une interface React, un backend PHP, une intégration API ou une correction de performance. L’audit du dépôt et du déploiement précède l’estimation : il permet d’identifier les conventions, les dépendances et les risques de reprise."], items: ["Création ou refonte", "Mission frontend ou backend", "Audit de code avant reprise", "Périmètre et validations écrits"] },
       { title: "Ce qu’un devis doit permettre de comparer", paragraphs: ["Un devis utile précise les écrans, les fonctionnalités, les contenus à fournir et les éléments livrés. Il distingue le développement initial de l’hébergement, de la maintenance et des demandes futures.", "Avant de choisir votre prestataire, examinez les réalisations qui ressemblent à votre besoin. Un portfolio artistique, une boutique et un logiciel de gestion ne demandent pas les mêmes compétences ni les mêmes vérifications."], items: ["Accès et propriété du code", "Critères de réception", "Responsabilité des contenus", "Conditions de maintenance"] },
@@ -22,6 +23,7 @@ export const serviceContent: Record<string, ServiceContent> = {
   },
   "creation-site-web": {
     description: "Création de site web professionnel : structure, contenus, design responsive et mise en ligne. Comparez les solutions et demandez un devis adapté.",
+    updatedAt: "2026-10-15",
     sections: [
       { title: "Site vitrine, boutique ou application : choisir le bon périmètre", paragraphs: ["Un site vitrine présente vos services et facilite la prise de contact. Une boutique ajoute un catalogue et un parcours de commande. Une application web gère des actions et des données propres à votre activité. Le choix dépend de ce que vos utilisateurs doivent accomplir, pas du nombre de pages annoncé.", "Nous listons les pages essentielles : accueil, services, réalisations, présentation et contact. Les menus, les liens et les appels à l’action doivent permettre de passer d’une question à une réponse, puis à une demande utile."], items: ["Plan des pages", "Navigation mobile", "Formulaires et contact", "Contenus et images à préparer"] },
       { title: "Préparer une mise en ligne qui conserve vos acquis", paragraphs: ["Pour une refonte, les URLs existantes, les pages recevant du trafic et les formulaires sont inventoriés avant de changer la structure. Une page remplacée doit mener vers son équivalent ; toutes les anciennes adresses ne doivent pas renvoyer indistinctement vers l’accueil.", "La réception couvre les principales tailles d’écran, les liens, l’envoi des formulaires et les informations affichées. L’indexabilité et les métadonnées sont vérifiées sur le domaine final, puis les accès et la procédure de mise à jour sont remis selon le périmètre convenu."], items: ["Inventaire des anciennes URLs", "Recette mobile", "Contrôle sur le domaine final", "Prise en main et maintenance"] },
@@ -38,9 +40,24 @@ export const serviceContent: Record<string, ServiceContent> = {
     related: [{ href: "/site-vitrine-casablanca", label: "Créer un site vitrine à Casablanca" }, { href: "/site-ecommerce", label: "Créer une boutique en ligne" }, { href: "/blog/prix-creation-site-web-maroc-2026", label: "Comprendre le budget d’un site au Maroc" }, { href: "/developpement-web-sur-mesure", label: "Concevoir une application web sur mesure" }],
   },
   "developpement-web-sur-mesure": {
-    description: "Développement web sur mesure : SaaS, portails clients et outils métier avec React, PHP ou Laravel. Cadrage du MVP, données et intégrations.",
+    description: "Développement de plateformes SaaS sur mesure, portails clients et logiciels métier. Cadrez la première version, les accès et les intégrations.",
+    updatedAt: "2026-11-13",
     sections: [
-      { title: "Transformer un processus métier en application", paragraphs: ["Un outil sur mesure commence par les tâches à simplifier : saisie, validation, consultation, suivi ou export. Nous décrivons les utilisateurs, leurs permissions et les données qu’ils manipulent avant de dessiner le tableau de bord.", "Pour un SaaS, le cadrage distingue le fonctionnement commun des espaces propres à chaque client. Pour un portail, il précise les échanges avec votre CRM, votre comptabilité ou une API existante. Ces décisions structurent le modèle de données et les contrôles d’accès."], items: ["Utilisateurs et rôles", "Modèle de données", "API et intégrations", "MVP et évolutions"] },
+      {
+        title: "Transformer un processus métier en application",
+        paragraphs: [
+          "Un outil sur mesure commence par les tâches à simplifier : saisie, validation, consultation, suivi ou export. Nous décrivons les utilisateurs, leurs permissions et les données qu’ils manipulent avant de dessiner le tableau de bord.",
+          "Pour un portail client, nous précisons quelles données doivent circuler entre le portail, votre CRM ou votre outil de comptabilité. Cela permet de définir les droits de consultation et de modification.",
+        ],
+        items: ["Utilisateurs et rôles", "Modèle de données", "API et intégrations"],
+      },
+      {
+        title: "Développer une plateforme SaaS sur mesure",
+        paragraphs: [
+          "Dans une plateforme de suivi d’interventions, la première version peut permettre à chaque entreprise d’inviter ses collègues, de créer une intervention et d’en suivre la clôture. Les tests vérifient que chaque équipe accède à ses seuls dossiers.",
+          "Si votre service prévoit un abonnement, précisez qui peut le souscrire, comment l’accès est renouvelé et à quel moment la facturation entre dans le projet. Ces choix influencent le devis et les tests avant le lancement.",
+        ],
+      },
       { title: "Valider un MVP avant d’élargir les fonctionnalités", paragraphs: ["Une première version doit permettre d’exécuter un parcours utile de bout en bout. Nous définissons des exemples de données et des critères de réception pour les cas normaux, les erreurs et les accès non autorisés.", "Le lancement prévoit aussi les sauvegardes, la configuration des environnements et la documentation nécessaire à la reprise. Les exports, les statistiques avancées et les automatisations supplémentaires peuvent être livrés ensuite, selon les retours des utilisateurs."], items: ["Parcours prioritaires", "Tests de permissions", "Sauvegarde et restauration", "Documentation technique"] },
     ],
     faqs: [
@@ -65,6 +82,7 @@ export const serviceContent: Record<string, ServiceContent> = {
   },
   "developpeur-nextjs": {
     description: "Création et refonte de sites Next.js : audit de l’existant, routes, rendu et SEO technique. Découvrez un projet et préparez votre mission freelance.",
+    updatedAt: "2026-10-21",
     sections: [
       { title: "Créer un site ou reprendre une application Next.js", paragraphs: ["Une création commence par les utilisateurs, les contenus publics et les fonctionnalités privées : site de services, catalogue, interface de boutique ou application connectée à une API. Le framework est choisi en fonction du projet et de son exploitation future, pas seulement pour son nom.", "Pour une reprise, nous examinons le dépôt, la version de Next.js, le routage, les dépendances et le déploiement. Un défaut de rendu, un formulaire cassé et un besoin de refonte graphique ne demandent pas la même intervention. Le devis sépare les corrections, les évolutions et les changements d’architecture."], items: ["Création de site ou d’interface", "Audit avant reprise", "Périmètre par parcours", "Maintenance à prévoir"] },
       { title: "Préparer une refonte et préserver les adresses utiles", paragraphs: ["Avant une refonte, nous listons les routes publiques, les contenus à conserver, les intégrations et les actions importantes : demander un devis, se connecter ou passer une commande. Les données Search Console peuvent compléter cet inventaire lorsque vous en donnez l’accès. Les URLs conservées et les redirections nécessaires sont définies avant publication.", "Une version de test permet de valider les formulaires, les réponses HTTP, les métadonnées et les liens avec le contenu réel. Un retour arrière est préparé selon l’hébergement. Cette méthode réduit les risques de migration ; elle ne garantit pas des positions inchangées dans Google."], items: ["Inventaire des routes", "Plan de redirections", "Recette des parcours", "Déploiement et retour arrière"] },

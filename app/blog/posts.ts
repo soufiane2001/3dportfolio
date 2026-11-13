@@ -76,16 +76,17 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "cahier-des-charges-site-web",
-    title: "Cahier des charges de site web : modèle et checklist",
-    seoTitle: "Cahier des charges site web : modèle à compléter",
-    excerpt: "Un modèle de cahier des charges à compléter : objectifs, pages, fonctionnalités, contenus, refonte, budget et critères de livraison de votre site web.",
+    title: "Cahier des charges de site web avec modèle et exemple",
+    seoTitle: "Cahier des charges de site web | Exemple et modèle",
+    excerpt: "Un exemple rempli pour un site vitrine et un modèle de cahier des charges à copier. Définissez vos pages, vos fonctionnalités et vos critères de livraison.",
     date: "2026-10-20",
-    readTime: 4,
+    updatedAt: "2026-11-13",
+    readTime: 5,
     tags: ["Site web", "Cahier des charges", "Refonte"],
     image: "/favicon.svg",
     content: `
 <p>Un cahier des charges de site web explique le résultat attendu, les contenus disponibles et les critères de livraison. Il n’a pas besoin d’être long : il doit permettre au développeur et à la personne qui valide de comprendre le même projet.</p>
-<p>Le modèle ci-dessous convient à une création ou à une refonte. Remplacez les exemples par vos informations et marquez clairement les points encore à décider. Aucun choix technique n’est nécessaire pour commencer.</p>
+<p>Le modèle ci-dessous convient à une création ou à une refonte. Consultez l’<a href="#exemple-cahier-des-charges">exemple rempli pour un site vitrine</a> pour voir comment décrire les pages, le formulaire et la livraison.</p>
 <h2>1. L’activité et le résultat attendu</h2>
 <p>Présentez votre activité en quelques lignes, les personnes que vous souhaitez toucher et ce qu’elles doivent faire sur le site. « Recevoir une demande contenant le type de prestation et la ville » est plus précis que « avoir un site moderne ».</p>
 <ul><li>Activité et services proposés.</li><li>Publics, langues et territoires servis.</li><li>Action principale : contact, devis, commande ou réservation.</li><li>URL actuelle, si elle existe, et problèmes à résoudre.</li></ul>
@@ -123,7 +124,17 @@ Références visuelles et éléments appréciés :
 Budget envisagé et échéance :
 Personne chargée de la validation :
 Accès, documentation et maintenance attendus :</code></pre>
-<h2>Quel service correspond à votre brief ?</h2>
+<h2 id="exemple-cahier-des-charges">Exemple de cahier des charges pour un site vitrine</h2>
+<p>Une entreprise fictive de peinture souhaite présenter ses chantiers et recevoir des demandes de devis depuis un téléphone.</p>
+<div class="overflow-x-auto"><table><caption>Exemple rempli pour une entreprise de peinture</caption><thead><tr><th scope="col">Rubrique</th><th scope="col">Ce qui est demandé</th></tr></thead><tbody>
+<tr><th scope="row">Pages</th><td>Accueil, prestations, réalisations et contact. Les prestations précisent la zone desservie.</td></tr>
+<tr><th scope="row">Formulaire de devis</th><td>Recueillir le nom, un moyen de contact, la commune et une description courte des travaux.</td></tr>
+<tr><th scope="row">Contenus</th><td>L’entreprise remet des photos de chantiers dont elle peut autoriser la publication et valide les textes des prestations.</td></tr>
+<tr><th scope="row">Tests de livraison</th><td>Sur mobile, le numéro ouvre l’appel. Une demande test arrive dans la messagerie de l’entreprise et le visiteur voit la confirmation.</td></tr>
+<tr><th scope="row">Mises à jour</th><td>À la livraison, le responsable de l’entreprise ajoute une réalisation avec sa photo depuis l’administration.</td></tr>
+</tbody></table></div>
+<p>Pour faire chiffrer ce brief, distinguez la création et les frais récurrents. Le <a href="/blog/prix-site-vitrine">guide des prix de sites vitrines</a> montre comment comparer deux devis sur douze mois.</p>
+<h2 id="article-section-8">Quel service correspond à votre brief ?</h2>
 <p>Pour présenter votre activité, examinez la <a href="/creation-site-web">création de site professionnel</a>. Pour des produits et des commandes, consultez la <a href="/site-ecommerce">création de boutique en ligne</a>. Pour un outil avec des rôles et des données métier, voyez le <a href="/developpement-web-sur-mesure">développement d’application sur mesure</a>.</p>
 <p>Si vous hésitez sur le parcours commercial, le guide <a href="/blog/site-vitrine-ou-ecommerce">site vitrine ou e-commerce</a> aide à distinguer les besoins. Vous pouvez ensuite <a href="/contact">présenter votre projet</a> en reprenant les rubriques du modèle.</p>
 `.trim(),
