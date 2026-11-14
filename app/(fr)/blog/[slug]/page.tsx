@@ -5,7 +5,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { posts, getPostBySlug } from "../../../blog/posts";
-import { SITE_URL } from "../../../lib/site";
+import { OWNER, SITE_URL } from "../../../lib/site";
 import SiteHeader from "../../../components/SiteHeader";
 import SiteFooter from "../../../components/SiteFooter";
 
@@ -61,6 +61,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   if (!post) notFound();
 
   const outline = articleOutline(post.content);
+  const articleUrl = `${BASE_URL}/blog/${post.slug}`;
+  const author = {
+    "@type": "Person",
+    "@id": `${BASE_URL}/#person`,
+    name: OWNER,
+    url: `${BASE_URL}/a-propos`,
+  };
   const jsonLd = [{
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -68,33 +75,22 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     description: post.excerpt,
     datePublished: post.date,
     dateModified: post.updatedAt ?? post.date,
-    url: `${BASE_URL}/blog/${post.slug}`,
+    url: articleUrl,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${BASE_URL}/blog/${post.slug}`,
+      "@id": articleUrl,
     },
+    isPartOf: { "@id": `${BASE_URL}/#website` },
     image: {
       "@type": "ImageObject",
       url: OG_IMAGE,
       width: 1730,
       height: 902,
     },
-    author: {
-      "@type": "Person",
-      name: "Soufiane Boutatss",
-      url: `${BASE_URL}/a-propos`,
-      sameAs: [
-        "https://github.com/soufiane2001",
-        "https://www.linkedin.com/in/soufiane-boutatss-96400a1ba/",
-      ],
-    },
-    publisher: {
-      "@type": "Person",
-      name: "Soufiane Boutatss",
-      url: BASE_URL,
-    },
+    author,
+    publisher: { "@id": author["@id"] },
     keywords: post.tags.join(", "),
-    inLanguage: "fr-FR",
+    inLanguage: "fr",
     timeRequired: `PT${post.readTime}M`,
   }, {
     "@context": "https://schema.org",
@@ -102,7 +98,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Accueil", item: `${BASE_URL}/fr` },
       { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
-      { "@type": "ListItem", position: 3, name: post.title, item: `${BASE_URL}/blog/${post.slug}` },
+      { "@type": "ListItem", position: 3, name: post.title, item: articleUrl },
     ],
   }];
 
@@ -112,7 +108,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     <main className="min-h-screen bg-background pt-20 pb-24">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
 
       <div className="container mx-auto px-6 md:px-12 max-w-4xl">

@@ -1,14 +1,13 @@
 import type { MetadataRoute } from "next";
 import { posts } from "./blog/posts";
 import { landingPages } from "./lib/landing-pages";
-import { caseStudies } from "./lib/portfolio";
+import { caseStudies, portfolioUpdatedAt } from "./lib/portfolio";
 import { homeLanguages, landingLanguages } from "./lib/seo";
 import { services } from "./lib/services";
 import { absoluteUrl } from "./lib/site";
 
 const staticPaths = [
   "/services",
-  "/portfolio",
   "/a-propos",
   "/contact",
   "/blog",
@@ -50,10 +49,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       };
     });
 
-  const portfolio: MetadataRoute.Sitemap = caseStudies.map((project) => ({
-    url: absoluteUrl(`/portfolio/${project.slug}`),
-    ...(project.updatedAt ? { lastModified: project.updatedAt } : {}),
-  }));
+  const portfolio: MetadataRoute.Sitemap = [
+    { url: absoluteUrl("/portfolio"), lastModified: portfolioUpdatedAt },
+    ...caseStudies.map((project) => ({
+      url: absoluteUrl(`/portfolio/${project.slug}`),
+      ...(project.updatedAt ? { lastModified: project.updatedAt } : {}),
+    })),
+  ];
 
   const blog: MetadataRoute.Sitemap = posts.map((post) => ({
     url: absoluteUrl(`/blog/${post.slug}`),

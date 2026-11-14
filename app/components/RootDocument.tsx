@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import SitePrivacy from "./SitePrivacy";
-import { OG_IMAGE, SITE_URL } from "../lib/site";
+import { absoluteUrl, OG_IMAGE, OWNER, SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -30,19 +30,11 @@ export const metadata: Metadata = {
 const jsonLd = [
   {
     "@context": "https://schema.org", "@type": "Person", "@id": `${SITE_URL}/#person`,
-    name: "Soufiane Boutatss", url: SITE_URL, image: `${SITE_URL}${OG_IMAGE}`,
+    name: OWNER, url: absoluteUrl("/a-propos"), image: `${SITE_URL}${OG_IMAGE}`,
     jobTitle: "Développeur Web & Mobile / Full Stack",
     description: "Développeur web freelance basé au Maroc, proposant des services à distance en France, au Canada, en Europe et à l’international.",
     knowsAbout: ["Web Development", "React", "Next.js", "Laravel", "PHP", "MySQL", "React Native", "Technical SEO"],
     sameAs: ["https://github.com/soufiane2001", "https://www.linkedin.com/in/soufiane-boutatss-96400a1ba/", "https://web.facebook.com/soufianski2001"],
-  },
-  {
-    "@context": "https://schema.org", "@type": "ProfessionalService", "@id": `${SITE_URL}/#professional-service`,
-    name: "Soufiane Boutatss — Développement Web & Mobile", url: SITE_URL,
-    description: "Création de sites web, boutiques e-commerce, applications web et mobiles.",
-    provider: { "@id": `${SITE_URL}/#person` },
-    areaServed: [{ "@type": "City", name: "Casablanca" }, { "@type": "Country", name: "Maroc" }, { "@type": "Country", name: "France" }, { "@type": "Country", name: "Canada" }, { "@type": "Country", name: "Belgique" }, { "@type": "Country", name: "Suisse" }],
-    serviceType: ["Création de site web", "Site vitrine", "Site e-commerce", "Application web", "Application mobile", "SEO technique"],
   },
   {
     "@context": "https://schema.org", "@type": "WebSite", "@id": `${SITE_URL}/#website`,

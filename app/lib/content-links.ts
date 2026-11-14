@@ -35,10 +35,12 @@ export const contentLinks: Record<string, ContentLink[]> = {
   ],
   "/fr": [
     { href: "/services", label: "Comparer toutes les prestations web" },
+    { href: "/portfolio", label: "Voir les sites et applications du portfolio" },
     { href: "/developpeur-web-freelance", label: "Travailler avec un développeur web freelance" },
     { href: "/france/developpeur-web-freelance", label: "Développement à distance pour les entreprises en France" },
     { href: "/canada/creation-site-web", label: "Préparer un site pour le Canada et le Québec" },
     { href: "/blog/cahier-des-charges-site-web", label: "Rédiger le brief de votre projet" },
+    { href: "/blog/seo-site-entreprise-maroc", label: "Améliorer le référencement de votre site d’entreprise" },
   ],
   "/casablanca/seo": [
     { href: "/blog/seo-site-entreprise-maroc", label: "Diagnostiquer la visibilité d’un site d’entreprise" },
@@ -48,7 +50,7 @@ export const contentLinks: Record<string, ContentLink[]> = {
   ],
   "/seo": [
     { href: "/casablanca/seo", label: "Accompagnement SEO pour une entreprise à Casablanca" },
-    { href: "/blog/seo-site-entreprise-maroc", label: "Indexation, impressions et clics : comprendre les écarts" },
+    { href: "/blog/seo-site-entreprise-maroc", label: "Guide SEO pour un site d’entreprise" },
     { href: "/blog/nextjs-seo-app-router-2026", label: "Rendu et référencement d’un site Next.js" },
   ],
   "/blog/seo-site-entreprise-maroc": [

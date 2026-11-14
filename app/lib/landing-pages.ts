@@ -42,7 +42,12 @@ const serviceInfo: Record<string, { title: string; h1: string; intro: string; fo
   "developpeur-laravel": { title: "Développeur Laravel Freelance", h1: "Développeur Laravel freelance pour applications métier", intro: "Applications Laravel, APIs et espaces d’administration structurés autour de vos règles métier.", focus: ["Architecture Laravel", "Authentification et rôles", "Queues et tâches", "APIs et intégrations"] },
   "developpeur-application-mobile": { title: "Développeur Application Mobile", h1: "Développement d’applications mobiles React Native", intro: "Applications Android et iOS avec React Native et Expo, de la définition du MVP aux builds de livraison.", focus: ["React Native et Expo", "Firebase ou API Laravel", "Navigation et authentification", "Tests sur appareils"] },
   "site-ecommerce": { title: "Création Site E-commerce", h1: "Création de site e-commerce sur mesure", intro: "Boutiques en ligne adaptées au catalogue, aux modes de commande et au fonctionnement réel de votre activité.", focus: ["Catalogue et fiches produits", "Panier et commandes", "Administration", "SEO e-commerce"] },
-  "seo": { title: "Consultant SEO Technique", h1: "SEO technique, contenu et performance web", intro: "Audits et améliorations concrètes pour rendre votre site indexable, compréhensible, rapide et utile aux visiteurs.", focus: ["Audit technique", "Architecture et maillage", "Core Web Vitals", "SEO local et international"] },
+  "seo": {
+    title: "Audit SEO technique",
+    h1: "Audit SEO technique pour votre site web",
+    intro: "Je vérifie comment Google explore et indexe vos pages, puis je priorise les corrections de contenu, de liens internes et de performance. L’audit s’appuie sur votre site et sur les données de Search Console disponibles.",
+    focus: ["Audit technique", "Architecture et maillage", "Core Web Vitals", "SEO local et international"],
+  },
   "maintenance-site-web": { title: "Maintenance Site Web", h1: "Maintenance et évolution de votre site web", intro: "Corrections, mises à jour et évolutions encadrées pour garder un site fiable, rapide et sécurisé.", focus: ["Maintenance corrective", "Mises à jour", "Optimisation performance", "Évolutions fonctionnelles"] },
 };
 

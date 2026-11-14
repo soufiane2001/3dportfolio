@@ -151,10 +151,18 @@ export const serviceContent: Record<string, ServiceContent> = {
     related: [{ href: "/portfolio/site-ecommerce", label: "Boutique avec paiement à la livraison" }, { href: "/creation-site-ecommerce-casablanca", label: "E-commerce à Casablanca" }, { href: "/blog/site-vitrine-ou-ecommerce", label: "Site vitrine ou e-commerce : choisir" }],
   },
   "seo": {
-    description: "Audit SEO technique : indexation, contenus, liens internes et performance. Obtenez des corrections priorisées et un suivi des pages dans Search Console.",
+    description: "Audit SEO technique de votre site web. Vérifiez l’indexation Google, les liens et les performances, puis obtenez un plan de corrections par URL.",
+    updatedAt: "2026-11-14",
     sections: [
       { title: "Distinguer un problème d’indexation d’un problème de position", paragraphs: ["Une page absente de Google, une page indexée sans impressions et une page visible sans clics ne demandent pas la même intervention. L’analyse croise les réponses HTTP, les canonical, le contenu rendu et les rapports de Search Console.", "Le diagnostic vérifie les URLs effectivement retenues par Google et les requêtes associées aux pages. Les recommandations portent ensuite sur un problème identifié : blocage de crawl, doublon, intention mal servie, liens insuffisants ou présentation peu claire dans les résultats."], items: ["Inspection des URLs", "Indexation et canonical", "Requêtes par page", "Titre et contenu principal"] },
-      { title: "Prioriser les corrections et mesurer leurs effets", paragraphs: ["Le livrable distingue les erreurs bloquantes des améliorations éditoriales et des optimisations de performance. Chaque recommandation indique la page concernée, le changement attendu et une vérification après publication.", "Le suivi compare les impressions, les clics et les positions sur les mêmes pages et requêtes. La position moyenne globale reste un indicateur agrégé : elle peut varier parce que le site apparaît sur de nouvelles recherches, même si des pages importantes progressent."], items: ["Plan de corrections par priorité", "Maillage entre pages utiles", "Mesure de performance", "Comparaison par page et requête"] },
+      {
+        title: "Les livrables d’un audit SEO technique",
+        paragraphs: [
+          "Le plan d’action indique pour chaque URL le problème observé, sa priorité, la correction et le test à effectuer après publication. Si un guide pointe vers une ancienne adresse, la tâche précise quel lien mettre à jour et comment vérifier que la destination s’ouvre directement.",
+          "Le suivi compare les impressions, les clics et les positions sur les mêmes pages et requêtes. La position moyenne globale peut varier quand de nouvelles recherches affichent votre site, même si vos pages prioritaires progressent.",
+        ],
+        items: ["Plan de corrections par priorité", "Maillage entre pages utiles", "Mesure de performance", "Comparaison par page et requête"],
+      },
     ],
     faqs: [
       { question: "Un audit SEO comprend-il les corrections ?", answer: "Le périmètre distingue le diagnostic, le plan d’action et l’implémentation. Les corrections peuvent être réalisées dans une mission séparée ou incluses lorsque le devis le précise." },

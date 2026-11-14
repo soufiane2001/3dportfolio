@@ -16,6 +16,8 @@ export type CaseStudy = {
   details?: { title: string; paragraphs: string[] }[];
 };
 
+export const portfolioUpdatedAt = "2026-11-14";
+
 export const caseStudies: CaseStudy[] = [
   {
     slug: "mirado-clothing",

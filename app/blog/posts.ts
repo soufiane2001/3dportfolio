@@ -941,23 +941,26 @@ add_filter('the_title', function($title) {
   },
   {
     slug: "seo-site-entreprise-maroc",
-    title: "SEO d’un site d’entreprise au Maroc : indexation, clics et plan d’action",
-    excerpt: "Votre site reçoit peu de clics sur Google ? Distinguez indexation, position et contenu, puis préparez un plan SEO adapté à votre entreprise au Maroc.",
+    title: "SEO pour un site d’entreprise au Maroc",
+    seoTitle: "SEO pour un site d’entreprise au Maroc | Guide pratique",
+    excerpt: "Vérifiez l’indexation de votre site dans Search Console, choisissez les mots-clés de vos prestations et suivez vos clics sur Google.",
     date: "2026-07-26",
-    updatedAt: "2026-10-05",
+    updatedAt: "2026-11-14",
     readTime: 7,
     tags: ["SEO", "Maroc", "Google", "Entreprise"],
     image: `${DEVICON_LATEST}/google/google-original.svg`,
     content: `
-<p>Un site visible sur Google n’attire pas automatiquement des demandes de clients. Avant de modifier vos pages, distinguez trois situations : Google ne retient pas la page, la page apparaît loin dans les résultats, ou elle apparaît mais reçoit peu de clics. Ces problèmes demandent des vérifications différentes.</p>
+<p>Le SEO, ou référencement naturel, aide les internautes à trouver votre site dans les résultats de recherche. Pour un site d’entreprise au Maroc, commencez par vérifier si Google indexe la page du service que vous souhaitez vendre. Regardez ensuite les recherches qui l’affichent et les clics qu’elle reçoit.</p>
 <h2>1. Vérifier si la bonne page est indexée</h2>
 <p>Dans Search Console, inspectez l’URL de la prestation que vous souhaitez faire connaître. Vérifiez la dernière exploration, l’état d’indexation et l’URL canonique retenue par Google. Une page peut être accessible au navigateur tout en portant une directive qui empêche son indexation.</p>
 <p>Contrôlez aussi la réponse HTTP et les redirections. Une page supprimée doit fournir une réponse adaptée ; une page remplacée doit mener vers son équivalent. Le sitemap facilite la découverte des URLs, mais sa soumission ne garantit pas leur indexation.</p>
+<p>Si le rapport affiche « Explorée, actuellement non indexée », vérifiez la date du dernier passage de Google. Lorsque la page a changé depuis, utilisez le test de l’URL publiée pour vérifier la version actuelle. Si le test confirme qu’elle est accessible et que l’indexation est autorisée, vous pouvez demander une nouvelle exploration.</p>
 <h2>2. Lire les résultats par page et par requête</h2>
 <p>Le rapport global mélange les recherches sur votre nom, les prestations, les articles et parfois plusieurs pays. Filtrez d’abord une page importante, puis examinez les requêtes qui lui donnent des impressions.</p>
 <ul><li><strong>Peu d’impressions :</strong> vérifiez l’indexation, la demande et l’adéquation de la page à la recherche.</li><li><strong>Impressions avec une position éloignée :</strong> examinez le contenu, les pages concurrentes et les liens qui présentent cette page.</li><li><strong>Bonne position mais peu de clics :</strong> examinez le titre, l’offre et les autres éléments présents dans les résultats. Le CTR dépend aussi du type de recherche.</li></ul>
 <p>Une moyenne peut changer lorsque le site apparaît sur de nouvelles requêtes. Comparez des périodes de même durée, avec les mêmes filtres, avant de conclure à une progression ou à une baisse.</p>
 <h2>3. Donner une réponse distincte sur chaque service</h2>
+<p>Pour choisir vos mots-clés, comparez la recherche avec l’action attendue du visiteur. Une personne qui tape « SEO » peut chercher à comprendre le référencement. Une recherche comme « consultant SEO Casablanca » correspond à une recherche de prestataire. Le guide peut répondre à la première et conduire vers la page de service pour la seconde.</p>
 <p>Une page commerciale doit préciser ce que vous réalisez, pour qui, ce que le client reçoit et comment préparer une demande. Une liste de technologies ou plusieurs paragraphes qui pourraient s’appliquer à n’importe quelle entreprise ne suffisent pas à expliquer votre prestation.</p>
 <p>Pour une société proposant un site vitrine, un e-commerce et une application, les questions diffèrent : présentation de l’offre, commandes et livraison, ou utilisateurs et données métier. Les exemples, les livrables et les FAQ doivent refléter ces différences.</p>
 <p>Si deux pages fournissent presque la même réponse, examinez leurs recherches et leur utilité. Elles peuvent être différenciées par un besoin réel ou regroupées. Une variante par ville ou pays ne devient pas utile uniquement parce que son titre change.</p>
@@ -974,7 +977,7 @@ add_filter('the_title', function($title) {
 <ol><li>Listez vos prestations prioritaires et leurs URLs.</li><li>Vérifiez indexation, canonical et réponses HTTP.</li><li>Identifiez les requêtes et les pages déjà visibles.</li><li>Corrigez les contenus qui ne répondent pas clairement à la demande.</li><li>Ajoutez des exemples et des liens pertinents.</li><li>Contrôlez la publication, puis comparez des périodes équivalentes.</li></ol>
 <p>Le classement dépend aussi de la concurrence et de l’autorité. Ce plan vise des améliorations vérifiables ; il ne garantit pas le top 10. Pour examiner votre site, consultez l’accompagnement de <a href="/casablanca/seo">consultant SEO à Casablanca</a> ou le détail d’un <a href="/seo">audit SEO technique</a>.</p>
 <h2>Sources pour approfondir</h2>
-<ul><li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Google Search Central : créer des contenus utiles et fiables</a></li><li><a href="https://developers.google.com/search/docs/appearance/title-link">Google Search Central : titres dans les résultats de recherche</a></li></ul>
+<ul><li><a href="https://support.google.com/webmasters/answer/12482179?hl=fr">Aide Search Console sur l’inspection d’URL</a></li><li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Google Search Central sur la création de contenus utiles</a></li><li><a href="https://developers.google.com/search/docs/appearance/title-link">Google Search Central sur les titres dans les résultats</a></li></ul>
 `.trim(),
   },
   {
