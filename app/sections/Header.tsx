@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Github, Linkedin, Mail } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import LanguageLinks from "../components/LanguageLinks";
 import BrandMark from "../components/BrandMark";
@@ -14,6 +14,8 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("");
   const [autreOpen, setAutreOpen] = useState(false);
   const autreRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -39,6 +41,21 @@ export default function Header() {
     return () => { document.body.style.overflow = previousOverflow; };
   }, [isMobileMenuOpen]);
   useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const firstLink = mobileMenuRef.current?.querySelector<HTMLAnchorElement>("a");
+    firstLink?.focus();
+    const trapFocus = (event: KeyboardEvent) => {
+      if (event.key !== "Tab") return;
+      const links = [menuButtonRef.current, ...(mobileMenuRef.current?.querySelectorAll<HTMLElement>("a, button") ?? [])].filter((element): element is HTMLElement => !!element);
+      const first = links[0];
+      const last = links[links.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    };
+    document.addEventListener("keydown", trapFocus);
+    return () => { document.removeEventListener("keydown", trapFocus); menuButtonRef.current?.focus(); };
+  }, [isMobileMenuOpen]);
+  useEffect(() => {
     const outside = (event: MouseEvent) => { if (autreRef.current && !autreRef.current.contains(event.target as Node)) setAutreOpen(false); };
     const escape = (event: KeyboardEvent) => { if (event.key === "Escape") { setAutreOpen(false); setIsMobileMenuOpen(false); } };
     document.addEventListener("mousedown", outside);
@@ -59,7 +76,8 @@ export default function Header() {
   const dropdownLinks = [navLinks[2], navLinks[5], ...autreLinks];
 
   return <>
-    <header className={`okc-header ${isScrolled ? "is-scrolled" : ""}`}>
+    <header className={`okc-header ${isScrolled ? "is-scrolled" : ""} ${isMobileMenuOpen ? "menu-is-open" : ""}`}>
+      <div className="milan-utility-bar"><div className="milan-utility-inner"><span>WEB & MOBILE DEVELOPER</span><div className="milan-tech-strip" aria-label="Technologies"><span>REACT</span><span>NEXT.JS</span><span>LARAVEL</span><span>PHP</span></div><div className="milan-utility-socials"><a href="https://github.com/soufiane2001" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={16} /></a><a href="https://www.linkedin.com/in/soufiane-boutatss-96400a1ba/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={16} /></a></div></div></div>
       <div className="container okc-header-inner">
         <a href="#home" aria-label="Soufiane Boutatss"><BrandMark /></a>
         <nav className="okc-header-nav" aria-label={locale === "ar" ? "التنقل الرئيسي" : locale === "en" ? "Main navigation" : "Navigation principale"}>
@@ -71,12 +89,12 @@ export default function Header() {
         </nav>
         <div className="okc-header-actions">
           <LanguageLinks locale={locale} />
-          <a href="#contact" className="okc-circle-link">{t.nav.contact}</a>
-          <button type="button" className="okc-menu-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"} aria-expanded={isMobileMenuOpen} aria-controls="mobile-navigation">{isMobileMenuOpen ? <X size={19} /> : <Menu size={19} />}</button>
+          <a href="#contact" className="okc-circle-link"><Mail size={18} />{t.nav.contact}</a>
+          <button ref={menuButtonRef} type="button" className="okc-menu-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"} aria-expanded={isMobileMenuOpen} aria-controls="mobile-navigation">{isMobileMenuOpen ? <X size={23} /> : <Menu size={23} />}</button>
         </div>
       </div>
     </header>
-    <AnimatePresence>{isMobileMenuOpen && <motion.div className="okc-mobile-menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduceMotion ? 0 : .2 }}>
+    <AnimatePresence>{isMobileMenuOpen && <motion.div ref={mobileMenuRef} className="okc-mobile-menu" role="dialog" aria-modal="true" aria-label={locale === "fr" ? "Menu principal" : locale === "ar" ? "القائمة الرئيسية" : "Main menu"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduceMotion ? 0 : .2 }}>
       <nav id="mobile-navigation">
         {navLinks.map(link => <a key={link.id} href={link.href} onClick={() => setIsMobileMenuOpen(false)}>{link.name}</a>)}
         <div className="okc-mobile-secondary"><span>{t.nav.autre}</span>{autreLinks.map(link => <a key={link.id} href={link.href} onClick={() => setIsMobileMenuOpen(false)}>{link.name}</a>)}</div>

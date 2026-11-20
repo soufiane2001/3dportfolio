@@ -16,7 +16,7 @@ export default function Experience() {
       <div>{experiences.map((exp, index) => <motion.article key={index} className="okc-experience-row" initial={false} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: reduceMotion ? 0 : .6, delay: reduceMotion ? 0 : index * .1 }}>
         <p className="okc-experience-period">{exp.period}</p>
         <div className="okc-experience-role"><h3>{exp.title}</h3><p>{exp.company}</p></div>
-        <ul className="okc-experience-description">{exp.description.map((item, i) => <li key={i} className="body-copy"><span aria-hidden="true">→</span>{item}</li>)}</ul>
+        <ul className="okc-experience-description">{exp.description.map((item, i) => <li key={i} className="body-copy"><span aria-hidden="true">•</span>{item}</li>)}</ul>
       </motion.article>)}</div>
       <AdBanner />
     </div>

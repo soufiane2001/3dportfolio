@@ -2,10 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Github, Play, X } from "lucide-react";
-import { useState } from "react";
-import { useInView } from "react-intersection-observer";
+import { motion, useReducedMotion } from "framer-motion";
+import { ExternalLink, Github, Play, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../i18n/LanguageContext";
 
 interface Project {
@@ -34,34 +33,41 @@ const projects: Project[] = [
   { id: 10, caseStudySlug: "pizza-napoli-toul", title: "Pizza Napoli Toul", description: "Une vitrine gourmande et chaleureuse avec menu, horaires et informations pratiques immédiatement accessibles.", image: "/project-pizza-napoli-toul.png", demoUrl: "https://pizzanapoli-toul.fr/", tech: ["Web design", "Responsive", "SEO local"] },
 ];
 
+const categories = {
+  fr: ["Tous les projets", "Sites web", "E-commerce", "Applications"],
+  en: ["All projects", "Websites", "E-commerce", "Applications"],
+  ar: ["كل المشاريع", "مواقع الويب", "متاجر إلكترونية", "تطبيقات"],
+};
+const categoryFor = (project: Project) => ["mirado-clothing", "site-ecommerce", "dar-mooris", "gamlastan"].includes(project.caseStudySlug) ? 2 : project.videoUrl ? 3 : 1;
+
 export default function Projects() {
   const { t, locale } = useLanguage();
   const [videoModal, setVideoModal] = useState<string | null>(null);
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 });
+  const [category, setCategory] = useState(0);
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const reduceMotion = useReducedMotion();
-  const isRtl = locale === "ar";
+  const filtered = category === 0 ? projects : projects.filter(project => categoryFor(project) === category);
+  useEffect(() => {
+    if (!videoModal) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const dialog = dialogRef.current;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    dialog?.showModal();
+    return () => { dialog?.close(); document.body.style.overflow = previousOverflow; previousFocus?.focus(); };
+  }, [videoModal]);
 
-  return <section id="portfolio" className="okc-section okc-projects" dir={isRtl ? "rtl" : "ltr"} aria-label="Projets et réalisations">
-    <div className="container" ref={ref}>
-      <div className="okc-projects-heading">
-        <div><p className="section-subtitle">{t.projects.tag} / 2026</p><h2 className="section-heading">{t.projects.title} <span>{t.projects.titleGradient}</span></h2></div>
-        <p className="body-copy">Une sélection de produits digitaux conçus pour être beaux, utiles et efficaces.</p>
-      </div>
-      <div className="okc-project-grid">{projects.map((project, index) => <motion.article key={project.id} className="okc-project" initial={false} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: reduceMotion ? 0 : .55, delay: reduceMotion ? 0 : Math.min(index * .06, .3) }}>
-        <div className="okc-project-visual">
-          <Image src={project.image} alt={`Aperçu du projet ${project.title}`} fill sizes={index % 3 === 2 ? "(max-width: 767px) 100vw, 65vw" : "(max-width: 767px) 100vw, 45vw"} />
-          {(project.demoUrl || project.videoUrl) && <a href={project.demoUrl || "#"} onClick={project.videoUrl ? (e) => { e.preventDefault(); setVideoModal(project.videoUrl!); } : undefined} target={project.demoUrl ? "_blank" : undefined} rel="noopener noreferrer" aria-label={`${project.demoUrl ? t.projects.demo : t.projects.video} — ${project.title}`} className="okc-project-action">{project.videoUrl ? <Play size={18} fill="currentColor" /> : <ArrowUpRight size={22} />}</a>}
+  return <section id="portfolio" className="okc-section okc-projects" aria-labelledby="portfolio-heading">
+    <div className="container">
+      <div className="milan-section-head"><h2 id="portfolio-heading">{t.projects.tag}</h2><Link href="/portfolio">{locale === "en" ? "Explore the portfolio" : locale === "ar" ? "استكشف المشاريع" : "Tout le portfolio"}</Link></div>
+      <div className="milan-filter-tabs" role="group" aria-label={locale === "en" ? "Project categories" : locale === "ar" ? "فئات المشاريع" : "Catégories de projets"}>{categories[locale].map((label, index) => <button type="button" key={label} aria-pressed={category === index} onClick={() => setCategory(index)}>{label}</button>)}</div>
+      <div className={`okc-project-grid ${category !== 0 ? "is-filtered" : ""}`} aria-live="polite">{filtered.map((project, index) => <article key={project.id} className="okc-project">
+        <div className="okc-project-visual"><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} tabIndex={-1} aria-hidden="true"><Image src={project.image} alt={`Aperçu du projet ${project.title}`} fill sizes={category === 0 && index === 0 ? "(max-width: 767px) 100vw, 55vw" : "(max-width: 767px) 100vw, 32vw"} /></Link>
+          {(project.demoUrl || project.videoUrl) && <a href={project.demoUrl || "#"} onClick={project.videoUrl ? event => { event.preventDefault(); setVideoModal(project.videoUrl!); } : undefined} target={project.demoUrl ? "_blank" : undefined} rel="noopener noreferrer" aria-label={`${project.demoUrl ? t.projects.demo : t.projects.video} — ${project.title}`} className="okc-project-action">{project.videoUrl ? <Play size={18} fill="currentColor" /> : <ExternalLink size={18} />}</a>}
         </div>
-        <div className="okc-project-caption"><h3><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false}>{project.title}</Link></h3><p>{project.description}</p></div>
-        <div className="okc-project-meta"><span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>{project.tech.map(tech => <span key={tech}>{tech}</span>)}{project.repoUrl && <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.projects.code} — ${project.title}`}><Github size={16} /></a>}</div>
-        <Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} className="okc-project-case-link">{locale === "en" ? "Read the case study" : locale === "ar" ? "دراسة المشروع" : "Voir l’étude de cas"} — {project.title}<ArrowUpRight size={14} /></Link>
-      </motion.article>)}</div>
+        <div className="milan-project-info"><p className="milan-project-category">{categories[locale][categoryFor(project)]}</p><h3><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false}>{project.title}</Link></h3><p className="milan-project-description">{project.description}</p><div className="okc-project-meta">{project.tech.map(tech => <span key={tech}>{tech}</span>)}{project.repoUrl && <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.projects.code} — ${project.title}`}><Github size={16} /></a>}</div><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} className="okc-project-case-link">{locale === "en" ? "Read the case study" : locale === "ar" ? "دراسة المشروع" : "Voir l’étude de cas"}</Link></div>
+      </article>)}</div>
     </div>
-    <AnimatePresence>{videoModal && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[300] grid place-items-center bg-background/95 p-4 backdrop-blur-sm" onClick={() => setVideoModal(null)} role="dialog" aria-modal="true" aria-label={t.projects.video}>
-      <motion.div initial={{ scale: reduceMotion ? 1 : .96, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: reduceMotion ? 1 : .96, opacity: 0 }} className="relative aspect-video w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
-        <button onClick={() => setVideoModal(null)} className="absolute -top-12 right-0 rounded-full p-2 text-white transition hover:text-primary" aria-label="Fermer"><X size={28} /></button>
-        <iframe src={videoModal} title={t.projects.video} className="h-full w-full rounded-xl border border-white/10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
-      </motion.div>
-    </motion.div>}</AnimatePresence>
+    {videoModal && <dialog ref={dialogRef} className="milan-video-dialog" onCancel={() => setVideoModal(null)} onClick={event => { if (event.target === event.currentTarget) setVideoModal(null); }} aria-label={t.projects.video}><button autoFocus type="button" onClick={() => setVideoModal(null)} aria-label={locale === "en" ? "Close video" : locale === "ar" ? "إغلاق الفيديو" : "Fermer la vidéo"}><X size={26} /></button><motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduceMotion ? 0 : .2 }}><iframe src={videoModal} title={t.projects.video} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></motion.div></dialog>}
   </section>;
 }

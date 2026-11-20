@@ -46,7 +46,7 @@ export default function RootDocument({ children, locale }: Readonly<{ children: 
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <head>
-        <meta name="theme-color" content="#222222" />
+        <meta name="theme-color" content="#000000" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
