@@ -53,7 +53,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       <main className="bg-background page-shell text-foreground">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <article className="container max-w-5xl">
-          <Link href="/portfolio" className="text-sm text-foreground/65 hover:text-[#e60020]">← Retour au portfolio</Link>
+          <Link href="/portfolio" className="text-sm text-foreground/65 hover:text-[#37003c]">← Retour au portfolio</Link>
           <p className="section-subtitle !text-start mt-8">{project.category}</p>
           <h1 className="mt-3 page-heading">{project.title}</h1>
           <p className="mt-6 max-w-3xl body-copy">{project.summary}</p>
@@ -66,13 +66,13 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           <div className="mt-14 grid gap-10 md:grid-cols-2">
             <section><h2 className="text-2xl font-medium">Contexte et objectif</h2><p className="mt-4 body-copy">{project.context}</p></section>
             <section><h2 className="text-2xl font-medium">Solution réalisée</h2><p className="mt-4 body-copy">{project.solution}</p></section>
-            <section><h2 className="text-2xl font-medium">Technologies</h2><div className="mt-4 flex flex-wrap gap-2">{project.technologies.map((tech) => <span key={tech} className="rounded-none border border-black/10 px-4 py-2 text-sm text-foreground/65">{tech}</span>)}</div></section>
+            <section><h2 className="text-2xl font-medium">Technologies</h2><div className="mt-4 flex flex-wrap gap-2">{project.technologies.map((tech) => <span key={tech} className="rounded-full border border-black/10 px-4 py-2 text-sm text-foreground/65">{tech}</span>)}</div></section>
             <section><h2 className="text-2xl font-medium">Fonctionnalités</h2><ul className="mt-4 space-y-2 text-foreground/65">{project.features.map((feature) => <li key={feature}>✓ {feature}</li>)}</ul></section>
           </div>
           {project.details?.map(section => <section key={section.title} className="mt-12 max-w-3xl"><h2 className="text-2xl font-medium">{section.title}</h2>{section.paragraphs.map(paragraph => <p key={paragraph} className="mt-4 body-copy">{paragraph}</p>)}</section>)}
           <div className="mt-14 flex flex-wrap gap-4 border-t border-black/10 pt-10">
-            {project.website && <a href={project.website} target="_blank" rel="noopener noreferrer" className="rounded-none border border-black/20 px-6 py-3 font-bold">Visiter le site</a>}
-            <Link href={project.relatedService} className="rounded-none bg-primary px-6 py-3 font-bold text-white">Découvrir le service lié</Link>
+            {project.website && <a href={project.website} target="_blank" rel="noopener noreferrer" className="rounded-full border border-black/20 px-6 py-3 font-bold">Visiter le site</a>}
+            <Link href={project.relatedService} className="rounded-full bg-primary px-6 py-3 font-bold text-white">Découvrir le service lié</Link>
             <Link href="/contact" className="px-5 py-3 font-bold text-foreground/70">Discuter de mon projet</Link>
           </div>
         </article>

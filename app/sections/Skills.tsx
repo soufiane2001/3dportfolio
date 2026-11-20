@@ -38,9 +38,10 @@ const skillsData: Skill[] = [
 
 const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { locale } = useLanguage();
   return <motion.div ref={ref} initial={false} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: .5, delay: index * .025 }} className="okc-skill">
-    <div className="okc-skill-heading"><div className="okc-skill-icon"><Image src={skill.iconUrl} alt={skill.name} width={28} height={28} unoptimized className={`object-contain${skill.invert ? " invert" : ""}`} onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} /></div><div><h3>{skill.name}</h3><p>{skill.percentage}% Proficiency</p></div></div>
-    <div className="skill-bar"><motion.div initial={{ width: 0 }} animate={inView ? { width: `${skill.percentage}%` } : { width: 0 }} transition={{ duration: 1, delay: index * .025 + .3 }} className="skill-bar-fill" style={{ background: skill.color }} /></div>
+    <div className="okc-skill-heading"><div className="okc-skill-icon"><Image src={skill.iconUrl} alt={skill.name} width={28} height={28} unoptimized className={`object-contain${skill.invert ? " invert" : ""}`} onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} /></div><div><h3>{skill.name}</h3><p>{skill.percentage}% {locale === "fr" ? "Maîtrise" : locale === "ar" ? "إتقان" : "Proficiency"}</p></div></div>
+    <div className="skill-bar"><motion.div initial={{ width: 0 }} animate={inView ? { width: `${skill.percentage}%` } : { width: 0 }} transition={{ duration: 1, delay: index * .025 + .3 }} className="skill-bar-fill"  /></div>
   </motion.div>;
 };
 

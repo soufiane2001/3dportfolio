@@ -113,14 +113,14 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
       <div className="container mx-auto px-6 md:px-12 max-w-4xl">
         {/* Back */}
-        <Link href="/blog" className="inline-flex items-center gap-2 text-foreground/65 hover:text-[#e60020] transition-colors text-sm mb-12">
+        <Link href="/blog" className="inline-flex items-center gap-2 text-foreground/65 hover:text-[#37003c] transition-colors text-sm mb-12">
           Retour au blog
         </Link>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-6">
           {post.tags.map((tag) => (
-            <span key={tag} className="text-xs px-3 py-1 rounded-none bg-[#e60020]/10 text-[#e60020] border border-[#e60020]/20">
+            <span key={tag} className="text-xs px-3 py-1 rounded-full bg-[#37003c]/10 text-[#37003c] border border-[#37003c]/20">
               {tag}
             </span>
           ))}
@@ -139,9 +139,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               alt="Soufiane Boutatss"
               width={32}
               height={32}
-              className="rounded-none object-cover border border-black/10"
+              className="rounded-full object-cover border border-black/10"
             />
-            <Link href="/a-propos" className="text-foreground/65 font-medium hover:text-[#b80019]">Soufiane Boutatss</Link>
+            <Link href="/a-propos" className="text-foreground/65 font-medium hover:text-[#5f2472]">Soufiane Boutatss</Link>
           </div>
           <span>·</span>
           <span><time dateTime={post.date}>{new Date(post.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time>{post.updatedAt && <> · Mis à jour le <time dateTime={post.updatedAt}>{new Date(post.updatedAt).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time></>}</span>
@@ -152,7 +152,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         {outline.headings.length > 1 && <nav aria-label="Sommaire de l’article" className="mb-10 border-y border-black/15 py-6">
           <p className="text-sm font-bold uppercase tracking-wider text-foreground/70">Dans ce guide</p>
           <ol className="mt-4 grid gap-3 sm:grid-cols-2">{outline.headings.map(heading => <li key={heading.id}>
-            <a href={`#${heading.id}`} className="text-foreground/75 underline decoration-black/20 underline-offset-4 hover:text-[#b80019]">{heading.label}</a>
+            <a href={`#${heading.id}`} className="text-foreground/75 underline decoration-black/20 underline-offset-4 hover:text-[#5f2472]">{heading.label}</a>
           </li>)}</ol>
         </nav>}
 
@@ -163,7 +163,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:scroll-mt-28
             prose-p:text-foreground/70 prose-p:leading-[1.8] prose-p:mb-4
             prose-pre:bg-black/5 prose-pre:border prose-pre:border-black/10 prose-pre:rounded-xl prose-pre:p-4
-            prose-code:text-[#e60020] prose-code:bg-[#e60020]/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+            prose-code:text-[#37003c] prose-code:bg-[#37003c]/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
             prose-strong:text-foreground"
           dangerouslySetInnerHTML={{ __html: outline.html }}
         />
@@ -176,13 +176,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               alt="Soufiane Boutatss"
               width={56}
               height={56}
-              className="rounded-none object-cover border-2 border-[#e60020]/30 shrink-0"
+              className="rounded-full object-cover border-2 border-[#37003c]/30 shrink-0"
             />
             <div>
               <p className="text-foreground font-bold">Soufiane Boutatss</p>
               <p className="text-foreground/65 text-sm">Développeur Web & Mobile — React, React Native, Laravel, Next.js</p>
               <a href="https://wa.me/212689213015" target="_blank" rel="noopener noreferrer"
-                className="inline-block mt-2 text-xs px-3 py-1 bg-primary text-white rounded-none hover:opacity-90 transition-opacity">
+                className="inline-block mt-2 text-xs px-3 py-1 bg-primary text-white rounded-full hover:opacity-90 transition-opacity">
                 Me contacter
               </a>
             </div>

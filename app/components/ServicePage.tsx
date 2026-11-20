@@ -59,7 +59,7 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
       <main className="bg-background text-foreground">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <section className="relative overflow-hidden border-b border-black/10 page-shell">
-          <div className="absolute inset-0 bg-[#f4f4f4]" />
+          <div className="absolute inset-0 bg-[#f7f3f8]" />
           <div className="container relative max-w-5xl">
             <nav aria-label="Fil d’Ariane" className="mb-8 text-sm text-foreground/65">
               <ol className="flex flex-wrap items-center gap-2">
@@ -68,12 +68,12 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
                 <li aria-current="page" className="text-foreground/80">{data.title}</li>
               </ol>
             </nav>
-            <p className="mb-5 text-sm font-bold uppercase tracking-[.28em] text-[#e60020]">{data.eyebrow}</p>
+            <p className="mb-5 text-sm font-bold uppercase tracking-[.28em] text-[#37003c]">{data.eyebrow}</p>
             <h1 className="max-w-4xl page-heading">{data.title}</h1>
             <p className="mt-7 max-w-3xl body-copy">{data.intro}</p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/contact" className="rounded-none bg-primary px-7 py-4 font-bold text-white">Demander un devis</Link>
-              <a href={whatsappUrl(`Bonjour Soufiane, je souhaite discuter de : ${data.title}.`)} className="rounded-none border border-black/20 px-7 py-4 font-bold hover:border-[#e60020]">Parler sur WhatsApp</a>
+              <Link href="/contact" className="rounded-full bg-primary px-7 py-4 font-bold text-white">Demander un devis</Link>
+              <a href={whatsappUrl(`Bonjour Soufiane, je souhaite discuter de : ${data.title}.`)} className="rounded-full border border-black/20 px-7 py-4 font-bold hover:border-[#37003c]">Parler sur WhatsApp</a>
               <Link href="/portfolio" className="px-4 py-4 font-bold text-foreground/70 hover:text-foreground">Voir mes réalisations</Link>
             </div>
           </div>
@@ -95,7 +95,7 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
                 <article key={title} className="rounded-2xl border border-black/10 p-6">
                   <h3 className="text-xl font-bold">{title}</h3>
                   <p className="mt-3 body-copy">{text}</p>
-                  <Link href={href} className="mt-5 inline-block text-sm font-bold text-[#b80019] hover:text-foreground">En savoir plus</Link>
+                  <Link href={href} className="mt-5 inline-block text-sm font-bold text-[#5f2472] hover:text-foreground">En savoir plus</Link>
                 </article>
               ))}
             </div>
@@ -155,10 +155,10 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
                       <Image src={project.image} alt={`Aperçu de ${project.title}`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                     </div>
                     <div className="p-6">
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#b80019]">{project.category}</p>
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#5f2472]">{project.category}</p>
                       <h3 className="mt-2 text-lg font-bold">{project.title}</h3>
                       <p className="mt-3 body-copy">{project.summary}</p>
-                      <Link href={`/portfolio/${project.slug}`} className="mt-5 inline-block font-bold hover:text-[#b80019]">Voir l’étude de cas</Link>
+                      <Link href={`/portfolio/${project.slug}`} className="mt-5 inline-block font-bold hover:text-[#5f2472]">Voir l’étude de cas</Link>
                     </div>
                   </article>
                 ))}
@@ -186,16 +186,16 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
           <h2 className="text-2xl font-medium">Explorer les services associés</h2>
           <nav className="mt-6 flex flex-wrap gap-3" aria-label="Services associés">
             {serviceLinks.filter((link) => link.href !== `/${data.slug}`).map((link) => (
-              <Link key={link.href} href={link.href} className="rounded-none border border-black/10 px-4 py-2 text-sm text-foreground/65 hover:border-[#e60020]/50 hover:text-foreground">Découvrir {link.label.toLocaleLowerCase("fr")}</Link>
+              <Link key={link.href} href={link.href} className="rounded-full border border-black/10 px-4 py-2 text-sm text-foreground/65 hover:border-[#37003c]/50 hover:text-foreground">Découvrir {link.label.toLocaleLowerCase("fr")}</Link>
             ))}
           </nav>
         </section>
 
-        <section className="bg-gradient-to-r from-[#e60020]/20 to-[#e60020]/15 section-padding text-center">
+        <section className="bg-gradient-to-r from-[#37003c]/20 to-[#37003c]/15 section-padding text-center">
           <div className="container max-w-3xl">
             <h2 className="section-heading">Parlons de votre projet</h2>
             <p className="mx-auto mt-5 max-w-2xl text-foreground/65">Décrivez votre besoin, vos objectifs et les fonctionnalités importantes. Vous recevrez une estimation adaptée, sans tarif inventé ni formule imposée.</p>
-            <Link href="/contact" className="mt-8 inline-block rounded-none bg-primary px-8 py-4 font-bold text-white">Obtenir une estimation</Link>
+            <Link href="/contact" className="mt-8 inline-block rounded-full bg-primary px-8 py-4 font-bold text-white">Obtenir une estimation</Link>
           </div>
         </section>
       <RelatedContent path={`/${data.slug}`} subject={data.title} />

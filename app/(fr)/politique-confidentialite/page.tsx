@@ -25,7 +25,7 @@ export default function Page() {
         <h2 className="text-xl font-medium text-foreground">Vos choix</h2>
         <p>Votre navigateur mémorise vos choix pendant 180 jours. Vous pouvez modifier ou retirer une autorisation à tout moment.</p>
         <PrivacySettingsButton />
-        <p>Pour une demande d’accès, de correction ou de suppression, contactez <a className="text-[#b80019]" href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
+        <p>Pour une demande d’accès, de correction ou de suppression, contactez <a className="text-[#5f2472]" href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
       </div>
     </main>
     <SiteFooter />

@@ -46,7 +46,9 @@ export default function Projects() {
   const [category, setCategory] = useState(0);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const reduceMotion = useReducedMotion();
-  const filtered = category === 0 ? projects : projects.filter(project => categoryFor(project) === category);
+  const featuredIds = [11, 4, 9];
+  const ordered = [...featuredIds.map(id => projects.find(project => project.id === id)!), ...projects.filter(project => !featuredIds.includes(project.id))];
+  const filtered = category === 0 ? ordered : ordered.filter(project => categoryFor(project) === category);
   useEffect(() => {
     if (!videoModal) return;
     const previousFocus = document.activeElement as HTMLElement | null;
@@ -57,17 +59,20 @@ export default function Projects() {
     return () => { dialog?.close(); document.body.style.overflow = previousOverflow; previousFocus?.focus(); };
   }, [videoModal]);
 
+  const renderProject = (project: Project, featured = false) => <article key={project.id} className={`okc-project ${featured ? "fpl-project-featured" : ""}`}>
+    <div className="okc-project-visual"><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} tabIndex={-1} aria-hidden="true"><Image src={project.image} alt={`Aperçu du projet ${project.title}`} fill sizes={featured ? "(max-width: 599px) 100vw, (max-width: 1023px) 50vw, 33vw" : "(max-width: 599px) 100vw, (max-width: 1023px) 50vw, 25vw"} /></Link>
+      {(project.demoUrl || project.videoUrl) && <a href={project.demoUrl || "#"} onClick={project.videoUrl ? event => { event.preventDefault(); setVideoModal(project.videoUrl!); } : undefined} target={project.demoUrl ? "_blank" : undefined} rel="noopener noreferrer" aria-label={`${project.demoUrl ? t.projects.demo : t.projects.video} — ${project.title}`} className="okc-project-action">{project.videoUrl ? <Play size={18} fill="currentColor" /> : <ExternalLink size={18} />}</a>}
+    </div>
+    <div className="fpl-project-info"><p className="fpl-project-category">{categories[locale][categoryFor(project)]}</p><h3><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false}>{project.title}</Link></h3><p className="fpl-project-description">{project.description}</p><div className="okc-project-meta">{project.tech.map(tech => <span key={tech}>{tech}</span>)}{project.repoUrl && <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.projects.code} — ${project.title}`}><Github size={16} /></a>}</div><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} className="okc-project-case-link">{locale === "en" ? "Read the case study" : locale === "ar" ? "دراسة المشروع" : "Voir l’étude de cas"}</Link></div>
+  </article>;
+
   return <section id="portfolio" className="okc-section okc-projects" aria-labelledby="portfolio-heading">
     <div className="container">
-      <div className="milan-section-head"><h2 id="portfolio-heading">{t.projects.tag}</h2><Link href="/portfolio">{locale === "en" ? "Explore the portfolio" : locale === "ar" ? "استكشف المشاريع" : "Tout le portfolio"}</Link></div>
-      <div className="milan-filter-tabs" role="group" aria-label={locale === "en" ? "Project categories" : locale === "ar" ? "فئات المشاريع" : "Catégories de projets"}>{categories[locale].map((label, index) => <button type="button" key={label} aria-pressed={category === index} onClick={() => setCategory(index)}>{label}</button>)}</div>
-      <div className={`okc-project-grid ${category !== 0 ? "is-filtered" : ""}`} aria-live="polite">{filtered.map((project, index) => <article key={project.id} className="okc-project">
-        <div className="okc-project-visual"><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} tabIndex={-1} aria-hidden="true"><Image src={project.image} alt={`Aperçu du projet ${project.title}`} fill sizes={category === 0 && index === 0 ? "(max-width: 767px) 100vw, 55vw" : "(max-width: 767px) 100vw, 32vw"} /></Link>
-          {(project.demoUrl || project.videoUrl) && <a href={project.demoUrl || "#"} onClick={project.videoUrl ? event => { event.preventDefault(); setVideoModal(project.videoUrl!); } : undefined} target={project.demoUrl ? "_blank" : undefined} rel="noopener noreferrer" aria-label={`${project.demoUrl ? t.projects.demo : t.projects.video} — ${project.title}`} className="okc-project-action">{project.videoUrl ? <Play size={18} fill="currentColor" /> : <ExternalLink size={18} />}</a>}
-        </div>
-        <div className="milan-project-info"><p className="milan-project-category">{categories[locale][categoryFor(project)]}</p><h3><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false}>{project.title}</Link></h3><p className="milan-project-description">{project.description}</p><div className="okc-project-meta">{project.tech.map(tech => <span key={tech}>{tech}</span>)}{project.repoUrl && <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.projects.code} — ${project.title}`}><Github size={16} /></a>}</div><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} className="okc-project-case-link">{locale === "en" ? "Read the case study" : locale === "ar" ? "دراسة المشروع" : "Voir l’étude de cas"}</Link></div>
-      </article>)}</div>
+      <div className="fpl-section-head"><h2 id="portfolio-heading">{locale === "en" ? "Explore my projects" : locale === "ar" ? "اكتشف مشاريعي" : "Découvrez mes réalisations"}</h2><Link href="/portfolio">{locale === "en" ? "Explore the portfolio" : locale === "ar" ? "استكشف المشاريع" : "Tout le portfolio"}</Link></div>
+      <div className="fpl-filter-tabs" role="group" aria-label={locale === "en" ? "Project categories" : locale === "ar" ? "فئات المشاريع" : "Catégories de projets"}>{categories[locale].map((label, index) => <button type="button" key={label} aria-pressed={category === index} onClick={() => setCategory(index)}>{label}</button>)}</div>
+      <div aria-live="polite" aria-atomic="false"><div className={`fpl-featured-projects count-${Math.min(filtered.length,3)}`}>{filtered.slice(0,3).map(project => renderProject(project,true))}</div>
+      {filtered.length > 3 && <div className="fpl-more-projects"><h3 className="fpl-panel-title">{locale === "en" ? "More from my portfolio" : locale === "ar" ? "المزيد من أعمالي" : "Plus de réalisations"}</h3><div className="fpl-news-grid">{filtered.slice(3).map(project => renderProject(project))}</div></div>}</div>
     </div>
-    {videoModal && <dialog ref={dialogRef} className="milan-video-dialog" onCancel={() => setVideoModal(null)} onClick={event => { if (event.target === event.currentTarget) setVideoModal(null); }} aria-label={t.projects.video}><button autoFocus type="button" onClick={() => setVideoModal(null)} aria-label={locale === "en" ? "Close video" : locale === "ar" ? "إغلاق الفيديو" : "Fermer la vidéo"}><X size={26} /></button><motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduceMotion ? 0 : .2 }}><iframe src={videoModal} title={t.projects.video} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></motion.div></dialog>}
+    {videoModal && <dialog ref={dialogRef} className="fpl-video-dialog" onCancel={() => setVideoModal(null)} onClick={event => { if (event.target === event.currentTarget) setVideoModal(null); }} aria-label={t.projects.video}><button autoFocus type="button" onClick={() => setVideoModal(null)} aria-label={locale === "en" ? "Close video" : locale === "ar" ? "إغلاق الفيديو" : "Fermer la vidéo"}><X size={26} /></button><motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduceMotion ? 0 : .2 }}><iframe src={videoModal} title={t.projects.video} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></motion.div></dialog>}
   </section>;
 }

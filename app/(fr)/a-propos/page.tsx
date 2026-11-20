@@ -20,8 +20,8 @@ export default function AboutPage() {
               <p className="mt-7 text-lg leading-8 text-foreground/65">Je conçois des sites internet, applications web et applications mobiles pour transformer un besoin métier en une solution claire, performante et maintenable. Mes services sont disponibles à Casablanca, au Maroc et à distance.</p>
               <p className="mt-5 leading-8 text-foreground/65">Mon parcours présenté sur ce site couvre le frontend avec React et Next.js, le mobile avec React Native et Expo, ainsi que le backend avec Laravel, PHP, MySQL, Firebase et les APIs REST.</p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link href="/portfolio" className="rounded-none bg-primary px-6 py-3 font-bold text-white">Voir mes réalisations</Link>
-                <Link href="/contact" className="rounded-none border border-black/20 px-6 py-3 font-bold">Me contacter</Link>
+                <Link href="/portfolio" className="rounded-full bg-primary px-6 py-3 font-bold text-white">Voir mes réalisations</Link>
+                <Link href="/contact" className="rounded-full border border-black/20 px-6 py-3 font-bold">Me contacter</Link>
               </div>
             </div>
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-black/10">
@@ -32,7 +32,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-medium">Expérience et preuves</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-3">
               {[["30+", "projets web et mobile réalisés"], ["34+", "clients accompagnés"], ["6+", "années d’expérience"]].map(([value, label]) => (
-                <div key={label} className="rounded-2xl border border-black/10 p-6"><p className="text-4xl font-medium text-[#e60020]">{value}</p><p className="mt-2 text-foreground/65">{label}</p></div>
+                <div key={label} className="rounded-2xl border border-black/10 p-6"><p className="text-4xl font-medium text-[#37003c]">{value}</p><p className="mt-2 text-foreground/65">{label}</p></div>
               ))}
             </div>
           </section>
