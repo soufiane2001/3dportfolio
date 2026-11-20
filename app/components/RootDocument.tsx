@@ -44,7 +44,7 @@ const jsonLd = [
 
 export default function RootDocument({ children, locale }: Readonly<{ children: React.ReactNode; locale: "fr" | "en" | "ar" }>) {
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+    <html lang={locale} data-scroll-behavior="smooth" dir={locale === "ar" ? "rtl" : "ltr"}>
       <head>
         <meta name="theme-color" content="#000000" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
