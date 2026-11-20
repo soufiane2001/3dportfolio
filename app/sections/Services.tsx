@@ -22,7 +22,7 @@ export default function Services() {
       <div className="okc-services-list">{t.services.items.map(service => {
         const Icon = ICONS[service.icon];
         return <article key={service.title} className="okc-service">
-          {Icon && <Icon size={30} className="milan-service-icon" aria-hidden="true" />}<h3>{service.title}</h3>
+          {Icon && <Icon size={30} className="fpl-service-icon" aria-hidden="true" />}<h3>{service.title}</h3>
           <p className="body-copy">{service.description}</p><div className="okc-service-tags">{service.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
         </article>;
       })}</div><a href="#contact" className="btn-secondary okc-service-cta">{t.services.cta}</a>
