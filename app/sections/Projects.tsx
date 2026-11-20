@@ -68,8 +68,8 @@ export default function Projects() {
 
   return <section id="portfolio" className="okc-section okc-projects" aria-labelledby="portfolio-heading">
     <div className="container">
-      <div className="fpl-section-head"><h2 id="portfolio-heading">{locale === "en" ? "Explore my projects" : locale === "ar" ? "اكتشف مشاريعي" : "Découvrez mes réalisations"}</h2><Link href="/portfolio">{locale === "en" ? "Explore the portfolio" : locale === "ar" ? "استكشف المشاريع" : "Tout le portfolio"}</Link></div>
-      <div className="fpl-filter-tabs" role="group" aria-label={locale === "en" ? "Project categories" : locale === "ar" ? "فئات المشاريع" : "Catégories de projets"}>{categories[locale].map((label, index) => <button type="button" key={label} aria-pressed={category === index} onClick={() => setCategory(index)}>{label}</button>)}</div>
+      <div className="fpl-project-toolbar"><div className="fpl-section-head"><h2 id="portfolio-heading">{locale === "en" ? "Explore my projects" : locale === "ar" ? "اكتشف مشاريعي" : "Découvrez mes réalisations"}</h2><Link href="/portfolio">{locale === "en" ? "Explore the portfolio" : locale === "ar" ? "استكشف المشاريع" : "Tout le portfolio"}</Link></div>
+      <div className="fpl-filter-tabs" role="group" aria-label={locale === "en" ? "Project categories" : locale === "ar" ? "فئات المشاريع" : "Catégories de projets"}>{categories[locale].map((label, index) => <button type="button" key={label} aria-pressed={category === index} onClick={() => setCategory(index)}>{label}</button>)}</div></div>
       <div aria-live="polite" aria-atomic="false"><div className={`fpl-featured-projects count-${Math.min(filtered.length,3)}`}>{filtered.slice(0,3).map(project => renderProject(project,true))}</div>
       {filtered.length > 3 && <div className="fpl-more-projects"><h3 className="fpl-panel-title">{locale === "en" ? "More from my portfolio" : locale === "ar" ? "المزيد من أعمالي" : "Plus de réalisations"}</h3><div className="fpl-news-grid">{filtered.slice(3).map(project => renderProject(project))}</div></div>}</div>
     </div>

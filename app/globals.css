@@ -125,9 +125,9 @@
 .fpl-sub-navigation a:hover { text-decoration: underline; text-underline-offset: .25rem; }
 .fpl-welcome-wrap { padding-block: 1rem .5rem; }
 .fpl-welcome-card { position: relative; display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; min-height: 18.5rem; overflow: hidden; padding: 1rem 1rem 1rem clamp(1.5rem,4.8vw,4rem); border-radius: 1rem; background: #37003c; color: #fff; }
-.fpl-welcome-copy { z-index: 1; max-width: 34rem; padding-block: 1.25rem; }
+.fpl-welcome-copy { z-index: 1; max-width: 34rem; padding-block: .5rem; }
 .fpl-welcome-name { margin-bottom: .55rem; color: #00ffb0; font-size: .875rem; font-weight: 700; }
-.fpl-welcome-copy h1 { max-width: 23ch; font-size: clamp(1.6rem,2.15vw,2.1rem); line-height: 1.2; }
+.fpl-welcome-copy h1 { max-width: 23ch; font-size: clamp(1.5rem,1.8vw,1.75rem); line-height: 1.2; }
 .fpl-welcome-copy > p:not(.fpl-welcome-name) { max-width: 33rem; margin-top: .9rem; color: #f0e8f1; font-size: 1rem; line-height: 1.6; }
 .fpl-welcome-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
 .fpl-welcome-actions .btn-primary { background: #fff; color: #37003c; }
@@ -142,6 +142,10 @@
 .okc-section { padding-block: .5rem; }
 .site-shell .okc-section:not(.okc-projects) > .container { width: calc(100% - 2rem); max-width: 1568px; padding: clamp(1.5rem,3vw,2.75rem); border-radius: 1rem; background: #fff; }
 .okc-projects { padding-top: .5rem; }
+.fpl-project-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem 1.5rem; margin-block: .5rem 1rem; }
+.fpl-project-toolbar .fpl-section-head { margin: 0; }
+.fpl-project-toolbar .fpl-section-head h2 { font-size: 1.25rem; }
+.fpl-project-toolbar .fpl-filter-tabs { margin: 0; }
 .fpl-section-head { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-block: .75rem 1rem; }
 .fpl-section-head h2 { font-size: 1.5rem; }
 .fpl-section-head > a { flex: none; font-size: .875rem; font-weight: 700; }
@@ -358,10 +362,10 @@ body > main .okc-contact { margin-inline: auto; }
 @media (max-width: 599px) {
   .fpl-masthead-art { display: none; }
   .fpl-masthead-name { max-width: 100%; }
-  .fpl-welcome-card { grid-template-columns: minmax(0,1fr); padding: 1.5rem; }
-  .fpl-welcome-copy { padding-block: 0; }
+  .fpl-welcome-card { grid-template-columns: minmax(0,1fr); padding: 1rem; }
+  .fpl-welcome-copy { grid-row: 2; padding-block: 0; }
   .fpl-welcome-copy h1 { max-width: 24ch; }
-  .fpl-welcome-visual { min-height: 13rem; margin-top: 1rem; }
+  .fpl-welcome-visual { grid-row: 1; min-height: 12rem; margin-top: 0; margin-bottom: 1.25rem; }
   .fpl-welcome-portrait { object-position: center 20%; }
   .fpl-welcome-actions { gap: .75rem; }
   .fpl-welcome-actions a { flex: 1 1 auto; }
