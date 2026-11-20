@@ -56,25 +56,25 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
   return (
     <>
       <SiteHeader />
-      <main className="bg-background text-white">
+      <main className="bg-background text-foreground">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        <section className="relative overflow-hidden border-b border-white/10 page-shell">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(237,104,123,.18),transparent_35%),radial-gradient(circle_at_20%_70%,rgba(168,85,247,.12),transparent_30%)]" />
+        <section className="relative overflow-hidden border-b border-black/10 page-shell">
+          <div className="absolute inset-0 bg-[#f4f4f4]" />
           <div className="container relative max-w-5xl">
-            <nav aria-label="Fil d’Ariane" className="mb-8 text-sm text-white/55">
+            <nav aria-label="Fil d’Ariane" className="mb-8 text-sm text-foreground/65">
               <ol className="flex flex-wrap items-center gap-2">
-                <li><Link href="/fr" className="hover:text-white">Accueil</Link></li>
+                <li><Link href="/fr" className="hover:text-foreground">Accueil</Link></li>
                 <li aria-hidden="true">/</li>
-                <li aria-current="page" className="text-white/80">{data.title}</li>
+                <li aria-current="page" className="text-foreground/80">{data.title}</li>
               </ol>
             </nav>
-            <p className="mb-5 text-sm font-bold uppercase tracking-[.28em] text-[#ed687b]">{data.eyebrow}</p>
+            <p className="mb-5 text-sm font-bold uppercase tracking-[.28em] text-[#e60020]">{data.eyebrow}</p>
             <h1 className="max-w-4xl page-heading">{data.title}</h1>
             <p className="mt-7 max-w-3xl body-copy">{data.intro}</p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/contact" className="rounded-full bg-primary px-7 py-4 font-bold">Demander un devis</Link>
-              <a href={whatsappUrl(`Bonjour Soufiane, je souhaite discuter de : ${data.title}.`)} className="rounded-full border border-white/20 px-7 py-4 font-bold hover:border-[#ed687b]">Parler sur WhatsApp</a>
-              <Link href="/portfolio" className="px-4 py-4 font-bold text-white/70 hover:text-white">Voir mes réalisations →</Link>
+              <Link href="/contact" className="rounded-none bg-primary px-7 py-4 font-bold text-white">Demander un devis</Link>
+              <a href={whatsappUrl(`Bonjour Soufiane, je souhaite discuter de : ${data.title}.`)} className="rounded-none border border-black/20 px-7 py-4 font-bold hover:border-[#e60020]">Parler sur WhatsApp</a>
+              <Link href="/portfolio" className="px-4 py-4 font-bold text-foreground/70 hover:text-foreground">Voir mes réalisations</Link>
             </div>
           </div>
         </section>
@@ -92,10 +92,10 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
                 ["Refonte", "Clarifier le positionnement, moderniser l’expérience et corriger les freins techniques d’un site existant.", "/contact"],
                 ["Maintenance", "Sécuriser, corriger et faire évoluer un site après sa mise en ligne selon un périmètre convenu.", "/contact"],
               ].map(([title, text, href]) => (
-                <article key={title} className="rounded-2xl border border-white/10 p-6">
+                <article key={title} className="rounded-2xl border border-black/10 p-6">
                   <h3 className="text-xl font-bold">{title}</h3>
                   <p className="mt-3 body-copy">{text}</p>
-                  <Link href={href} className="mt-5 inline-block text-sm font-bold text-[#f08b9b] hover:text-white">En savoir plus →</Link>
+                  <Link href={href} className="mt-5 inline-block text-sm font-bold text-[#b80019] hover:text-foreground">En savoir plus</Link>
                 </article>
               ))}
             </div>
@@ -109,11 +109,11 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
             <p className="mt-6 body-copy">{data.audience}</p>
           </div>
           <ul className="grid gap-3 sm:grid-cols-2" aria-label="Livrables">
-            {data.deliverables.map((item) => <li key={item} className="rounded-2xl border border-white/10 bg-white/[.03] p-4 text-sm text-white/75">✓ {item}</li>)}
+            {data.deliverables.map((item) => <li key={item} className="rounded-2xl border border-black/10 bg-black/[.03] p-4 text-sm text-foreground/75">✓ {item}</li>)}
           </ul>
         </section>
 
-        <section className="border-y border-white/10 bg-white/[.02] section-padding">
+        <section className="border-y border-black/10 bg-black/[.02] section-padding">
           <div className="container">
             <p className="section-subtitle !text-start">Pourquoi cette approche</p>
             <h2 className="mt-3 section-heading">{data.benefitsHeading}</h2>
@@ -133,8 +133,8 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
           <h2 className="mt-3 section-heading">{data.processHeading}</h2>
           <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {data.process.map((step, index) => (
-              <li key={step.title} className="rounded-2xl border border-white/10 p-6">
-                <span className="text-sm font-medium text-[#ed687b]">0{index + 1}</span>
+              <li key={step.title} className="rounded-2xl border border-black/10 p-6">
+
                 <h3 className="mt-3 font-bold">{step.title}</h3>
                 <p className="mt-2 body-copy">{step.text}</p>
               </li>
@@ -143,22 +143,22 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
         </section>
 
         {data.slug === "creation-site-web-casablanca" && (
-          <section className="border-y border-white/10 bg-white/[.02] section-padding" aria-labelledby="preuves">
+          <section className="border-y border-black/10 bg-black/[.02] section-padding" aria-labelledby="preuves">
             <div className="container">
               <p className="section-subtitle !text-start">Projets réels</p>
               <h2 id="preuves" className="mt-3 section-heading">Des réalisations web à examiner avant de choisir</h2>
               <p className="mt-5 max-w-3xl body-copy">Chaque étude de cas présente le contexte, les fonctionnalités et les technologies utilisées, sans résultats commerciaux inventés.</p>
               <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
                 {caseStudies.slice(0, 3).map((project) => (
-                  <article key={project.slug} className="overflow-hidden rounded-2xl border border-white/10 bg-background">
+                  <article key={project.slug} className="overflow-hidden rounded-2xl border border-black/10 bg-background">
                     <div className="relative aspect-video">
                       <Image src={project.image} alt={`Aperçu de ${project.title}`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                     </div>
                     <div className="p-6">
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#f08b9b]">{project.category}</p>
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#b80019]">{project.category}</p>
                       <h3 className="mt-2 text-lg font-bold">{project.title}</h3>
                       <p className="mt-3 body-copy">{project.summary}</p>
-                      <Link href={`/portfolio/${project.slug}`} className="mt-5 inline-block font-bold hover:text-[#f08b9b]">Voir l’étude de cas →</Link>
+                      <Link href={`/portfolio/${project.slug}`} className="mt-5 inline-block font-bold hover:text-[#b80019]">Voir l’étude de cas</Link>
                     </div>
                   </article>
                 ))}
@@ -167,13 +167,13 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
           </section>
         )}
 
-        <section className="border-y border-white/10 bg-white/[.02] section-padding">
+        <section className="border-y border-black/10 bg-black/[.02] section-padding">
           <div className="container max-w-4xl">
             <p className="section-subtitle !text-start">Questions fréquentes</p>
             <h2 className="mt-3 section-heading">{data.faqHeading}</h2>
             <div className="mt-8 space-y-4">
               {data.faqs.map((faq) => (
-                <details key={faq.question} className="rounded-2xl border border-white/10 bg-background p-6">
+                <details key={faq.question} className="rounded-2xl border border-black/10 bg-background p-6">
                   <summary className="cursor-pointer font-bold">{faq.question}</summary>
                   <p className="mt-4 body-copy">{faq.answer}</p>
                 </details>
@@ -186,16 +186,16 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
           <h2 className="text-2xl font-medium">Explorer les services associés</h2>
           <nav className="mt-6 flex flex-wrap gap-3" aria-label="Services associés">
             {serviceLinks.filter((link) => link.href !== `/${data.slug}`).map((link) => (
-              <Link key={link.href} href={link.href} className="rounded-full border border-white/10 px-4 py-2 text-sm text-white/65 hover:border-[#ed687b]/50 hover:text-white">Découvrir {link.label.toLocaleLowerCase("fr")}</Link>
+              <Link key={link.href} href={link.href} className="rounded-none border border-black/10 px-4 py-2 text-sm text-foreground/65 hover:border-[#e60020]/50 hover:text-foreground">Découvrir {link.label.toLocaleLowerCase("fr")}</Link>
             ))}
           </nav>
         </section>
 
-        <section className="bg-gradient-to-r from-[#ed687b]/20 to-[#ed687b]/15 section-padding text-center">
+        <section className="bg-gradient-to-r from-[#e60020]/20 to-[#e60020]/15 section-padding text-center">
           <div className="container max-w-3xl">
             <h2 className="section-heading">Parlons de votre projet</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-white/65">Décrivez votre besoin, vos objectifs et les fonctionnalités importantes. Vous recevrez une estimation adaptée, sans tarif inventé ni formule imposée.</p>
-            <Link href="/contact" className="mt-8 inline-block rounded-full bg-primary px-8 py-4 font-bold">Obtenir une estimation</Link>
+            <p className="mx-auto mt-5 max-w-2xl text-foreground/65">Décrivez votre besoin, vos objectifs et les fonctionnalités importantes. Vous recevrez une estimation adaptée, sans tarif inventé ni formule imposée.</p>
+            <Link href="/contact" className="mt-8 inline-block rounded-none bg-primary px-8 py-4 font-bold text-white">Obtenir une estimation</Link>
           </div>
         </section>
       <RelatedContent path={`/${data.slug}`} subject={data.title} />

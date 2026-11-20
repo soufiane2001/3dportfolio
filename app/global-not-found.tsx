@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function GlobalNotFound() {
-  return <html lang="fr"><body className="antialiased"><NotFoundContent /></body></html>;
+  return <html lang="fr" data-scroll-behavior="smooth"><body className="antialiased"><NotFoundContent /></body></html>;
 }

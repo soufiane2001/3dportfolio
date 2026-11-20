@@ -150,14 +150,14 @@ export default function SitePrivacy({ children, locale }: { children: React.Reac
   };
 
   const preferences = admin ? declined : choice ?? declined;
-  const choiceButton = "rounded-full border border-white/35 px-4 py-2 text-sm font-semibold hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-primary";
+  const choiceButton = "milan-privacy-button";
 
   return <PrivacyContext.Provider value={{ advertising: preferences.advertising, openSettings, locale }}>
     {children}
     {preferences.advertising && <GoogleAds />}
     {(preferences.audience || preferences.advertising) && <Analytics {...preferences} activeChoice={activeChoice} />}
     {!admin && loaded && (!choice || editing) && (
-      <section data-no-track aria-labelledby="privacy-title" className="fixed inset-x-3 bottom-3 z-[100] max-h-[calc(100dvh-1.5rem)] max-w-lg overflow-y-auto rounded-2xl border border-white/25 bg-[#242424] p-4 text-white shadow-xl sm:start-auto sm:p-5">
+      <section data-no-track aria-labelledby="privacy-title" className="milan-privacy-banner"><div className="milan-privacy-inner"><div>
         <h2 ref={settingsHeading} tabIndex={-1} id="privacy-title" className="text-lg font-semibold">{t.title}</h2>
         <p className="mt-2 text-sm leading-relaxed text-white/75">{t.explanation}</p>
         <Link href="/politique-confidentialite" className="mt-2 inline-block text-sm text-white/85 underline">{t.policy}</Link>
@@ -167,13 +167,13 @@ export default function SitePrivacy({ children, locale }: { children: React.Reac
             <label className="flex items-center gap-2"><input type="checkbox" checked={draft.advertising} onChange={e => setDraft({ ...draft, advertising: e.target.checked })} />{t.advertising}</label>
           </div>
         )}
-        <div className="mt-4 flex flex-wrap items-center gap-2">
+        </div><div className="milan-privacy-actions">
           <button type="button" className={choiceButton} onClick={() => save(declined)}>{t.decline}</button>
           <button type="button" className={choiceButton} onClick={() => save(accepted)}>{t.accept}</button>
           {customizing ? <button type="button" className={choiceButton} onClick={() => save(draft)}>{t.save}</button> :
             <button type="button" className={choiceButton} onClick={() => setCustomizing(true)}>{t.customize}</button>}
           {editing && choice && <button type="button" className={choiceButton} onClick={closeSettings}>{t.close}</button>}
-        </div>
+        </div></div>
       </section>
     )}
   </PrivacyContext.Provider>;

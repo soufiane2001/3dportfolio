@@ -113,35 +113,35 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
       <div className="container mx-auto px-6 md:px-12 max-w-4xl">
         {/* Back */}
-        <Link href="/blog" className="inline-flex items-center gap-2 text-white/40 hover:text-[#ed687b] transition-colors text-sm mb-12">
-          ← Retour au blog
+        <Link href="/blog" className="inline-flex items-center gap-2 text-foreground/65 hover:text-[#e60020] transition-colors text-sm mb-12">
+          Retour au blog
         </Link>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-6">
           {post.tags.map((tag) => (
-            <span key={tag} className="text-xs px-3 py-1 rounded-full bg-[#ed687b]/10 text-[#ed687b] border border-[#ed687b]/20">
+            <span key={tag} className="text-xs px-3 py-1 rounded-none bg-[#e60020]/10 text-[#e60020] border border-[#e60020]/20">
               {tag}
             </span>
           ))}
         </div>
 
         {/* Title */}
-        <h1 className="page-heading text-white mb-6">
+        <h1 className="page-heading text-foreground mb-6">
           {post.title}
         </h1>
 
         {/* Meta */}
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-3 text-white/65 text-sm mb-12 pb-8 border-b border-white/10">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-3 text-foreground/65 text-sm mb-12 pb-8 border-b border-black/10">
           <div className="flex items-center gap-3">
             <Image
               src={AUTHOR_IMAGE}
               alt="Soufiane Boutatss"
               width={32}
               height={32}
-              className="rounded-full object-cover border border-white/10"
+              className="rounded-none object-cover border border-black/10"
             />
-            <Link href="/a-propos" className="text-white/60 font-medium hover:text-[#f08b9b]">Soufiane Boutatss</Link>
+            <Link href="/a-propos" className="text-foreground/65 font-medium hover:text-[#b80019]">Soufiane Boutatss</Link>
           </div>
           <span>·</span>
           <span><time dateTime={post.date}>{new Date(post.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time>{post.updatedAt && <> · Mis à jour le <time dateTime={post.updatedAt}>{new Date(post.updatedAt).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time></>}</span>
@@ -149,40 +149,40 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <span>{post.readTime} min de lecture</span>
         </div>
 
-        {outline.headings.length > 1 && <nav aria-label="Sommaire de l’article" className="mb-10 border-y border-white/15 py-6">
-          <p className="text-sm font-bold uppercase tracking-wider text-white/70">Dans ce guide</p>
+        {outline.headings.length > 1 && <nav aria-label="Sommaire de l’article" className="mb-10 border-y border-black/15 py-6">
+          <p className="text-sm font-bold uppercase tracking-wider text-foreground/70">Dans ce guide</p>
           <ol className="mt-4 grid gap-3 sm:grid-cols-2">{outline.headings.map(heading => <li key={heading.id}>
-            <a href={`#${heading.id}`} className="text-white/75 underline decoration-white/20 underline-offset-4 hover:text-[#f08b9b]">{heading.label}</a>
+            <a href={`#${heading.id}`} className="text-foreground/75 underline decoration-black/20 underline-offset-4 hover:text-[#b80019]">{heading.label}</a>
           </li>)}</ol>
         </nav>}
 
         {/* Content */}
         <article
-          className="prose prose-lg prose-invert prose-rose max-w-none
-            prose-headings:font-medium prose-headings:text-white
+          className="prose prose-lg prose-rose max-w-none
+            prose-headings:font-medium prose-headings:text-foreground
             prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:scroll-mt-28
-            prose-p:text-white/70 prose-p:leading-[1.8] prose-p:mb-4
-            prose-pre:bg-white/5 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl prose-pre:p-4
-            prose-code:text-[#ed687b] prose-code:bg-[#ed687b]/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
-            prose-strong:text-white"
+            prose-p:text-foreground/70 prose-p:leading-[1.8] prose-p:mb-4
+            prose-pre:bg-black/5 prose-pre:border prose-pre:border-black/10 prose-pre:rounded-xl prose-pre:p-4
+            prose-code:text-[#e60020] prose-code:bg-[#e60020]/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+            prose-strong:text-foreground"
           dangerouslySetInnerHTML={{ __html: outline.html }}
         />
 
         {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-white/10">
+        <div className="mt-16 pt-8 border-t border-black/10">
           <div className="glass-card p-6 flex items-center gap-4">
             <Image
               src={AUTHOR_IMAGE}
               alt="Soufiane Boutatss"
               width={56}
               height={56}
-              className="rounded-full object-cover border-2 border-[#ed687b]/30 shrink-0"
+              className="rounded-none object-cover border-2 border-[#e60020]/30 shrink-0"
             />
             <div>
-              <p className="text-white font-bold">Soufiane Boutatss</p>
-              <p className="text-white/50 text-sm">Développeur Web & Mobile — React, React Native, Laravel, Next.js</p>
+              <p className="text-foreground font-bold">Soufiane Boutatss</p>
+              <p className="text-foreground/65 text-sm">Développeur Web & Mobile — React, React Native, Laravel, Next.js</p>
               <a href="https://wa.me/212689213015" target="_blank" rel="noopener noreferrer"
-                className="inline-block mt-2 text-xs px-3 py-1 bg-primary text-white rounded-full hover:opacity-90 transition-opacity">
+                className="inline-block mt-2 text-xs px-3 py-1 bg-primary text-white rounded-none hover:opacity-90 transition-opacity">
                 Me contacter
               </a>
             </div>
