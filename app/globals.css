@@ -66,6 +66,8 @@
   .stat-label { margin-top: .75rem; color: #bbb; font-size: .875rem; }
 }
 
+.container:not([class*="max-w-"]) { max-width: 1600px; }
+
 .site-shell { position: relative; isolation: isolate; min-height: 100vh; background: #fff; }
 .site-orbits { display: none; }
 .site-brand { display: inline-flex; align-items: center; gap: .9rem; color: #fff; }
@@ -155,12 +157,12 @@
 .milan-project-category { margin-bottom: .6rem; color: #bd001b; font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
 .milan-project-info h3 { font-size: 1.5rem; text-transform: uppercase; }
 .milan-project-info h3 a:hover { color: #c6001b; }
-.milan-project-description { margin-top: .75rem; color: #666; font-size: .875rem; line-height: 1.7; }
+.milan-project-description { margin-top: .75rem; color: #666; font-size: 1rem; line-height: 1.7; }
 .okc-project-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem 1rem; margin-top: .85rem; color: #666; font-size: .75rem; }
 .okc-project-meta a { display: grid; place-items: center; min-width: 2rem; min-height: 2rem; }
 .okc-project-case-link { display: inline-flex; align-items: center; min-height: 2.75rem; margin-top: .25rem; color: #b80019; font-size: .875rem; font-weight: 700; }
 .okc-project-grid:not(.is-filtered) .okc-project:first-child { grid-column: 1/8; grid-row: 1/4; }
-.okc-project-grid:not(.is-filtered) .okc-project:first-child .okc-project-visual { aspect-ratio: 1.16; }
+.okc-project-grid:not(.is-filtered) .okc-project:first-child .okc-project-visual { aspect-ratio: 1.6; }
 .okc-project-grid:not(.is-filtered) .okc-project:first-child h3 { font-size: 2.25rem; }
 .okc-project-grid:not(.is-filtered) .okc-project:nth-child(n+2):nth-child(-n+4) { display: grid; grid-template-columns: 46% minmax(0,1fr); grid-column: 8/-1; align-items: center; gap: 1.25rem; }
 .okc-project-grid:not(.is-filtered) .okc-project:nth-child(n+2):nth-child(-n+4) .okc-project-visual { aspect-ratio: 1.4; }
@@ -315,7 +317,7 @@
   .milan-hero-content { bottom: 9rem; }
   .milan-hero-content :is(h1,h2) { max-width: 17ch; font-size: clamp(2.7rem,9.8vw,4.2rem); }
   .milan-hero-label { font-size: .75rem; }
-  .milan-hero-description { max-width: 30rem; margin-top: 1rem; font-size: .875rem; }
+  .milan-hero-description { max-width: 30rem; margin-top: 1rem; font-size: 1rem; }
   .milan-hero-actions { gap: .5rem 1.5rem; margin-top: 1.25rem; }
   .milan-hero-contact { font-size: .8125rem; }
   .milan-hero-pagination { bottom: 1.5rem; gap: 1rem; }
@@ -329,14 +331,14 @@
   .milan-filter-tabs { gap: 1.2rem; }
   .milan-filter-tabs button { font-size: 1rem; }
   .okc-project-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; }
-  .okc-project-grid .okc-project:nth-child(n) { display: block; grid-column: auto; grid-row: auto; }
-  .okc-project-grid:not(.is-filtered) .okc-project:first-child { grid-column: 1/-1; }
-  .okc-project-grid .okc-project:nth-child(n) .okc-project-visual { aspect-ratio: 4/3; }
-  .okc-project-grid .okc-project:nth-child(n) .milan-project-info { padding-block: 1rem; }
-  .okc-project-grid .okc-project:nth-child(n) .milan-project-description { display: block; }
+  #portfolio .okc-project-grid .okc-project:nth-child(n) { display: block; grid-column: auto; grid-row: auto; }
+  #portfolio .okc-project-grid:not(.is-filtered) .okc-project:first-child { grid-column: 1/-1; }
+  #portfolio .okc-project-grid .okc-project:nth-child(n) .okc-project-visual { aspect-ratio: 4/3; }
+  #portfolio .okc-project-grid .okc-project:nth-child(n) .milan-project-info { padding-block: 1rem; }
+  #portfolio .okc-project-grid .okc-project:nth-child(n) .milan-project-description { display: block; }
   .milan-project-info h3 { font-size: 1.35rem; }
   .milan-project-category { font-size: .75rem; }
-  .milan-project-description { font-size: .8125rem; }
+  .milan-project-description { font-size: 1rem; }
   .okc-project-meta { font-size: .75rem; }
   .okc-project-case-link { font-size: .8125rem; }
   .okc-section-intro { margin-bottom: 2rem; }
@@ -363,7 +365,7 @@
 @media (max-width: 479px) {
   .okc-services-list { grid-template-columns: 1fr; }
   .okc-project-grid { grid-template-columns: 1fr; }
-  .okc-project-grid .okc-project:first-child { grid-column: auto; }
+  #portfolio .okc-project-grid .okc-project:first-child { grid-column: auto; }
   .site-brand-name { font-size: .875rem; }
   .milan-hero { height: 50rem; }
   .milan-tool-band .container { justify-content: start; }
