@@ -2,10 +2,11 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Menu, X, ChevronDown, Github, Linkedin, Mail } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import LanguageLinks from "../components/LanguageLinks";
 import BrandMark from "../components/BrandMark";
+import TechnologyRibbon from "../components/TechnologyRibbon";
 
 export default function Header() {
   const { t, locale } = useLanguage();
@@ -76,8 +77,8 @@ export default function Header() {
   const dropdownLinks = [navLinks[2], navLinks[5], ...autreLinks];
 
   return <>
+    <TechnologyRibbon locale={locale} />
     <header className={`okc-header ${isScrolled ? "is-scrolled" : ""} ${isMobileMenuOpen ? "menu-is-open" : ""}`}>
-      <div className="mix-utility-bar"><div className="mix-utility-inner"><nav className="mix-utility-links" aria-label="Liens rapides"><a href="/portfolio">Portfolio</a><a href="/services">{t.nav.services}</a><a href="/blog">Blog</a><a href="/cv.pdf">CV</a></nav><div className="mix-tech-strip" aria-label="Technologies"><span>REACT</span><span>NEXT.JS</span><span>LARAVEL</span><span>PHP</span></div><div className="mix-utility-socials"><a href="https://github.com/soufiane2001" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={16} /></a><a href="https://www.linkedin.com/in/soufiane-boutatss-96400a1ba/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={16} /></a></div></div></div>
       <div className="container okc-header-inner">
         <a href="#home" aria-label="Soufiane Boutatss"><BrandMark /></a>
         <nav className="okc-header-nav" aria-label={locale === "ar" ? "التنقل الرئيسي" : locale === "en" ? "Main navigation" : "Navigation principale"}>
@@ -89,7 +90,7 @@ export default function Header() {
         </nav>
         <div className="okc-header-actions">
           <LanguageLinks locale={locale} />
-          <a href="#contact" className="okc-circle-link"><Mail size={18} />{t.nav.contact}</a>
+          <a href="#contact" className="okc-circle-link">{t.nav.contact}</a>
           <button ref={menuButtonRef} type="button" className="okc-menu-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"} aria-expanded={isMobileMenuOpen} aria-controls="mobile-navigation">{isMobileMenuOpen ? <X size={23} /> : <Menu size={23} />}</button>
         </div>
       </div>

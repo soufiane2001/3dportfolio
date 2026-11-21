@@ -1,9 +1,6 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../i18n/LanguageContext";
 import AdBanner from "../components/AdBanner";
 
@@ -15,41 +12,42 @@ interface Skill {
   invert?: boolean;
 }
 
-const DEVICON = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
+const DEVICON = "/technologies";
 
 const skillsData: Skill[] = [
-  { name: "React",          iconUrl: `${DEVICON}/react/react-original.svg`,                 percentage: 80, color: "#61DAFB" },
-  { name: "React Native",   iconUrl: `${DEVICON}/react/react-original.svg`,                 percentage: 70, color: "#61DAFB" },
-  { name: "Expo",           iconUrl: `${DEVICON}/expo/expo-original.svg`,                   percentage: 70, color: "#e2e8f0", invert: true },
-  { name: "Laravel",        iconUrl: `${DEVICON}/laravel/laravel-original.svg`,             percentage: 70, color: "#FF2D20" },
-  { name: "MySQL",          iconUrl: `${DEVICON}/mysql/mysql-original.svg`,                 percentage: 70, color: "#4479A1" },
-  { name: "TypeScript",     iconUrl: `${DEVICON}/typescript/typescript-original.svg`,       percentage: 70, color: "#3178C6" },
-  { name: "Android Studio", iconUrl: `${DEVICON}/androidstudio/androidstudio-original.svg`, percentage: 50, color: "#3DDC84" },
-  { name: "PHP",            iconUrl: `${DEVICON}/php/php-original.svg`,                     percentage: 70, color: "#777BB4" },
-  { name: "Angular",        iconUrl: `${DEVICON}/angularjs/angularjs-original.svg`,         percentage: 40, color: "#DD0031" },
-  { name: "WordPress",      iconUrl: `${DEVICON}/wordpress/wordpress-plain.svg`,            percentage: 50, color: "#21759B" },
-  { name: "Next.js",        iconUrl: `${DEVICON}/nextjs/nextjs-original.svg`,               percentage: 70, color: "#e2e8f0", invert: true },
-  { name: "Firebase",       iconUrl: `${DEVICON}/firebase/firebase-plain.svg`,              percentage: 60, color: "#FFCA28" },
-  { name: "Java",           iconUrl: `${DEVICON}/java/java-original.svg`,                   percentage: 40, color: "#007396" },
-  { name: "Bootstrap",      iconUrl: `${DEVICON}/bootstrap/bootstrap-original.svg`,         percentage: 90, color: "#7952B3" },
-  { name: "Tailwind CSS",   iconUrl: `${DEVICON}/tailwindcss/tailwindcss-original.svg`,     percentage: 70, color: "#06B6D4" },
-  { name: "Git",            iconUrl: `${DEVICON}/git/git-original.svg`,                     percentage: 75, color: "#F05032" },
+  { name: "React",          iconUrl: `${DEVICON}/react-original.svg`,                 percentage: 80, color: "#61DAFB" },
+  { name: "React Native",   iconUrl: `${DEVICON}/react-original.svg`,                 percentage: 70, color: "#61DAFB" },
+  { name: "Expo",           iconUrl: `${DEVICON}/expo-original.svg`,                   percentage: 70, color: "#e2e8f0", invert: true },
+  { name: "Laravel",        iconUrl: `${DEVICON}/laravel-original.svg`,             percentage: 70, color: "#FF2D20" },
+  { name: "MySQL",          iconUrl: `${DEVICON}/mysql-original.svg`,                 percentage: 70, color: "#4479A1" },
+  { name: "TypeScript",     iconUrl: `${DEVICON}/typescript-original.svg`,       percentage: 70, color: "#3178C6" },
+  { name: "Android Studio", iconUrl: `${DEVICON}/androidstudio-original.svg`, percentage: 50, color: "#3DDC84" },
+  { name: "PHP",            iconUrl: `${DEVICON}/php-original.svg`,                     percentage: 70, color: "#777BB4" },
+  { name: "Angular",        iconUrl: `${DEVICON}/angularjs-original.svg`,         percentage: 40, color: "#DD0031" },
+  { name: "WordPress",      iconUrl: `${DEVICON}/wordpress-plain.svg`,            percentage: 50, color: "#21759B" },
+  { name: "Next.js",        iconUrl: `${DEVICON}/nextjs-original.svg`,               percentage: 70, color: "#e2e8f0", invert: true },
+  { name: "Firebase",       iconUrl: `${DEVICON}/firebase-plain.svg`,              percentage: 60, color: "#FFCA28" },
+  { name: "Java",           iconUrl: `${DEVICON}/java-original.svg`,                   percentage: 40, color: "#007396" },
+  { name: "Bootstrap",      iconUrl: `${DEVICON}/bootstrap-original.svg`,         percentage: 90, color: "#7952B3" },
+  { name: "Tailwind CSS",   iconUrl: `${DEVICON}/tailwindcss-original.svg`,     percentage: 70, color: "#06B6D4" },
+  { name: "Git",            iconUrl: `${DEVICON}/git-original.svg`,                     percentage: 75, color: "#F05032" },
 ];
 
-const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const { locale } = useLanguage();
-  return <motion.div ref={ref} initial={false} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: .5, delay: index * .025 }} className="okc-skill">
-    <div className="okc-skill-heading"><div className="okc-skill-icon"><Image src={skill.iconUrl} alt={skill.name} width={28} height={28} unoptimized className={`object-contain${skill.invert ? " invert" : ""}`} onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} /></div><div><h3>{skill.name}</h3><p>{skill.percentage}% {locale === "fr" ? "Maîtrise" : locale === "ar" ? "إتقان" : "Proficiency"}</p></div></div>
-    <div className="skill-bar"><motion.div initial={{ width: 0 }} animate={inView ? { width: `${skill.percentage}%` } : { width: 0 }} transition={{ duration: 1, delay: index * .025 + .3 }} className="skill-bar-fill"  /></div>
-  </motion.div>;
-};
+const groups = [
+  { key: "web", names: ["React", "Next.js", "TypeScript", "Angular", "Bootstrap", "Tailwind CSS"] },
+  { key: "mobile", names: ["React Native", "Expo", "Android Studio", "Firebase", "Java"] },
+  { key: "backend", names: ["Laravel", "PHP", "MySQL", "WordPress", "Git"] },
+];
 
 export default function Skills() {
-  const { t } = useLanguage();
-  return <section id="skills" className="okc-section" aria-label="Compétences et technologies de Soufiane Boutatss"><div className="container">
-    <div className="okc-section-intro"><p className="section-subtitle">{t.skills.tag}</p><div><h2 className="section-heading">{t.skills.title} <span>{t.skills.titleGradient}</span></h2><p className="body-copy">{t.skills.subtitle}</p></div></div>
-    <div className="okc-skills-grid">{skillsData.map((skill, index) => <SkillCard key={skill.name} skill={skill} index={index} />)}</div>
-    <AdBanner />
+  const { t, locale } = useLanguage();
+  const labels = { fr: ["Web & interfaces", "Mobile & applications", "Back-end & outils"], en: ["Web & interfaces", "Mobile & applications", "Back-end & tools"], ar: ["الويب والواجهات", "الهواتف والتطبيقات", "الخوادم والأدوات"] }[locale];
+  const proficiency = locale === "fr" ? "Maîtrise" : locale === "ar" ? "إتقان" : "Proficiency";
+  return <section id="skills" className="okc-section mix-skills-section" aria-label={t.skills.title + " " + t.skills.titleGradient}><div className="container">
+    <header className="mix-editorial-intro"><h2>{t.skills.title} {t.skills.titleGradient}</h2><p>{t.skills.subtitle}</p></header>
+    <div className="mix-skill-tables">{groups.map((group,index) => <div key={group.key} className="mix-skill-table"><h3>{labels[index]}</h3><table><thead><tr><th scope="col">{locale === "fr" ? "Technologie" : locale === "ar" ? "التقنية" : "Technology"}</th><th scope="col">{proficiency}</th></tr></thead><tbody>{group.names.map(name => {
+      const skill = skillsData.find(item => item.name===name)!;
+      return <tr key={name}><th scope="row"><Image src={skill.iconUrl} alt="" width={26} height={26} unoptimized className={skill.invert ? "invert" : ""}/><span>{name}</span></th><td>{skill.percentage}<span>%</span></td></tr>;
+    })}</tbody></table></div>)}</div><AdBanner />
   </div></section>;
 }
