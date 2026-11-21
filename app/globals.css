@@ -73,7 +73,8 @@
 .mix-technology-ribbon p { max-width:12rem; font-size:.8125rem; line-height:1.4; color:#b8c9db; }
 .mix-technology-ribbon nav { display:flex; align-items:center; justify-content:center; gap:clamp(1.5rem,4vw,4rem); }
 .mix-technology-ribbon nav a { display:flex; align-items:center; gap:.6rem; min-height:4rem; white-space:nowrap; color:#d5dfeb; font-size:.75rem; }
-.mix-technology-ribbon img { width:1.65rem; height:1.65rem; object-fit:contain; filter:grayscale(1) brightness(0) invert(1); opacity:.8; }
+.mix-technology-ribbon img { width:1.65rem; height:1.65rem; object-fit:contain; filter:none; opacity:1; }
+.mix-technology-ribbon img[src$="nextjs-original.svg"] { filter:invert(1); }
 .mix-technology-ribbon a:hover { color:#00ccec; }
 .mix-technology-ribbon a:hover img { opacity:1; }
 .mix-ribbon-cv { font-size:.8125rem; white-space:nowrap; border-bottom:1px solid #6f8195; }
@@ -189,6 +190,7 @@
 .mix-project-cover.is-lead { grid-row:span 2; }
 .mix-project-cover .okc-project-visual { position:absolute; inset:0; }
 .mix-project-cover .okc-project-visual::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(transparent 25%,#04152b45 50%,#020e20f5); }
+.mix-project-cover:not(.is-lead) .okc-project-visual::after { background:linear-gradient(transparent 5%,#04152b88 35%,#020e20f5); }
 .mix-project-cover .mix-project-info { position:absolute; inset:auto 0 0; padding:1.5rem; }
 .mix-project-cover h3 { max-width:22ch; font-size:1.5rem; font-weight:600; }
 .mix-project-cover.is-lead h3 { font-size:clamp(1.8rem,3vw,2.5rem); }
@@ -255,7 +257,8 @@
 .mix-skill-table thead th:last-child { text-align:end; }
 .mix-skill-table tbody tr { border-top:1px solid #ffffff24; }
 .mix-skill-table tbody th { display:flex; align-items:center; gap:.8rem; padding-block:1rem; min-width:0; font-weight:550; text-align:start; }
-.mix-skill-table img { flex:none; width:26px; height:26px; object-fit:contain; }
+.mix-skill-table img { flex:none; width:32px; height:32px; padding:4px; border-radius:.35rem; background:#edf3f8; object-fit:contain; }
+.mix-skill-table img.invert { filter:none; }
 .mix-skill-table tbody td { text-align:end; white-space:nowrap; font-variant-numeric:tabular-nums; }
 .mix-skill-table td span { margin-inline-start:.15rem; color:#8da9bf; font-size:.75rem; }
 #experiences { background:#f1f3f5; }
