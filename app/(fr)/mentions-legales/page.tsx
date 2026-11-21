@@ -20,7 +20,7 @@ export default function Page() {
           <section aria-labelledby="legal-publisher">
             <h2 id="legal-publisher" className="mb-2 text-xl font-medium text-foreground">Édition du site</h2>
             <p>Ce site présente les services et réalisations de {OWNER}, développeur web freelance.</p>
-            <p>Pour contacter l’éditeur, écrivez à <a className="text-[#5f2472]" href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
+            <p>Pour contacter l’éditeur, écrivez à <a className="text-[#0064a8]" href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
           </section>
           <section aria-labelledby="legal-hosting">
             <h2 id="legal-hosting" className="mb-2 text-xl font-medium text-foreground">Hébergement</h2>
@@ -29,9 +29,9 @@ export default function Page() {
               440 N Barranca Avenue #4133<br />
               Covina, CA 91723, États-Unis
             </address>
-            <p><a className="text-[#5f2472]" href="https://vercel.com/contact">Contacter Vercel</a></p>
+            <p><a className="text-[#0064a8]" href="https://vercel.com/contact">Contacter Vercel</a></p>
           </section>
-          <Link className="inline-block text-[#5f2472]" href="/politique-confidentialite">Consulter la politique de confidentialité</Link>
+          <Link className="inline-block text-[#0064a8]" href="/politique-confidentialite">Consulter la politique de confidentialité</Link>
         </div>
       </main>
       <SiteFooter />

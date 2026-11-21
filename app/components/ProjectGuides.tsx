@@ -12,10 +12,10 @@ export default function ProjectGuides() {
       const post = getPostBySlug(slug);
       if (!post) return null;
       return <article key={slug} className="border-t border-black/20 pt-5">
-        <h3 className="text-xl font-bold"><Link className="hover:text-[#5f2472]" href={`/blog/${slug}`}>{post.title}</Link></h3>
+        <h3 className="text-xl font-bold"><Link className="hover:text-[#0064a8]" href={`/blog/${slug}`}>{post.title}</Link></h3>
         <p className="mt-3 body-copy">{post.excerpt}</p>
       </article>;
     })}</div>
-    <Link href="/blog" className="mt-8 inline-block text-[#5f2472] underline underline-offset-4">Tous les guides et tutoriels</Link>
+    <Link href="/blog" className="mt-8 inline-block text-[#0064a8] underline underline-offset-4">Tous les guides et tutoriels</Link>
   </section>;
 }
