@@ -113,14 +113,14 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
       <div className="container mx-auto px-6 md:px-12 max-w-4xl">
         {/* Back */}
-        <Link href="/blog" className="inline-flex items-center gap-2 text-foreground/65 hover:text-[#37003c] transition-colors text-sm mb-12">
+        <Link href="/blog" className="inline-flex items-center gap-2 text-foreground/65 hover:text-[#08253a] transition-colors text-sm mb-12">
           Retour au blog
         </Link>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-6">
           {post.tags.map((tag) => (
-            <span key={tag} className="text-xs px-3 py-1 rounded-full bg-[#37003c]/10 text-[#37003c] border border-[#37003c]/20">
+            <span key={tag} className="text-xs px-3 py-1 rounded-full bg-[#08253a]/10 text-[#08253a] border border-[#08253a]/20">
               {tag}
             </span>
           ))}
@@ -141,7 +141,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               height={32}
               className="rounded-full object-cover border border-black/10"
             />
-            <Link href="/a-propos" className="text-foreground/65 font-medium hover:text-[#5f2472]">Soufiane Boutatss</Link>
+            <Link href="/a-propos" className="text-foreground/65 font-medium hover:text-[#0064a8]">Soufiane Boutatss</Link>
           </div>
           <span>·</span>
           <span><time dateTime={post.date}>{new Date(post.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time>{post.updatedAt && <> · Mis à jour le <time dateTime={post.updatedAt}>{new Date(post.updatedAt).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time></>}</span>
@@ -152,7 +152,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         {outline.headings.length > 1 && <nav aria-label="Sommaire de l’article" className="mb-10 border-y border-black/15 py-6">
           <p className="text-sm font-bold uppercase tracking-wider text-foreground/70">Dans ce guide</p>
           <ol className="mt-4 grid gap-3 sm:grid-cols-2">{outline.headings.map(heading => <li key={heading.id}>
-            <a href={`#${heading.id}`} className="text-foreground/75 underline decoration-black/20 underline-offset-4 hover:text-[#5f2472]">{heading.label}</a>
+            <a href={`#${heading.id}`} className="text-foreground/75 underline decoration-black/20 underline-offset-4 hover:text-[#0064a8]">{heading.label}</a>
           </li>)}</ol>
         </nav>}
 
@@ -163,7 +163,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:scroll-mt-28
             prose-p:text-foreground/70 prose-p:leading-[1.8] prose-p:mb-4
             prose-pre:bg-black/5 prose-pre:border prose-pre:border-black/10 prose-pre:rounded-xl prose-pre:p-4
-            prose-code:text-[#37003c] prose-code:bg-[#37003c]/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+            prose-code:text-[#08253a] prose-code:bg-[#08253a]/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
             prose-strong:text-foreground"
           dangerouslySetInnerHTML={{ __html: outline.html }}
         />
@@ -176,7 +176,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               alt="Soufiane Boutatss"
               width={56}
               height={56}
-              className="rounded-full object-cover border-2 border-[#37003c]/30 shrink-0"
+              className="rounded-full object-cover border-2 border-[#08253a]/30 shrink-0"
             />
             <div>
               <p className="text-foreground font-bold">Soufiane Boutatss</p>

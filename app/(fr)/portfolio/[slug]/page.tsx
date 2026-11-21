@@ -53,7 +53,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       <main className="bg-background page-shell text-foreground">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <article className="container max-w-5xl">
-          <Link href="/portfolio" className="text-sm text-foreground/65 hover:text-[#37003c]">← Retour au portfolio</Link>
+          <Link href="/portfolio" className="text-sm text-foreground/65 hover:text-[#08253a]">← Retour au portfolio</Link>
           <p className="section-subtitle !text-start mt-8">{project.category}</p>
           <h1 className="mt-3 page-heading">{project.title}</h1>
           <p className="mt-6 max-w-3xl body-copy">{project.summary}</p>

@@ -32,7 +32,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-medium">Expérience et preuves</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-3">
               {[["30+", "projets web et mobile réalisés"], ["34+", "clients accompagnés"], ["6+", "années d’expérience"]].map(([value, label]) => (
-                <div key={label} className="rounded-2xl border border-black/10 p-6"><p className="text-4xl font-medium text-[#37003c]">{value}</p><p className="mt-2 text-foreground/65">{label}</p></div>
+                <div key={label} className="rounded-2xl border border-black/10 p-6"><p className="text-4xl font-medium text-[#08253a]">{value}</p><p className="mt-2 text-foreground/65">{label}</p></div>
               ))}
             </div>
           </section>

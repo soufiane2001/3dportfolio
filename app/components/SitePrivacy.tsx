@@ -150,14 +150,14 @@ export default function SitePrivacy({ children, locale }: { children: React.Reac
   };
 
   const preferences = admin ? declined : choice ?? declined;
-  const choiceButton = "fpl-privacy-button";
+  const choiceButton = "mix-privacy-button";
 
   return <PrivacyContext.Provider value={{ advertising: preferences.advertising, openSettings, locale }}>
     {children}
     {preferences.advertising && <GoogleAds />}
     {(preferences.audience || preferences.advertising) && <Analytics {...preferences} activeChoice={activeChoice} />}
     {!admin && loaded && (!choice || editing) && (
-      <section data-no-track aria-labelledby="privacy-title" className="fpl-privacy-banner"><div className="fpl-privacy-inner"><div>
+      <section data-no-track aria-labelledby="privacy-title" className="mix-privacy-banner"><div className="mix-privacy-inner"><div>
         <h2 ref={settingsHeading} tabIndex={-1} id="privacy-title" className="text-lg font-semibold">{t.title}</h2>
         <p className="mt-2 text-sm leading-relaxed text-foreground/75">{t.explanation}</p>
         <Link href="/politique-confidentialite" className="mt-2 inline-block text-sm text-foreground/85 underline">{t.policy}</Link>
@@ -167,7 +167,7 @@ export default function SitePrivacy({ children, locale }: { children: React.Reac
             <label className="flex items-center gap-2"><input type="checkbox" checked={draft.advertising} onChange={e => setDraft({ ...draft, advertising: e.target.checked })} />{t.advertising}</label>
           </div>
         )}
-        </div><div className="fpl-privacy-actions">
+        </div><div className="mix-privacy-actions">
           <button type="button" className={choiceButton} onClick={() => save(declined)}>{t.decline}</button>
           <button type="button" className={choiceButton} onClick={() => save(accepted)}>{t.accept}</button>
           {customizing ? <button type="button" className={choiceButton} onClick={() => save(draft)}>{t.save}</button> :
