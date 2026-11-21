@@ -7,13 +7,13 @@ import { useLanguage } from "../i18n/LanguageContext";
 import AdBanner from "../components/AdBanner";
 
 export default function About() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const reduceMotion = useReducedMotion();
   return <section id="about" className="okc-section" aria-label="À propos de Soufiane Boutatss">
     <div className="container" ref={ref}>
       <div className="okc-about-layout">
-        <figure><div className="okc-about-photo"><Image src="https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778368246/Gemini_Generated_Image_ac7qxeac7qxeac7q_t0xski.png" alt="Soufiane Boutatss - Full Stack Developer" fill sizes="(max-width: 767px) 100vw, 35vw" /></div><figcaption className="okc-about-photo-caption">6+ · Years Experience</figcaption></figure>
+        <figure><div className="okc-about-photo"><Image src="https://res.cloudinary.com/dzkx1z6lo/image/upload/v1778368246/Gemini_Generated_Image_ac7qxeac7qxeac7q_t0xski.png" alt="Soufiane Boutatss - Full Stack Developer" fill sizes="(max-width: 767px) 100vw, 35vw" /></div><figcaption className="okc-about-photo-caption">6+ · {locale === "fr" ? "ans d’expérience" : locale === "ar" ? "سنوات من الخبرة" : "years of experience"}</figcaption></figure>
         <motion.div className="okc-about-copy" initial={false} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: reduceMotion ? 0 : .6 }}>
           <p className="section-subtitle">{t.about.tag}</p><h2 className="section-heading">{t.about.title}<br /><span>{t.about.titleGradient}</span></h2>
           <p className="body-copy">{t.about.p1}</p><p className="body-copy">{t.about.p2}</p>

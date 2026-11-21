@@ -4,7 +4,7 @@ import { getPostBySlug } from "../blog/posts";
 const guides = ["cahier-des-charges-site-web", "site-vitrine-ou-ecommerce", "developpeur-web-freelance-france-remote"];
 
 export default function ProjectGuides() {
-  return <section className="container section-padding border-t border-black/10" aria-labelledby="project-guides-heading">
+  return <section className="container section-padding mix-project-guides" aria-labelledby="project-guides-heading">
     <p className="section-subtitle !text-left">Avant de démarrer</p>
     <h2 id="project-guides-heading" className="mt-3 section-heading">Préparer votre projet web</h2>
     <p className="mt-5 max-w-3xl body-copy">Un brief clair permet de comparer les propositions et de concentrer le travail sur ce qui sera utile à vos visiteurs.</p>

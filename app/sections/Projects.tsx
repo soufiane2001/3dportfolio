@@ -46,9 +46,9 @@ export default function Projects() {
   const [category, setCategory] = useState(0);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const reduceMotion = useReducedMotion();
-  const featuredIds = [11, 9, 10, 4];
-  const ordered = [...featuredIds.map(id => projects.find(project => project.id === id)!), ...projects.filter(project => !featuredIds.includes(project.id))];
-  const filtered = category === 0 ? ordered : ordered.filter(project => categoryFor(project) === category);
+  const recentIds = [9, 10, 4, 5];
+  const recent = recentIds.map(id => projects.find(project => project.id === id)!);
+  const filtered = category === 0 ? projects.filter(project => !recentIds.includes(project.id)) : projects.filter(project => categoryFor(project) === category);
   useEffect(() => {
     if (!videoModal) return;
     const previousFocus = document.activeElement as HTMLElement | null;
@@ -59,20 +59,32 @@ export default function Projects() {
     return () => { dialog?.close(); document.body.style.overflow = previousOverflow; previousFocus?.focus(); };
   }, [videoModal]);
 
-  const renderProject = (project: Project, featured = false) => <article key={project.id} className={`okc-project ${featured ? "mix-project-featured" : ""}`}>
-    <div className="okc-project-visual"><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} tabIndex={-1} aria-hidden="true"><Image src={project.image} alt={`Aperçu du projet ${project.title}`} fill sizes={featured ? "(max-width: 599px) 100vw, (max-width: 1023px) 50vw, 25vw" : "(max-width: 599px) 100vw, (max-width: 1023px) 50vw, 25vw"} /></Link>
-      {(project.demoUrl || project.videoUrl) && <a href={project.demoUrl || "#"} onClick={project.videoUrl ? event => { event.preventDefault(); setVideoModal(project.videoUrl!); } : undefined} target={project.demoUrl ? "_blank" : undefined} rel="noopener noreferrer" aria-label={`${project.demoUrl ? t.projects.demo : t.projects.video} — ${project.title}`} className="okc-project-action">{project.videoUrl ? <Play size={18} fill="currentColor" /> : <ExternalLink size={18} />}</a>}
+  const labels = {
+    fr: { title: "À découvrir", more: "Tout le portfolio", stories: "Des projets, en détail.", intro: "Du commerce en ligne aux applications métier, une sélection de mes réalisations.", case: "Explorer le projet", preview: "Aperçu de" },
+    en: { title: "Discover my work", more: "All projects", stories: "A closer look at my work.", intro: "From online stores to business applications, explore a selection of my work.", case: "Explore the project", preview: "Preview of" },
+    ar: { title: "اكتشف أعمالي", more: "كل المشاريع", stories: "مشاريع تستحق نظرة أقرب.", intro: "من المتاجر الإلكترونية إلى تطبيقات الأعمال، اكتشف مجموعة من أعمالي.", case: "اكتشف المشروع", preview: "معاينة" },
+  }[locale];
+  const renderProject = (project: Project, variant: "compact" | "cover" | "story", index = 0) => <article key={project.id} className={`okc-project mix-project-${variant} ${index === 0 ? "is-lead" : ""}`}>
+    <div className="okc-project-visual"><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} tabIndex={-1} aria-hidden="true"><Image src={project.image} alt={`${labels.preview} ${project.title}`} fill sizes={variant === "compact" ? "120px" : variant === "story" ? "(max-width: 767px) 40vw, 180px" : index === 0 ? "(max-width: 767px) 100vw, 60vw" : "(max-width: 767px) 100vw, 30vw"} /></Link></div>
+    <div className="mix-project-info"><p className="mix-project-category">{categories[locale][categoryFor(project)]}</p><h3><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false}>{project.title}</Link></h3>{variant !== "compact" && <p className="mix-project-description">{project.description}</p>}
+      <div className="mix-project-links"><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} className="okc-project-case-link">{variant === "compact" ? project.tech[0] : labels.case}</Link>
+        <div className="mix-project-actions">{project.repoUrl && <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.projects.code} — ${project.title}`}><Github size={17} /></a>}{(project.demoUrl || project.videoUrl) && <a href={project.demoUrl || "#"} onClick={project.videoUrl ? event => { event.preventDefault(); setVideoModal(project.videoUrl!); } : undefined} target={project.demoUrl ? "_blank" : undefined} rel="noopener noreferrer" aria-label={`${project.demoUrl ? t.projects.demo : t.projects.video} — ${project.title}`}>{project.videoUrl ? <Play size={17} fill="currentColor" /> : <ExternalLink size={17} />}</a>}</div>
+      </div>
     </div>
-    <div className="mix-project-info"><p className="mix-project-category">{categories[locale][categoryFor(project)]}</p><h3><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false}>{project.title}</Link></h3><p className="mix-project-description">{project.description}</p><div className="okc-project-meta">{project.tech.map(tech => <span key={tech}>{tech}</span>)}{project.repoUrl && <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.projects.code} — ${project.title}`}><Github size={16} /></a>}</div><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} className="okc-project-case-link">{locale === "en" ? "Read the case study" : locale === "ar" ? "دراسة المشروع" : "Voir l’étude de cas"}</Link></div>
   </article>;
 
-  return <section id="portfolio" className="okc-section okc-projects" aria-labelledby="portfolio-heading">
-    <div className="container">
-      <div className="mix-project-toolbar"><div className="mix-section-head"><h2 id="portfolio-heading">{locale === "en" ? "Explore my projects" : locale === "ar" ? "اكتشف مشاريعي" : "Découvrez mes réalisations"}</h2><Link href="/portfolio">{locale === "en" ? "Explore the portfolio" : locale === "ar" ? "استكشف المشاريع" : "Tout le portfolio"}</Link></div>
-      <div className="mix-filter-tabs" role="group" aria-label={locale === "en" ? "Project categories" : locale === "ar" ? "فئات المشاريع" : "Catégories de projets"}>{categories[locale].map((label, index) => <button type="button" key={label} aria-pressed={category === index} onClick={() => setCategory(index)}>{label}</button>)}</div></div>
-      <div aria-live="polite" aria-atomic="false"><div className={`mix-featured-projects count-${Math.min(filtered.length,4)}`}>{filtered.slice(0,4).map(project => renderProject(project,true))}</div>
-      {filtered.length > 4 && <div className="mix-more-projects"><h3 className="mix-panel-title">{locale === "en" ? "More from my portfolio" : locale === "ar" ? "المزيد من أعمالي" : "Plus de réalisations"}</h3><div className="mix-news-grid">{filtered.slice(4).map(project => renderProject(project))}</div></div>}</div>
-    </div>
+  return <section id="portfolio" className="okc-projects" aria-labelledby="portfolio-heading">
+    <div className="mix-project-discover"><div className="container">
+      <div className="mix-project-toolbar"><div className="mix-section-head"><h2 id="portfolio-heading">{labels.title}</h2><Link className="mix-outline-link" href="/portfolio">{labels.more}</Link></div>
+        <div className="mix-filter-tabs" role="group" aria-label={locale === "en" ? "Project categories" : locale === "ar" ? "فئات المشاريع" : "Catégories de projets"}>{categories[locale].map((label, index) => <button type="button" key={label} aria-pressed={category === index} onClick={() => setCategory(index)}>{label}</button>)}</div>
+      </div>
+      {category === 0 && <div className="mix-recent-projects">{recent.map(project => renderProject(project,"compact"))}</div>}
+    </div></div>
+    <div className="mix-project-editorial"><div className="container">
+      <header className="mix-editorial-intro"><h2>{labels.stories}</h2><p>{labels.intro}</p></header>
+      <div aria-live="polite" aria-atomic="false"><div className={`mix-project-mosaic count-${Math.min(filtered.length,3)}`}>{filtered.slice(0,3).map((project,index) => renderProject(project,"cover",index))}</div>
+      {filtered.length > 3 && <div className="mix-project-stories">{filtered.slice(3).map(project => renderProject(project,"story"))}</div>}</div>
+    </div></div>
     {videoModal && <dialog ref={dialogRef} className="mix-video-dialog" onCancel={() => setVideoModal(null)} onClick={event => { if (event.target === event.currentTarget) setVideoModal(null); }} aria-label={t.projects.video}><button autoFocus type="button" onClick={() => setVideoModal(null)} aria-label={locale === "en" ? "Close video" : locale === "ar" ? "إغلاق الفيديو" : "Fermer la vidéo"}><X size={26} /></button><motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduceMotion ? 0 : .2 }}><iframe src={videoModal} title={t.projects.video} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></motion.div></dialog>}
   </section>;
 }
