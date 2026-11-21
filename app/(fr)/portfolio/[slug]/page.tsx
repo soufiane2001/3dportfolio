@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const project = getCaseStudy((await params).slug);
   if (!project) return {};
   return {
-    title: { absolute: `${project.title} | Étude de cas` },
+    title: { absolute: project.seoTitle ?? `${project.title} | Étude de cas` },
     description: project.summary,
     alternates: { canonical: absoluteUrl(`/portfolio/${project.slug}`) },
     openGraph: { title: project.title, description: project.summary, url: absoluteUrl(`/portfolio/${project.slug}`), images: [{ url: project.image, alt: project.title }] },

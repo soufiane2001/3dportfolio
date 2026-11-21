@@ -1,0 +1,80 @@
+MODÈLE DE CAHIER DES CHARGES — SITE WEB
+Création ou refonte d’un site vitrine, catalogue ou boutique
+
+Modèle proposé par Soufiane Boutatss
+Guide et exemple rempli :
+https://www.soufianeboutatss.sbs/blog/cahier-des-charges-site-web
+
+Remplissez les rubriques utiles. Un point à décider peut rester indiqué
+« à confirmer » pour être discuté avant le devis.
+
+1. LE PROJET
+Activité et nom de l’entreprise :
+Responsable du projet et coordonnées professionnelles :
+Site actuel, le cas échéant :
+Création ou refonte :
+Problème à résoudre et résultat attendu :
+
+2. LE PUBLIC ET LES OBJECTIFS
+Public principal :
+Langues et territoires desservis :
+Action attendue : contact, devis, commande, réservation ou autre :
+Comment vérifier que cette action fonctionne à la livraison :
+
+3. LES PAGES
+Pour chaque page : nom, objectif, contenu, personne qui valide.
+Accueil :
+Services / produits :
+Réalisations / preuves :
+À propos :
+Contact :
+Autres pages :
+
+4. LES FONCTIONNALITÉS
+Décrivez chaque parcours de bout en bout.
+Exemple : le visiteur choisit une prestation, envoie une demande,
+voit une confirmation et le responsable reçoit le message.
+Fonctionnalité :
+Utilisateur et droits :
+Informations demandées :
+Résultat attendu et erreurs à gérer :
+Fonctions indispensables au lancement :
+Options pouvant attendre une deuxième phase :
+
+5. LES CONTENUS ET LE DESIGN
+Textes prêts / à rédiger, et responsable de la validation :
+Photos, illustrations et droits de publication :
+Logo et éléments de marque disponibles :
+Traductions à préparer ou à faire valider :
+Références visuelles et éléments appréciés :
+Moyen prévu pour modifier le contenu après livraison :
+
+6. LA REPRISE ET LES CONNEXIONS
+URLs et contenus à conserver en cas de refonte :
+Données à transférer :
+Outils ou services à connecter :
+Domaine et hébergement actuels :
+Responsable de la mise à disposition des accès :
+Ne notez aucun mot de passe ou secret dans ce document.
+
+7. LE BUDGET ET LE CALENDRIER
+Budget envisagé et devise :
+Date souhaitée et contraintes réelles :
+Coût de création demandé séparément des frais récurrents :
+Domaine / hébergement / licences / maintenance à inclure :
+Personne chargée des validations à chaque étape :
+
+8. LA LIVRAISON
+Parcours à tester sur mobile et ordinateur :
+Formulaires, commandes ou réservations à vérifier :
+Code, accès, sauvegardes et documentation attendus :
+Formation ou prise en main souhaitée :
+Maintenance et évolutions à définir :
+Critères d’acceptation du projet :
+
+VERSION DU BRIEF
+Rédigé par :
+Date :
+Points à confirmer avant le devis :
+
+Pour présenter votre projet : https://www.soufianeboutatss.sbs/contact

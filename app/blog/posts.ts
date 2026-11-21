@@ -77,16 +77,17 @@ export const posts: BlogPost[] = [
   {
     slug: "cahier-des-charges-site-web",
     title: "Cahier des charges de site web avec modèle et exemple",
-    seoTitle: "Cahier des charges de site web | Exemple et modèle",
+    seoTitle: "Cahier des charges site web : modèle gratuit et exemple",
     excerpt: "Un exemple rempli pour un site vitrine et un modèle de cahier des charges à copier. Définissez vos pages, vos fonctionnalités et vos critères de livraison.",
     date: "2026-10-20",
-    updatedAt: "2026-11-13",
+    updatedAt: "2026-11-21",
     readTime: 5,
     tags: ["Site web", "Cahier des charges", "Refonte"],
     image: "/favicon.svg",
     content: `
 <p>Un cahier des charges de site web explique le résultat attendu, les contenus disponibles et les critères de livraison. Il n’a pas besoin d’être long : il doit permettre au développeur et à la personne qui valide de comprendre le même projet.</p>
 <p>Le modèle ci-dessous convient à une création ou à une refonte. Consultez l’<a href="#exemple-cahier-des-charges">exemple rempli pour un site vitrine</a> pour voir comment décrire les pages, le formulaire et la livraison.</p>
+<p><a href="/ressources/modele-cahier-des-charges-site-web.txt" download="modele-cahier-des-charges-site-web.txt">Télécharger le modèle de cahier des charges de site web (TXT)</a>. Le fichier est gratuit, sans inscription, et s’ouvre dans un éditeur de texte.</p>
 <h2>1. L’activité et le résultat attendu</h2>
 <p>Présentez votre activité en quelques lignes, les personnes que vous souhaitez toucher et ce qu’elles doivent faire sur le site. « Recevoir une demande contenant le type de prestation et la ville » est plus précis que « avoir un site moderne ».</p>
 <ul><li>Activité et services proposés.</li><li>Publics, langues et territoires servis.</li><li>Action principale : contact, devis, commande ou réservation.</li><li>URL actuelle, si elle existe, et problèmes à résoudre.</li></ul>
@@ -142,7 +143,8 @@ Accès, documentation et maintenance attendus :</code></pre>
   {
     slug: "developpeur-web-freelance-maroc-2026",
     title: "Engager un développeur web freelance au Maroc en 2026 : le guide complet",
-    excerpt: "Pourquoi et comment engager un développeur web et mobile freelance au Maroc en 2026 : compétences à rechercher, tarifs, avantages du freelance local et étapes pour réussir votre projet.",
+    seoTitle: "Développeur web freelance au Maroc : comment choisir ?",
+    excerpt: "Choisir un développeur web freelance au Maroc : portfolio, compétences, devis, suivi à distance et critères de livraison pour votre projet.",
     date: "2026-06-18",
     readTime: 7,
     tags: ["Développeur Maroc", "Freelance", "React", "Web"],
@@ -213,7 +215,8 @@ Accès, documentation et maintenance attendus :</code></pre>
   {
     slug: "prix-application-mobile-maroc-2026",
     title: "Combien coûte le développement d'une application mobile au Maroc en 2026 ?",
-    excerpt: "Tout savoir sur le coût de développement d'une application mobile au Maroc : iOS et Android, React Native, fonctionnalités, délais et conseils pour réduire le budget sans sacrifier la qualité.",
+    seoTitle: "Prix d’une application mobile au Maroc : coûts et devis",
+    excerpt: "Estimez le budget d’une application mobile au Maroc : écrans, fonctionnalités, iOS et Android, maintenance et éléments à inclure dans un devis.",
     date: "2026-06-08",
     updatedAt: "2026-10-05",
     readTime: 7,
@@ -291,6 +294,7 @@ Accès, documentation et maintenance attendus :</code></pre>
   {
     slug: "react-native-expo-guide-2026",
     title: "Créer une application mobile avec React Native & Expo en 2026",
+    seoTitle: "Créer une application avec React Native et Expo",
     excerpt: "Découvrez comment développer une application mobile cross-platform performante avec React Native et Expo, de la configuration initiale au déploiement.",
     date: "2026-05-10",
     readTime: 6,
@@ -320,6 +324,7 @@ Accès, documentation et maintenance attendus :</code></pre>
   {
     slug: "laravel-api-rest-bonnes-pratiques",
     title: "API REST avec Laravel : Architecture & Bonnes Pratiques",
+    seoTitle: "API REST Laravel : architecture et bonnes pratiques",
     excerpt: "Comment concevoir et développer une API REST robuste, sécurisée et évolutive avec Laravel, incluant l'authentification, la validation et la documentation.",
     date: "2026-05-05",
     readTime: 7,
@@ -349,6 +354,7 @@ Accès, documentation et maintenance attendus :</code></pre>
   {
     slug: "nextjs-seo-app-router-2026",
     title: "SEO avec Next.js App Router en 2026 : Guide Complet",
+    seoTitle: "SEO Next.js App Router : métadonnées et rendu",
     excerpt: "Maîtrisez le SEO technique avec Next.js App Router : Metadata API, données structurées, Core Web Vitals, sitemap dynamique et optimisation des performances.",
     date: "2026-04-28",
     readTime: 8,
@@ -379,6 +385,7 @@ Accès, documentation et maintenance attendus :</code></pre>
   {
     slug: "react-vs-nextjs-2026",
     title: "React vs Next.js : Lequel choisir pour votre projet en 2026 ?",
+    seoTitle: "React ou Next.js : que choisir pour votre projet ?",
     excerpt: "Analyse comparative entre React et Next.js pour vous aider à choisir selon la nature de votre projet : SPA, site vitrine, e-commerce ou application web.",
     date: "2026-04-15",
     readTime: 5,
@@ -402,6 +409,7 @@ Accès, documentation et maintenance attendus :</code></pre>
   {
     slug: "tailwind-css-interfaces-modernes",
     title: "Tailwind CSS : Créer des interfaces modernes et responsives en 2026",
+    seoTitle: "Tailwind CSS : créer des interfaces responsives",
     excerpt: "Maîtrisez Tailwind CSS pour construire des interfaces rapides, cohérentes et responsives sans quitter votre HTML. Utility-first, dark mode, animations et plus.",
     date: "2026-04-10",
     readTime: 5,
@@ -427,6 +435,7 @@ Accès, documentation et maintenance attendus :</code></pre>
   {
     slug: "typescript-guide-pratique-react",
     title: "TypeScript pour les développeurs React : Guide pratique",
+    seoTitle: "TypeScript avec React : types et bonnes pratiques",
     excerpt: "Adoptez TypeScript dans vos projets React pour un code plus robuste, maintenable et sans bugs. Types, interfaces, generics et bonnes pratiques.",
     date: "2026-04-05",
     readTime: 7,
@@ -461,7 +470,8 @@ const Button = ({ label, onClick, variant = "primary" }: ButtonProps) => (
   {
     slug: "firebase-react-native-guide",
     title: "Firebase avec React Native : Authentification et base de données temps réel",
-    excerpt: "Intégrez Firebase dans votre application React Native pour gérer l'authentification utilisateur, stocker des données en temps réel et envoyer des notifications push.",
+    seoTitle: "Firebase et React Native : authentification et données",
+    excerpt: "Firebase avec React Native : authentification, données en temps réel et notifications. Découvrez les étapes et les points de configuration.",
     date: "2026-03-28",
     readTime: 6,
     tags: ["Firebase", "React Native", "Mobile", "Backend"],
@@ -489,6 +499,7 @@ npm install @react-native-firebase/firestore</code></pre>
   {
     slug: "mysql-optimisation-requetes",
     title: "MySQL : Optimisation des requêtes pour les applications web",
+    seoTitle: "Optimiser MySQL : index, EXPLAIN et requêtes",
     excerpt: "Techniques d'optimisation MySQL pour améliorer les performances de vos applications web : index, requêtes optimisées, EXPLAIN, cache et bonnes pratiques.",
     date: "2026-03-20",
     readTime: 7,
@@ -516,6 +527,7 @@ CREATE INDEX idx_orders_user_date ON orders(user_id, created_at);</code></pre>
   {
     slug: "php8-nouvelles-fonctionnalites",
     title: "PHP 8 : Les fonctionnalités modernes qui changent tout",
+    seoTitle: "PHP 8 : fonctions modernes et exemples",
     excerpt: "Découvrez les fonctionnalités PHP 8 qui modernisent le développement : named arguments, match expression, nullsafe operator, fibers et attributs.",
     date: "2026-03-15",
     readTime: 6,
@@ -550,7 +562,8 @@ CREATE INDEX idx_orders_user_date ON orders(user_id, created_at);</code></pre>
   {
     slug: "ecommerce-laravel-react",
     title: "Créer un site e-commerce complet avec Laravel et React",
-    excerpt: "Architecture et implémentation d'une boutique en ligne moderne : catalogue produits, panier, paiement et gestion des commandes avec Laravel backend et React frontend.",
+    seoTitle: "Créer une boutique e-commerce avec Laravel et React",
+    excerpt: "Boutique Laravel et React : catalogue, panier, paiement et commandes. Découvrez comment organiser le backend, le frontend et les données.",
     date: "2026-03-10",
     readTime: 9,
     tags: ["Laravel", "React", "E-commerce", "Fullstack"],
@@ -577,6 +590,7 @@ CREATE INDEX idx_orders_user_date ON orders(user_id, created_at);</code></pre>
   {
     slug: "react-query-gestion-etat-asynchrone",
     title: "TanStack Query : La gestion d'état serveur simplifiée en React",
+    seoTitle: "TanStack Query : données, cache et mutations React",
     excerpt: "Simplifiez la gestion des données asynchrones dans vos applications React avec TanStack Query : fetching, caching, synchronisation et mutations.",
     date: "2026-03-05",
     readTime: 6,
@@ -617,6 +631,7 @@ function App() {
   {
     slug: "git-github-workflow-professionnel",
     title: "Git & GitHub : Workflow professionnel pour développeurs",
+    seoTitle: "Git et GitHub : branches, pull requests et collaboration",
     excerpt: "Maîtrisez le workflow Git professionnel : branches, commits conventionnels, Pull Requests, CI/CD et collaboration en équipe sur GitHub.",
     date: "2026-02-28",
     readTime: 6,
@@ -646,6 +661,7 @@ chore: mettre à jour les dépendances</code></pre>
   {
     slug: "electron-js-application-desktop",
     title: "Electron.js : Créer des applications desktop avec JavaScript",
+    seoTitle: "Electron.js : créer une application desktop JavaScript",
     excerpt: "Développez des applications desktop cross-platform (Windows, macOS, Linux) avec Electron.js en réutilisant vos compétences web JavaScript et React.",
     date: "2026-02-20",
     readTime: 7,
@@ -673,6 +689,7 @@ chore: mettre à jour les dépendances</code></pre>
   {
     slug: "jwt-authentification-laravel-react",
     title: "Authentification JWT sécurisée avec Laravel et React",
+    seoTitle: "Authentification JWT avec Laravel et React",
     excerpt: "Implémentez un système d'authentification JWT robuste entre un backend Laravel et un frontend React : login, refresh tokens, protection des routes et sécurité.",
     date: "2026-02-15",
     readTime: 8,
@@ -710,6 +727,7 @@ public function login(Request $request)
   {
     slug: "framer-motion-animations-react",
     title: "Framer Motion : Animations professionnelles dans vos apps React",
+    seoTitle: "Framer Motion : animations et transitions React",
     excerpt: "Créez des animations fluides et interactives dans React avec Framer Motion : transitions de pages, animations de liste, gestures et layout animations.",
     date: "2026-02-10",
     readTime: 5,
@@ -742,6 +760,7 @@ public function login(Request $request)
   {
     slug: "deploiement-nextjs-vercel-guide",
     title: "Déployer une application Next.js sur Vercel : Guide complet",
+    seoTitle: "Déployer Next.js sur Vercel : configuration et domaine",
     excerpt: "De la configuration initiale au déploiement continu, maîtrisez le déploiement Next.js sur Vercel : domaine personnalisé, variables d'environnement et CI/CD.",
     date: "2026-02-05",
     readTime: 5,
@@ -767,6 +786,7 @@ public function login(Request $request)
   {
     slug: "bootstrap-interfaces-responsives",
     title: "Bootstrap 5 : Créer des interfaces responsives rapidement",
+    seoTitle: "Bootstrap 5 : grille et composants responsives",
     excerpt: "Maîtrisez Bootstrap 5 pour développer des interfaces web responsives professionnelles : grid system, composants, utilitaires et personnalisation avec Sass.",
     date: "2026-01-30",
     readTime: 5,
@@ -792,6 +812,7 @@ public function login(Request $request)
   {
     slug: "wordpress-developpement-themes-plugins",
     title: "WordPress : Développement de thèmes et plugins sur mesure",
+    seoTitle: "WordPress : développer des thèmes et plugins",
     excerpt: "Créez des thèmes et plugins WordPress professionnels sur mesure : structure, hooks, API REST, ACF et optimisation des performances.",
     date: "2026-01-25",
     readTime: 7,
@@ -824,7 +845,8 @@ add_filter('the_title', function($title) {
   {
     slug: "angular-vs-react-comparaison",
     title: "Angular vs React : Choisir le bon framework frontend en 2026",
-    excerpt: "Comparaison complète entre Angular et React pour vous aider à choisir le framework adapté à votre projet : architecture, performance, courbe d'apprentissage et écosystème.",
+    seoTitle: "Angular ou React : comparer les deux frameworks",
+    excerpt: "Comparez Angular et React : architecture, performances, apprentissage et écosystème. Choisissez une solution adaptée à votre équipe et à votre projet.",
     date: "2026-01-20",
     readTime: 6,
     tags: ["Angular", "React", "JavaScript", "Frontend"],
@@ -849,7 +871,8 @@ add_filter('the_title', function($title) {
   {
     slug: "java-android-developpement-mobile-natif",
     title: "Java pour Android : Développement mobile natif en 2026",
-    excerpt: "Introduction au développement Android natif avec Java : structure d'une application, Activities, Fragments, RecyclerView, gestion des permissions et publication sur Google Play.",
+    seoTitle: "Développement Android natif avec Java : guide",
+    excerpt: "Développement Android avec Java : structure du projet, Activities, Fragments, permissions et publication. Les bases pour préparer une application native.",
     date: "2026-01-15",
     readTime: 7,
     tags: ["Java", "Android", "Mobile", "Natif"],
@@ -876,6 +899,7 @@ add_filter('the_title', function($title) {
   {
     slug: "creation-site-web-casablanca",
     title: "Comment choisir un développeur web à Casablanca ?",
+    seoTitle: "Choisir un développeur web à Casablanca : critères",
     excerpt: "Les critères concrets pour choisir un développeur web à Casablanca : portfolio, méthode, technologies, SEO, maintenance et clarté du devis.",
     date: "2026-07-26",
     readTime: 7,
@@ -983,6 +1007,7 @@ add_filter('the_title', function($title) {
   {
     slug: "site-web-pme-casablanca",
     title: "Pourquoi une PME à Casablanca a besoin d’un site professionnel",
+    seoTitle: "Site web pour PME à Casablanca : objectifs et contenus",
     excerpt: "Découvrez comment un site professionnel aide une PME à Casablanca à rassurer, être trouvée localement et générer des demandes qualifiées.",
     date: "2026-07-26",
     readTime: 6,
