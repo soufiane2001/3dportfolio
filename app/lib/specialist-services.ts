@@ -61,7 +61,7 @@ export const specialistServices: LandingPage[] = [
   {
     path: "/creation-site-web-cabinet-medical", lang: "fr",
     title: "Création de site web pour cabinet médical | Freelance",
-    description: "Site vitrine de cabinet médical : présentation du praticien, informations d’accès et liens de rendez-vous. Découvrez un projet du portfolio et préparez votre devis.",
+    description: "Site de cabinet médical : praticien, informations d’accès et liens de rendez-vous. Consultez un projet du portfolio et préparez votre devis.",
     eyebrow: "Site vitrine pour médecin et cabinet médical",
     h1: "Création de site web pour cabinet médical",
     intro: "Un site de cabinet doit permettre de comprendre votre activité, de trouver les informations pratiques et d’accéder au bon moyen de rendez-vous. Je conçois ce parcours avec des contenus validés par le praticien et une présentation adaptée au mobile.",

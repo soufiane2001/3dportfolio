@@ -1,6 +1,7 @@
 export type CaseStudy = {
   slug: string;
   title: string;
+  seoTitle?: string;
   category: string;
   summary: string;
   context: string;
@@ -93,6 +94,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "cash-management-app",
+    seoTitle: "Cash Management : application React Native | Portfolio",
     title: "Cash Management — Application de gestion de dépenses",
     category: "Application mobile",
     summary: "Application mobile de gestion et de suivi des dépenses avec React Native, Expo et Firebase. Découvrez le contexte et les technologies du projet.",
@@ -158,6 +160,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "dr-boutatss-nora",
+    seoTitle: "Dr Nora Boutatss : site de cabinet médical | Portfolio",
     title: "Dr Nora Boutatss — Création d’un site de cabinet médical",
     category: "Site professionnel",
     summary: "Site du cabinet du Dr Nora Boutatss : présentation des expertises, informations pratiques et accès aux moyens de prise de rendez-vous.",
@@ -175,6 +178,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "pizza-napoli-toul",
+    seoTitle: "Pizza Napoli Toul : site de restaurant | Portfolio",
     title: "Pizza Napoli Toul — Création d’un site de restaurant",
     category: "Site vitrine en France",
     summary: "Site de Pizza Napoli à Toul : présentation du menu, horaires, localisation et accès au téléphone pour préparer une visite ou une commande.",

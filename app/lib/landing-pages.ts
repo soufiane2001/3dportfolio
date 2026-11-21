@@ -1,4 +1,5 @@
 import { specialistServices } from "./specialist-services";
+import { englishServiceContent } from "./english-service-content";
 import { serviceContent } from "./service-content";
 import { marketHubContent, regionalContent } from "./regional-content";
 import { casablancaSeo } from "./casablanca-seo";
@@ -108,16 +109,18 @@ const englishInfo: Record<string, { title: string; h1: string; intro: string }> 
 
 function englishPage(slug: string): LandingPage {
   const s = englishInfo[slug];
-  return { path: `/en/${slug}`, lang: "en", title: `${s.title} | Soufiane Boutatss`, description: `${s.intro} Request a tailored estimate for your remote project.`, eyebrow: "Remote web development", h1: s.h1, intro: s.intro, market: "International", sections: [
-    { title: "Web development focused on real business needs", paragraphs: ["The engagement starts with your users, goals, constraints and existing stack. I can build a complete project, improve an existing product or join an agency team for a clearly scoped assignment.", "The deliverable may include a marketing website, ecommerce experience, dashboard, customer portal, API or mobile application."], items: ["React and Next.js", "PHP and Laravel", "React Native and Expo", "Technical SEO and performance"] },
-    { title: "A practical remote workflow", paragraphs: ["Discovery, planning, reviews and handover can happen fully online. Milestones and acceptance criteria are defined before implementation, with regular written updates and video calls scheduled across overlapping working hours.", "I do not claim a local office outside Morocco. International services are delivered remotely, with communication available in English or French."], items: ["Clear scope and estimate", "Incremental delivery", "Video calls and written updates", "Documentation and handover"] },
-    { title: "Performance, SEO and maintainability", paragraphs: ["Public pages are structured for search engines and users: stable URLs, unique metadata, canonical tags, semantic headings, internal links and structured data where appropriate. Images and client-side JavaScript are kept under control to support Core Web Vitals.", "Technology choices are based on the project rather than trends. The goal is a solution your team can understand, operate and extend."], items: ["Mobile-first implementation", "Accessible interactions", "Search-friendly rendering", "Measured technical decisions"] },
-  ], faqs: [
-    { question: "Do you work fully remotely?", answer: "Yes. Discovery, planning, implementation reviews and handover can all be completed remotely." },
-    { question: "How do I get a quote?", answer: "Share your goals, current website or product, key features and expected timeline. I will clarify the scope before providing a tailored estimate." },
-    { question: "Can you work with an existing codebase?", answer: "Yes, after reviewing its architecture, dependencies, deployment setup and technical risks." },
-    { question: "Do you guarantee SEO rankings?", answer: "No. I improve controllable technical and on-page signals, but no honest provider can guarantee a ranking." },
-  ], related: [{ href: "/en/web-development-services", label: "Web development services" }, { href: "/en/react-developer", label: "React development" }, { href: "/portfolio", label: "View selected work" }], alternates: slug === "freelance-web-developer" ? { "fr-FR": "/france/developpeur-web-freelance", "fr-CA": "/canada/developpeur-web-freelance", en: "/en/freelance-web-developer", "x-default": "/developpeur-web-freelance" } : undefined };
+  const content = englishServiceContent[slug];
+  return {
+    path: `/en/${slug}`, lang: "en", title: `${s.title} | Soufiane Boutatss`,
+    eyebrow: "Remote web development", h1: s.h1, intro: s.intro, market: "International",
+    ...content,
+    updatedAt: "2026-11-21",
+    sections: [...content.sections, {
+      title: "A direct remote working relationship",
+      paragraphs: ["Planning, review and handover can happen online in English or French. The scope, milestones, responsibilities and acceptance criteria are agreed before implementation. The work is delivered remotely from Morocco, with meetings arranged in overlapping working hours."],
+      items: ["Written scope", "Scheduled reviews", "Source and access handover", "Maintenance defined separately"],
+    }],
+  };
 }
 
 

@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ExternalLink, Github, Play, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../i18n/LanguageContext";
+import { projectSummary } from "../i18n/project-copy";
 
 interface Project {
   id: number;
@@ -61,12 +62,12 @@ export default function Projects() {
 
   const labels = {
     fr: { title: "À découvrir", more: "Tout le portfolio", stories: "Des projets, en détail.", intro: "Du commerce en ligne aux applications métier, une sélection de mes réalisations.", case: "Explorer le projet", preview: "Aperçu de" },
-    en: { title: "Discover my work", more: "All projects", stories: "A closer look at my work.", intro: "From online stores to business applications, explore a selection of my work.", case: "Explore the project", preview: "Preview of" },
-    ar: { title: "اكتشف أعمالي", more: "كل المشاريع", stories: "مشاريع تستحق نظرة أقرب.", intro: "من المتاجر الإلكترونية إلى تطبيقات الأعمال، اكتشف مجموعة من أعمالي.", case: "اكتشف المشروع", preview: "معاينة" },
+    en: { title: "Discover my work", more: "All projects", stories: "A closer look at my work.", intro: "From online stores to business applications, explore a selection of my work.", case: "Case study (French)", preview: "Preview of" },
+    ar: { title: "اكتشف أعمالي", more: "كل المشاريع", stories: "مشاريع تستحق نظرة أقرب.", intro: "من المتاجر الإلكترونية إلى تطبيقات الأعمال، اكتشف مجموعة من أعمالي.", case: "دراسة المشروع (بالفرنسية)", preview: "معاينة" },
   }[locale];
   const renderProject = (project: Project, variant: "compact" | "cover" | "story", index = 0) => <article key={project.id} className={`okc-project mix-project-${variant} ${index === 0 ? "is-lead" : ""}`}>
     <div className="okc-project-visual"><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} tabIndex={-1} aria-hidden="true"><Image src={project.image} alt={`${labels.preview} ${project.title}`} fill sizes={variant === "compact" ? "120px" : variant === "story" ? "(max-width: 767px) 40vw, 180px" : index === 0 ? "(max-width: 767px) 100vw, 60vw" : "(max-width: 767px) 100vw, 30vw"} /></Link></div>
-    <div className="mix-project-info"><p className="mix-project-category">{categories[locale][categoryFor(project)]}</p><h3><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false}>{project.title}</Link></h3>{variant !== "compact" && <p className="mix-project-description">{project.description}</p>}
+    <div className="mix-project-info"><p className="mix-project-category">{categories[locale][categoryFor(project)]}</p><h3><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false}>{project.title}</Link></h3>{variant !== "compact" && <p className="mix-project-description">{projectSummary(project.caseStudySlug, locale, project.description)}</p>}
       <div className="mix-project-links"><Link href={`/portfolio/${project.caseStudySlug}`} prefetch={false} className="okc-project-case-link">{variant === "compact" ? project.tech[0] : labels.case}</Link>
         <div className="mix-project-actions">{project.repoUrl && <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.projects.code} — ${project.title}`}><Github size={17} /></a>}{(project.demoUrl || project.videoUrl) && <a href={project.demoUrl || "#"} onClick={project.videoUrl ? event => { event.preventDefault(); setVideoModal(project.videoUrl!); } : undefined} target={project.demoUrl ? "_blank" : undefined} rel="noopener noreferrer" aria-label={`${project.demoUrl ? t.projects.demo : t.projects.video} — ${project.title}`}>{project.videoUrl ? <Play size={17} fill="currentColor" /> : <ExternalLink size={17} />}</a>}</div>
       </div>
